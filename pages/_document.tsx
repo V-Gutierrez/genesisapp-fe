@@ -1,5 +1,8 @@
 import Document, {
-  Head, Html, Main, NextScript,
+  Head,
+  Html,
+  Main,
+  NextScript,
 } from 'next/document';
 
 class MyDocument extends Document {
@@ -21,7 +24,7 @@ class MyDocument extends Document {
             integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
             crossOrigin=""
           />
-          <meta name="theme-color" content="#e7e6e6" />
+          <meta name="theme-color" content="#000" />
           <meta name="description" content="Genesis Church App" />
         </Head>
         <body>
