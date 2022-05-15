@@ -1,5 +1,9 @@
 import {
-  Box, BoxProps, CloseButton, Flex, useColorModeValue,
+  Box,
+  BoxProps,
+  CloseButton,
+  Flex,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { FiHome, FiStar } from 'react-icons/fi';
 
@@ -21,6 +25,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
       pos="fixed"
       h="full"
       {...rest}
+      onClick={onClose}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
