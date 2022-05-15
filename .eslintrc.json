@@ -1,0 +1,40 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "next/core-web-vitals",
+        "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/function-component-definition": "off",
+        "react/jsx-filename-extension": "off",
+        "@next/next/no-title-in-document-head": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/extensions": "off",
+        "no-undef": "off",
+        "no-shadow": "off",
+        "no-param-reassign": "off",
+        "import/no-extraneous-dependencies": "off",
+        "@next/next/no-sync-scripts": "off",
+        "react/jsx-no-bind": "off"
+    },
+    "ignorePatterns": [
+        "*.d.ts"
+    ]
+}

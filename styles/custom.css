@@ -1,0 +1,31 @@
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+
+.customPopup .leaflet-popup-content-wrapper {
+  background-color: rgb(0, 0, 0);
+  padding: 10px;
+
+}
+
+
+.customPopup .leaflet-popup-content-wrapper .leaflet-popup-content {
+  color: white;
+}
+
+
+.customPopup .leaflet-popup-tip-container>* {
+  background-color: black;
+  position: relative;
+  left: 5px
+}
+
+.customPopup .leaflet-popup-close-button>* {
+  color: white;
+}
+
+.customPopup .leaflet-container a {
+  color: white !important;
+}
