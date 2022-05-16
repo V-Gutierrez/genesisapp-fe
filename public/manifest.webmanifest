@@ -28,5 +28,21 @@
             "sizes": "512x512",
             "type": "image/png"
         }
+    ],
+    "screenshots": [
+        {
+            "src": "ss1.png",
+            "sizes": "740x1600",
+            "type": "image/webp",
+            "platform": "narrow",
+            "label": "Encontre seu GC"
+        },
+        {
+            "src": "ss2.png",
+            "sizes": "1920x980",
+            "type": "image/webp",
+            "platform": "wide",
+            "label": "Encontre seu GC"
+        }
     ]
 }
