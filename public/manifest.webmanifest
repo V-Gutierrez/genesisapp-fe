@@ -34,15 +34,20 @@
             "src": "ss1.png",
             "sizes": "740x1600",
             "type": "image/webp",
-            "platform": "narrow",
             "label": "Encontre seu GC"
         },
         {
             "src": "ss2.png",
             "sizes": "1920x980",
             "type": "image/webp",
-            "platform": "wide",
             "label": "Encontre seu GC"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Encontre seu GC",
+            "url": "/findyourgc",
+            "description": "Encontre um Grupo de Crescimento próximo à você"
         }
     ]
 }
