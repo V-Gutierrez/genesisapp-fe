@@ -27,7 +27,6 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#000" />
           <meta name="description" content="Genesis Church App" />
 
-          <title>Genesis Church</title>
           <meta name="title" content="Genesis Church" />
           <meta name="description" content="Bem-vindo à Gênesis Church" />
 
