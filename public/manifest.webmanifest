@@ -47,7 +47,8 @@
         {
             "name": "Encontre seu GC",
             "url": "/findyourgc",
-            "description": "Encontre um Grupo de Crescimento próximo à você"
+            "description": "Encontre um Grupo de Crescimento próximo à você",
+            "icon": "/icon-128x128.png"
         }
     ]
 }
