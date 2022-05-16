@@ -29,19 +29,19 @@ class MyDocument extends Document {
 
           <title>Genesis Church</title>
           <meta name="title" content="Genesis Church" />
-          <meta name="description" content="Bem-vindos à Gênesis Church" />
+          <meta name="description" content="Bem-vindo à Gênesis Church" />
 
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://metatags.io/" />
+          <meta property="og:url" content="https://genesisproject-six.vercel.app" />
           <meta property="og:title" content="Genesis Church" />
           <meta property="og:description" content="Bem-vindos à Gênesis Church" />
-          <meta property="og:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png" />
+          <meta property="og:image" content="/meta-bg.png" />
 
           <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content="https://metatags.io/" />
+          <meta property="twitter:url" content="https://genesisproject-six.vercel.app" />
           <meta property="twitter:title" content="Genesis Church" />
           <meta property="twitter:description" content="Bem-vindos à Gênesis Church" />
-          <meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png" />
+          <meta property="twitter:image" content="/meta-bg.png" />
         </Head>
         <body>
           <Main />
