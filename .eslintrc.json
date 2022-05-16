@@ -32,7 +32,8 @@
         "no-param-reassign": "off",
         "import/no-extraneous-dependencies": "off",
         "@next/next/no-sync-scripts": "off",
-        "react/jsx-no-bind": "off"
+        "react/jsx-no-bind": "off",
+        "react/no-invalid-html-attribute": "off"
     },
     "ignorePatterns": [
         "*.d.ts"
