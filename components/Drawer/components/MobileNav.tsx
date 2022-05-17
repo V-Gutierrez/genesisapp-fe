@@ -13,7 +13,7 @@ import { FiMenu } from 'react-icons/fi';
 import GenesisLogo from 'assets/images/genesislogo.png';
 
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   return (
     <Flex
@@ -36,12 +36,11 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       />
 
       <Flex h="50%" w="100%" justifyContent="center" alignItems="center">
-        <Image src={GenesisLogo.src} h="100%" />
+        <Image src={GenesisLogo.src} h="100%" alt="Genesis Logo" />
       </Flex>
 
       <HStack spacing={{ base: '0', md: '6' }} opacity="0">
-        <Button onClick={toggleColorMode}>
-          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        <Button onClick={() => null}>
         </Button>
       </HStack>
     </Flex>
