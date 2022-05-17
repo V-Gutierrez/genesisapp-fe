@@ -15,7 +15,7 @@ import {
 import React, { useEffect, useState } from 'react';
 
 function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFrameProps) {
-  const [userPosition, setUserPosition] = useState<CoordsState>({ lat: null, lng: null });
+  const [userPosition, setUserPosition] = useState<CoordsState & { accurate: boolean }>({ lat: null, lng: null, accurate: false });
   const [mapLoading, setMapLoading] = useState(true);
 
   function getUserLocation() {
@@ -23,11 +23,11 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
       (position) => {
         const { latitude, longitude } = position.coords;
 
-        setUserPosition({ lat: latitude, lng: longitude });
+        setUserPosition({ lat: latitude, lng: longitude, accurate: true });
         selectCoordsHandler(latitude, longitude);
       },
       () => {
-        setUserPosition({ lat: -34.6037, lng: -58.3816 });
+        setUserPosition({ lat: -34.6037, lng: -58.3816, accurate: false });
         selectCoordsHandler(-34.6037, -58.3816);
       },
       {
@@ -115,18 +115,16 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
           <Marker
             position={[userPosition.lat as number, userPosition.lng as number]}
             data-tip="userTip"
-            /* @ts-ignore */
-            title="Você"
+          /* @ts-ignore */
           >
             <Popup
               /* @ts-ignore */
               className="customPopup"
             >
-              Você está aqui
+              {userPosition.accurate ? 'Você está aqui' : 'Localização aproximada'}
             </Popup>
           </Marker>
         </MapContainer>
-        )}
       </Box>
     );
   }
