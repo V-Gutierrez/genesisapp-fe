@@ -30,6 +30,7 @@ const GrowthGroups: React.FC = () => {
         md: 'column',
         base: 'column',
       }}
+      transition="1s all ease-in"
     >
       <MapFrame
         GCDataset={growthGroups as GrowthGroup[]}
