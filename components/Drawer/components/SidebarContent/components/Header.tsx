@@ -1,11 +1,12 @@
 import {
-  Button, Flex, HStack, IconButton, Image, useColorModeValue,
+  Flex, HStack, IconButton, Image, useColorModeValue,
 } from '@chakra-ui/react';
 
 import { FiMenu } from 'react-icons/fi';
 import GenesisLogo from 'assets/images/genesislogo.png';
+import UserInfo from './UserInfo';
 
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => (
+const Header = ({ onOpen, ...rest }: MobileProps) => (
   <Flex
     ml={{ base: 0, md: 0 }}
     px={{ base: 4, md: 4 }}
@@ -29,10 +30,10 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => (
       <Image src={GenesisLogo.src} h="100%" alt="Genesis Logo" />
     </Flex>
 
-    <HStack spacing={{ base: '0', md: '6' }} opacity="0">
-      <Button onClick={() => null} />
+    <HStack spacing={{ base: '0', md: '6' }}>
+      <UserInfo />
     </HStack>
   </Flex>
 );
 
-export default MobileNav;
+export default Header;

@@ -8,6 +8,7 @@ import { QueryClientProvider } from 'react-query';
 import ReactQueryClient from 'services/react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import SidebarWithHeader from 'components/Drawer';
+import { UserContextProvider } from 'context/UserContext';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
@@ -17,14 +18,16 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       </Head>
 
       <QueryClientProvider client={ReactQueryClient}>
-        <ChakraProvider>
-          <SidebarWithHeader>
-            <ScaleFade key={router.route} initialScale={0.2} in>
-              <Component {...pageProps} />
-              <ReactQueryDevtools initialIsOpen position="bottom-right" />
-            </ScaleFade>
-          </SidebarWithHeader>
-        </ChakraProvider>
+        <UserContextProvider>
+          <ChakraProvider>
+            <SidebarWithHeader>
+              <ScaleFade key={router.route} initialScale={0.2} in>
+                <Component {...pageProps} />
+                <ReactQueryDevtools initialIsOpen position="bottom-right" />
+              </ScaleFade>
+            </SidebarWithHeader>
+          </ChakraProvider>
+        </UserContextProvider>
       </QueryClientProvider>
     </>
   );

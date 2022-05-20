@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 
-import MobileNav from 'components/Drawer/components/SidebarContent/components/MobileNav';
+import Header from 'components/Drawer/components/SidebarContent/components/Header';
 import SidebarContent from 'components/Drawer/components/SidebarContent/SidebarContent';
 import { useIsFetching } from 'react-query';
 
@@ -32,7 +32,7 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <MobileNav onOpen={onOpen} />
+      <Header onOpen={onOpen} />
       <Box ml={{ base: 0, md: 0 }} p="4">
         {isFetching ? (
           <Flex h="90vh" w="100%" justifyContent="center" alignItems="center">

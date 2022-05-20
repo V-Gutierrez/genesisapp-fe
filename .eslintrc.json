@@ -34,7 +34,8 @@
         "@next/next/no-sync-scripts": "off",
         "react/jsx-no-bind": "off",
         "react/no-invalid-html-attribute": "off",
-        "no-use-before-define": "off"
+        "no-use-before-define": "off",
+        "react/prop-types": "off"
     },
     "ignorePatterns": [
         "*.d.ts"
