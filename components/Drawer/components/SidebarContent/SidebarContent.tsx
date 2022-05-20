@@ -1,13 +1,9 @@
 import {
-  Box,
-  BoxProps,
-  CloseButton,
-  Flex,
-  useColorModeValue,
+  Box, BoxProps, CloseButton, Flex, useColorModeValue,
 } from '@chakra-ui/react';
 import { FiHome, FiStar } from 'react-icons/fi';
 
-import NavItem from 'components/Drawer/components/NavItem';
+import NavItem from 'components/Drawer/components/SidebarContent/components/NavItem';
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
   const LinkItems: Array<LinkItemProps> = [
@@ -21,7 +17,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
       bg={useColorModeValue('white', 'gray.900')}
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-      w={{ base: 'full', md: 60 }}
+      w={{ base: '85%', md: 60 }}
       pos="fixed"
       h="full"
       {...rest}

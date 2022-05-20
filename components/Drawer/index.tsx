@@ -9,8 +9,8 @@ import {
 } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 
-import MobileNav from 'components/Drawer/components/MobileNav';
-import SidebarContent from 'components/Drawer/components/SidebarContent';
+import MobileNav from 'components/Drawer/components/SidebarContent/components/MobileNav';
+import SidebarContent from 'components/Drawer/components/SidebarContent/SidebarContent';
 import { useIsFetching } from 'react-query';
 
 export default function SidebarWithHeader({ children }: { children: ReactNode }) {
@@ -19,7 +19,7 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
 
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-      <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
+      <SidebarContent onClose={() => onClose} display={{ base: 'none', md: '' }} />
       <Drawer
         autoFocus={false}
         isOpen={isOpen}
@@ -27,14 +27,13 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full"
       >
-        <DrawerContent>
+        <DrawerContent bg="none" boxShadow="none">
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Box ml={{ base: 0, md: 0 }} p="4">
         {isFetching ? (
           <Flex h="90vh" w="100%" justifyContent="center" alignItems="center">
             <Spinner size="xl" />

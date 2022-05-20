@@ -33,7 +33,8 @@
         "import/no-extraneous-dependencies": "off",
         "@next/next/no-sync-scripts": "off",
         "react/jsx-no-bind": "off",
-        "react/no-invalid-html-attribute": "off"
+        "react/no-invalid-html-attribute": "off",
+        "no-use-before-define": "off"
     },
     "ignorePatterns": [
         "*.d.ts"
