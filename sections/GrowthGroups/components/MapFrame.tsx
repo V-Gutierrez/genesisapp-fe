@@ -1,9 +1,5 @@
 import {
-  Box,
-  Flex,
-  Link,
-  Skeleton,
-  Text,
+  Box, Flex, Link, Skeleton, Text,
 } from '@chakra-ui/react';
 import {
   MapContainer,
@@ -15,7 +11,11 @@ import {
 import React, { useEffect, useState } from 'react';
 
 function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFrameProps) {
-  const [userPosition, setUserPosition] = useState<CoordsState & { accurate: boolean }>({ lat: null, lng: null, accurate: false });
+  const [userPosition, setUserPosition] = useState<CoordsState & { accurate: boolean }>({
+    lat: null,
+    lng: null,
+    accurate: false,
+  });
   const [mapLoading, setMapLoading] = useState(true);
 
   function getUserLocation() {
@@ -55,13 +55,15 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
   if (mapLoading || !GCDataset || !currentCoords.lat || !currentCoords.lng) {
     return (
       <Skeleton
-        h="100%" w={{
+        h="100%"
+        w={{
           lg: '80%',
           md: '100%',
           sm: '100%',
           base: '100%',
-        }} />
-    )
+        }}
+      />
+    );
   }
 
   if (GCDataset && currentCoords.lat && currentCoords.lng) {
@@ -115,7 +117,8 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
           <Marker
             position={[userPosition.lat as number, userPosition.lng as number]}
             data-tip="userTip"
-          /* @ts-ignore */
+            title={userPosition.accurate ? 'Você está aqui' : 'Localização aproximada'}
+            /* @ts-ignore */
           >
             <Popup
               /* @ts-ignore */

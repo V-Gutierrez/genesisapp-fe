@@ -1,14 +1,15 @@
 import 'styles/custom.css';
 
+import { ChakraProvider, ScaleFade } from '@chakra-ui/react';
+
 import type { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
 import Head from 'next/head';
 import { QueryClientProvider } from 'react-query';
 import ReactQueryClient from 'services/react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import SidebarWithHeader from 'components/Drawer';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <Head>
@@ -18,8 +19,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={ReactQueryClient}>
         <ChakraProvider>
           <SidebarWithHeader>
-            <Component {...pageProps} />
-            <ReactQueryDevtools initialIsOpen position="bottom-right" />
+            <ScaleFade key={router.route} initialScale={0.2} in>
+              <Component {...pageProps} />
+              <ReactQueryDevtools initialIsOpen position="bottom-right" />
+            </ScaleFade>
           </SidebarWithHeader>
         </ChakraProvider>
       </QueryClientProvider>
