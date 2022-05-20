@@ -1,6 +1,4 @@
-import {
-  Box, Flex, Link, Skeleton, Text,
-} from '@chakra-ui/react';
+import { Box, Skeleton } from '@chakra-ui/react';
 import {
   MapContainer,
   Marker,
@@ -9,6 +7,8 @@ import {
   changeIcons,
 } from 'sections/GrowthGroups/components/Leaflet';
 import React, { useEffect, useState } from 'react';
+
+import PopupContent from 'sections/GrowthGroups/components/PopupContent';
 
 function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFrameProps) {
   const [userPosition, setUserPosition] = useState<CoordsState & { accurate: boolean }>({
@@ -94,22 +94,7 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
                 /* @ts-ignore */
                 className="customPopup"
               >
-                <Text fontSize={{ base: '14px' }} fontWeight="800">
-                  {gc.name}
-                </Text>
-                <Text fontSize={{ base: '14px' }}>{gc.addressInfo}</Text>
-                <Text fontSize={{ base: '14px' }}>
-                  Líderes:
-                  {' '}
-                  {gc.leadership.map((leader) => leader).join(', ')}
-                </Text>
-                <Link href={gc.whatsappLink} target="_blank">
-                  <Flex flexDirection="row" alignItems="center">
-                    <Text mr="120px" color="white" textDecoration="underline">
-                      Entrar no grupo
-                    </Text>
-                  </Flex>
-                </Link>
+                <PopupContent {...gc} />
               </Popup>
             </Marker>
           ))}
