@@ -102,8 +102,8 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
           <Marker
             position={[userPosition.lat as number, userPosition.lng as number]}
             data-tip="userTip"
-            title={userPosition.accurate ? 'Você está aqui' : 'Localização aproximada'}
             /* @ts-ignore */
+            title={userPosition.accurate ? 'Você está aqui' : 'Localização aproximada'}
           >
             <Popup
               /* @ts-ignore */
