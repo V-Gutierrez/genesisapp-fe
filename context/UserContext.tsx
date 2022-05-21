@@ -19,7 +19,6 @@ export const UserContextProvider: React.FC<ProviderProps> = ({ children }) => {
     staleTime: Infinity,
     cacheTime: Infinity,
   });
-
   const userData = useMemo(() => data?.data as Partial<User>, [data]);
 
   const isAdmin = useMemo(() => data?.data.role === 'ADMIN', [data?.data.role]);

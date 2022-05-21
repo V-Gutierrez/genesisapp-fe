@@ -3,7 +3,7 @@ import {
 } from '@chakra-ui/react';
 import { FiHome, FiStar } from 'react-icons/fi';
 
-import NavItem from 'components/Drawer/components/SidebarContent/components/NavItem';
+import NavItem from './components/NavItem';
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
   const LinkItems: Array<LinkItemProps> = [

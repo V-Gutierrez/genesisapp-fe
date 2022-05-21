@@ -6,7 +6,7 @@ import { FiMenu } from 'react-icons/fi';
 import GenesisLogo from 'assets/images/genesislogo.png';
 import UserInfo from './UserInfo';
 
-const Header = ({ onOpen, ...rest }: MobileProps) => (
+const Header = ({ onOpen, ...rest }: HeaderProps) => (
   <Flex
     ml={{ base: 0, md: 0 }}
     px={{ base: 4, md: 4 }}

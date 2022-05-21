@@ -4,7 +4,7 @@ interface LinkItemProps {
   goTo: string;
 }
 
-interface MobileProps {
+interface HeaderProps {
   onOpen: () => void;
 }
 
@@ -39,4 +39,9 @@ interface MapFrameProps {
   GCDataset: GrowthGroup[];
   currentCoords: CoordsState;
   selectCoordsHandler: (lat: number, lng: number) => void;
+}
+
+interface LoginModalProps {
+  isOpen: boolean;
+  onClose: () => void;
 }
