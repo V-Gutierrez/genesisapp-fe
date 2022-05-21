@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 
+import { BiHide, BiShowAlt } from 'react-icons/bi';
 import {
   Box,
   Button,
@@ -7,6 +8,8 @@ import {
   FormLabel,
   Image,
   Input,
+  InputGroup,
+  InputRightElement,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -24,6 +27,7 @@ import { Formik, FormikHelpers } from 'formik';
 import Axios from 'services/axios';
 import GenesisLogo from 'assets/images/genesislogo.png';
 import { useMutation } from 'react-query';
+import { useState } from 'react';
 
 const INITIAL_VALUES = { email: '', password: '' };
 const SIGNUP_SCHEMA = Yup.object().shape({
@@ -36,36 +40,40 @@ interface FormValues {
   password: string;
 }
 
+const mutation = async (values: FormValues) => {
+  await Axios.post('/auth', {
+    email: values.email,
+    password: values.password,
+  });
+};
+
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
-  const mutation = async (values: FormValues) => {
-    await Axios.post('/auth', {
-      email: values.email,
-      password: values.password,
-    });
-  };
+  const [show, setShow] = useState(false);
   const { mutateAsync: login } = useMutation(mutation, {});
   const toast = useToast();
 
-  const onSubmit = async (values: FormValues, actions: FormikHelpers<FormValues>) => {
-    actions.setSubmitting(true);
+  const onSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
+    setSubmitting(true);
 
     try {
       await login(values);
-
       toast({
         title: 'Login realizado com sucesso',
         status: 'success',
         position: 'bottom',
       });
+      onClose();
     } catch (e) {
       toast({
-        title: 'Usuário ou senha inválidos',
+        title: 'Usuário e senha inválidos',
         status: 'error',
         position: 'bottom',
       });
     }
-    actions.setSubmitting(false);
+    setSubmitting(false);
   };
+
+  const handleClick = () => setShow(!show);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered size="3xl">
@@ -100,7 +108,18 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
                         <Box>
                           <FormLabel fontSize={{ base: '18px' }}>Senha</FormLabel>
-                          <Input type="password" id="password" onChange={handleChange} />
+                          <InputGroup>
+                            <Input
+                              id="password"
+                              onChange={handleChange}
+                              type={show ? 'text' : 'password'}
+                            />
+                            <InputRightElement width="4.5rem">
+                              <Button h="1.75rem" size="sm" onClick={handleClick}>
+                                {show ? <BiHide size="16px" /> : <BiShowAlt size="16px" />}
+                              </Button>
+                            </InputRightElement>
+                          </InputGroup>
                           <Text fontSize={{ base: '12px' }} color="red">
                             {errors.password && touched.password && errors.password}
                           </Text>
