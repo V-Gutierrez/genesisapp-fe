@@ -45,3 +45,23 @@ interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+interface LoginFormProps {
+  onClose: () => void;
+  visibilityHandler: React.Dispatch<
+    SetStateAction<{
+      signUp: boolean;
+      login: boolean;
+      signUpSuccess: boolean;
+    }>
+  >;
+}
+interface SignUpFormProps {
+  visibilityHandler: React.Dispatch<
+    SetStateAction<{
+      signUp: boolean;
+      login: boolean;
+      signUpSuccess: boolean;
+    }>
+  >;
+}

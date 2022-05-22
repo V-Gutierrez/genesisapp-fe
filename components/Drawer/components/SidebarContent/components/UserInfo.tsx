@@ -16,24 +16,28 @@ import { useIsFetching, useMutation } from 'react-query';
 import Axios from 'services/axios';
 import React from 'react';
 import { useUser } from 'context/UserContext';
-import LoginModal from './LoginModal';
+import LoginModal from './Login/LoginModal';
 
 const mutation = async () => {
   await Axios.delete('/auth');
 };
 
 const UserInfo: React.FC = () => {
-  const isFetching = useIsFetching();
   const { mutateAsync: logout } = useMutation(mutation, {});
-  const { userData, isAdmin } = useUser();
+  const isFetching = useIsFetching();
+  const {
+    userData, isAdmin, removeUserData, refetchUser,
+  } = useUser();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleLogout = async () => {
     await logout();
+    removeUserData();
+    await refetchUser();
   };
 
-  if (isFetching) return <SkeletonCircle />;
-  if (!userData) {
+  if (!userData && isFetching) return <SkeletonCircle />;
+  if (!userData && !isFetching) {
     return (
       <>
         <Menu>
@@ -51,7 +55,8 @@ const UserInfo: React.FC = () => {
         <LoginModal isOpen={isOpen} onClose={onClose} />
       </>
     );
-  } return (
+  }
+  return (
     <Menu>
       <MenuButton as={Button} rounded="full" variant="link" cursor="pointer" minW={0}>
         <Avatar size="sm" name={userData.name} bg="blackAlpha.900" color="white">

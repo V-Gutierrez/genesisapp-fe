@@ -35,7 +35,12 @@
         "react/jsx-no-bind": "off",
         "react/no-invalid-html-attribute": "off",
         "no-use-before-define": "off",
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "max-len": "warn",
+        "react/no-children-prop": "off",
+        "jsx-a11y/anchor-is-valid": "warn",
+        "react/jsx-no-constructed-context-values": "warn",
+        "no-unused-vars": "warn"
     },
     "ignorePatterns": [
         "*.d.ts"

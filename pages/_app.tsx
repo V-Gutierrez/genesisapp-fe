@@ -9,6 +9,10 @@ import ReactQueryClient from 'services/react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import SidebarWithHeader from 'components/Drawer';
 import { UserContextProvider } from 'context/UserContext';
+import pt from 'date-fns/locale/pt-BR';
+import { registerLocale } from 'react-datepicker';
+
+registerLocale('pt-BR', pt);
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
@@ -23,9 +27,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
             <SidebarWithHeader>
               <ScaleFade key={router.route} initialScale={0.2} in>
                 <Component {...pageProps} />
-                <ReactQueryDevtools initialIsOpen position="bottom-right" />
               </ScaleFade>
             </SidebarWithHeader>
+            <ReactQueryDevtools initialIsOpen position="bottom-right" />
           </ChakraProvider>
         </UserContextProvider>
       </QueryClientProvider>
