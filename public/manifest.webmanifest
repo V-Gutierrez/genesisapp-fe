@@ -46,7 +46,7 @@
     "shortcuts": [
         {
             "name": "Encontre seu GC",
-            "url": "/findyourgc",
+            "url": "/gc",
             "description": "Encontre um Grupo de Crescimento próximo à você",
             "icon": "/icon-128x128.png"
         }

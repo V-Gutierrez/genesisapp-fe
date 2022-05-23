@@ -65,3 +65,13 @@ interface SignUpFormProps {
     }>
   >;
 }
+
+interface SuccessProps {
+  title: string;
+  subtitle: string;
+}
+
+interface ErrorProps {
+  title: string;
+  subtitle: string;
+}

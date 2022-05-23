@@ -8,7 +8,7 @@ import NavItem from './components/NavItem';
 const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
   const LinkItems: Array<LinkItemProps> = [
     { name: 'Home', icon: FiStar, goTo: '/' },
-    { name: 'Encontre seu GC', icon: FiHome, goTo: '/findyourgc' },
+    { name: 'Encontre seu GC', icon: FiHome, goTo: '/gc' },
   ];
 
   return (

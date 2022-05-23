@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 import GenesisLogo from 'assets/images/genesislogo.png';
-import SignUpSuccess from 'components/Drawer/components/SidebarContent/components/Login/SignUpSuccessful';
+import Success from 'components/Success';
 import { useState } from 'react';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
@@ -47,7 +47,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         >
           {visibility.login && <LoginForm onClose={onClose} visibilityHandler={setVisibility} />}
           {visibility.signUp && <SignUpForm visibilityHandler={setVisibility} />}
-          {visibility.signUpSuccess && <SignUpSuccess />}
+          {visibility.signUpSuccess && (
+            <Success
+              title="Cadastro concluído com sucesso!"
+              subtitle=" Você receberá um email com o link de ativação da sua conta. Após a ativação você conseguirá logar na plataforma!"
+            />
+          )}
         </ModalBody>
         <ModalFooter />
       </ModalContent>
