@@ -24,9 +24,7 @@ const Activate: React.FC = () => {
   }, []);
 
   const handleToken = async () => {
-    const JWTRegexp = /^(?:[\w-]*\.){2}[\w-]*$/;
-
-    if (query.token && JWTRegexp.test(query.token as string)) {
+    if (query.token) {
       try {
         await validateToken(query.token as string);
       } catch (error) {
