@@ -35,7 +35,7 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
       <Header onOpen={onOpen} />
       <Box ml={{ base: 0, md: 0 }} p="4">
         {isFetching ? (
-          <Flex h="80vh" w="100%" justifyContent="center" alignItems="center">
+          <Flex w="100%" justifyContent="center" alignItems="center">
             <Spinner size="xl" />
           </Flex>
         ) : (

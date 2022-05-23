@@ -54,11 +54,15 @@ const INITIAL_VALUES = {
 
 const SIGNUP_SCHEMA = Yup.object().shape({
   email: Yup.string().email('Insira um email válido').required('Insira um email'),
-  password: Yup.string().required('Insira uma senha'),
+  password: Yup.string()
+    .min(8, 'Sua senha deve ter no mínimo 8 caractéres')
+    .required('Insira uma senha'),
   name: Yup.string()
     .matches(/^[^\s]+( [^\s]+)+$/, 'Insira seu nome e sobrenome')
     .required('Insira seu nome e sobrenome'),
-  phone: Yup.string().required('Insira seu telefone'),
+  phone: Yup.string()
+    .matches(/^\+[0-9]{2}\s[0-9]{1,2}\s[0-9]{1,2}\s[0-9]{4}\-[0-9]{4}/, 'Insira um formato válido')
+    .required('Insira seu telefone'),
   birthdate: Yup.string()
     .required('Selecione uma data de nascimento')
     .test(
@@ -73,7 +77,7 @@ const SIGNUP_SCHEMA = Yup.object().shape({
 });
 
 const mutation = async (values: FormValues) => {
-  await Axios.post('/users', {
+  await Axios.post<{ error: string }>('/users', {
     email: values.email,
     password: values.password,
     name: values.name,
@@ -83,7 +87,7 @@ const mutation = async (values: FormValues) => {
 };
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
-  const { mutateAsync: signup } = useMutation(mutation, {});
+  const { mutateAsync: signup, status } = useMutation(mutation, {});
   const [show, setShow] = useState(false);
   const toast = useToast({ position: 'bottom' });
 
@@ -96,8 +100,10 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
       visibilityHandler({ signUpSuccess: true, login: false, signUp: false });
     } catch (e) {
       toast({
-        title: 'Houve um erro ao efetuar o cadastro',
+        title: 'Erro',
         status: 'error',
+        description:
+          'Verifique se sua conta de email ou seu número de telefone já estão cadastrados na plataforma',
       });
     }
     setSubmitting(false);
@@ -201,7 +207,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         mask={
                           values.region === '+54'
                             ? `${values.region} * ** ****-****`
-                            : `${values.region} (**) * ****-****`
+                            : `${values.region} ** * ****-****`
                         }
                         onChange={handleChange}
                       />
@@ -234,6 +240,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         selected={new Date(values.birthdate || Date.now()) as unknown as Date}
                         onChange={(date: Date) => setFieldValue('birthdate', date)}
                         locale="pt-BR"
+                        dateFormat="dd/MM/yyyy"
+                        showYearDropdown
+                        className="cssdatepicker"
                       />
                     </Box>
                     <Text fontSize={{ base: '12px' }} color="red">

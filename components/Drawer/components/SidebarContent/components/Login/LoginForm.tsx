@@ -70,7 +70,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler }) => 
     visibilityHandler({ signUpSuccess: false, login: false, signUp: true });
   };
   return (
-    <Stack minH={{ base: '20vh' }} direction={{ base: 'column', md: 'row' }}>
+    <Stack minH={{ base: '20vh' }} direction={{ base: 'column', md: 'row' }} flex="1">
       <Flex p={8} flex={1} align="center" justify="center">
         <Stack spacing={4} w="full" maxW="md">
           <Formik

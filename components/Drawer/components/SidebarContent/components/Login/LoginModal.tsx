@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 import GenesisLogo from 'assets/images/genesislogo.png';
+import SignUpSuccess from 'components/Drawer/components/SidebarContent/components/Login/SignUpSuccessful';
 import { useState } from 'react';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
@@ -22,17 +23,31 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   });
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered size="3xl">
+    <Modal isOpen={isOpen} onClose={onClose} isCentered size="md" scrollBehavior="outside">
       <ModalOverlay />
-      <ModalContent bgSize="cover" bgPosition="center">
+      <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
         <ModalCloseButton />
         <ModalHeader d="flex" alignItems="center" justifyContent="center" flexDirection="column">
-          <Image src={GenesisLogo.src} w="40%" my="30px" alt="Genesis Logo" />
+          <Image src={GenesisLogo.src} w="40%" my="10px" alt="Genesis Logo" />
         </ModalHeader>
-        <ModalBody>
+        <ModalBody
+          css={{
+            '&::-webkit-scrollbar': {
+              width: '5px',
+            },
+            '&::-webkit-scrollbar-track': {
+              background: 'transparent',
+              borderRadius: '10px',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              background: 'rgba(0, 0, 0, 0.4)',
+              borderRadius: '10px',
+            },
+          }}
+        >
           {visibility.login && <LoginForm onClose={onClose} visibilityHandler={setVisibility} />}
           {visibility.signUp && <SignUpForm visibilityHandler={setVisibility} />}
-          {/* SignUp Successful */}
+          {visibility.signUpSuccess && <SignUpSuccess />}
         </ModalBody>
         <ModalFooter />
       </ModalContent>

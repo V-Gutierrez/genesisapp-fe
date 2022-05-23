@@ -37,3 +37,11 @@ body {
 .customPopup .leaflet-container a {
   color: white !important;
 }
+
+.react-datepicker__month-container {
+  z-index: 20;
+}
+
+.cssdatepicker {
+  width: 100%;
+}

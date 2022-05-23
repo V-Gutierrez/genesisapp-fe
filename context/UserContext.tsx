@@ -9,7 +9,7 @@ import { AxiosResponse } from 'axios';
 interface UserContextDefaultValues {
   userData: Partial<User>;
   isAdmin: boolean;
-  // eslint-disable no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   refetchUser: <TPageData>(
     options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
   ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>;
