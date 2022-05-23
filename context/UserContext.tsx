@@ -22,7 +22,7 @@ interface ProviderProps {
   children: React.ReactNode;
 }
 
-const query = async () => Axios.get<Partial<User>>('/auth/me', { withCredentials: true });
+const query = async () => Axios.get<Partial<User>>('/auth/me');
 
 export const UserContextProvider: React.FC<ProviderProps> = ({ children }) => {
   const {
