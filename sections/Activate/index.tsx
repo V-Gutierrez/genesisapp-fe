@@ -24,14 +24,9 @@ const Activate: React.FC = () => {
   }, []);
 
   const handleToken = async () => {
+    console.log(query.token);
     if (query.token) {
-      try {
-        await validateToken(query.token as string);
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      push('/');
+      await validateToken(query.token as string);
     }
   };
 
