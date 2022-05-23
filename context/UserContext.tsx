@@ -22,12 +22,14 @@ interface ProviderProps {
   children: React.ReactNode;
 }
 
+const query = async () => Axios.get<Partial<User>>('/auth/me', { withCredentials: true });
+
 export const UserContextProvider: React.FC<ProviderProps> = ({ children }) => {
   const {
     data,
     refetch: refetchUser,
     remove: removeUserData,
-  } = useQuery('me', () => Axios.get<Partial<User>>('/auth/me'), {
+  } = useQuery('me', query, {
     retry: false,
     cacheTime: 60 * 60 * 1000, // 1 hour,
   });
