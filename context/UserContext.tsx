@@ -5,6 +5,7 @@ import { createContext, useContext, useMemo } from 'react';
 
 import Axios from 'services/axios';
 import { AxiosResponse } from 'axios';
+import { inHours } from 'helpers';
 
 interface UserContextDefaultValues {
   userData: Partial<User>;
@@ -31,7 +32,7 @@ export const UserContextProvider: React.FC<ProviderProps> = ({ children }) => {
     remove: removeUserData,
   } = useQuery('me', query, {
     retry: false,
-    cacheTime: 60 * 60 * 1000, // 1 hour,
+    cacheTime: inHours(1),
   });
 
   const userData = useMemo(() => data?.data as Partial<User>, [data]);

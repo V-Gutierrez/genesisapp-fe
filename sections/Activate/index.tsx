@@ -1,5 +1,5 @@
 import { Flex, Spinner } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import Axios from 'services/axios';
 import Error from 'components/Error';
@@ -16,19 +16,20 @@ const mutation = async (token: string) => {
 };
 
 const Activate: React.FC = () => {
-  const { query, push } = useRouter();
+  const { query } = useRouter();
+
   const { mutateAsync: validateToken, isSuccess, isError } = useMutation(mutation, {});
 
-  useEffect(() => {
-    handleToken();
-  }, []);
+  const handleToken = useCallback(
+    async (hashToken: string) => {
+      await validateToken(hashToken);
+    },
+    [validateToken],
+  );
 
-  const handleToken = async () => {
-    console.log(query.token);
-    if (query.token) {
-      await validateToken(query.token as string);
-    }
-  };
+  useEffect(() => {
+    query?.token && handleToken(query.token as string);
+  }, [query, handleToken]);
 
   return (
     <Flex h="80vh" align="center" justify="center">

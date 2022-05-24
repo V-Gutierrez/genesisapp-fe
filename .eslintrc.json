@@ -41,7 +41,9 @@
         "jsx-a11y/anchor-is-valid": "warn",
         "react/jsx-no-constructed-context-values": "warn",
         "no-unused-vars": "warn",
-        "no-useless-escape": "off"
+        "no-unused-expressions": "warn",
+        "no-useless-escape": "off",
+        "import/prefer-default-export": "off"
     },
     "ignorePatterns": [
         "*.d.ts"
