@@ -30,7 +30,7 @@ const Activate: React.FC = () => {
 
       const toastDelay = setTimeout(() => {
         toast({
-          title: 'Você será redirecionado',
+          title: 'Você será redirecionado para a página inicial',
           duration: 5000,
           status: 'info',
         });
