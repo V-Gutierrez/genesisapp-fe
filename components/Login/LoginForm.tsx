@@ -64,6 +64,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
     setSubmitting(false);
   };
   const handleClick = () => setShow(!show);
+
   const handleSignUp = () => {
     visibilityHandler({ login: false, signUp: true });
   };

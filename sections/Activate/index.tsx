@@ -42,11 +42,11 @@ const Activate: React.FC = () => {
         push('/');
       }, 5000);
     },
-    [validateToken],
+    [validateToken, push, toast],
   );
 
   useEffect(() => {
-    query?.token && handleToken(query.token as string);
+    if (query?.token) handleToken(query.token as string);
   }, [query, handleToken]);
 
   return (

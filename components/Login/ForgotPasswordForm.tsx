@@ -68,7 +68,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ visibilityHandler }) =>
 
   return (
     <Stack minH={{ base: '20vh' }} direction={{ base: 'column', md: 'row' }}>
-      <Flex p={6} flex={1} align="center" justify="center">
+      <Flex p={6} flex={1} justify="center">
         <Stack spacing={1} w="full" maxW="md" justify="center">
           <Formik
             initialValues={INITIAL_VALUES}
@@ -99,7 +99,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ visibilityHandler }) =>
                     type="submit"
                     bg="blackAlpha.900"
                     variant="solid"
-                    minW="100px"
+                    minW="100%"
                     mt={10}
                   >
                     {isSubmitting ? <Spinner /> : 'Restaurar senha'}
