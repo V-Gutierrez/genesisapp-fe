@@ -1,4 +1,4 @@
-import { Flex, Spinner } from '@chakra-ui/react';
+import { Flex, Spinner, useToast } from '@chakra-ui/react';
 import React, { useCallback, useEffect } from 'react';
 
 import Axios from 'services/axios';
@@ -20,13 +20,27 @@ const mutation = async (token: string) => {
 };
 
 const Activate: React.FC = () => {
-  const { query } = useRouter();
-
+  const { query, push } = useRouter();
   const { mutateAsync: validateToken, isSuccess, isError } = useMutation(mutation, {});
+  const toast = useToast();
 
   const handleToken = useCallback(
     async (hashToken: string) => {
       await validateToken(hashToken);
+
+      const toastDelay = setTimeout(() => {
+        toast({
+          title: 'Você será redirecionado',
+          duration: 5000,
+          status: 'info',
+        });
+        clearTimeout(toastDelay);
+      }, 2500);
+
+      const delay = setTimeout(() => {
+        clearTimeout(delay);
+        push('/');
+      }, 5000);
     },
     [validateToken],
   );
