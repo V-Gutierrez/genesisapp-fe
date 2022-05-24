@@ -65,8 +65,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
   };
   const handleClick = () => setShow(!show);
   const handleSignUp = () => {
-    visibilityHandler({ signUpSuccess: false, login: false, signUp: true });
+    visibilityHandler({ login: false, signUp: true });
   };
+  const handleSeePasswordRecovery = () => {
+    visibilityHandler({ forgotPassword: true, login: false });
+  };
+
   return (
     <Stack minH={{ base: '20vh' }} direction={{ base: 'column', md: 'row' }} flex="1">
       <Flex p={8} flex={1} align="center" justify="center">
@@ -121,11 +125,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
                     align="start"
                     justify="space-between"
                   >
-                    {/* FORGOT PASSWORD LOGIC */}
-                    {/* <Link color={'blue.500'}>Esqueci a senha</Link> */}
-                    {/* FORGOT PASSWORD LOGIC */}
                     <Link color="blue.500" onClick={handleSignUp}>
                       Não tem cadastro?
+                    </Link>
+                    <Link color="blue.500" onClick={handleSeePasswordRecovery}>
+                      Esqueci a senha
                     </Link>
                   </Stack>
                   <Button

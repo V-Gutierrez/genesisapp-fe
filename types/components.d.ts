@@ -90,3 +90,5 @@ interface ValidationItemProps {
   label: string;
   valid: boolean;
 }
+
+type ForgotPasswordProps = Pick<SignUpFormProps, 'visibilityHandler'>;

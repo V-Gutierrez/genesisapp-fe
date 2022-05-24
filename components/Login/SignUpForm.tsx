@@ -1,5 +1,3 @@
-import 'react-datepicker/dist/react-datepicker.css';
-
 import * as Yup from 'yup';
 
 import { BiHide, BiShowAlt } from 'react-icons/bi';
@@ -94,7 +92,7 @@ const mutation = async (values: FormValues) => {
 const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
   const { mutateAsync: signup } = useMutation(mutation, {});
   const [show, setShow] = useState(false);
-  const toast = useToast({ position: 'bottom' });
+  const toast = useToast();
 
   const onSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
     setSubmitting(true);
@@ -102,7 +100,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
       await signup(values);
 
       // Show Success result
-      visibilityHandler({ signUpSuccess: true, login: false, signUp: false });
+      visibilityHandler({ signUpSuccess: true, signUp: false });
     } catch (e) {
       toast({
         title: 'Erro',
@@ -117,7 +115,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
   const handleSeePassword = () => setShow(!show);
 
   const handleGoBackToLogin = () => {
-    visibilityHandler({ signUpSuccess: false, login: true, signUp: false });
+    visibilityHandler({ login: true, signUp: false });
   };
 
   return (

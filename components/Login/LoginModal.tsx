@@ -9,6 +9,7 @@ import {
   ModalOverlay,
 } from '@chakra-ui/react';
 
+import ForgotPasswordForm from 'components/Login/ForgotPasswordForm';
 import GenesisLogo from 'assets/images/genesislogo.png';
 import Success from 'components/Success';
 import { useState } from 'react';
@@ -54,13 +55,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
             />
           )}
           {visibility.signUp && <SignUpForm visibilityHandler={setVisibility} />}
+          {visibility.forgotPassword && <ForgotPasswordForm visibilityHandler={setVisibility} />}
+
           {visibility.signUpSuccess && (
             <Success
               title="Cadastro concluído com sucesso!"
               subtitle=" Você receberá um email com o link de ativação da sua conta. Após a ativação você conseguirá logar na plataforma!"
             />
           )}
-          {/* {visibility.forgotPassword && <ForgotPasswordForm />} */}
         </ModalBody>
         <ModalFooter />
       </ModalContent>

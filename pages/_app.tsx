@@ -1,4 +1,5 @@
 import 'styles/custom.css';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import { ChakraProvider, ScaleFade } from '@chakra-ui/react';
 
