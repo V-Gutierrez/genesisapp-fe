@@ -8,11 +8,15 @@ import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
 
 const mutation = async (token: string) => {
-  await Axios.post('/auth/activate', {
-    headers: {
-      Authorization: `${token}`,
+  await Axios.post(
+    '/auth/activate',
+    {},
+    {
+      headers: {
+        Authorization: token,
+      },
     },
-  });
+  );
 };
 
 const Activate: React.FC = () => {
