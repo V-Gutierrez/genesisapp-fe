@@ -81,3 +81,12 @@ interface ErrorProps {
   title: string;
   subtitle: string;
 }
+
+interface ValidatePasswordProps {
+  password: string;
+}
+
+interface ValidationItemProps {
+  label: string;
+  valid: boolean;
+}

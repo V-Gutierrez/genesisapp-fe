@@ -20,6 +20,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
     signUp: false,
     login: true,
     signUpSuccess: false,
+    forgotPassword: false,
   });
 
   return (
@@ -59,6 +60,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
               subtitle=" Você receberá um email com o link de ativação da sua conta. Após a ativação você conseguirá logar na plataforma!"
             />
           )}
+          {/* {visibility.forgotPassword && <ForgotPasswordForm />} */}
         </ModalBody>
         <ModalFooter />
       </ModalContent>

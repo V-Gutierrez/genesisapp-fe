@@ -29,6 +29,7 @@ import Axios from 'services/axios';
 import DatePicker from 'react-datepicker';
 import Flag from 'react-world-flags';
 import InputMask from 'react-input-mask';
+import PasswordValidator from 'components/Login/components/PasswordValidator';
 import { differenceInYears } from 'date-fns';
 import { useMutation } from 'react-query';
 
@@ -56,6 +57,10 @@ const SIGNUP_SCHEMA = Yup.object().shape({
   email: Yup.string().email('Insira um email válido').required('Insira um email'),
   password: Yup.string()
     .min(8, 'Sua senha deve ter no mínimo 8 caractéres')
+    .matches(/[a-z]/, 'Sua senha deve conter letras minúsculas')
+    .matches(/[A-Z]/, 'Sua senha deve conter letras maiúsculas')
+    .matches(/[0-9]/, 'Sua senha deve conter números')
+    .matches(/[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/, 'Sua senha deve conter caracteres especiais')
     .required('Insira uma senha'),
   name: Yup.string()
     .matches(/^[^\s]+( [^\s]+)+$/, 'Insira seu nome e sobrenome')
@@ -87,7 +92,7 @@ const mutation = async (values: FormValues) => {
 };
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
-  const { mutateAsync: signup, status } = useMutation(mutation, {});
+  const { mutateAsync: signup } = useMutation(mutation, {});
   const [show, setShow] = useState(false);
   const toast = useToast({ position: 'bottom' });
 
@@ -117,8 +122,8 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
 
   return (
     <Stack minH={{ base: '20vh' }} direction={{ base: 'column', md: 'row' }}>
-      <Flex p={8} flex={1} align="center" justify="center">
-        <Stack spacing={4} w="full" maxW="md">
+      <Flex p={6} flex={1} align="center" justify="center">
+        <Stack spacing={1} w="full" maxW="md">
           <Formik
             initialValues={INITIAL_VALUES}
             onSubmit={onSubmit}
@@ -134,7 +139,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
               setFieldValue,
             }) => (
               <form onSubmit={handleSubmit}>
-                <Stack spacing={6}>
+                <Stack spacing={2}>
                   <Box>
                     <FormLabel fontSize={{ base: '16px' }}>Nome e Sobrenome</FormLabel>
                     <Input type="name" id="name" onChange={handleChange} />
@@ -301,6 +306,8 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         && errors.passwordConfirmation}
                     </Text>
                   </Box>
+
+                  <PasswordValidator password={values.password} />
                 </Stack>
 
                 <Stack spacing={6} mt={6}>
