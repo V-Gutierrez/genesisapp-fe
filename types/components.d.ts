@@ -92,3 +92,11 @@ interface ValidationItemProps {
 }
 
 type ForgotPasswordProps = Pick<SignUpFormProps, 'visibilityHandler'>;
+
+interface CTAProps {
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  buttonHref: string;
+  arrowText: string;
+}
