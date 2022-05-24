@@ -10,7 +10,6 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-import Head from 'next/head';
 import Link from 'next/link';
 
 export default function CallToActionWithAnnotation() {
@@ -35,13 +34,7 @@ export default function CallToActionWithAnnotation() {
           </Text>
         </Heading>
         <Text color="gray.500">Parece que você tentou acessar uma página que não existe</Text>
-        <Stack
-          direction="column"
-          spacing={3}
-          align="center"
-          alignSelf="center"
-          position="relative"
-        >
+        <Stack direction="column" spacing={3} align="center" alignSelf="center" position="relative">
           <Link href="/">
             <Button
               bg="black"

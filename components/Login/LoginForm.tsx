@@ -43,7 +43,7 @@ const mutation = async (values: FormValues) => {
 const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refetchUser }) => {
   const { mutateAsync: login } = useMutation(mutation, {});
   const [show, setShow] = useState(false);
-  const toast = useToast({ position: 'bottom' });
+  const toast = useToast();
 
   const onSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
     setSubmitting(true);
