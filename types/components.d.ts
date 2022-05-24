@@ -44,6 +44,9 @@ interface MapFrameProps {
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
+  refetchUser: <TPageData>(
+    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
+  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>;
 }
 
 interface LoginFormProps {
@@ -55,6 +58,9 @@ interface LoginFormProps {
       signUpSuccess: boolean;
     }>
   >;
+  refetchUser: <TPageData>(
+    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
+  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>;
 }
 interface SignUpFormProps {
   visibilityHandler: React.Dispatch<

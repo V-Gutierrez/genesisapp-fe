@@ -20,7 +20,6 @@ import React, { useState } from 'react';
 
 import Axios from 'services/axios';
 import { useMutation } from 'react-query';
-import { useUser } from 'context/UserContext';
 
 interface FormValues {
   email: string;
@@ -41,10 +40,9 @@ const mutation = async (values: FormValues) => {
   });
 };
 
-const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refetchUser }) => {
   const { mutateAsync: login } = useMutation(mutation, {});
   const [show, setShow] = useState(false);
-  const { refetchUser } = useUser();
   const toast = useToast({ position: 'bottom' });
 
   const onSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {

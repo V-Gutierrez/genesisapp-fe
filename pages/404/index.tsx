@@ -15,78 +15,69 @@ import Link from 'next/link';
 
 export default function CallToActionWithAnnotation() {
   return (
-    <>
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-
-      <Container w="100%" h="80vh">
-        <Stack
-          as={Box}
-          textAlign="center"
-          spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}
-          display="flex"
-          justifyContent="center"
-          h="80vh"
+    <Container w="100%" h="80vh">
+      <Stack
+        as={Box}
+        textAlign="center"
+        spacing={{ base: 8, md: 14 }}
+        py={{ base: 20, md: 36 }}
+        display="flex"
+        justifyContent="center"
+        h="80vh"
+      >
+        <Heading
+          fontWeight={600}
+          fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+          lineHeight="110%"
         >
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-            lineHeight="110%"
-          >
-            <Text as="span" color="black.400">
-              OPS!
+          <Text as="span" color="black.400">
+            OPS!
+          </Text>
+        </Heading>
+        <Text color="gray.500">Parece que você tentou acessar uma página que não existe</Text>
+        <Stack
+          direction="column"
+          spacing={3}
+          align="center"
+          alignSelf="center"
+          position="relative"
+        >
+          <Link href="/">
+            <Button
+              bg="black"
+              rounded="full"
+              px={6}
+              color="white"
+              _hover={{
+                bg: 'black.200',
+              }}
+            >
+              Ir para Home
+            </Button>
+          </Link>
+          <Box>
+            <Icon
+              as={Arrow}
+              color={useColorModeValue('gray.800', 'gray.300')}
+              w={71}
+              position="absolute"
+              right={-71}
+              top="10px"
+            />
+            <Text
+              fontSize="lg"
+              fontFamily="Caveat"
+              position="absolute"
+              right="-125px"
+              top="-15px"
+              transform="rotate(10deg)"
+            >
+              Clique aqui para voltar
             </Text>
-          </Heading>
-          <Text color="gray.500">Parece que você tentou acessar uma página que não existe</Text>
-          <Stack
-            direction="column"
-            spacing={3}
-            align="center"
-            alignSelf="center"
-            position="relative"
-          >
-            <Link href="/">
-              <Button
-                bg="black"
-                rounded="full"
-                px={6}
-                color="white"
-                _hover={{
-                  bg: 'black.200',
-                }}
-              >
-                Ir para Home
-              </Button>
-            </Link>
-            <Box>
-              <Icon
-                as={Arrow}
-                color={useColorModeValue('gray.800', 'gray.300')}
-                w={71}
-                position="absolute"
-                right={-71}
-                top="10px"
-              />
-              <Text
-                fontSize="lg"
-                fontFamily="Caveat"
-                position="absolute"
-                right="-125px"
-                top="-15px"
-                transform="rotate(10deg)"
-              >
-                Clique aqui para voltar
-              </Text>
-            </Box>
-          </Stack>
+          </Box>
         </Stack>
-      </Container>
-    </>
+      </Stack>
+    </Container>
   );
 }
 

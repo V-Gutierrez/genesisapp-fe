@@ -22,16 +22,16 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       </Head>
 
       <QueryClientProvider client={ReactQueryClient}>
-        <UserContextProvider>
-          <ChakraProvider>
+        <ChakraProvider>
+          <UserContextProvider>
             <SidebarWithHeader>
               <ScaleFade key={router.route} initialScale={0.2} in>
                 <Component {...pageProps} />
               </ScaleFade>
             </SidebarWithHeader>
             <ReactQueryDevtools initialIsOpen position="bottom-right" />
-          </ChakraProvider>
-        </UserContextProvider>
+          </UserContextProvider>
+        </ChakraProvider>
       </QueryClientProvider>
     </>
   );

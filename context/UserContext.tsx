@@ -5,7 +5,9 @@ import { createContext, useContext, useMemo } from 'react';
 
 import Axios from 'services/axios';
 import { AxiosResponse } from 'axios';
+import LoginModal from 'components/Login/LoginModal';
 import { inHours } from 'helpers';
+import { useDisclosure } from '@chakra-ui/react';
 
 interface UserContextDefaultValues {
   userData: Partial<User>;
@@ -15,6 +17,7 @@ interface UserContextDefaultValues {
     options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
   ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>;
   removeUserData: () => void;
+  openLoginModal: () => void;
 }
 
 const UserContext = createContext({} as UserContextDefaultValues);
@@ -34,15 +37,20 @@ export const UserContextProvider: React.FC<ProviderProps> = ({ children }) => {
     retry: false,
     cacheTime: inHours(1),
   });
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const userData = useMemo(() => data?.data as Partial<User>, [data]);
   const isAdmin = useMemo(() => data?.data.role === 'ADMIN', [data?.data.role]);
 
-  const providerValue = useMemo(() => ({ userData, isAdmin }), [userData, isAdmin]);
+  const providerValue = useMemo(
+    () => ({ userData, isAdmin, openLoginModal: onOpen }),
+    [userData, isAdmin, onOpen],
+  );
 
   return (
     <UserContext.Provider value={{ ...providerValue, refetchUser, removeUserData }}>
       {children}
+      <LoginModal isOpen={isOpen} onClose={onClose} refetchUser={refetchUser} />
     </UserContext.Provider>
   );
 };

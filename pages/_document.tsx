@@ -1,8 +1,5 @@
 import Document, {
-  Head,
-  Html,
-  Main,
-  NextScript,
+  Head, Html, Main, NextScript,
 } from 'next/document';
 
 class MyDocument extends Document {
@@ -13,6 +10,10 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.webmanifest" />
           <link rel="apple-touch-icon" href="/icon.png" />
           <link rel="icon" href="/favicon.ico" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
+            rel="stylesheet"
+          />
           <link
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"

@@ -15,7 +15,7 @@ import { useState } from 'react';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 
-const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
+const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser }) => {
   const [visibility, setVisibility] = useState({
     signUp: false,
     login: true,
@@ -45,7 +45,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             },
           }}
         >
-          {visibility.login && <LoginForm onClose={onClose} visibilityHandler={setVisibility} />}
+          {visibility.login && (
+            <LoginForm
+              onClose={onClose}
+              visibilityHandler={setVisibility}
+              refetchUser={refetchUser}
+            />
+          )}
           {visibility.signUp && <SignUpForm visibilityHandler={setVisibility} />}
           {visibility.signUpSuccess && (
             <Success
