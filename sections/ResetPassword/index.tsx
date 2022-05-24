@@ -12,6 +12,7 @@ import {
   Spinner,
   Stack,
   Text,
+  useToast,
 } from '@chakra-ui/react';
 import { Formik, FormikHelpers } from 'formik';
 import React, { useState } from 'react';
@@ -63,6 +64,7 @@ const ResetPassword: React.FC = () => {
   const { mutateAsync: changePassword, isSuccess, isError } = useMutation(mutation, {});
   const [show, setShow] = useState(false);
   const { query, push } = useRouter();
+  const toast = useToast();
 
   const onSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
     setSubmitting(true);
@@ -70,7 +72,20 @@ const ResetPassword: React.FC = () => {
     if (!query?.token) push('/');
     else {
       await changePassword({ token: query?.token as string, newPassword: values.password });
-      setSubmitting(false);
+
+      const toastDelay = setTimeout(() => {
+        toast({
+          title: 'Você será redirecionado para a página inicial',
+          duration: 5000,
+          status: 'info',
+        });
+        clearTimeout(toastDelay);
+      }, 2500);
+
+      const delay = setTimeout(() => {
+        clearTimeout(delay);
+        push('/');
+      }, 5000);
     }
   };
 
