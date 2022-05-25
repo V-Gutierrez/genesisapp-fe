@@ -322,7 +322,11 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                   >
                     {isSubmitting ? <Spinner /> : 'Continuar'}
                   </Button>
-                  <Link color="blue.500" onClick={handleGoBackToLogin}>
+                  <Link
+                    color="blue.500"
+                    fontSize={{ base: '12px', md: '14px' }}
+                    onClick={handleGoBackToLogin}
+                  >
                     Já tem cadastro? Faça seu login!
                   </Link>
                 </Stack>

@@ -10,7 +10,6 @@ import {
 } from '@chakra-ui/react';
 
 import ForgotPasswordForm from 'components/Login/ForgotPasswordForm';
-import GenesisLogo from 'assets/images/genesislogo.png';
 import Success from 'components/Success';
 import { useState } from 'react';
 import LoginForm from './LoginForm';
@@ -29,9 +28,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
       <ModalOverlay />
       <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
         <ModalCloseButton />
-        <ModalHeader d="flex" alignItems="center" justifyContent="center" flexDirection="column">
-          <Image src={GenesisLogo.src} w="40%" my="10px" alt="Genesis Logo" />
-        </ModalHeader>
+        {!visibility.signUp && (
+          <ModalHeader
+            d="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          />
+        )}
         <ModalBody
           css={{
             '&::-webkit-scrollbar': {
@@ -64,7 +68,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
             />
           )}
         </ModalBody>
-        <ModalFooter />
+        {!visibility.signUp && <ModalFooter />}
       </ModalContent>
     </Modal>
   );
