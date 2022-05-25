@@ -4,7 +4,7 @@ import GroupCard from 'sections/GrowthGroups/components/GroupCard';
 import React from 'react';
 
 const GroupList: React.FC<GroupListProps> = ({ GCDataset, selectCoordsHandler, currentCoords }) => {
-  if (!GCDataset) {
+  if (!GCDataset || !GCDataset.length) {
     return (
       <Flex h="100%" w="20%" justifyContent="center" alignItems="center">
         <Spinner size="xl" />

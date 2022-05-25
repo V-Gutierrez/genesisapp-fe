@@ -40,12 +40,20 @@ const UserInfo: React.FC = () => {
     return (
       <Menu>
         <MenuButton as={Button} rounded="full" variant="link" cursor="pointer" minW={0}>
-          <Avatar size="sm" color="white" bg="blackAlpha.900" name="Genesis">
+          <Avatar userSelect="none" size="sm" color="white" bg="blackAlpha.900" name="Genesis">
             <AvatarBadge boxSize="1.25em" bg="gray.600" />
           </Avatar>
         </MenuButton>
         <MenuList alignItems="center" justifyContent="center" d="flex" zIndex="overlay">
-          <Center as={Button} w="90%" onClick={openLoginModal}>
+          <Center
+            as={Button}
+            w="90%"
+            onClick={openLoginModal}
+            _hover={{
+              bg: 'blackAlpha.900',
+              color: 'white',
+            }}
+          >
             <p>Faça seu login</p>
           </Center>
         </MenuList>
@@ -55,22 +63,37 @@ const UserInfo: React.FC = () => {
   return (
     <Menu>
       <MenuButton as={Button} rounded="full" variant="link" cursor="pointer" minW={0}>
-        <Avatar size="sm" name={userData.name} bg="blackAlpha.900" color="white">
+        <Avatar userSelect="none" size="sm" name={userData.name} bg="blackAlpha.900" color="white">
           <AvatarBadge boxSize="1.25em" bg="green.500" />
         </Avatar>
       </MenuButton>
       <MenuList alignItems="center" zIndex="overlay">
         <br />
         <Center>
-          <Avatar size="2xl" name={userData.name} bg="blackAlpha.900" color="white" />
+          <Avatar
+            size="2xl"
+            userSelect="none"
+            name={userData.name}
+            bg="blackAlpha.900"
+            color="white"
+          />
         </Center>
         <br />
-        <Center background={isAdmin ? 'yellow.800' : 'inherit'}>
+        <Center>
           <p>{userData.name}</p>
         </Center>
         <br />
         <MenuDivider />
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <MenuItem
+          as={Button}
+          _hover={{
+            bg: 'blackAlpha.900',
+            color: 'white',
+          }}
+          onClick={handleLogout}
+        >
+          Logout
+        </MenuItem>
       </MenuList>
     </Menu>
   );

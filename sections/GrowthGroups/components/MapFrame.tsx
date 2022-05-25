@@ -52,7 +52,7 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
     }, 250);
   }, [currentCoords]);
 
-  if (mapLoading || !GCDataset || !currentCoords.lat || !currentCoords.lng) {
+  if (mapLoading || !GCDataset || !GCDataset.length || !currentCoords.lat || !currentCoords.lng) {
     return (
       <Skeleton
         h="100%"
