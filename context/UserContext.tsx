@@ -6,7 +6,7 @@ import { createContext, useContext, useMemo } from 'react';
 import Axios from 'services/axios';
 import { AxiosResponse } from 'axios';
 import LoginModal from 'components/Login/LoginModal';
-import { inHours } from 'helpers';
+import { inHours } from 'helpers/time';
 import { useDisclosure } from '@chakra-ui/react';
 
 interface UserContextDefaultValues {
@@ -26,14 +26,14 @@ interface ProviderProps {
   children: React.ReactNode;
 }
 
-const query = async () => Axios.get<Partial<User>>('/auth/me');
+const Query = async () => Axios.get<Partial<User>>('/auth/me');
 
 export const UserContextProvider: React.FC<ProviderProps> = ({ children }) => {
   const {
     data,
     refetch: refetchUser,
     remove: removeUserData,
-  } = useQuery('me', query, {
+  } = useQuery('me', Query, {
     retry: false,
     cacheTime: inHours(1),
   });

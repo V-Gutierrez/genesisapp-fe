@@ -6,8 +6,10 @@ import GroupList from 'sections/GrowthGroups/components/GroupList';
 import { useQuery } from 'react-query';
 import MapFrame from './components/MapFrame';
 
+const Query = async () => Axios.get<GrowthGroup[]>('/growthGroups');
+
 const GrowthGroups: React.FC = () => {
-  const { data } = useQuery('growthGroups', () => Axios.get<GrowthGroup[]>('/growthGroups'), {
+  const { data } = useQuery('growthGroups', Query, {
     staleTime: Infinity,
     cacheTime: Infinity,
   });

@@ -9,21 +9,19 @@ import {
   MenuItem,
   MenuList,
   SkeletonCircle,
-  useDisclosure,
 } from '@chakra-ui/react';
 import { useIsFetching, useMutation } from 'react-query';
 
 import Axios from 'services/axios';
 import React from 'react';
 import { useUser } from 'context/UserContext';
-import LoginModal from '../../../../Login/LoginModal';
 
-const mutation = async () => {
+const Mutation = async () => {
   await Axios.delete('/auth');
 };
 
 const UserInfo: React.FC = () => {
-  const { mutateAsync: logout } = useMutation(mutation, {});
+  const { mutateAsync: logout } = useMutation(Mutation, {});
   const isFetching = useIsFetching();
   const {
     userData, isAdmin, removeUserData, refetchUser, openLoginModal,

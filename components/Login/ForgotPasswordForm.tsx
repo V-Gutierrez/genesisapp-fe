@@ -1,5 +1,3 @@
-import * as Yup from 'yup';
-
 import {
   Box,
   Button,
@@ -16,20 +14,15 @@ import {
 import { Formik, FormikHelpers } from 'formik';
 
 import Axios from 'services/axios';
+import { FORGOT_PASSWORD_INITIAL_VALUES } from 'helpers/initialValues';
+import { PASSWORD_RECOVERY_SCHEMA } from 'helpers/schema';
 import { useMutation } from 'react-query';
 
-const PASSWORD_RECOVERY_SCHEMA = Yup.object().shape({
-  email: Yup.string().email('Insira um email válido').required('Insira um email'),
-});
 interface FormValues {
   email: string;
 }
 
-const INITIAL_VALUES = {
-  email: '',
-};
-
-const mutation = async (values: FormValues) => {
+const Mutation = async (values: FormValues) => {
   await Axios.post<{ error: string }>('/auth/reset-password', {
     email: values.email,
   });
@@ -37,7 +30,7 @@ const mutation = async (values: FormValues) => {
 
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({ visibilityHandler }) => {
   const toast = useToast();
-  const { mutateAsync: resetPassword } = useMutation(mutation, {});
+  const { mutateAsync: resetPassword } = useMutation(Mutation, {});
 
   const onSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
     setSubmitting(true);
@@ -71,7 +64,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ visibilityHandler }) =>
       <Flex p={6} flex={1} justify="center">
         <Stack spacing={1} w="full" maxW="md" justify="center">
           <Formik
-            initialValues={INITIAL_VALUES}
+            initialValues={FORGOT_PASSWORD_INITIAL_VALUES}
             onSubmit={onSubmit}
             validationSchema={PASSWORD_RECOVERY_SCHEMA}
           >

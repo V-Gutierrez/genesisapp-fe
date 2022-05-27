@@ -1,15 +1,20 @@
-import { Flex, Spinner } from '@chakra-ui/react';
+import { Flex, Spinner, Text } from '@chakra-ui/react';
 
 import GroupCard from 'sections/GrowthGroups/components/GroupCard';
 import React from 'react';
 
 const GroupList: React.FC<GroupListProps> = ({ GCDataset, selectCoordsHandler, currentCoords }) => {
-  if (!GCDataset || !GCDataset.length) {
+  if (!GCDataset) {
     return (
       <Flex h="100%" w="20%" justifyContent="center" alignItems="center">
         <Spinner size="xl" />
       </Flex>
     );
+  }
+  if (!GCDataset.length) {
+    <Flex h="100%" w="20%" justifyContent="center" alignItems="center">
+      <Text>Não há Grupos de Crescimento disponíveis no momento</Text>
+    </Flex>;
   }
   return (
     <Flex

@@ -19,6 +19,8 @@ import { Formik, FormikHelpers } from 'formik';
 import React, { useState } from 'react';
 
 import Axios from 'services/axios';
+import { LOGIN_INITIAL_VALUES } from 'helpers/initialValues';
+import { LOGIN_SCHEMA } from 'helpers/schema';
 import { useMutation } from 'react-query';
 
 interface FormValues {
@@ -26,14 +28,7 @@ interface FormValues {
   password: string;
 }
 
-const INITIAL_VALUES = { email: '', password: '' };
-
-const LOGIN_SCHEMA = Yup.object().shape({
-  email: Yup.string().email('Insira um email válido').required('Insira um email válido'),
-  password: Yup.string().required('Insira uma senha'),
-});
-
-const mutation = async (values: FormValues) => {
+const Mutation = async (values: FormValues) => {
   await Axios.post('/auth', {
     email: values.email,
     password: values.password,
@@ -41,7 +36,7 @@ const mutation = async (values: FormValues) => {
 };
 
 const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refetchUser }) => {
-  const { mutateAsync: login } = useMutation(mutation, {});
+  const { mutateAsync: login } = useMutation(Mutation, {});
   const [show, setShow] = useState(false);
   const toast = useToast();
 
@@ -77,7 +72,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
       <Flex p={8} flex={1} align="center" justify="center">
         <Stack spacing={4} w="full" maxW="md">
           <Formik
-            initialValues={INITIAL_VALUES}
+            initialValues={LOGIN_INITIAL_VALUES}
             onSubmit={onSubmit}
             validationSchema={LOGIN_SCHEMA}
           >

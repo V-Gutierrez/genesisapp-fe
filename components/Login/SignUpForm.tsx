@@ -1,5 +1,3 @@
-import * as Yup from 'yup';
-
 import { BiHide, BiShowAlt } from 'react-icons/bi';
 import {
   Box,
@@ -28,7 +26,8 @@ import DatePicker from 'react-datepicker';
 import Flag from 'react-world-flags';
 import InputMask from 'react-input-mask';
 import PasswordValidator from 'components/Login/components/PasswordValidator';
-import { differenceInYears } from 'date-fns';
+import { SIGNUP_INITIAL_VALUES } from 'helpers/initialValues';
+import { SIGNUP_SCHEMA } from 'helpers/schema';
 import { useMutation } from 'react-query';
 
 interface FormValues {
@@ -41,45 +40,7 @@ interface FormValues {
   region: string;
 }
 
-const INITIAL_VALUES = {
-  name: '',
-  password: '',
-  email: '',
-  phone: '',
-  birthdate: '',
-  passwordConfirmation: '',
-  region: '+54',
-};
-
-const SIGNUP_SCHEMA = Yup.object().shape({
-  email: Yup.string().email('Insira um email válido').required('Insira um email'),
-  password: Yup.string()
-    .min(8, 'Sua senha deve ter no mínimo 8 caractéres')
-    .matches(/[a-z]/, 'Sua senha deve conter letras minúsculas')
-    .matches(/[A-Z]/, 'Sua senha deve conter letras maiúsculas')
-    .matches(/[0-9]/, 'Sua senha deve conter números')
-    .matches(/[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/, 'Sua senha deve conter caracteres especiais')
-    .required('Insira uma senha'),
-  name: Yup.string()
-    .matches(/^[^\s]+( [^\s]+)+$/, 'Insira seu nome e sobrenome')
-    .required('Insira seu nome e sobrenome'),
-  phone: Yup.string()
-    .matches(/^\+[0-9]{2}\s[0-9]{1,2}\s[0-9]{1,2}\s[0-9]{4}\-[0-9]{4}/, 'Insira um formato válido')
-    .required('Insira seu telefone'),
-  birthdate: Yup.string()
-    .required('Selecione uma data de nascimento')
-    .test(
-      'Idade é maior que 18',
-      'Você precisa ter mais de 18 anos para criar uma conta',
-      (value) => differenceInYears(new Date(Date.now()), new Date(value as unknown as number)) >= 16,
-    ),
-  passwordConfirmation: Yup.string().oneOf(
-    [Yup.ref('password'), null],
-    'As senhas devem coincidir',
-  ),
-});
-
-const mutation = async (values: FormValues) => {
+const Mutation = async (values: FormValues) => {
   await Axios.post<{ error: string }>('/users', {
     email: values.email,
     password: values.password,
@@ -90,7 +51,7 @@ const mutation = async (values: FormValues) => {
 };
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
-  const { mutateAsync: signup } = useMutation(mutation, {});
+  const { mutateAsync: signup } = useMutation(Mutation, {});
   const [show, setShow] = useState(false);
   const toast = useToast();
 
@@ -123,7 +84,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
       <Flex p={6} flex={1} align="center" justify="center">
         <Stack spacing={1} w="full" maxW="md">
           <Formik
-            initialValues={INITIAL_VALUES}
+            initialValues={SIGNUP_INITIAL_VALUES}
             onSubmit={onSubmit}
             validationSchema={SIGNUP_SCHEMA}
           >

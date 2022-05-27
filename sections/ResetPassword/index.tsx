@@ -1,5 +1,3 @@
-import * as Yup from 'yup';
-
 import { BiHide, BiShowAlt } from 'react-icons/bi';
 import {
   Box,
@@ -20,35 +18,18 @@ import React, { useState } from 'react';
 import Axios from 'services/axios';
 import Error from 'components/Error';
 import PasswordValidator from 'components/Login/components/PasswordValidator';
+import { RESET_PASSWORD_INITIAL_VALUES } from 'helpers/initialValues';
+import { RESET_PASSWORD_SCHEMA } from 'helpers/schema';
 import Success from 'components/Success';
 import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
-
-const INITIAL_VALUES = {
-  password: '',
-  passwordConfirmation: '',
-};
 
 interface FormValues {
   password: string;
   passwordConfirmation: string;
 }
 
-const RESET_PASSWORD_SCHEMA = Yup.object().shape({
-  password: Yup.string()
-    .min(8, 'Sua senha deve ter no mínimo 8 caractéres')
-    .matches(/[a-z]/, 'Sua senha deve conter letras minúsculas')
-    .matches(/[A-Z]/, 'Sua senha deve conter letras maiúsculas')
-    .matches(/[0-9]/, 'Sua senha deve conter números')
-    .matches(/[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/, 'Sua senha deve conter caracteres especiais')
-    .required('Insira uma senha'),
-  passwordConfirmation: Yup.string().oneOf(
-    [Yup.ref('password'), null],
-    'As senhas devem coincidir',
-  ),
-});
-
-const mutation = async ({ token, newPassword }: { token: string; newPassword: string }) => Axios.put(
+const Mutation = async ({ token, newPassword }: { token: string; newPassword: string }) => Axios.put(
   '/auth/reset-password',
   {
     password: newPassword,
@@ -61,7 +42,7 @@ const mutation = async ({ token, newPassword }: { token: string; newPassword: st
 );
 
 const ResetPassword: React.FC = () => {
-  const { mutateAsync: changePassword, isSuccess, isError } = useMutation(mutation, {});
+  const { mutateAsync: changePassword, isSuccess, isError } = useMutation(Mutation, {});
   const [show, setShow] = useState(false);
   const { query, push } = useRouter();
   const toast = useToast();
@@ -115,7 +96,7 @@ const ResetPassword: React.FC = () => {
   return (
     <Flex h="80vh" align="center" justify="center">
       <Formik
-        initialValues={INITIAL_VALUES}
+        initialValues={RESET_PASSWORD_INITIAL_VALUES}
         onSubmit={onSubmit}
         validationSchema={RESET_PASSWORD_SCHEMA}
       >

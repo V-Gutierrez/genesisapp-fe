@@ -7,7 +7,7 @@ import Success from 'components/Success';
 import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
 
-const mutation = async (token: string) => {
+const Mutation = async (token: string) => {
   await Axios.post(
     '/auth/activate',
     {},
@@ -21,7 +21,7 @@ const mutation = async (token: string) => {
 
 const Activate: React.FC = () => {
   const { query, push } = useRouter();
-  const { mutateAsync: validateToken, isSuccess, isError } = useMutation(mutation, {});
+  const { mutateAsync: validateToken, isSuccess, isError } = useMutation(Mutation, {});
   const toast = useToast();
 
   const handleToken = useCallback(
