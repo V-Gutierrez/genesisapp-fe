@@ -100,3 +100,16 @@ interface CTAProps {
   buttonHref: string;
   arrowText: string;
 }
+
+interface AdminOptions {
+  title: string;
+  icon: IconType;
+  goTo: string;
+}
+
+type OptionCard = AdminOptions;
+
+interface StatsCardProps {
+  title: string;
+  stat: string;
+}

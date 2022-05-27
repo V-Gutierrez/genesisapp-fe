@@ -1,15 +1,23 @@
 import {
-  Box, BoxProps, CloseButton, Flex, useColorModeValue,
+  Box, BoxProps, CloseButton, Divider, Flex, useColorModeValue,
 } from '@chakra-ui/react';
 import { FiHome, FiStar } from 'react-icons/fi';
 
+import { MdOutlineLeaderboard } from 'react-icons/md';
+import { useUser } from 'context/UserContext';
 import NavItem from './components/NavItem';
 
+const LinkItems: Array<LinkItemProps> = [
+  { name: 'Home', icon: FiStar, goTo: '/' },
+  { name: 'Encontre seu GC', icon: FiHome, goTo: '/gc' },
+];
+
+const AdminItems: Array<LinkItemProps> = [
+  { name: 'Administração', icon: MdOutlineLeaderboard, goTo: '/admin' },
+];
+
 const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
-  const LinkItems: Array<LinkItemProps> = [
-    { name: 'Home', icon: FiStar, goTo: '/' },
-    { name: 'Encontre seu GC', icon: FiHome, goTo: '/gc' },
-  ];
+  const { isAdmin } = useUser();
 
   return (
     <Box
@@ -31,6 +39,14 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
           {link.name}
         </NavItem>
       ))}
+
+      {isAdmin && <Divider my={{ base: '10px' }} />}
+      {isAdmin
+        && AdminItems.map((link) => (
+          <NavItem key={link.name} icon={link.icon} goTo={link.goTo}>
+            {link.name}
+          </NavItem>
+        ))}
     </Box>
   );
 };
