@@ -12,19 +12,15 @@ import {
 } from '@chakra-ui/react';
 import { useIsFetching, useMutation } from 'react-query';
 
-import Axios from 'services/axios';
+import { LOGOUT } from 'services/queries';
 import React from 'react';
 import { useUser } from 'context/UserContext';
 
-const Mutation = async () => {
-  await Axios.delete('/auth');
-};
-
 const UserInfo: React.FC = () => {
-  const { mutateAsync: logout } = useMutation(Mutation, {});
+  const { mutateAsync: logout } = useMutation(LOGOUT, {});
   const isFetching = useIsFetching();
   const {
-    userData, isAdmin, removeUserData, refetchUser, openLoginModal,
+    userData, removeUserData, refetchUser, openLoginModal,
   } = useUser();
 
   const handleLogout = async () => {

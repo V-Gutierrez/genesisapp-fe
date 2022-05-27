@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 
-import Axios from 'services/axios';
 import { Flex } from '@chakra-ui/react';
+import { GET_GROWTH_GROUPS } from 'services/queries';
 import GroupList from 'sections/GrowthGroups/components/GroupList';
 import { useQuery } from 'react-query';
 import MapFrame from './components/MapFrame';
 
-const Query = async () => Axios.get<GrowthGroup[]>('/growthGroups');
-
 const GrowthGroups: React.FC = () => {
-  const { data } = useQuery('growthGroups', Query, {
+  const { data } = useQuery('growthGroups', GET_GROWTH_GROUPS, {
     staleTime: Infinity,
     cacheTime: Infinity,
   });

@@ -21,41 +21,24 @@ import { Formik, FormikHelpers } from 'formik';
 import React, { useState } from 'react';
 
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import Axios from 'services/axios';
 import DatePicker from 'react-datepicker';
 import Flag from 'react-world-flags';
 import InputMask from 'react-input-mask';
 import PasswordValidator from 'components/Login/components/PasswordValidator';
 import { SIGNUP_INITIAL_VALUES } from 'helpers/initialValues';
 import { SIGNUP_SCHEMA } from 'helpers/schema';
+import { SIGN_UP } from 'services/mutations';
 import { useMutation } from 'react-query';
 
-interface FormValues {
-  name: string;
-  password: string;
-  email: string;
-  phone: string;
-  birthdate: string;
-  passwordConfirmation: string;
-  region: string;
-}
-
-const Mutation = async (values: FormValues) => {
-  await Axios.post<{ error: string }>('/users', {
-    email: values.email,
-    password: values.password,
-    name: values.name,
-    phone: values.phone,
-    birthdate: values.birthdate,
-  });
-};
-
 const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
-  const { mutateAsync: signup } = useMutation(Mutation, {});
+  const { mutateAsync: signup } = useMutation(SIGN_UP, {});
   const [show, setShow] = useState(false);
   const toast = useToast();
 
-  const onSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
+  const onSubmit = async (
+    values: SignUpFormValues,
+    { setSubmitting }: FormikHelpers<SignUpFormValues>,
+  ) => {
     setSubmitting(true);
     try {
       await signup(values);

@@ -1,5 +1,3 @@
-import * as Yup from 'yup';
-
 import { BiHide, BiShowAlt } from 'react-icons/bi';
 import {
   Box,
@@ -18,29 +16,20 @@ import {
 import { Formik, FormikHelpers } from 'formik';
 import React, { useState } from 'react';
 
-import Axios from 'services/axios';
+import { LOGIN } from 'services/mutations';
 import { LOGIN_INITIAL_VALUES } from 'helpers/initialValues';
 import { LOGIN_SCHEMA } from 'helpers/schema';
 import { useMutation } from 'react-query';
 
-interface FormValues {
-  email: string;
-  password: string;
-}
-
-const Mutation = async (values: FormValues) => {
-  await Axios.post('/auth', {
-    email: values.email,
-    password: values.password,
-  });
-};
-
 const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refetchUser }) => {
-  const { mutateAsync: login } = useMutation(Mutation, {});
+  const { mutateAsync: login } = useMutation(LOGIN, {});
   const [show, setShow] = useState(false);
   const toast = useToast();
 
-  const onSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
+  const onSubmit = async (
+    values: LoginFormValues,
+    { setSubmitting }: FormikHelpers<LoginFormValues>,
+  ) => {
     setSubmitting(true);
     try {
       await login(values);

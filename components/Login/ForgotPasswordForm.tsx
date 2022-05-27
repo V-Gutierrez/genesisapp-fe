@@ -13,26 +13,19 @@ import {
 } from '@chakra-ui/react';
 import { Formik, FormikHelpers } from 'formik';
 
-import Axios from 'services/axios';
 import { FORGOT_PASSWORD_INITIAL_VALUES } from 'helpers/initialValues';
 import { PASSWORD_RECOVERY_SCHEMA } from 'helpers/schema';
+import { REQUEST_RESET_PASSWORD } from 'services/mutations';
 import { useMutation } from 'react-query';
-
-interface FormValues {
-  email: string;
-}
-
-const Mutation = async (values: FormValues) => {
-  await Axios.post<{ error: string }>('/auth/reset-password', {
-    email: values.email,
-  });
-};
 
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({ visibilityHandler }) => {
   const toast = useToast();
-  const { mutateAsync: resetPassword } = useMutation(Mutation, {});
+  const { mutateAsync: resetPassword } = useMutation(REQUEST_RESET_PASSWORD, {});
 
-  const onSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
+  const onSubmit = async (
+    values: ForgotPasswordFormValues,
+    { setSubmitting }: FormikHelpers<ForgotPasswordFormValues>,
+  ) => {
     setSubmitting(true);
     try {
       await resetPassword(values);

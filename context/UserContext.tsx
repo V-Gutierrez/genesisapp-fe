@@ -3,8 +3,8 @@ import {
 } from 'react-query';
 import { createContext, useContext, useMemo } from 'react';
 
-import Axios from 'services/axios';
 import { AxiosResponse } from 'axios';
+import { GET_ME } from 'services/queries';
 import LoginModal from 'components/Login/LoginModal';
 import { inHours } from 'helpers/time';
 import { useDisclosure } from '@chakra-ui/react';
@@ -26,14 +26,12 @@ interface ProviderProps {
   children: React.ReactNode;
 }
 
-const Query = async () => Axios.get<Partial<User>>('/auth/me');
-
 export const UserContextProvider: React.FC<ProviderProps> = ({ children }) => {
   const {
     data,
     refetch: refetchUser,
     remove: removeUserData,
-  } = useQuery('me', Query, {
+  } = useQuery('me', GET_ME, {
     retry: false,
     cacheTime: inHours(1),
   });

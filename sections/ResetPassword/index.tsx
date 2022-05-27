@@ -15,39 +15,25 @@ import {
 import { Formik, FormikHelpers } from 'formik';
 import React, { useState } from 'react';
 
-import Axios from 'services/axios';
 import Error from 'components/Error';
 import PasswordValidator from 'components/Login/components/PasswordValidator';
+import { RESET_PASSWORD } from 'services/mutations';
 import { RESET_PASSWORD_INITIAL_VALUES } from 'helpers/initialValues';
 import { RESET_PASSWORD_SCHEMA } from 'helpers/schema';
 import Success from 'components/Success';
 import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
 
-interface FormValues {
-  password: string;
-  passwordConfirmation: string;
-}
-
-const Mutation = async ({ token, newPassword }: { token: string; newPassword: string }) => Axios.put(
-  '/auth/reset-password',
-  {
-    password: newPassword,
-  },
-  {
-    headers: {
-      Authorization: token,
-    },
-  },
-);
-
 const ResetPassword: React.FC = () => {
-  const { mutateAsync: changePassword, isSuccess, isError } = useMutation(Mutation, {});
+  const { mutateAsync: changePassword, isSuccess, isError } = useMutation(RESET_PASSWORD, {});
   const [show, setShow] = useState(false);
   const { query, push } = useRouter();
   const toast = useToast();
 
-  const onSubmit = async (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
+  const onSubmit = async (
+    values: ResetPasswordFormValues,
+    { setSubmitting }: FormikHelpers<ResetPasswordFormValues>,
+  ) => {
     setSubmitting(true);
 
     if (!query?.token) push('/');

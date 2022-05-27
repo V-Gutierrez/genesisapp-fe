@@ -1,27 +1,15 @@
 import { Flex, Spinner, useToast } from '@chakra-ui/react';
 import React, { useCallback, useEffect } from 'react';
 
-import Axios from 'services/axios';
+import { ACTIVATE } from 'services/mutations';
 import Error from 'components/Error';
 import Success from 'components/Success';
 import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
 
-const Mutation = async (token: string) => {
-  await Axios.post(
-    '/auth/activate',
-    {},
-    {
-      headers: {
-        Authorization: token,
-      },
-    },
-  );
-};
-
 const Activate: React.FC = () => {
   const { query, push } = useRouter();
-  const { mutateAsync: validateToken, isSuccess, isError } = useMutation(Mutation, {});
+  const { mutateAsync: validateToken, isSuccess, isError } = useMutation(ACTIVATE, {});
   const toast = useToast();
 
   const handleToken = useCallback(
