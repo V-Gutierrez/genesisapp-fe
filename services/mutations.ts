@@ -52,3 +52,7 @@ export const RESET_PASSWORD = async ({
     },
   },
 );
+
+export const LOGOUT = async () => {
+  await Axios.delete('/auth');
+};

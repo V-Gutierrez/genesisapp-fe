@@ -113,3 +113,19 @@ interface StatsCardProps {
   title: string;
   stat: string;
 }
+
+interface DevotionalDashCardProps {
+  title: string;
+  content: string;
+  authorName: string;
+  scheduledTo: string;
+}
+
+interface OptionsButtonProps {
+  children: Element | Element[] | ReactNode | ReactNode[];
+}
+
+interface DevotionalCreationModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}

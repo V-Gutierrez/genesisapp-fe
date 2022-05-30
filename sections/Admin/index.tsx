@@ -1,7 +1,6 @@
 import { Grid, GridItem } from '@chakra-ui/react';
 
 import DashboardOptions from 'sections/Admin/components/DashboardOptions';
-import React from 'react';
 import Stats from 'sections/Admin/components/Stats';
 
 export default function AdminDashboard() {

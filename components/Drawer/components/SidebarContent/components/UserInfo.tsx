@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { useIsFetching, useMutation } from 'react-query';
 
-import { LOGOUT } from 'services/queries';
+import { LOGOUT } from 'services/mutations';
 import React from 'react';
 import { useUser } from 'context/UserContext';
 

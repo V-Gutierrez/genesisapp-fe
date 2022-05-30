@@ -35,7 +35,7 @@ function DashboardOptions() {
         }}
       >
         {AdminOptions.map((item) => (
-          <OptionCard {...item} />
+          <OptionCard key={item.title} {...item} />
         ))}
       </Stack>
     </>

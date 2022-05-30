@@ -21,3 +21,14 @@ interface User {
   birthdate: Date;
   createdAt: Date;
 }
+
+interface Devotional {
+  id: string;
+  createdAt: string;
+  scheduledTo: string;
+  title: string;
+  body: string;
+  slug: string;
+  userId: string;
+  author: Pick<User, 'name'>;
+}
