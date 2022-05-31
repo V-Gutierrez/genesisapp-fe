@@ -1,6 +1,6 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import {
-  Avatar, Box, Button, Flex, chakra, useColorModeValue,
+ Avatar, Box, Button, Flex, chakra, useColorModeValue,
 } from '@chakra-ui/react';
 import React, { useMemo, useState } from 'react';
 
@@ -21,9 +21,12 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
     setSeeAll((prev) => !prev);
   };
 
-  const formatedScheduledDate = useMemo(() => format(new Date(scheduledTo), "'em' dd 'de' MMMM 'de' yyyy 'às' HH:mm", {
-    locale: pt,
-  }), [scheduledTo, format, pt]);
+  const formatedScheduledDate = useMemo(
+    () => format(new Date(scheduledTo), "'em' dd 'de' MMMM 'de' yyyy 'às' HH:mm", {
+        locale: pt,
+      }),
+    [scheduledTo, format, pt],
+  );
 
   return (
     <Flex
@@ -69,7 +72,7 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
           fontSize="15px"
           pb={4}
           noOfLines={seeAll ? undefined : 2}
-          dangerouslySetInnerHTML={{ __html: content }}
+          /* ADD PURIFY DOM HERE dangerouslySetInnerHTML={{ __html: content }} */
           cursor="pointer"
           onClick={handleSeeAll}
         />
@@ -79,10 +82,10 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
             <chakra.span fontWeight="medium" color="gray.500">
               {' '}
               -
-              {' '}
-              {authorName}
-              {' '}
-              {formatedScheduledDate}
+{' '}
+{authorName}
+{' '}
+{formatedScheduledDate}
             </chakra.span>
           </chakra.p>
         </Flex>

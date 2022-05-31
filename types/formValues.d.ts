@@ -21,3 +21,9 @@ interface ResetPasswordFormValues {
   password: string;
   passwordConfirmation: string;
 }
+
+interface DevotionalFormValues {
+  body: string;
+  title: string;
+  scheduledTo: string;
+}

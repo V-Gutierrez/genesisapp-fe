@@ -21,12 +21,11 @@ import { Formik, FormikHelpers } from 'formik';
 import React, { useState } from 'react';
 
 import { AiOutlineInfoCircle } from 'react-icons/ai';
-import DatePicker from 'react-datepicker';
 import Flag from 'react-world-flags';
 import InputMask from 'react-input-mask';
 import PasswordValidator from 'components/Login/components/PasswordValidator';
-import { SIGNUP_INITIAL_VALUES } from 'helpers/initialValues';
-import { SIGNUP_SCHEMA } from 'helpers/schema';
+import { SIGNUP_INITIAL_VALUES } from 'helpers/formInitialValues';
+import { SIGNUP_SCHEMA } from 'helpers/validationSchemas';
 import { SIGN_UP } from 'services/mutations';
 import { useMutation } from 'react-query';
 
@@ -72,14 +71,8 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
             validationSchema={SIGNUP_SCHEMA}
           >
             {({
-              errors,
-              touched,
-              handleSubmit,
-              handleChange,
-              isSubmitting,
-              values,
-              setFieldValue,
-            }) => (
+ errors, touched, handleSubmit, handleChange, isSubmitting, values,
+}) => (
               <form onSubmit={handleSubmit}>
                 <Stack spacing={2}>
                   <Box>
@@ -176,22 +169,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
 
                   <Box>
                     <FormLabel fontSize={{ base: '16px' }}>Data de Nascimento</FormLabel>
-                    <Box
-                      border="1px solid gray"
-                      w={{ base: '100%' }}
-                      padding="5px"
-                      borderRadius="5px"
-                    >
-                      <DatePicker
-                        id="birthdate"
-                        selected={new Date(values.birthdate || Date.now()) as unknown as Date}
-                        onChange={(date: Date) => setFieldValue('birthdate', date)}
-                        locale="pt-BR"
-                        dateFormat="dd/MM/yyyy"
-                        showYearDropdown
-                        className="cssdatepicker"
-                      />
-                    </Box>
+                    <Input type="date" id="birthdate" onChange={handleChange} />
                     <Text fontSize={{ base: '12px' }} color="red">
                       {errors.birthdate && touched.birthdate && errors.birthdate}
                     </Text>

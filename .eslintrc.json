@@ -36,13 +36,16 @@
         "react/no-invalid-html-attribute": "off",
         "no-use-before-define": "off",
         "react/prop-types": "off",
-        "max-len": "warn",
         "react/no-children-prop": "off",
         "jsx-a11y/anchor-is-valid": "warn",
         "react/jsx-no-constructed-context-values": "warn",
         "no-unused-vars": "warn",
         "no-unused-expressions": "warn",
         "no-useless-escape": "off",
+        "indent": "off",
+        "react/jsx-indent": "off",
+        "react/jsx-closing-tag-location": "off",
+        "max-len": "off",
         "import/prefer-default-export": "off"
     },
     "ignorePatterns": [

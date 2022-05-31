@@ -17,8 +17,8 @@ import { Formik, FormikHelpers } from 'formik';
 import React, { useState } from 'react';
 
 import { LOGIN } from 'services/mutations';
-import { LOGIN_INITIAL_VALUES } from 'helpers/initialValues';
-import { LOGIN_SCHEMA } from 'helpers/schema';
+import { LOGIN_INITIAL_VALUES } from 'helpers/formInitialValues';
+import { LOGIN_SCHEMA } from 'helpers/validationSchemas';
 import { useMutation } from 'react-query';
 
 const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refetchUser }) => {
@@ -66,12 +66,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
             validationSchema={LOGIN_SCHEMA}
           >
             {({
-              errors, touched, handleSubmit, handleChange, isValid, isSubmitting,
-            }) => (
+ errors, touched, handleSubmit, handleChange, isValid, isSubmitting,
+}) => (
               <form onSubmit={handleSubmit}>
                 <Stack spacing={6}>
                   <Box>
-                    <FormLabel fontSize={{ base: '18px' }}>Email</FormLabel>
+                    <FormLabel fontSize={{ base: '16px' }}>Email</FormLabel>
                     <Input type="email" id="email" onChange={handleChange} />
                     <Text fontSize={{ base: '12px' }} color="red">
                       {errors.email && touched.email && errors.email}
@@ -79,7 +79,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
                   </Box>
 
                   <Box>
-                    <FormLabel fontSize={{ base: '18px' }}>Senha</FormLabel>
+                    <FormLabel fontSize={{ base: '16px' }}>Senha</FormLabel>
                     <InputGroup>
                       <Input
                         id="password"

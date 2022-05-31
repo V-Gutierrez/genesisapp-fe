@@ -1,5 +1,5 @@
 import {
-  Stat, StatLabel, StatNumber, useColorModeValue,
+ Stat, StatLabel, StatNumber, useColorModeValue,
 } from '@chakra-ui/react';
 
 export default function StatsCard(props: StatsCardProps) {
@@ -7,7 +7,7 @@ export default function StatsCard(props: StatsCardProps) {
   return (
     <Stat
       px={{ base: 4, md: 8 }}
-      p={{ base: '18px' }}
+      p={{ base: '16px' }}
       w="100%"
       bg="white"
       scrollSnapAlign="center"

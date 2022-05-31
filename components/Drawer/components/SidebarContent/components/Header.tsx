@@ -1,5 +1,5 @@
 import {
-  Flex, HStack, IconButton, Image, useColorModeValue,
+ Flex, HStack, IconButton, Image, useColorModeValue,
 } from '@chakra-ui/react';
 
 import { FiMenu } from 'react-icons/fi';

@@ -1,5 +1,5 @@
 import {
-  Box, Flex, Heading, Text,
+ Box, Flex, Heading, Text,
 } from '@chakra-ui/react';
 
 import { CloseIcon } from '@chakra-ui/icons';

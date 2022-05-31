@@ -1,6 +1,3 @@
-import 'styles/custom.css';
-import 'react-datepicker/dist/react-datepicker.css';
-
 import { ChakraProvider, ScaleFade } from '@chakra-ui/react';
 
 import type { AppProps } from 'next/app';
@@ -10,10 +7,6 @@ import ReactQueryClient from 'services/react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import SidebarWithHeader from 'components/Drawer';
 import { UserContextProvider } from 'context/UserContext';
-import pt from 'date-fns/locale/pt-BR';
-import { registerLocale } from 'react-datepicker';
-
-registerLocale('pt-BR', pt);
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (

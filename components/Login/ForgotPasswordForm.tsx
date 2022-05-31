@@ -13,8 +13,8 @@ import {
 } from '@chakra-ui/react';
 import { Formik, FormikHelpers } from 'formik';
 
-import { FORGOT_PASSWORD_INITIAL_VALUES } from 'helpers/initialValues';
-import { PASSWORD_RECOVERY_SCHEMA } from 'helpers/schema';
+import { FORGOT_PASSWORD_INITIAL_VALUES } from 'helpers/formInitialValues';
+import { PASSWORD_RECOVERY_SCHEMA } from 'helpers/validationSchemas';
 import { REQUEST_RESET_PASSWORD } from 'services/mutations';
 import { useMutation } from 'react-query';
 
@@ -62,11 +62,11 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ visibilityHandler }) =>
             validationSchema={PASSWORD_RECOVERY_SCHEMA}
           >
             {({
-              errors, touched, handleSubmit, handleChange, isSubmitting,
-            }) => (
+ errors, touched, handleSubmit, handleChange, isSubmitting,
+}) => (
               <form onSubmit={handleSubmit}>
                 <Box>
-                  <Text fontSize={{ base: '18px' }} textAlign="center" mb={10}>
+                  <Text fontSize={{ base: '16px' }} textAlign="center" mb={10}>
                     Insira seu email cadastrado para receber um link de restauração de senha
                   </Text>
                   <FormLabel>

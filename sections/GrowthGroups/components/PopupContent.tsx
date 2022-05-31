@@ -3,7 +3,7 @@ import { Flex, Link, Text } from '@chakra-ui/react';
 import React from 'react';
 
 const PopupContent: React.FC<GrowthGroup> = ({
-  name, addressInfo, leadership, whatsappLink,
+ name, addressInfo, leadership, whatsappLink,
 }) => (
   <>
     <Text fontSize={{ base: '14px' }} fontWeight="800">
@@ -12,8 +12,8 @@ const PopupContent: React.FC<GrowthGroup> = ({
     <Text fontSize={{ base: '14px' }}>{addressInfo}</Text>
     <Text fontSize={{ base: '14px' }}>
       Líderes:
-      {' '}
-      {leadership.map((leader: string) => leader).join(', ')}
+{' '}
+{leadership.map((leader: string) => leader).join(', ')}
     </Text>
     <Link href={whatsappLink} target="_blank">
       <Flex flexDirection="row" alignItems="center">

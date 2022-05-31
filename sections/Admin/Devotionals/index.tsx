@@ -1,5 +1,5 @@
 import {
-  Box, Button, Flex, useDisclosure,
+ Box, Button, Flex, useDisclosure,
 } from '@chakra-ui/react';
 
 import { AiFillPlusCircle } from 'react-icons/ai';
@@ -29,7 +29,7 @@ export default function Devotionals() {
           onClick={onOpen}
         >
           Criar Devocional
-          {' '}
+{' '}
           <Box ml={{ base: 2 }}>
             <AiFillPlusCircle />
           </Box>

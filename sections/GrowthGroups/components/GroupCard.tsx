@@ -5,8 +5,8 @@ import React from 'react';
 
 const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, active }) => {
   const {
-    addressInfo, name, leadership, scheduledTime, weekDay, lat, lng, whatsappLink,
-  } = Group;
+ addressInfo, name, leadership, scheduledTime, weekDay, lat, lng, whatsappLink,
+} = Group;
 
   return (
     <Flex
@@ -35,12 +35,12 @@ const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, activ
         <Text fontSize={{ base: '14px' }} mr="12px">
           {' '}
           Ás
-          {' '}
-          {scheduledTime}
-          {' '}
-          -
-          {' '}
-          {weekDay}
+{' '}
+{scheduledTime}
+{' '}
+-
+{' '}
+{weekDay}
         </Text>
         <Link href={whatsappLink} target="_blank">
           <IoLogoWhatsapp size="20px" color={active ? 'white' : 'green'} />

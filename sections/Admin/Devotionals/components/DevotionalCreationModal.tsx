@@ -8,10 +8,11 @@ import {
   ModalOverlay,
 } from '@chakra-ui/react';
 
+import DevotionalEditor from 'sections/Admin/Devotionals/components/DevotionalEditor';
 import React from 'react';
 
 const DevotionalCreationModal: React.FC<DevotionalCreationModalProps> = ({ isOpen, onClose }) => (
-  <Modal isOpen={isOpen} onClose={onClose} isCentered size="md" scrollBehavior="outside">
+  <Modal isOpen={isOpen} onClose={onClose} isCentered size="full" scrollBehavior="outside">
     <ModalOverlay />
     <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
       <ModalCloseButton />
@@ -33,7 +34,7 @@ const DevotionalCreationModal: React.FC<DevotionalCreationModalProps> = ({ isOpe
           },
         }}
       >
-        {/* Editor */}
+        <DevotionalEditor />
       </ModalBody>
       <ModalFooter />
     </ModalContent>

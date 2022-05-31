@@ -18,8 +18,8 @@ import React, { useState } from 'react';
 import Error from 'components/Error';
 import PasswordValidator from 'components/Login/components/PasswordValidator';
 import { RESET_PASSWORD } from 'services/mutations';
-import { RESET_PASSWORD_INITIAL_VALUES } from 'helpers/initialValues';
-import { RESET_PASSWORD_SCHEMA } from 'helpers/schema';
+import { RESET_PASSWORD_INITIAL_VALUES } from 'helpers/formInitialValues';
+import { RESET_PASSWORD_SCHEMA } from 'helpers/validationSchemas';
 import Success from 'components/Success';
 import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
@@ -87,8 +87,8 @@ const ResetPassword: React.FC = () => {
         validationSchema={RESET_PASSWORD_SCHEMA}
       >
         {({
-          errors, touched, handleSubmit, handleChange, isSubmitting, values,
-        }) => (
+ errors, touched, handleSubmit, handleChange, isSubmitting, values,
+}) => (
           <form onSubmit={handleSubmit}>
             <Stack spacing={2}>
               <Box>

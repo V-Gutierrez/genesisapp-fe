@@ -20,8 +20,8 @@ const UserInfo: React.FC = () => {
   const { mutateAsync: logout } = useMutation(LOGOUT, {});
   const isFetching = useIsFetching();
   const {
-    userData, removeUserData, refetchUser, openLoginModal,
-  } = useUser();
+ userData, removeUserData, refetchUser, openLoginModal,
+} = useUser();
 
   const handleLogout = async () => {
     await logout();

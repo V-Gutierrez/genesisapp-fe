@@ -18,3 +18,9 @@ export const RESET_PASSWORD_INITIAL_VALUES = {
   password: '',
   passwordConfirmation: '',
 };
+
+export const DEVOTIONAL_CREATION_INITIAL_VALUES = {
+  body: '',
+  title: '',
+  scheduledTo: '',
+};

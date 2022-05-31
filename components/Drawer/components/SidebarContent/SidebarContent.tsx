@@ -1,5 +1,5 @@
 import {
-  Box, BoxProps, CloseButton, Divider, Flex, useColorModeValue,
+ Box, BoxProps, CloseButton, Divider, Flex, useColorModeValue,
 } from '@chakra-ui/react';
 import { FiHome, FiStar } from 'react-icons/fi';
 

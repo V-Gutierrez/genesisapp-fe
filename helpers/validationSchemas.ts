@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-import { differenceInYears } from 'date-fns';
+import { differenceInYears, isFuture } from 'date-fns';
 
 export const RESET_PASSWORD_SCHEMA = Yup.object().shape({
   password: Yup.string()
@@ -51,4 +51,14 @@ export const SIGNUP_SCHEMA = Yup.object().shape({
     [Yup.ref('password'), null],
     'As senhas devem coincidir',
   ),
+});
+
+export const DEVOTIONAL_CREATION_SCHEMA = Yup.object().shape({
+  body: Yup.string()
+    .min(255, 'O devocional deve ter no mínimo 255 caractéres')
+    .required('Insira ou edite o devocional neste campo'),
+  title: Yup.string().required('Insira um título'),
+  scheduledTo: Yup.string()
+    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number)))
+    .required('Selecione uma data para publicar'),
 });

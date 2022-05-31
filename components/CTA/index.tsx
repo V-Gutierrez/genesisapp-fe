@@ -13,7 +13,7 @@ import {
 import Link from 'next/link';
 
 export default function CTA({
-  title, subtitle, buttonText, buttonHref, arrowText,
+ title, subtitle, buttonText, buttonHref, arrowText,
 }: CTAProps) {
   return (
     <Container w="100%" h="80vh">
