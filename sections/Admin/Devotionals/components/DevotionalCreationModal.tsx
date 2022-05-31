@@ -12,7 +12,7 @@ import DevotionalEditor from 'sections/Admin/Devotionals/components/DevotionalEd
 import React from 'react';
 
 const DevotionalCreationModal: React.FC<DevotionalCreationModalProps> = ({ isOpen, onClose }) => (
-  <Modal isOpen={isOpen} onClose={onClose} isCentered size="full" scrollBehavior="outside">
+  <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl" scrollBehavior="outside">
     <ModalOverlay />
     <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
       <ModalCloseButton />

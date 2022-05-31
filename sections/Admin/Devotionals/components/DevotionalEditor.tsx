@@ -134,13 +134,14 @@ const DevotionalEditor: React.FC = () => {
                       toolbar,
                     }}
                   />
+                  <Text fontSize={{ base: '12px' }} color="red">
+                    {errors.body && touched.body && errors.body}
+                  </Text>
                 </Box>
               </Stack>
-              <Text fontSize={{ base: '12px' }} color="red">
-                {errors.body && touched.body && errors.body}
-              </Text>
             </Box>
           </Stack>
+
           <Flex w="100%" justifyContent="center" mt={{ base: 6 }}>
             <Button
               colorScheme="blackAlpha"
