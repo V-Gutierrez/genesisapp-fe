@@ -5,7 +5,7 @@ import StatsCard from 'sections/Admin/components/StatsCard';
 import { useQuery } from 'react-query';
 
 export default function Stats() {
-  const { data } = useQuery('userDevotionals', GET_STATS);
+  const { data } = useQuery('stats', GET_STATS);
 
   if (!data) return <Skeleton h="200px" />;
   return (
@@ -37,9 +37,9 @@ export default function Stats() {
           },
         }}
       >
-        <StatsCard title="Usuários Ativos" stat={data?.data.activeUsers as number} />
-        <StatsCard title="Devocionais Publicados" stat={data?.data.devotionals as number} />
-        <StatsCard title="Grupos de crescimento" stat={data?.data.groups as number} />
+        <StatsCard title="Usuários Ativos" stat={data?.data.activeUsers} />
+        <StatsCard title="Devocionais Publicados" stat={data?.data.devotionals} />
+        <StatsCard title="Grupos de crescimento" stat={data?.data.groups} />
       </Stack>
     </>
   );
