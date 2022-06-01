@@ -1,5 +1,6 @@
+import HomeSection from 'sections/Home';
 import type { NextPage } from 'next';
 
-const Home: NextPage = () => <h1>Home</h1>;
+const Home: NextPage = () => <HomeSection />;
 
 export default Home;

@@ -46,7 +46,8 @@
         "react/jsx-indent": "off",
         "react/jsx-closing-tag-location": "off",
         "max-len": "off",
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "react-hooks/rules-of-hooks": "warn"
     },
     "ignorePatterns": [
         "*.d.ts"

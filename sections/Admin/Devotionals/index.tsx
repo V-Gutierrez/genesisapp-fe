@@ -1,12 +1,11 @@
 import {
- Box, Button, Flex, Heading, Text, useDisclosure,
+ Box, Button, Flex, Text, useDisclosure,
 } from '@chakra-ui/react';
 
 import { AiFillPlusCircle } from 'react-icons/ai';
 import DevotionalCreationModal from 'sections/Admin/Devotionals/components/DevotionalCreationModal';
 import DevotionalDashCard from 'components/DevotionalDashCard';
 import { GET_DEVOTIONALS } from 'services/queries';
-import React from 'react';
 import { inHours } from 'helpers/time';
 import { isFuture } from 'date-fns';
 import { useQuery } from 'react-query';
@@ -46,34 +45,36 @@ export default function Devotionals() {
         </Text>
         {!scheduledDevotionals.length && <Text my="10px">Não há devocionais agendados</Text>}
 
-        {scheduledDevotionals.map((devotional, _index, array) => (
-            <DevotionalDashCard
-              key={devotional.id}
-              id={devotional.id}
-              authorName={devotional.author.name}
-              title={devotional.title}
-              content={devotional.body}
-              scheduledTo={devotional.scheduledTo}
-              refetch={refetch}
-            />
-          ))}
+        {scheduledDevotionals.map((devotional) => (
+          <DevotionalDashCard
+            key={devotional.id}
+            id={devotional.id}
+            authorName={devotional.author.name}
+            title={devotional.title}
+            content={devotional.body}
+            scheduledTo={devotional.scheduledTo}
+            refetch={refetch}
+            slug={devotional.slug}
+          />
+        ))}
 
         <Text fontSize={{ base: '18px' }} fontWeight="600" my={{ base: 4 }}>
           Lançados
         </Text>
         {!releasedDevotionals.length && <Text my="10px">Não há devocionais lançados</Text>}
 
-        {releasedDevotionals.map((devotional, _index, array) => (
-            <DevotionalDashCard
-              key={devotional.id}
-              id={devotional.id}
-              authorName={devotional.author.name}
-              title={devotional.title}
-              content={devotional.body}
-              scheduledTo={devotional.scheduledTo}
-              refetch={refetch}
-            />
-          ))}
+        {releasedDevotionals.map((devotional) => (
+          <DevotionalDashCard
+            key={devotional.id}
+            id={devotional.id}
+            authorName={devotional.author.name}
+            title={devotional.title}
+            content={devotional.body}
+            scheduledTo={devotional.scheduledTo}
+            refetch={refetch}
+            slug={devotional.slug}
+          />
+        ))}
       </Flex>
       <DevotionalCreationModal isOpen={isOpen} onClose={onClose} />
     </Box>

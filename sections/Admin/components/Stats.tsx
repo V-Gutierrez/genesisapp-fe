@@ -1,9 +1,12 @@
 import { Stack, Text } from '@chakra-ui/react';
 
-import React from 'react';
+import { GET_STATS } from 'services/queries';
 import StatsCard from 'sections/Admin/components/StatsCard';
+import { useQuery } from 'react-query';
 
 export default function Stats() {
+  const { data } = useQuery('userDevotionals', GET_STATS);
+
   return (
     <>
       <Text fontSize="18px" my="8px" fontWeight="600">
@@ -33,9 +36,9 @@ export default function Stats() {
           },
         }}
       >
-        <StatsCard title="Usuários Ativos" stat="0" />
-        <StatsCard title="Devocionais Publicados" stat="0" />
-        <StatsCard title="Grupos de crescimento" stat="0" />
+        <StatsCard title="Usuários Ativos" stat={data?.data.activeUsers as number} />
+        <StatsCard title="Devocionais Publicados" stat={data?.data.devotionals as number} />
+        <StatsCard title="Grupos de crescimento" stat={data?.data.groups as number} />
       </Stack>
     </>
   );

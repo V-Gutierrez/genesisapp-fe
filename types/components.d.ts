@@ -111,12 +111,13 @@ type OptionCard = AdminOptions;
 
 interface StatsCardProps {
   title: string;
-  stat: string;
+  stat: number;
 }
 
 interface DevotionalDashCardProps {
   id: string;
   title: string;
+  slug: string;
   content: string;
   authorName: string;
   scheduledTo: string;

@@ -1,15 +1,16 @@
-import { AiOutlineArrowsAlt, AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
+import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai';
 import {
  Avatar, Box, Button, Flex, chakra, useColorModeValue, useToast,
 } from '@chakra-ui/react';
 import React, { useMemo, useState } from 'react';
-import { useMutation, useQuery } from 'react-query';
 
 import { DELETE_DEVOTIONAL } from 'services/mutations';
 import OptionsButton from 'components/OptionsButton';
 import Quotes from 'assets/icons/quotes.svg';
-import { format } from 'date-fns';
+import { format, isFuture } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
+import { useMutation } from 'react-query';
+import { useRouter } from 'next/router';
 
 const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
   id,
@@ -17,21 +18,27 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
   content,
   authorName,
   scheduledTo,
+  slug,
   refetch,
 }) => {
   const [seeAll, setSeeAll] = useState(false);
   const { mutateAsync: deleteDevotional } = useMutation(DELETE_DEVOTIONAL);
   const toast = useToast();
+  const { push } = useRouter();
 
   const handleSeeAll = () => {
     setSeeAll((prev) => !prev);
+  };
+
+  const handlerSeeDevotional = () => {
+    push(`/devocionais/${encodeURIComponent(slug)}`);
   };
 
   const formatedScheduledDate = useMemo(
     () => format(new Date(scheduledTo), "'em' dd 'de' MMMM 'de' yyyy 'às' HH:mm", {
         locale: pt,
       }),
-    [scheduledTo, format, pt],
+    [scheduledTo],
   );
 
   const handleDevotionalDelete = async () => {
@@ -124,28 +131,20 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
       />
       <Box pos="absolute" top="0px" right="15px">
         <OptionsButton>
-          <Button
-            w="194px"
-            variant="ghost"
-            rightIcon={<AiOutlineArrowsAlt />}
-            justifyContent="space-between"
-            fontWeight="normal"
-            colorScheme="blackAlpha.700"
-            fontSize="sm"
-          >
-            Ver na íntegra
-          </Button>
-          {/*  <Button
-            w="194px"
-            variant="ghost"
-            rightIcon={<AiOutlineEdit />}
-            justifyContent="space-between"
-            fontWeight="normal"
-            colorScheme="blackAlpha.700"
-            fontSize="sm"
-          >
-            Editar
-          </Button> */}
+          {!isFuture(new Date(scheduledTo)) && (
+            <Button
+              w="194px"
+              variant="ghost"
+              rightIcon={<AiOutlineArrowsAlt />}
+              justifyContent="space-between"
+              fontWeight="normal"
+              colorScheme="blackAlpha.700"
+              fontSize="sm"
+              onClick={handlerSeeDevotional}
+            >
+              Ver na íntegra
+            </Button>
+          )}
           <Button
             w="194px"
             variant="ghost"

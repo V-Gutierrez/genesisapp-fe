@@ -1,7 +1,6 @@
 import { Flex, Link, Text } from '@chakra-ui/react';
 
 import { IoLogoWhatsapp } from 'react-icons/io';
-import React from 'react';
 
 const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, active }) => {
   const {

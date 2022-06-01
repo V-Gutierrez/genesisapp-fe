@@ -32,3 +32,9 @@ interface Devotional {
   userId: string;
   author: Pick<User, 'name'>;
 }
+
+interface Stats {
+  activeUsers: number;
+  devotionals: number;
+  groups: number;
+}

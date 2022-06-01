@@ -1,7 +1,7 @@
 import {
  Box, BoxProps, CloseButton, Divider, Flex, useColorModeValue,
 } from '@chakra-ui/react';
-import { FiHome, FiStar } from 'react-icons/fi';
+import { FiBook, FiHome, FiStar } from 'react-icons/fi';
 
 import { MdOutlineLeaderboard } from 'react-icons/md';
 import { useUser } from 'context/UserContext';
@@ -10,6 +10,7 @@ import NavItem from './components/NavItem';
 const LinkItems: Array<LinkItemProps> = [
   { name: 'Home', icon: FiStar, goTo: '/' },
   { name: 'Encontre seu GC', icon: FiHome, goTo: '/gc' },
+  { name: 'Devocionais', icon: FiBook, goTo: '/devocionais' },
 ];
 
 const AdminItems: Array<LinkItemProps> = [

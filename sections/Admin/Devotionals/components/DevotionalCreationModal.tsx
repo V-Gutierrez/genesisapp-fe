@@ -9,7 +9,6 @@ import {
 } from '@chakra-ui/react';
 
 import DevotionalEditor from 'sections/Admin/Devotionals/components/DevotionalEditor';
-import React from 'react';
 
 const DevotionalCreationModal: React.FC<DevotionalCreationModalProps> = ({ isOpen, onClose }) => (
   <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl" scrollBehavior="outside">

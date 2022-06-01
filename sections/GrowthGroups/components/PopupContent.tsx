@@ -1,7 +1,5 @@
 import { Flex, Link, Text } from '@chakra-ui/react';
 
-import React from 'react';
-
 const PopupContent: React.FC<GrowthGroup> = ({
  name, addressInfo, leadership, whatsappLink,
 }) => (
