@@ -1,5 +1,9 @@
 import {
- Box, Container, Heading, Stack, Text,
+  Box,
+  Container,
+  Heading,
+  Stack,
+  Text,
 } from '@chakra-ui/react';
 
 import { GET_DEVOTIONAL_BY_SLUG } from 'services/queries';
@@ -23,16 +27,16 @@ export default function DevotionalSection() {
   }
 
   const {
- title, body, author, scheduledTo,
-} = data.data;
+    title, body, author, scheduledTo,
+  } = data.data;
 
   const formatedScheduledDate = useMemo(
     () => formatInTimeZone(
-        new Date(scheduledTo),
-        'America/Sao_Paulo',
-        "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
-        { locale: pt },
-      ),
+      new Date(scheduledTo),
+      'America/Sao_Paulo',
+      "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
+      { locale: pt },
+    ),
     [scheduledTo],
   );
 
@@ -50,9 +54,10 @@ export default function DevotionalSection() {
 
         <Text fontFamily="Caveat" fontSize="lg">
           {formatedScheduledDate}
-{' '}
-por
-{author.name}
+          {' '}
+          por
+          {' '}
+          {author.name}
         </Text>
       </Stack>
     </Container>
