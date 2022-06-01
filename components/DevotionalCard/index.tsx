@@ -30,7 +30,6 @@ export default function DevotionalCard({
     <Center
       py={6}
       cursor="pointer"
-      scrollSnapAlign="start"
     >
       <Link href={`/devocionais/${slug}`}>
         <Box
