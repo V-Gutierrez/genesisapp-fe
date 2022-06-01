@@ -1,28 +1,42 @@
 import {
- Avatar, Box, Center, Heading, Stack, Text, useColorModeValue,
+  Avatar,
+  Box,
+  Center,
+  Heading,
+  Stack,
+  Text,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 import Link from 'next/link';
-import { format } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import { pt } from 'date-fns/locale';
 import { useMemo } from 'react';
 
 export default function DevotionalCard({
- scheduledTo, author, body, title, slug,
+  scheduledTo, author, title, slug,
 }: Devotional) {
   const formatedScheduledDate = useMemo(
-    () => format(new Date(scheduledTo), "'em' dd 'de' MMMM 'de' yyyy 'às' HH:mm", {
-        locale: pt,
-      }),
+    () => formatInTimeZone(
+      new Date(scheduledTo),
+      'America/Sao_Paulo',
+      "'em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
+      { locale: pt },
+    ),
     [scheduledTo],
   );
 
   return (
-    <Center py={6} cursor="pointer">
-      <Link href={`/devocionais/${encodeURIComponent(slug)}`}>
+    <Center
+      py={6}
+      cursor="pointer"
+      scrollSnapAlign="start"
+    >
+      <Link href={`/devocionais/${slug}`}>
         <Box
-          maxW="445px"
-          minH={{ base: '308px' }}
+          maxW={{ base: '300px' }}
+          minW={{ base: '300px' }}
+          minH={{ base: '200px' }}
           w="full"
           bg={useColorModeValue('white', 'gray.900')}
           boxShadow="xl"
@@ -47,7 +61,6 @@ export default function DevotionalCard({
             >
               {title}
             </Heading>
-            <Text color="gray.500" noOfLines={3} dangerouslySetInnerHTML={{ __html: body }} />
           </Stack>
           <Stack mt={6} direction="row" spacing={4} align="center">
             <Avatar bg="blackAlpha.900" name={author?.name} />

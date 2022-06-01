@@ -1,5 +1,9 @@
 import {
- Box, Button, Flex, Text, useDisclosure,
+  Box,
+  Button,
+  Flex,
+  Text,
+  useDisclosure,
 } from '@chakra-ui/react';
 
 import { AiFillPlusCircle } from 'react-icons/ai';
@@ -9,6 +13,7 @@ import { GET_DEVOTIONALS } from 'services/queries';
 import { inHours } from 'helpers/time';
 import { isFuture } from 'date-fns';
 import { useQuery } from 'react-query';
+import { zonedTimeToUtc } from 'date-fns-tz';
 
 export default function Devotionals() {
   const { data, refetch } = useQuery('devotionals', GET_DEVOTIONALS, {
@@ -17,8 +22,10 @@ export default function Devotionals() {
   });
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const scheduledDevotionals = data?.data.filter((d) => isFuture(new Date(d.scheduledTo)));
-  const releasedDevotionals = data?.data.filter((d) => !isFuture(new Date(d.scheduledTo)));
+  const scheduledDevotionals = data?.data.filter((d) => isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')));
+  const releasedDevotionals = data?.data.filter(
+    (d) => !isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')),
+  );
 
   if (!data || !scheduledDevotionals || !releasedDevotionals) return null;
   return (
@@ -33,7 +40,7 @@ export default function Devotionals() {
           onClick={onOpen}
         >
           Criar Devocional
-{' '}
+          {' '}
           <Box ml={{ base: 2 }}>
             <AiFillPlusCircle />
           </Box>

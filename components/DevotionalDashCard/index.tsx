@@ -1,13 +1,20 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai';
 import {
- Avatar, Box, Button, Flex, chakra, useColorModeValue, useToast,
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  chakra,
+  useColorModeValue,
+  useToast,
 } from '@chakra-ui/react';
 import React, { useMemo, useState } from 'react';
 
 import { DELETE_DEVOTIONAL } from 'services/mutations';
 import OptionsButton from 'components/OptionsButton';
 import Quotes from 'assets/icons/quotes.svg';
-import { format, isFuture } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
+import { isFuture } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
@@ -31,13 +38,16 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
   };
 
   const handlerSeeDevotional = () => {
-    push(`/devocionais/${encodeURIComponent(slug)}`);
+    push(`/devocionais/${slug}`);
   };
 
   const formatedScheduledDate = useMemo(
-    () => format(new Date(scheduledTo), "'em' dd 'de' MMMM 'de' yyyy 'às' HH:mm", {
-        locale: pt,
-      }),
+    () => formatInTimeZone(
+      new Date(scheduledTo),
+      'America/Sao_Paulo',
+      "'em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
+      { locale: pt },
+    ),
     [scheduledTo],
   );
 
@@ -112,10 +122,10 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
             <chakra.span fontWeight="medium" color="gray.500">
               {' '}
               -
-{' '}
-{authorName}
-{' '}
-{formatedScheduledDate}
+              {' '}
+              {authorName}
+              {' '}
+              {formatedScheduledDate}
             </chakra.span>
           </chakra.p>
         </Flex>

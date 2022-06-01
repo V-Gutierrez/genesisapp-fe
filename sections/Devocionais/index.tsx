@@ -1,5 +1,8 @@
 import {
- Flex, Grid, GridItem, Text,
+  Flex,
+  Grid,
+  GridItem,
+  Text,
 } from '@chakra-ui/react';
 
 import DevotionalCard from 'components/DevotionalCard';
@@ -24,12 +27,12 @@ const Devocionais: React.FC = () => {
         md: 'repeat(2, 1fr)',
         lg: 'repeat(3, 1fr)',
       }}
-      gap={{ md: 2 }}
+      gap={{ md: 1 }}
       templateRows={{
-        base: 'repeat(9, 1fr)',
-        sm: 'repeat(6, 1fr)',
-        md: 'repeat(8, 1fr)',
-        lg: 'repeat(6, 1fr)',
+        base: 'repeat(auto-fit, 1fr)',
+        sm: 'repeat(auto-fit, 1fr)',
+        md: 'repeat(auto-fit, 1fr)',
+        lg: 'repeat(auto-fit, 1fr)',
       }}
     >
       {data.data.map((devotional) => (
