@@ -4,12 +4,12 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import { useEffect, useState } from 'react';
 
 import DevotionalCard from 'components/DevotionalCard';
 import { GET_USER_DEVOTIONALS } from 'services/queries';
 import { inHours } from 'helpers/time';
 import { useQuery } from 'react-query';
-import { useState } from 'react';
 
 const DevotionalsSlider: React.FC = () => {
   const { data } = useQuery('devotionals', GET_USER_DEVOTIONALS, {
@@ -18,8 +18,18 @@ const DevotionalsSlider: React.FC = () => {
   });
   const [arrowVisibility, setArrowVisibility] = useState({ left: false, right: true });
 
+  useEffect(() => {
+    const slider = document.getElementById('scrollableSlider');
+
+    if (slider) {
+      const isOverflowing = slider!.scrollHeight > slider!.clientHeight || slider!.scrollWidth > slider!.clientWidth;
+      setArrowVisibility({ left: isOverflowing, right: isOverflowing });
+    }
+  }, [data]);
+
   const handleSwipeRight = () => {
     const slider = document.getElementById('scrollableSlider');
+
     slider!.scrollLeft += 300;
     const scrolledDistance = slider!.scrollWidth - slider!.scrollLeft;
 
@@ -31,6 +41,7 @@ const DevotionalsSlider: React.FC = () => {
   };
   const handleSwipeLeft = () => {
     const slider = document.getElementById('scrollableSlider');
+
     slider!.scrollLeft -= 300;
 
     if (slider?.scrollLeft === 0) {
@@ -74,10 +85,10 @@ const DevotionalsSlider: React.FC = () => {
       >
         {arrowVisibility.left
           && (
-<Box d={{ base: 'none', sm: 'initial' }} pos="fixed" left={{ base: 2 }} onClick={handleSwipeLeft} cursor="pointer">
-            <BsChevronLeft />
-          </Box>
-)}
+            <Box d={{ base: 'none', sm: 'initial' }} pos="fixed" left={{ base: 2 }} onClick={handleSwipeLeft} cursor="pointer">
+              <BsChevronLeft />
+            </Box>
+          )}
         {data?.data.map((devotional) => (
           <Flex mx={{ base: 1 }} alignItems="center" justifyContent="center" scrollSnapAlign="start">
             <DevotionalCard key={devotional.id} {...devotional} />
@@ -85,10 +96,10 @@ const DevotionalsSlider: React.FC = () => {
         ))}
         {arrowVisibility.right
           && (
-<Box d={{ base: 'none', sm: 'initial' }} pos="fixed" right={{ base: 2 }} onClick={handleSwipeRight} cursor="pointer">
-            <BsChevronRight />
-          </Box>
-)}
+            <Box d={{ base: 'none', sm: 'initial' }} pos="fixed" right={{ base: 2 }} onClick={handleSwipeRight} cursor="pointer">
+              <BsChevronRight />
+            </Box>
+          )}
       </Flex>
     </Box>
   );
