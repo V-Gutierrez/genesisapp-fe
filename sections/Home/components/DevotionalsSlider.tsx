@@ -90,8 +90,8 @@ const DevotionalsSlider: React.FC = () => {
             </Box>
           )}
         {data?.data.map((devotional) => (
-          <Flex mx={{ base: 1 }} alignItems="center" justifyContent="center" scrollSnapAlign="start">
-            <DevotionalCard key={devotional.id} {...devotional} />
+          <Flex mx={{ base: 1 }} key={devotional.id} alignItems="center" justifyContent="center" scrollSnapAlign="start">
+            <DevotionalCard {...devotional} />
           </Flex>
         ))}
         {arrowVisibility.right
