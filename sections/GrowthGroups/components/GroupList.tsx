@@ -19,7 +19,7 @@ const GroupList: React.FC<GroupListProps> = ({ GCDataset, selectCoordsHandler, c
     <Flex
       scrollSnapType="y proximity"
       overflowY="scroll"
-      h={{ base: '50%', md: '40%', lg: '100%' }}
+      h={{ base: '70%', md: '70%', lg: '100%' }}
       w={{
         base: '100%',
         sm: '100%',

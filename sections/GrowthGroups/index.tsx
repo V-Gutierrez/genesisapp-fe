@@ -32,11 +32,7 @@ const GrowthGroups: React.FC = () => {
       }}
       transition="1s all ease-in"
     >
-      <MapFrame
-        GCDataset={growthGroups as GrowthGroup[]}
-        currentCoords={focusedCoords}
-        selectCoordsHandler={onSelectGroup}
-      />
+      <MapFrame />
       <GroupList
         GCDataset={growthGroups as GrowthGroup[]}
         selectCoordsHandler={onSelectGroup}
