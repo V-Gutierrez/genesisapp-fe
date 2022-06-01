@@ -1,4 +1,4 @@
-import { Stack, Text } from '@chakra-ui/react';
+import { Skeleton, Stack, Text } from '@chakra-ui/react';
 
 import { GET_STATS } from 'services/queries';
 import StatsCard from 'sections/Admin/components/StatsCard';
@@ -7,6 +7,7 @@ import { useQuery } from 'react-query';
 export default function Stats() {
   const { data } = useQuery('userDevotionals', GET_STATS);
 
+  if (!data) return <Skeleton h="200px" />;
   return (
     <>
       <Text fontSize="18px" my="8px" fontWeight="600">
