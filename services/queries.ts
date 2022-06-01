@@ -8,7 +8,7 @@ export const GET_USER_DEVOTIONALS = async () => Axios.get<Devotional[]>('/devoti
 export const GET_DEVOTIONAL_BY_SLUG = async (
   ReactQueryParams: UseQueryOptions<unknown, unknown, unknown, (string | string[] | undefined)[]>,
 ) => {
-  const { 2: devotionalSlug } = ReactQueryParams.queryKey as string[];
+  const { 1: devotionalSlug } = ReactQueryParams.queryKey as string[];
 
   return Axios.get<Devotional>(`/devotionals/${devotionalSlug}`);
 };
