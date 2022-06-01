@@ -26,4 +26,5 @@ interface DevotionalFormValues {
   body: string;
   title: string;
   scheduledTo: string;
+  author: string;
 }

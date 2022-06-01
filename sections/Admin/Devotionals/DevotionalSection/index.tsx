@@ -57,7 +57,7 @@ export default function DevotionalSection() {
           {' '}
           por
           {' '}
-          {author.name}
+          {author}
         </Text>
       </Stack>
     </Container>

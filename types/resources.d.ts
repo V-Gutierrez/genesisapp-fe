@@ -29,8 +29,7 @@ interface Devotional {
   title: string;
   body: string;
   slug: string;
-  userId: string;
-  author: Pick<User, 'name'>;
+  author: string;
 }
 
 interface Stats {

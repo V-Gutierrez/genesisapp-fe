@@ -56,7 +56,7 @@ export default function Devotionals() {
           <DevotionalDashCard
             key={devotional.id}
             id={devotional.id}
-            authorName={devotional.author.name}
+            authorName={devotional.author}
             title={devotional.title}
             content={devotional.body}
             scheduledTo={devotional.scheduledTo}
@@ -74,7 +74,7 @@ export default function Devotionals() {
           <DevotionalDashCard
             key={devotional.id}
             id={devotional.id}
-            authorName={devotional.author.name}
+            authorName={devotional.author}
             title={devotional.title}
             content={devotional.body}
             scheduledTo={devotional.scheduledTo}

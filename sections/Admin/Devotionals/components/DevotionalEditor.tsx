@@ -86,13 +86,13 @@ const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
       onSubmit={onSubmit}
     >
       {({
- errors, touched, handleSubmit, handleChange, isSubmitting, setFieldValue, values,
-}) => (
+        errors, touched, handleSubmit, handleChange, isSubmitting, setFieldValue, values,
+      }) => (
         <form onSubmit={handleSubmit}>
           <Stack spacing={6} p={{ base: 2 }} mb={{ base: 10 }}>
             <Box>
               <FormLabel fontSize={{ base: '16px' }}>Título do Devocional</FormLabel>
-              <Input type="title" id="title" onChange={handleChange} />
+              <Input type="text" id="title" onChange={handleChange} />
               <Text fontSize={{ base: '12px' }} color="red">
                 {errors.title && touched.title && errors.title}
               </Text>
@@ -103,6 +103,14 @@ const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
               <Input type="datetime-local" id="scheduledTo" onChange={handleChange} />
               <Text fontSize={{ base: '12px' }} color="red">
                 {errors.scheduledTo && touched.scheduledTo && errors.scheduledTo}
+              </Text>
+            </Box>
+
+            <Box>
+              <FormLabel fontSize={{ base: '16px' }}>Autor</FormLabel>
+              <Input value={values.author} type="text" id="author" onChange={handleChange} />
+              <Text fontSize={{ base: '12px' }} color="red">
+                {errors.author && touched.author && errors.author}
               </Text>
             </Box>
 
@@ -149,6 +157,7 @@ const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
                     {errors.body && touched.body && errors.body}
                   </Text>
                 </Box>
+
               </Stack>
             </Box>
           </Stack>

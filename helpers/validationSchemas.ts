@@ -61,4 +61,7 @@ export const DEVOTIONAL_CREATION_SCHEMA = Yup.object().shape({
   scheduledTo: Yup.string()
     .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number)))
     .required('Selecione uma data para publicar'),
+  author: Yup.string()
+    .matches(/^[^\s]+( [^\s]+)+$/, 'Insira seu nome e sobrenome')
+    .required('Insira o nome do autor'),
 });

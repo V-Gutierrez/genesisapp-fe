@@ -42,16 +42,16 @@ export const RESET_PASSWORD = async ({
   token: string;
   newPassword: string;
 }) => Axios.put(
-    '/auth/reset-password',
-    {
-      password: newPassword,
+  '/auth/reset-password',
+  {
+    password: newPassword,
+  },
+  {
+    headers: {
+      Authorization: token,
     },
-    {
-      headers: {
-        Authorization: token,
-      },
-    },
-  );
+  },
+);
 
 export const LOGOUT = async () => {
   await Axios.delete('/auth');
@@ -62,6 +62,7 @@ export const CREATE_DEVOTIONAL = async (values: DevotionalFormValues) => {
     body: values.body,
     title: values.title,
     scheduledTo: values.scheduledTo,
+    author: values.author,
   });
 };
 

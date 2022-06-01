@@ -62,9 +62,9 @@ export default function DevotionalCard({
             </Heading>
           </Stack>
           <Stack mt={6} direction="row" spacing={4} align="center">
-            <Avatar bg="blackAlpha.900" name={author?.name} />
+            <Avatar bg="blackAlpha.900" name={author} />
             <Stack direction="column" spacing={0} fontSize="sm">
-              <Text fontWeight={600}>{author?.name}</Text>
+              <Text fontWeight={600}>{author}</Text>
               <Text color="gray.500">{formatedScheduledDate}</Text>
             </Stack>
           </Stack>
