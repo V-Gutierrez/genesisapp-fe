@@ -20,7 +20,7 @@ import { useMutation } from 'react-query';
 
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({ visibilityHandler }) => {
   const toast = useToast();
-  const { mutateAsync: resetPassword } = useMutation(REQUEST_RESET_PASSWORD, {});
+  const { mutateAsync: resetPassword } = useMutation(REQUEST_RESET_PASSWORD);
 
   const onSubmit = async (
     values: ForgotPasswordFormValues,

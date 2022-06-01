@@ -115,10 +115,14 @@ interface StatsCardProps {
 }
 
 interface DevotionalDashCardProps {
+  id: string;
   title: string;
   content: string;
   authorName: string;
   scheduledTo: string;
+  refetch: <TPageData>(
+    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
+  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>;
 }
 
 interface OptionsButtonProps {
@@ -129,3 +133,5 @@ interface DevotionalCreationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+type DevotionalEditorProps = Pick<DevotionalCreationModalProps, 'onClose'>;

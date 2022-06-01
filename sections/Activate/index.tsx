@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 
 const Activate: React.FC = () => {
   const { query, push } = useRouter();
-  const { mutateAsync: validateToken, isSuccess, isError } = useMutation(ACTIVATE, {});
+  const { mutateAsync: validateToken, isSuccess, isError } = useMutation(ACTIVATE);
   const toast = useToast();
 
   const handleToken = useCallback(

@@ -30,7 +30,7 @@ import { SIGN_UP } from 'services/mutations';
 import { useMutation } from 'react-query';
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
-  const { mutateAsync: signup } = useMutation(SIGN_UP, {});
+  const { mutateAsync: signup } = useMutation(SIGN_UP);
   const [show, setShow] = useState(false);
   const toast = useToast();
 

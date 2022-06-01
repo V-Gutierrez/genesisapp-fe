@@ -22,7 +22,7 @@ import { LOGIN_SCHEMA } from 'helpers/validationSchemas';
 import { useMutation } from 'react-query';
 
 const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refetchUser }) => {
-  const { mutateAsync: login } = useMutation(LOGIN, {});
+  const { mutateAsync: login } = useMutation(LOGIN);
   const [show, setShow] = useState(false);
   const toast = useToast();
 

@@ -1,5 +1,5 @@
 import {
-  QueryObserverResult, RefetchOptions, RefetchQueryFilters, useQuery,
+ QueryObserverResult, RefetchOptions, RefetchQueryFilters, useQuery,
 } from 'react-query';
 import { createContext, useContext, useMemo } from 'react';
 

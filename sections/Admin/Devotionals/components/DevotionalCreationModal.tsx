@@ -34,7 +34,7 @@ const DevotionalCreationModal: React.FC<DevotionalCreationModalProps> = ({ isOpe
           },
         }}
       >
-        <DevotionalEditor />
+        <DevotionalEditor onClose={onClose} />
       </ModalBody>
       <ModalFooter />
     </ModalContent>

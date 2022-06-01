@@ -13,9 +13,12 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { Formik, FormikHelpers } from 'formik';
+import { useMutation, useQuery } from 'react-query';
 
+import { CREATE_DEVOTIONAL } from 'services/mutations';
 import { DEVOTIONAL_CREATION_INITIAL_VALUES } from 'helpers/formInitialValues';
 import { DEVOTIONAL_CREATION_SCHEMA } from 'helpers/validationSchemas';
+import { GET_DEVOTIONALS } from 'services/queries';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
@@ -47,25 +50,33 @@ const RQ_FORMAT_OPTIONS = [
 ];
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-const DevotionalEditor: React.FC = () => {
+
+const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
   const toast = useToast();
   const [toolbar, setToolbar] = useState<any>(false);
+  const { mutateAsync: createDevotional } = useMutation(CREATE_DEVOTIONAL);
+  const { refetch } = useQuery('devotionals', GET_DEVOTIONALS);
 
   const onSubmit = async (
     values: DevotionalFormValues,
-    FormikHelpers: FormikHelpers<DevotionalFormValues>,
+    FormikHelpersObject: FormikHelpers<DevotionalFormValues>,
   ) => {
+    FormikHelpersObject.setSubmitting(true);
     try {
+      await createDevotional(values);
       toast({
         title: 'Devocional criado com sucesso',
         status: 'success',
       });
+      await refetch();
+      onClose();
     } catch (e) {
       toast({
         title: 'Houve um erro ao criar o devocional',
         status: 'error',
       });
     }
+    FormikHelpersObject.setSubmitting(false);
   };
 
   return (
@@ -88,8 +99,8 @@ const DevotionalEditor: React.FC = () => {
             </Box>
 
             <Box>
-              <FormLabel fontSize={{ base: '16px' }}>Data de Lançamento</FormLabel>
-              <Input type="date" id="scheduledTo" onChange={handleChange} />
+              <FormLabel fontSize={{ base: '16px' }}>Data e Hora de Lançamento</FormLabel>
+              <Input type="datetime-local" id="scheduledTo" onChange={handleChange} />
               <Text fontSize={{ base: '12px' }} color="red">
                 {errors.scheduledTo && touched.scheduledTo && errors.scheduledTo}
               </Text>

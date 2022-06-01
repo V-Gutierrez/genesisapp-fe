@@ -1,21 +1,27 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import {
- Avatar, Box, Button, Flex, chakra, useColorModeValue,
+ Avatar, Box, Button, Flex, chakra, useColorModeValue, useToast,
 } from '@chakra-ui/react';
 import React, { useMemo, useState } from 'react';
+import { useMutation, useQuery } from 'react-query';
 
+import { DELETE_DEVOTIONAL } from 'services/mutations';
 import OptionsButton from 'components/OptionsButton';
 import Quotes from 'assets/icons/quotes.svg';
 import { format } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 
 const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
+  id,
   title,
   content,
   authorName,
   scheduledTo,
+  refetch,
 }) => {
   const [seeAll, setSeeAll] = useState(false);
+  const { mutateAsync: deleteDevotional } = useMutation(DELETE_DEVOTIONAL);
+  const toast = useToast();
 
   const handleSeeAll = () => {
     setSeeAll((prev) => !prev);
@@ -27,6 +33,23 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
       }),
     [scheduledTo, format, pt],
   );
+
+  const handleDevotionalDelete = async () => {
+    try {
+      await deleteDevotional(id);
+      await refetch();
+
+      toast({
+        title: 'Devocional deletado com sucesso',
+        status: 'success',
+      });
+    } catch (error) {
+      toast({
+        title: 'Houve um erro ao deletar o devocional',
+        status: 'error',
+      });
+    }
+  };
 
   return (
     <Flex
@@ -72,7 +95,7 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
           fontSize="15px"
           pb={4}
           noOfLines={seeAll ? undefined : 2}
-          /* ADD PURIFY DOM HERE dangerouslySetInnerHTML={{ __html: content }} */
+          dangerouslySetInnerHTML={{ __html: content }}
           cursor="pointer"
           onClick={handleSeeAll}
         />
@@ -112,7 +135,7 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
           >
             Ver na íntegra
           </Button>
-          <Button
+          {/*  <Button
             w="194px"
             variant="ghost"
             rightIcon={<AiOutlineEdit />}
@@ -122,7 +145,7 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
             fontSize="sm"
           >
             Editar
-          </Button>
+          </Button> */}
           <Button
             w="194px"
             variant="ghost"
@@ -131,6 +154,7 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
             fontWeight="normal"
             colorScheme="red"
             fontSize="sm"
+            onClick={handleDevotionalDelete}
           >
             Excluir
           </Button>

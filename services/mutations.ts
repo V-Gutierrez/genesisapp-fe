@@ -42,17 +42,29 @@ export const RESET_PASSWORD = async ({
   token: string;
   newPassword: string;
 }) => Axios.put(
-  '/auth/reset-password',
-  {
-    password: newPassword,
-  },
-  {
-    headers: {
-      Authorization: token,
+    '/auth/reset-password',
+    {
+      password: newPassword,
     },
-  },
-);
+    {
+      headers: {
+        Authorization: token,
+      },
+    },
+  );
 
 export const LOGOUT = async () => {
   await Axios.delete('/auth');
+};
+
+export const CREATE_DEVOTIONAL = async (values: DevotionalFormValues) => {
+  await Axios.post('/devotionals', {
+    body: values.body,
+    title: values.title,
+    scheduledTo: values.scheduledTo,
+  });
+};
+
+export const DELETE_DEVOTIONAL = async (id: string) => {
+  await Axios.delete(`/devotionals/${id}`);
 };
