@@ -4,7 +4,7 @@ import {
 
 import { GET_DEVOTIONAL_BY_SLUG } from 'services/queries';
 import NotFound from 'pages/404';
-import { format } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import { pt } from 'date-fns/locale';
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
@@ -27,31 +27,34 @@ export default function DevotionalSection() {
 } = data.data;
 
   const formatedScheduledDate = useMemo(
-    () => format(new Date(scheduledTo), "'Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm", {
-        locale: pt,
-      }),
+    () => formatInTimeZone(
+        new Date(scheduledTo),
+        'America/Sao_Paulo',
+        "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
+        { locale: pt },
+      ),
     [scheduledTo],
   );
 
   return (
     <Container maxW="3xl">
-        <Stack as={Box} spacing={{ base: 8, md: 14 }} py={{ base: 20, md: 36 }}>
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-            lineHeight="110%"
-          >
-            {title}
-          </Heading>
-          <Box dangerouslySetInnerHTML={{ __html: body }} />
+      <Stack as={Box} spacing={{ base: 8, md: 14 }} py={{ base: 20, md: 36 }}>
+        <Heading
+          fontWeight={600}
+          fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+          lineHeight="110%"
+        >
+          {title}
+        </Heading>
+        <Box dangerouslySetInnerHTML={{ __html: body }} />
 
-          <Text fontFamily="Caveat" fontSize="lg">
-            {formatedScheduledDate}
+        <Text fontFamily="Caveat" fontSize="lg">
+          {formatedScheduledDate}
 {' '}
 por
 {author.name}
-          </Text>
-        </Stack>
-      </Container>
+        </Text>
+      </Stack>
+    </Container>
   );
 }
