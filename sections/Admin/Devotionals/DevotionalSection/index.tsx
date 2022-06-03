@@ -56,7 +56,7 @@ export default function DevotionalSection() {
             {formatedScheduledDate}
 {' '}
 por
-{author}
+{` ${author}`}
           </Text>
         </Stack>
       </Container>
