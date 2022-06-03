@@ -14,7 +14,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 export default function OptionsButton({ children }: OptionsButtonProps) {
   return (
     <Flex justifyContent="center" mt={4}>
-      <Popover placement="bottom" isLazy>
+      <Popover placement="left" isLazy>
         {/* @ts-ignore */}
         <PopoverTrigger>
           <IconButton
