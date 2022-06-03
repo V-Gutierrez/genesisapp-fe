@@ -1,29 +1,23 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai';
 import {
-  Avatar,
-  Box,
-  Button,
-  Flex,
-  chakra,
-  useColorModeValue,
-  useToast,
+ Avatar, Box, Button, Flex, chakra, useColorModeValue, useToast,
 } from '@chakra-ui/react';
 import React, { useMemo, useState } from 'react';
 
 import { DELETE_DEVOTIONAL } from 'services/mutations';
 import OptionsButton from 'components/OptionsButton';
 import Quotes from 'assets/icons/quotes.svg';
-import { formatInTimeZone } from 'date-fns-tz';
+import { formatToTimezone } from 'helpers/time';
 import { isFuture } from 'date-fns';
-import pt from 'date-fns/locale/pt-BR';
 import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
 
 const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
-  id,
+  author,
+  body,
   title,
-  content,
-  authorName,
+  id,
+  coverThumbnail,
   scheduledTo,
   slug,
   refetch,
@@ -41,15 +35,7 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
     push(`/devocionais/${slug}`);
   };
 
-  const formatedScheduledDate = useMemo(
-    () => formatInTimeZone(
-      new Date(scheduledTo),
-      'America/Sao_Paulo',
-      "'em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
-      { locale: pt },
-    ),
-    [scheduledTo],
-  );
+  const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo]);
 
   const handleDevotionalDelete = async () => {
     try {
@@ -111,8 +97,11 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
           fontWeight="medium"
           fontSize="15px"
           pb={4}
-          noOfLines={seeAll ? undefined : 2}
-          dangerouslySetInnerHTML={{ __html: content }}
+          maxHeight={seeAll ? 'auto' : '70px'}
+          textOverflow="ellipsis"
+          wordBreak="break-word"
+          overflow="clip"
+          dangerouslySetInnerHTML={{ __html: body }}
           cursor="pointer"
           onClick={handleSeeAll}
         />
@@ -122,18 +111,19 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
             <chakra.span fontWeight="medium" color="gray.500">
               {' '}
               -
-              {' '}
-              {authorName}
-              {' '}
-              {formatedScheduledDate}
+{' '}
+{author}
+{' '}
+{formatedScheduledDate}
             </chakra.span>
           </chakra.p>
         </Flex>
       </Flex>
       <Avatar
         userSelect="none"
-        name={authorName}
+        name={author}
         height="80px"
+        src={coverThumbnail}
         width="80px"
         bg="blackAlpha.900"
         alignSelf="center"

@@ -30,6 +30,8 @@ interface Devotional {
   body: string;
   slug: string;
   author: string;
+  coverImage: string;
+  coverThumbnail: string;
 }
 
 interface Stats {

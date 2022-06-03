@@ -23,5 +23,5 @@ export const DEVOTIONAL_CREATION_INITIAL_VALUES = {
   body: '',
   title: '',
   scheduledTo: '',
-  author: 'Genesis Church',
+  author: '',
 };

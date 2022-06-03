@@ -2,6 +2,8 @@ import * as Yup from 'yup';
 
 import { differenceInYears, isFuture } from 'date-fns';
 
+const FIVE_MB_IN_BYTES = 5e+6;
+
 export const RESET_PASSWORD_SCHEMA = Yup.object().shape({
   password: Yup.string()
     .min(8, 'Sua senha deve ter no mínimo 8 caractéres')
@@ -59,9 +61,10 @@ export const DEVOTIONAL_CREATION_SCHEMA = Yup.object().shape({
     .required('Insira ou edite o devocional neste campo'),
   title: Yup.string().required('Insira um título'),
   scheduledTo: Yup.string()
-    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number)))
-    .required('Selecione uma data para publicar'),
+    .required('Selecione uma data para publicar')
+    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number))),
   author: Yup.string()
     .matches(/^[^\s]+( [^\s]+)+$/, 'Insira seu nome e sobrenome')
     .required('Insira o nome do autor'),
+  coverImage: Yup.mixed().required('Insira uma imagem de capa').test('fileSize', 'O arquivo deve ter no máximo 5MB', (value) => value?.size <= FIVE_MB_IN_BYTES),
 });

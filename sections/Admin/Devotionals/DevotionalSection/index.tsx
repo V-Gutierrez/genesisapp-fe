@@ -1,15 +1,10 @@
 import {
-  Box,
-  Container,
-  Heading,
-  Stack,
-  Text,
+ Box, Container, Heading, Stack, Text,
 } from '@chakra-ui/react';
 
 import { GET_DEVOTIONAL_BY_SLUG } from 'services/queries';
 import NotFound from 'pages/404';
-import { formatInTimeZone } from 'date-fns-tz';
-import { pt } from 'date-fns/locale';
+import { formatToTimezone } from 'helpers/time';
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
@@ -27,39 +22,44 @@ export default function DevotionalSection() {
   }
 
   const {
-    title, body, author, scheduledTo,
-  } = data.data;
+ title, body, author, scheduledTo, coverImage, coverThumbnail,
+} = data.data;
 
   const formatedScheduledDate = useMemo(
-    () => formatInTimeZone(
-      new Date(scheduledTo),
-      'America/Sao_Paulo',
-      "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
-      { locale: pt },
-    ),
+    () => formatToTimezone(scheduledTo, "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
     [scheduledTo],
   );
 
   return (
-    <Container maxW="3xl">
-      <Stack as={Box} spacing={{ base: 8, md: 14 }} py={{ base: 20, md: 36 }}>
-        <Heading
-          fontWeight={600}
-          fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-          lineHeight="110%"
-        >
-          {title}
-        </Heading>
-        <Box dangerouslySetInnerHTML={{ __html: body }} />
+    <>
+      <Box
+        w="100%"
+        bg={`url(${coverImage})`}
+        h={{ base: '200px', md: '300px' }}
+        bgSize="cover"
+        bgPos="center"
+        bgRepeat="no-repeat"
+        borderRadius="xl"
+      />
+      <Container maxW="3xl">
+        <Stack as={Box} spacing={{ base: 8, md: 14 }} py={{ base: 5, md: 10 }}>
+          <Heading
+            fontWeight={600}
+            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+            lineHeight="110%"
+          >
+            {title}
+          </Heading>
+          <Box dangerouslySetInnerHTML={{ __html: body }} />
 
-        <Text fontFamily="Caveat" fontSize="lg">
-          {formatedScheduledDate}
-          {' '}
-          por
-          {' '}
-          {author}
-        </Text>
-      </Stack>
-    </Container>
+          <Text fontFamily="Caveat" fontSize="lg">
+            {formatedScheduledDate}
+{' '}
+por
+{author}
+          </Text>
+        </Stack>
+      </Container>
+    </>
   );
 }

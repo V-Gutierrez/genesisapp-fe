@@ -13,6 +13,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { Formik, FormikHelpers } from 'formik';
+import { RQ_FORMAT_OPTIONS, RQ_TOOLBAR_OPTIONS } from 'helpers/reactQuill';
 import { useMutation, useQuery } from 'react-query';
 
 import { CREATE_DEVOTIONAL } from 'services/mutations';
@@ -22,33 +23,6 @@ import { GET_DEVOTIONALS } from 'services/queries';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
-const RQ_TOOLBAR_OPTIONS = [
-  [{ header: [1, 2, false] }],
-  ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-  [{ color: [] }, { background: [] }],
-  [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
-  [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
-  ['link', 'image'],
-  ['clean'],
-];
-
-const RQ_FORMAT_OPTIONS = [
-  'header',
-  'align',
-  'bold',
-  'italic',
-  'underline',
-  'strike',
-  'blockquote',
-  'list',
-  'bullet',
-  'indent',
-  'link',
-  'image',
-  'color',
-  'background',
-];
-
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
@@ -57,6 +31,16 @@ const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
   const { mutateAsync: createDevotional } = useMutation(CREATE_DEVOTIONAL);
   const { refetch } = useQuery('devotionals', GET_DEVOTIONALS);
 
+  const handleFileChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    fieldSetter: (field: string, value: any, shouldValidate?: boolean | undefined) => void,
+  ) => {
+    const { files } = e.target;
+    const { 0: file } = files as FileList;
+
+    fieldSetter('coverImage', file);
+  };
+
   const onSubmit = async (
     values: DevotionalFormValues,
     FormikHelpersObject: FormikHelpers<DevotionalFormValues>,
@@ -64,10 +48,12 @@ const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
     FormikHelpersObject.setSubmitting(true);
     try {
       await createDevotional(values);
+
       toast({
         title: 'Devocional criado com sucesso',
         status: 'success',
       });
+
       await refetch();
       onClose();
     } catch (e) {
@@ -86,8 +72,8 @@ const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
       onSubmit={onSubmit}
     >
       {({
-        errors, touched, handleSubmit, handleChange, isSubmitting, setFieldValue, values,
-      }) => (
+ errors, touched, handleSubmit, handleChange, isSubmitting, setFieldValue, values,
+}) => (
         <form onSubmit={handleSubmit}>
           <Stack spacing={6} p={{ base: 2 }} mb={{ base: 10 }}>
             <Box>
@@ -108,9 +94,27 @@ const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
 
             <Box>
               <FormLabel fontSize={{ base: '16px' }}>Autor</FormLabel>
-              <Input value={values.author} type="text" id="author" onChange={handleChange} />
+              <Input type="text" id="author" onChange={handleChange} />
               <Text fontSize={{ base: '12px' }} color="red">
                 {errors.author && touched.author && errors.author}
+              </Text>
+            </Box>
+
+            <Box>
+              <FormLabel fontSize={{ base: '16px' }}>Capa do Devocional</FormLabel>
+              <Input
+                type="file"
+                id="coverImage"
+                accept="image/png, image/jpeg"
+                textAlign="center"
+                d="flex"
+                capture
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  handleFileChange(e, setFieldValue);
+                }}
+              />
+              <Text fontSize={{ base: '12px' }} color="red">
+                {errors.coverImage && touched.body && errors.coverImage}
               </Text>
             </Box>
 
@@ -120,7 +124,7 @@ const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
                   <FormLabel fontSize={{ base: '16px' }}>Texto do Devocional</FormLabel>
                 </HStack>
                 <Box
-                  h={{ base: '450px' }}
+                  h={{ base: '250px' }}
                   overflowY="scroll"
                   css={{
                     '&::-webkit-scrollbar': {
@@ -157,18 +161,18 @@ const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
                     {errors.body && touched.body && errors.body}
                   </Text>
                 </Box>
-
               </Stack>
             </Box>
           </Stack>
 
-          <Flex w="100%" justifyContent="center" mt={{ base: 6 }}>
+          <Flex w="100%" justifyContent="center" mt={{ base: 2 }}>
             <Button
               colorScheme="blackAlpha"
               type="submit"
               bg="blackAlpha.900"
               minW="200px"
               variant="solid"
+              disabled={isSubmitting}
             >
               {isSubmitting ? <Spinner /> : 'Criar'}
             </Button>

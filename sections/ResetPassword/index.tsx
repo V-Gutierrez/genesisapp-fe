@@ -153,7 +153,13 @@ const ResetPassword: React.FC = () => {
                 align="start"
                 justify="space-between"
               />
-              <Button colorScheme="blackAlpha" type="submit" bg="blackAlpha.900" variant="solid">
+              <Button
+                colorScheme="blackAlpha"
+                type="submit"
+                bg="blackAlpha.900"
+                variant="solid"
+                disabled={isSubmitting}
+              >
                 {isSubmitting ? <Spinner /> : 'Continuar'}
               </Button>
             </Stack>

@@ -58,12 +58,13 @@ export const LOGOUT = async () => {
 };
 
 export const CREATE_DEVOTIONAL = async (values: DevotionalFormValues) => {
-  await Axios.post('/devotionals', {
-    body: values.body,
-    title: values.title,
-    scheduledTo: values.scheduledTo,
-    author: values.author,
+  const formdata = new FormData();
+
+  Object.entries(values).forEach(([key, value]) => {
+    formdata.append(key, value);
   });
+
+  await Axios.post('/devotionals', formdata);
 };
 
 export const DELETE_DEVOTIONAL = async (id: string) => {

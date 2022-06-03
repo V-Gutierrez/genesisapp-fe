@@ -126,7 +126,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
                     </Link>
                   </Stack>
                   <Button
-                    disabled={!isValid}
+                    disabled={!isValid || isSubmitting}
                     colorScheme="blackAlpha"
                     type="submit"
                     bg="blackAlpha.900"

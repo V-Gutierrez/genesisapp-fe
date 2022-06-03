@@ -1,9 +1,5 @@
 import {
-  Box,
-  Button,
-  Flex,
-  Text,
-  useDisclosure,
+ Box, Button, Flex, Text, useDisclosure,
 } from '@chakra-ui/react';
 
 import { AiFillPlusCircle } from 'react-icons/ai';
@@ -40,7 +36,7 @@ export default function Devotionals() {
           onClick={onOpen}
         >
           Criar Devocional
-          {' '}
+{' '}
           <Box ml={{ base: 2 }}>
             <AiFillPlusCircle />
           </Box>
@@ -53,16 +49,7 @@ export default function Devotionals() {
         {!scheduledDevotionals.length && <Text my="10px">Não há devocionais agendados</Text>}
 
         {scheduledDevotionals.map((devotional) => (
-          <DevotionalDashCard
-            key={devotional.id}
-            id={devotional.id}
-            authorName={devotional.author}
-            title={devotional.title}
-            content={devotional.body}
-            scheduledTo={devotional.scheduledTo}
-            refetch={refetch}
-            slug={devotional.slug}
-          />
+          <DevotionalDashCard key={devotional.id} {...devotional} refetch={refetch} />
         ))}
 
         <Text fontSize={{ base: '18px' }} fontWeight="600" my={{ base: 4 }}>
@@ -71,16 +58,7 @@ export default function Devotionals() {
         {!releasedDevotionals.length && <Text my="10px">Não há devocionais lançados</Text>}
 
         {releasedDevotionals.map((devotional) => (
-          <DevotionalDashCard
-            key={devotional.id}
-            id={devotional.id}
-            authorName={devotional.author}
-            title={devotional.title}
-            content={devotional.body}
-            scheduledTo={devotional.scheduledTo}
-            refetch={refetch}
-            slug={devotional.slug}
-          />
+          <DevotionalDashCard {...devotional} refetch={refetch} />
         ))}
       </Flex>
       <DevotionalCreationModal isOpen={isOpen} onClose={onClose} />

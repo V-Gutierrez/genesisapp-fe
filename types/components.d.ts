@@ -114,13 +114,7 @@ interface StatsCardProps {
   stat: number;
 }
 
-interface DevotionalDashCardProps {
-  id: string;
-  title: string;
-  slug: string;
-  content: string;
-  authorName: string;
-  scheduledTo: string;
+interface DevotionalDashCardProps extends Devotional {
   refetch: <TPageData>(
     options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
   ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>;

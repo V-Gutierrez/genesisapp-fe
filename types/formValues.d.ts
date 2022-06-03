@@ -27,4 +27,5 @@ interface DevotionalFormValues {
   title: string;
   scheduledTo: string;
   author: string;
+  coverImage?: File
 }

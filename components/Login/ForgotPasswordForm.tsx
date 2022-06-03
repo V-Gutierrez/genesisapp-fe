@@ -87,6 +87,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ visibilityHandler }) =>
                     variant="solid"
                     minW="100%"
                     mt={10}
+                    disabled={isSubmitting}
                   >
                     {isSubmitting ? <Spinner /> : 'Restaurar senha'}
                   </Button>

@@ -241,6 +241,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                     type="submit"
                     bg="blackAlpha.900"
                     variant="solid"
+                    disabled={isSubmitting}
                   >
                     {isSubmitting ? <Spinner /> : 'Continuar'}
                   </Button>
