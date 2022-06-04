@@ -1,8 +1,4 @@
-import {
-  Box,
-  Flex,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 
@@ -55,10 +51,10 @@ const DevotionalsSlider: React.FC = () => {
   return (
     <Box w="100%" p={{ md: 6 }}>
       <Text
-        fontSize={{ base: '26px' }}
-        paddingLeft={{ base: 0, sm: 4 }}
+        fontSize={{ base: '20px' }}
+        paddingLeft={{ base: 4, sm: 4 }}
         m={0}
-        textAlign={{ base: 'center', sm: 'initial' }}
+        textAlign={{ base: 'initial', sm: 'initial' }}
       >
         Devocionais
       </Text>
@@ -83,23 +79,39 @@ const DevotionalsSlider: React.FC = () => {
           },
         }}
       >
-        {arrowVisibility.left
-          && (
-            <Box d={{ base: 'none', sm: 'initial' }} pos="fixed" left={{ base: 2 }} onClick={handleSwipeLeft} cursor="pointer">
-              <BsChevronLeft />
-            </Box>
-          )}
+        {arrowVisibility.left && (
+          <Box
+            d={{ base: 'none', sm: 'initial' }}
+            pos="fixed"
+            left={{ base: 2 }}
+            onClick={handleSwipeLeft}
+            cursor="pointer"
+          >
+            <BsChevronLeft />
+          </Box>
+        )}
         {data?.data.map((devotional) => (
-          <Flex mx={{ base: 1 }} key={devotional.id} alignItems="center" justifyContent="center" scrollSnapAlign="start">
+          <Flex
+            mx={{ base: 1 }}
+            key={devotional.id}
+            alignItems="center"
+            justifyContent="center"
+            scrollSnapAlign="start"
+          >
             <DevotionalCard {...devotional} />
           </Flex>
         ))}
-        {arrowVisibility.right
-          && (
-            <Box d={{ base: 'none', sm: 'initial' }} pos="fixed" right={{ base: 2 }} onClick={handleSwipeRight} cursor="pointer">
-              <BsChevronRight />
-            </Box>
-          )}
+        {arrowVisibility.right && (
+          <Box
+            d={{ base: 'none', sm: 'initial' }}
+            pos="fixed"
+            right={{ base: 2 }}
+            onClick={handleSwipeRight}
+            cursor="pointer"
+          >
+            <BsChevronRight />
+          </Box>
+        )}
       </Flex>
     </Box>
   );
