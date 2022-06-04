@@ -1,3 +1,5 @@
+import 'styles/custom.css';
+
 import { ChakraProvider, ScaleFade } from '@chakra-ui/react';
 
 import type { AppProps } from 'next/app';

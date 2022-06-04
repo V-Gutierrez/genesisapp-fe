@@ -106,23 +106,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
 
                 <Stack spacing={6} mt={6}>
                   <Stack
-                    direction={{ base: 'row', sm: 'row' }}
+                    direction={{ base: 'column', sm: 'row' }}
                     align="start"
                     justify="space-between"
                   >
-                    <Link
-                      color="blue.500"
-                      fontSize={{ base: '12px', md: '14px' }}
-                      onClick={handleSeePasswordRecovery}
-                    >
-                      Esqueci a senha
+                    <Link color="blue.500" onClick={handleSignUp}>
+                      Não tem cadastro?
                     </Link>
-                    <Link
-                      color="blue.500"
-                      fontSize={{ base: '12px', md: '14px' }}
-                      onClick={handleSignUp}
-                    >
-                      Não tenho cadastro
+                    <Link color="blue.500" onClick={handleSeePasswordRecovery}>
+                      Esqueci a senha
                     </Link>
                   </Stack>
                   <Button
