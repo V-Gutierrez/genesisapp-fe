@@ -58,7 +58,7 @@ const UserInfo: React.FC = () => {
           <Avatar size="2xl" name={userData.name} bg="blackAlpha.900" color="white" />
         </Center>
         <br />
-        <Center background={isAdmin ? 'yellow.800' : 'inherit'}>
+        <Center>
           <p>{userData.name}</p>
         </Center>
         <br />
