@@ -1,5 +1,5 @@
 import {
- Avatar, Box, Center, Heading, Stack, Text, useColorModeValue,
+ Box, Center, Heading, Image, Stack, Text, useColorModeValue,
 } from '@chakra-ui/react';
 
 import Link from 'next/link';
@@ -7,11 +7,7 @@ import { formatToTimezone } from 'helpers/time';
 import { useMemo } from 'react';
 
 export default function DevotionalCard({
-  scheduledTo,
-  author,
-  title,
-  slug,
-  coverThumbnail,
+ scheduledTo, author, title, slug,
 }: Devotional) {
   const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo]);
 
@@ -47,16 +43,7 @@ export default function DevotionalCard({
               {title}
             </Heading>
           </Stack>
-          <Stack mt={6} direction="row" spacing={4} align="center">
-            <Avatar
-              bg="blackAlpha.900"
-              name={author}
-              src={coverThumbnail}
-              bgSize="cover"
-              bgPos="center"
-              bgRepeat="no-repeat"
-              borderRadius="xl"
-            />
+          <Stack mt={12} direction="row" spacing={4} align="center">
             <Stack direction="column" spacing={0} fontSize="sm">
               <Text fontWeight={600}>{author}</Text>
               <Text color="gray.500">{formatedScheduledDate}</Text>

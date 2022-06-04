@@ -1,8 +1,5 @@
 import {
-  Flex,
-  Grid,
-  GridItem,
-  Text,
+ Flex, Grid, GridItem, Text,
 } from '@chakra-ui/react';
 
 import DevotionalCard from 'components/DevotionalCard';
@@ -15,7 +12,9 @@ const Devocionais: React.FC = () => {
   if (!data || !data.data.length) {
     return (
       <Flex h="80vh" w="full" justifyContent="center" alignItems="center">
-        <Text fontSize={{ base: '20px' }}>Não há devocionais disponíveis no momento</Text>
+        <Text fontSize={{ base: '16px', md: '18px' }}>
+          Não há devocionais disponíveis no momento
+        </Text>
       </Flex>
     );
   }

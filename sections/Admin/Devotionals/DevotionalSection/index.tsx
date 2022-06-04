@@ -36,7 +36,7 @@ export default function DevotionalSection() {
         w="100%"
         bg={`url(${coverImage})`}
         h={{ base: '200px', md: '300px' }}
-        bgSize="cover"
+        bgSize={{ base: 'contain', sm: 'cover' }}
         bgPos="center"
         bgRepeat="no-repeat"
         borderRadius="xl"
