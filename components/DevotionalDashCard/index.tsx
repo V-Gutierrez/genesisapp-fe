@@ -1,6 +1,13 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai';
 import {
- Avatar, Box, Button, Flex, chakra, useColorModeValue, useToast,
+  Box,
+  Button,
+  Flex,
+  Image,
+  Skeleton,
+  chakra,
+  useColorModeValue,
+  useToast,
 } from '@chakra-ui/react';
 import React, { useMemo, useState } from 'react';
 
@@ -97,6 +104,7 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
           fontWeight="medium"
           fontSize="15px"
           pb={4}
+          mr={3}
           maxHeight={seeAll ? 'auto' : '70px'}
           textOverflow="ellipsis"
           wordBreak="break-word"
@@ -119,16 +127,6 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
           </chakra.p>
         </Flex>
       </Flex>
-      <Avatar
-        userSelect="none"
-        name={author}
-        height="80px"
-        src={coverThumbnail}
-        width="80px"
-        bg="blackAlpha.900"
-        alignSelf="center"
-        m={{ base: '0 0 35px 0', md: '0 0 0 50px' }}
-      />
       <Box pos="absolute" top="0px" right="15px">
         <OptionsButton>
           {!isFuture(new Date(scheduledTo)) && (

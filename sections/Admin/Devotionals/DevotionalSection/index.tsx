@@ -1,5 +1,5 @@
 import {
- Box, Container, Heading, Stack, Text,
+ Box, Container, Flex, Heading, Image, Skeleton, Stack, Text,
 } from '@chakra-ui/react';
 
 import { GET_DEVOTIONAL_BY_SLUG } from 'services/queries';
@@ -22,7 +22,7 @@ export default function DevotionalSection() {
   }
 
   const {
- title, body, author, scheduledTo, coverImage, coverThumbnail,
+ title, body, author, scheduledTo, coverImage,
 } = data.data;
 
   const formatedScheduledDate = useMemo(
@@ -31,26 +31,25 @@ export default function DevotionalSection() {
   );
 
   return (
-    <>
-      <Box
+    <Flex flexDir="column" w="100%" overflow="clip" align="center">
+      <Image
+        fallback={<Skeleton />}
+        src={coverImage}
         w="100%"
-        bg={`url(${coverImage})`}
         h={{ base: '200px', md: '300px' }}
-        bgSize={{ base: 'contain', sm: 'cover' }}
-        bgPos="center"
-        bgRepeat="no-repeat"
         borderRadius="xl"
+        objectFit="cover"
       />
       <Container maxW="3xl">
         <Stack as={Box} spacing={{ base: 8, md: 14 }} py={{ base: 5, md: 10 }}>
           <Heading
             fontWeight={600}
             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-            lineHeight="110%"
+            lineHeight="100%"
           >
             {title}
           </Heading>
-          <Box dangerouslySetInnerHTML={{ __html: body }} />
+          <Box dangerouslySetInnerHTML={{ __html: body }} maxW="100%" />
 
           <Text fontFamily="Caveat" fontSize="lg">
             {formatedScheduledDate}
@@ -60,6 +59,6 @@ por
           </Text>
         </Stack>
       </Container>
-    </>
+    </Flex>
   );
 }
