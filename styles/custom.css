@@ -18,6 +18,10 @@ body {
 
 }
 
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
+}
+
 
 .customPopup .leaflet-popup-content-wrapper .leaflet-popup-content {
   color: white;
