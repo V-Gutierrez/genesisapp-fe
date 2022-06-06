@@ -39,6 +39,7 @@ export default function DevotionalSection() {
         h={{ base: '200px', md: '300px' }}
         borderRadius="xl"
         objectFit="cover"
+        htmlHeight="200px"
       />
       <Container maxW="3xl">
         <Stack as={Box} spacing={{ base: 8, md: 14 }} py={{ base: 5, md: 10 }}>
