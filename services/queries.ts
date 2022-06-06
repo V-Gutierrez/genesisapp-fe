@@ -14,3 +14,4 @@ export const GET_DEVOTIONAL_BY_SLUG = async (
 };
 
 export const GET_STATS = async () => Axios.get<Stats>('/stats');
+export const REFRESH_TOKEN = async () => Axios.get('/auth');
