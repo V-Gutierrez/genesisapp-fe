@@ -108,7 +108,6 @@ const DevotionalEditor: React.FC<DevotionalEditorProps> = ({ onClose }) => {
                 accept="image/png, image/jpeg"
                 textAlign="center"
                 d="flex"
-                capture
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   handleFileChange(e, setFieldValue);
                 }}
