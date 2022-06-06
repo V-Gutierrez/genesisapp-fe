@@ -1,13 +1,6 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai';
 import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  Skeleton,
-  chakra,
-  useColorModeValue,
-  useToast,
+ Box, Button, Flex, chakra, useColorModeValue, useToast,
 } from '@chakra-ui/react';
 import React, { useMemo, useState } from 'react';
 
@@ -24,7 +17,6 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
   body,
   title,
   id,
-  coverThumbnail,
   scheduledTo,
   slug,
   refetch,
