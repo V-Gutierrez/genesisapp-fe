@@ -6,20 +6,22 @@ export const REQUEST_RESET_PASSWORD = async (values: ForgotPasswordFormValues) =
   });
 };
 
-export const LOGIN = async (values: LoginFormValues) => {
+export const LOGIN = async ({ email, password }: LoginFormValues) => {
   await Axios.post('/auth', {
-    email: values.email,
-    password: values.password,
+    email,
+    password,
   });
 };
 
-export const SIGN_UP = async (values: SignUpFormValues) => {
+export const SIGN_UP = async ({
+ email, password, name, phone, birthdate,
+}: SignUpFormValues) => {
   await Axios.post<{ error: string }>('/users', {
-    email: values.email,
-    password: values.password,
-    name: values.name,
-    phone: values.phone,
-    birthdate: values.birthdate,
+    email,
+    password,
+    name,
+    phone,
+    birthdate,
   });
 };
 
