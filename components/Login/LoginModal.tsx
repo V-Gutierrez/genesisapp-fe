@@ -24,7 +24,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
   });
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered size="md" scrollBehavior="outside">
+    <Modal isOpen={isOpen} onClose={onClose} isCentered size="sm" scrollBehavior="outside">
       <ModalOverlay />
       <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
         <ModalCloseButton />
