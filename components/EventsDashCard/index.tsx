@@ -22,6 +22,7 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({
   refetch,
   subscriptions,
   maxSubscriptions,
+  coverImage,
 }) => {
   const { mutateAsync: deleteEvent } = useMutation(DELETE_EXTERNAL_EVENT)
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -56,7 +57,8 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({
       p={10}
       justifyContent="space-between"
       position="relative"
-      bg={useColorModeValue('white', 'gray.800')}
+      bgPos="center"
+      bgImage={coverImage}
     >
       <Flex direction="column" textAlign="left" justifyContent="space-between">
         <Box
@@ -70,8 +72,8 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({
           overflow="hidden"
           cursor="pointer"
         >
-          <Flex pt={{ base: '20px' }} flexDir="column" align="flex-start">
-            <chakra.p fontWeight="bold" fontSize={14}>
+          <Flex pt={{ base: '20px' }} flexDir="column" align="flex-start" filter="invert(100%)">
+            <chakra.p fontWeight="bold" fontSize={14} mixBlendMode="screen">
               {title}
             </chakra.p>
 

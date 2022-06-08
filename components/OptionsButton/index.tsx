@@ -7,13 +7,13 @@ import {
   PopoverContent,
   PopoverTrigger,
   Stack,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import { BsThreeDotsVertical } from 'react-icons/bs';
+import { BsThreeDotsVertical } from 'react-icons/bs'
 
 export default function OptionsButton({ children }: OptionsButtonProps) {
   return (
-    <Flex justifyContent="center" mt={4}>
+    <Flex justifyContent="center" mt={4} bg="white" borderRadius="xl">
       <Popover placement="left" isLazy>
         {/* @ts-ignore */}
         <PopoverTrigger>
@@ -34,5 +34,5 @@ export default function OptionsButton({ children }: OptionsButtonProps) {
         </PopoverContent>
       </Popover>
     </Flex>
-  );
+  )
 }
