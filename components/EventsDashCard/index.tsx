@@ -76,13 +76,13 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({
             </chakra.p>
 
             <Text>
-Inscritos:
-{subscriptions.length}
-</Text>
+              Inscritos:
+              {` ${subscriptions.length}`}
+            </Text>
             <Text>
-Vagas:
-{maxSubscriptions - subscriptions.length}
-</Text>
+              Vagas:
+              {` ${maxSubscriptions - subscriptions.length}`}
+            </Text>
           </Flex>
         </Box>
       </Flex>
