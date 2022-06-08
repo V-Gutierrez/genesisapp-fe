@@ -46,7 +46,7 @@ export default function SubscribersModal({
             </Flex>
           )}
 
-          {subscriptions && subscriptions.length && (
+          {subscriptions?.length ? (
             <UserRow
               name="Nome"
               phone="Telefone"
@@ -54,12 +54,13 @@ export default function SubscribersModal({
               createdAt="Data de inscrição"
               index={1}
             />
-          )}
-          {subscriptions
-            && subscriptions.length
-            && subscriptions.map((subscription, index) => (
-              <UserRow key={subscription.id} {...subscription} index={index} />
-            ))}
+          ) : null}
+
+          {subscriptions.length
+            ? subscriptions.map((subscription, index) => (
+                <UserRow key={subscription.id} {...subscription} index={index} />
+              ))
+            : null}
         </ModalBody>
         <ModalFooter />
       </ModalContent>

@@ -77,10 +77,12 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({
 
             <Text>
 Inscritos:
+{' '}
 {subscriptions.length}
 </Text>
             <Text>
 Vagas:
+{' '}
 {maxSubscriptions - subscriptions.length}
 </Text>
           </Flex>

@@ -11,6 +11,7 @@ const UserRow: React.FC<Partial<ExternalEventSubscriptions> & { index: number }>
 }) => (
     <Flex
       w="100%"
+      minH="20px"
       justifyContent="space-evenly"
       alignItems="center"
       bg={index % 2 ? 'white' : 'gray.200'}
