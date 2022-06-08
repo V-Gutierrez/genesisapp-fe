@@ -1,4 +1,4 @@
-import { AiOutlineDelete, AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineDelete, AiOutlineUser } from 'react-icons/ai'
 import {
   Box,
   Button,
@@ -8,13 +8,13 @@ import {
   useColorModeValue,
   useDisclosure,
   useToast,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import { DELETE_EXTERNAL_EVENT } from 'services/mutations';
-import OptionsButton from 'components/OptionsButton';
-import React from 'react';
-import SubscribersModal from 'components/EventsDashCard/SubscribersModal';
-import { useMutation } from 'react-query';
+import { DELETE_EXTERNAL_EVENT } from 'services/mutations'
+import OptionsButton from 'components/OptionsButton'
+import React from 'react'
+import SubscribersModal from 'components/EventsDashCard/SubscribersModal'
+import { useMutation } from 'react-query'
 
 const EventsDashCard: React.FC<EventsDashCardProps> = ({
   title,
@@ -23,27 +23,27 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({
   subscriptions,
   maxSubscriptions,
 }) => {
-  const { mutateAsync: deleteEvent } = useMutation(DELETE_EXTERNAL_EVENT);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { mutateAsync: deleteEvent } = useMutation(DELETE_EXTERNAL_EVENT)
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const toast = useToast();
+  const toast = useToast()
 
   const handleDevotionalDelete = async () => {
     try {
-      await deleteEvent(id);
-      await refetch();
+      await deleteEvent(id)
+      await refetch()
 
       toast({
         title: 'Evento deletado com sucesso',
         status: 'success',
-      });
+      })
     } catch (error) {
       toast({
         title: 'Houve um erro ao deletar o Evento',
         status: 'error',
-      });
+      })
     }
-  };
+  }
 
   return (
     <Flex
@@ -77,12 +77,10 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({
 
             <Text>
 Inscritos:
-{' '}
 {subscriptions.length}
 </Text>
             <Text>
 Vagas:
-{' '}
 {maxSubscriptions - subscriptions.length}
 </Text>
           </Flex>
@@ -118,7 +116,7 @@ Vagas:
       </Box>
       <SubscribersModal isOpen={isOpen} onClose={onClose} subscriptions={subscriptions} />
     </Flex>
-  );
-};
+  )
+}
 
-export default EventsDashCard;
+export default EventsDashCard

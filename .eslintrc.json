@@ -47,7 +47,8 @@
         "react/jsx-closing-tag-location": "off",
         "max-len": "off",
         "import/prefer-default-export": "off",
-        "react-hooks/rules-of-hooks": "warn"
+        "react-hooks/rules-of-hooks": "warn",
+        "semi": "off"
     },
     "ignorePatterns": [
         "*.d.ts"
