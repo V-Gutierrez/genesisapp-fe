@@ -39,3 +39,25 @@ interface Stats {
   devotionals: number;
   groups: number;
 }
+
+interface ExternalEventSubscriptions {
+  id: string
+  name: string
+  email: string
+  phone: string
+}
+
+interface ExternalEvent {
+  id: string;
+  createdAt: string;
+  scheduledTo: string;
+  title: string;
+  description: string;
+  lat: number;
+  lng: number;
+  addressInfo: string;
+  maxSubscriptions: number;
+  coverImage: string;
+  coverThumbnail: string;
+  subscription: ExternalEventSubscriptions[]
+}

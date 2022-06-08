@@ -8,9 +8,9 @@ import {
   ModalOverlay,
 } from '@chakra-ui/react';
 
-import DevotionalEditor from 'sections/Admin/Devotionals/components/DevotionalEditor';
+import EventEditor from 'sections/Admin/Events/components/EventEditor';
 
-const DevotionalCreationModal: React.FC<CreationModalProps> = ({ isOpen, onClose }) => (
+const EventCreationModal: React.FC<CreationModalProps> = ({ isOpen, onClose }) => (
   <Modal isOpen={isOpen} onClose={onClose} isCentered size="2lg" scrollBehavior="inside">
     <ModalOverlay />
     <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
@@ -33,11 +33,11 @@ const DevotionalCreationModal: React.FC<CreationModalProps> = ({ isOpen, onClose
           },
         }}
       >
-        <DevotionalEditor onClose={onClose} />
+        <EventEditor onClose={onClose} />
       </ModalBody>
       <ModalFooter />
     </ModalContent>
   </Modal>
 );
 
-export default DevotionalCreationModal;
+export default EventCreationModal;

@@ -124,16 +124,22 @@ interface DevotionalDashCardProps extends Devotional {
   ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>;
 }
 
+interface EventsDashCardProps extends ExternalEvent {
+  refetch: <TPageData>(
+    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
+  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>;
+}
+
 interface OptionsButtonProps {
   children: Element | Element[] | ReactNode | ReactNode[];
 }
 
-interface DevotionalCreationModalProps {
+interface CreationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type DevotionalEditorProps = Pick<DevotionalCreationModalProps, 'onClose'>;
+type EditorProps = Pick<CreationModalProps, 'onClose'>;
 
 interface NewsCardProps {
   goTo: string;

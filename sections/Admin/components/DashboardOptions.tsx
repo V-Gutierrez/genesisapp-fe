@@ -5,6 +5,7 @@ import OptionCard from 'components/OptionCard';
 
 const AdminOptions: Array<AdminOptions> = [
   { title: 'Devocionais', icon: HiOutlineBookOpen, goTo: '/admin/devocionais' },
+  { title: 'Eventos', icon: HiOutlineBookOpen, goTo: '/admin/eventos' },
 ];
 
 function DashboardOptions() {

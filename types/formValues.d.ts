@@ -29,3 +29,12 @@ interface DevotionalFormValues {
   author: string;
   coverImage?: File
 }
+interface ExternalEventFormValues {
+  title: string;
+  description: string;
+  lng: number;
+  lat: number;
+  addressInfo: string;
+  scheduledTo: string;
+  coverImage?: File
+}

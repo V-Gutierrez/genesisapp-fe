@@ -67,7 +67,7 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
 
   return (
     <Formik
-      initialValues={DEVOTIONAL_CREATION_INITIAL_VALUES}
+      initialValues={EXTERNAL_EVENT_CREATION_INITIAL_VALUES}
       validationSchema={DEVOTIONAL_CREATION_SCHEMA}
       onSubmit={onSubmit}
     >

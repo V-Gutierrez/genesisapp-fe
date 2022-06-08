@@ -25,3 +25,12 @@ export const DEVOTIONAL_CREATION_INITIAL_VALUES = {
   scheduledTo: '',
   author: '',
 };
+
+export const EXTERNAL_EVENT_CREATION_INITIAL_VALUES = {
+  title: '',
+  description: '',
+  lng: 0,
+  lat: 0,
+  addressInfo: '',
+  scheduledTo: '',
+};
