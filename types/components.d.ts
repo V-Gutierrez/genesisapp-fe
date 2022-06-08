@@ -17,6 +17,10 @@ interface NavItemProps {
 interface SidebarProps {
   onClose: () => void;
 }
+interface CustomSliderProps<T> {
+  children: ReactNode | ReactNode[]
+  customSettings?: T
+}
 
 interface CoordsState {
   lat: number | null;
@@ -130,3 +134,9 @@ interface DevotionalCreationModalProps {
 }
 
 type DevotionalEditorProps = Pick<DevotionalCreationModalProps, 'onClose'>;
+
+interface NewsCardProps {
+  goTo: string;
+  imageSrc: string
+  mobileImageSrc: string
+}

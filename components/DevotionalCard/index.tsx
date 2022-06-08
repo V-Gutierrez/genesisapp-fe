@@ -1,5 +1,11 @@
 import {
- Box, Center, Heading, Image, Stack, Text, useColorModeValue,
+ Box,
+ Center,
+ Heading,
+ Image,
+ Stack,
+ Text,
+ useColorModeValue,
 } from '@chakra-ui/react';
 
 import Link from 'next/link';
@@ -12,7 +18,7 @@ export default function DevotionalCard({
   const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo]);
 
   return (
-    <Center py={6} cursor="pointer" userSelect="none">
+    <Center py={6} cursor="pointer" userSelect="none" mx={2}>
       <Link href={`/devocionais/${slug}`}>
         <Box
           maxW={{ base: '300px' }}
