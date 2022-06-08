@@ -37,4 +37,5 @@ interface ExternalEventFormValues {
   addressInfo: string;
   scheduledTo: string;
   coverImage?: File
+  maxSubscriptions: number;
 }

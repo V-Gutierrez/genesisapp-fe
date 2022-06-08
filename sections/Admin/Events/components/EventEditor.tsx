@@ -16,20 +16,20 @@ import { Formik, FormikHelpers } from 'formik';
 import { RQ_FORMAT_OPTIONS, RQ_TOOLBAR_OPTIONS } from 'helpers/reactQuill';
 import { useMutation, useQuery } from 'react-query';
 
-import { CREATE_DEVOTIONAL } from 'services/mutations';
-import { DEVOTIONAL_CREATION_INITIAL_VALUES } from 'helpers/formInitialValues';
-import { DEVOTIONAL_CREATION_SCHEMA } from 'helpers/validationSchemas';
-import { GET_DEVOTIONALS } from 'services/queries';
+import { CREATE_EXTERNAL_EVENT } from 'services/mutations';
+import { EXTERNAL_EVENT_CREATION_INITIAL_VALUES } from 'helpers/formInitialValues';
+import { EXTERNAL_EVENT_CREATION_SCHEMA } from 'helpers/validationSchemas';
+import { GET_EXTERNAL_EVENTS } from 'services/queries';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
+const EventEditor: React.FC<EditorProps> = ({ onClose }) => {
   const toast = useToast();
   const [toolbar, setToolbar] = useState<any>(false);
-  const { mutateAsync: createDevotional } = useMutation(CREATE_DEVOTIONAL);
-  const { refetch } = useQuery('devotionals', GET_DEVOTIONALS);
+  const { mutateAsync: createExternalEvents } = useMutation(CREATE_EXTERNAL_EVENT);
+  const { refetch } = useQuery('events', GET_EXTERNAL_EVENTS);
 
   const handleFileChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -42,15 +42,15 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
   };
 
   const onSubmit = async (
-    values: DevotionalFormValues,
-    FormikHelpersObject: FormikHelpers<DevotionalFormValues>,
+    values: ExternalEventFormValues,
+    FormikHelpersObject: FormikHelpers<ExternalEventFormValues>,
   ) => {
     FormikHelpersObject.setSubmitting(true);
     try {
-      await createDevotional(values);
+      await createExternalEvents(values);
 
       toast({
-        title: 'Devocional criado com sucesso',
+        title: 'Evento criado com sucesso',
         status: 'success',
       });
 
@@ -58,7 +58,7 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
       onClose();
     } catch (e) {
       toast({
-        title: 'Houve um erro ao criar o devocional',
+        title: 'Houve um erro ao criar o evento',
         status: 'error',
       });
     }
@@ -68,59 +68,26 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
   return (
     <Formik
       initialValues={EXTERNAL_EVENT_CREATION_INITIAL_VALUES}
-      validationSchema={DEVOTIONAL_CREATION_SCHEMA}
+      validationSchema={EXTERNAL_EVENT_CREATION_SCHEMA}
       onSubmit={onSubmit}
     >
       {({
- errors, touched, handleSubmit, handleChange, isSubmitting, setFieldValue, values,
+ errors, touched, handleSubmit, handleChange, isSubmitting, setFieldValue,
 }) => (
         <form onSubmit={handleSubmit}>
           <Stack spacing={6} p={{ base: 2 }} mb={{ base: 10 }}>
             <Box>
-              <FormLabel fontSize={{ base: '16px' }}>Título do Devocional</FormLabel>
+              <FormLabel fontSize={{ base: '16px' }}>Título do Evento</FormLabel>
               <Input type="text" id="title" onChange={handleChange} />
               <Text fontSize={{ base: '12px' }} color="red">
                 {errors.title && touched.title && errors.title}
               </Text>
             </Box>
 
-            <Box>
-              <FormLabel fontSize={{ base: '16px' }}>Data e Hora de Lançamento</FormLabel>
-              <Input type="datetime-local" id="scheduledTo" onChange={handleChange} />
-              <Text fontSize={{ base: '12px' }} color="red">
-                {errors.scheduledTo && touched.scheduledTo && errors.scheduledTo}
-              </Text>
-            </Box>
-
-            <Box>
-              <FormLabel fontSize={{ base: '16px' }}>Autor</FormLabel>
-              <Input type="text" id="author" onChange={handleChange} />
-              <Text fontSize={{ base: '12px' }} color="red">
-                {errors.author && touched.author && errors.author}
-              </Text>
-            </Box>
-
-            <Box>
-              <FormLabel fontSize={{ base: '16px' }}>Capa do Devocional</FormLabel>
-              <Input
-                type="file"
-                id="coverImage"
-                accept="image/png, image/jpeg"
-                textAlign="center"
-                d="flex"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  handleFileChange(e, setFieldValue);
-                }}
-              />
-              <Text fontSize={{ base: '12px' }} color="red">
-                {errors.coverImage && touched.body && errors.coverImage}
-              </Text>
-            </Box>
-
             <Box onClick={() => setToolbar(RQ_TOOLBAR_OPTIONS)}>
               <Stack>
                 <HStack>
-                  <FormLabel fontSize={{ base: '16px' }}>Texto do Devocional</FormLabel>
+                  <FormLabel fontSize={{ base: '16px' }}>Descrição do evento</FormLabel>
                 </HStack>
                 <Box
                   h={{ base: '250px' }}
@@ -149,7 +116,7 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
                     id="devotionalBodyEditor"
                     theme="snow"
                     onChange={(value: string) => {
-                      setFieldValue('body', value);
+                      setFieldValue('description', value);
                     }}
                     formats={RQ_FORMAT_OPTIONS}
                     modules={{
@@ -157,10 +124,51 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
                     }}
                   />
                   <Text fontSize={{ base: '12px' }} color="red">
-                    {errors.body && touched.body && errors.body}
+                    {errors.description && touched.description && errors.description}
                   </Text>
                 </Box>
               </Stack>
+            </Box>
+
+            <Box>
+              <FormLabel fontSize={{ base: '16px' }}>Data e Hora do Evento</FormLabel>
+              <Input type="datetime-local" id="scheduledTo" onChange={handleChange} />
+              <Text fontSize={{ base: '12px' }} color="red">
+                {errors.scheduledTo && touched.scheduledTo && errors.scheduledTo}
+              </Text>
+            </Box>
+
+            <Box>
+              <FormLabel fontSize={{ base: '16px' }}>Vagas</FormLabel>
+              <Input type="number" id="maxSubscriptions" onChange={handleChange} />
+              <Text fontSize={{ base: '12px' }} color="red">
+                {errors.maxSubscriptions && touched.maxSubscriptions && errors.maxSubscriptions}
+              </Text>
+            </Box>
+
+            <Box>
+              <FormLabel fontSize={{ base: '16px' }}>Endereço</FormLabel>
+              <Input type="text" id="addressInfo" onChange={handleChange} />
+              <Text fontSize={{ base: '12px' }} color="red">
+                {errors.addressInfo && touched.addressInfo && errors.addressInfo}
+              </Text>
+            </Box>
+
+            <Box>
+              <FormLabel fontSize={{ base: '16px' }}>Imagem do Evento</FormLabel>
+              <Input
+                type="file"
+                id="coverImage"
+                accept="image/png, image/jpeg"
+                textAlign="center"
+                d="flex"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  handleFileChange(e, setFieldValue);
+                }}
+              />
+              <Text fontSize={{ base: '12px' }} color="red">
+                {errors.coverImage && touched.coverImage && errors.coverImage}
+              </Text>
             </Box>
           </Stack>
 
@@ -182,4 +190,4 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
   );
 };
 
-export default DevotionalEditor;
+export default EventEditor;

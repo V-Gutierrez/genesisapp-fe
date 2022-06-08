@@ -33,4 +33,5 @@ export const EXTERNAL_EVENT_CREATION_INITIAL_VALUES = {
   lat: 0,
   addressInfo: '',
   scheduledTo: '',
+  maxSubscriptions: 0,
 };

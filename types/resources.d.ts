@@ -45,6 +45,7 @@ interface ExternalEventSubscriptions {
   name: string
   email: string
   phone: string
+  createdAt: string
 }
 
 interface ExternalEvent {
@@ -59,5 +60,5 @@ interface ExternalEvent {
   maxSubscriptions: number;
   coverImage: string;
   coverThumbnail: string;
-  subscription: ExternalEventSubscriptions[]
+  subscriptions: ExternalEventSubscriptions[]
 }

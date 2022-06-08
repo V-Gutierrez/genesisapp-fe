@@ -1,22 +1,32 @@
+import { AiOutlineDelete, AiOutlineUser } from 'react-icons/ai';
 import {
- Box, Button, Flex, chakra, useColorModeValue, useToast,
+  Box,
+  Button,
+  Flex,
+  Text,
+  chakra,
+  useColorModeValue,
+  useDisclosure,
+  useToast,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
 
-import { AiOutlineDelete } from 'react-icons/ai';
 import { DELETE_EXTERNAL_EVENT } from 'services/mutations';
 import OptionsButton from 'components/OptionsButton';
-import Quotes from 'assets/icons/quotes.svg';
+import React from 'react';
+import SubscribersModal from 'components/EventsDashCard/SubscribersModal';
 import { useMutation } from 'react-query';
 
-const EventsDashCard: React.FC<EventsDashCardProps> = ({ title, id, refetch }) => {
-  const [seeAll, setSeeAll] = useState(false);
+const EventsDashCard: React.FC<EventsDashCardProps> = ({
+  title,
+  id,
+  refetch,
+  subscriptions,
+  maxSubscriptions,
+}) => {
   const { mutateAsync: deleteEvent } = useMutation(DELETE_EXTERNAL_EVENT);
-  const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleSeeAll = () => {
-    setSeeAll((prev) => !prev);
-  };
+  const toast = useToast();
 
   const handleDevotionalDelete = async () => {
     try {
@@ -47,31 +57,6 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({ title, id, refetch }) =
       justifyContent="space-between"
       position="relative"
       bg={useColorModeValue('white', 'gray.800')}
-      _after={{
-        content: '""',
-        position: 'absolute',
-        height: '21px',
-        width: '29px',
-        left: '35px',
-        top: '-10px',
-        color: 'black',
-        backgroundSize: 'cover',
-        backgroundImage: `url(${Quotes.src})`,
-      }}
-      _before={{
-        content: '""',
-        position: 'absolute',
-        zIndex: '-1',
-        height: 'full',
-        maxW: '640px',
-        width: 'full',
-        filter: 'blur(40px)',
-        transform: 'scale(0.98)',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        top: 0,
-        left: 0,
-      }}
     >
       <Flex direction="column" textAlign="left" justifyContent="space-between">
         <Box
@@ -79,21 +64,42 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({ title, id, refetch }) =
           fontSize="15px"
           pb={4}
           mr={3}
-          maxHeight={seeAll ? 'auto' : '70px'}
+          maxHeight="auto"
           textOverflow="ellipsis"
           wordBreak="break-word"
           overflow="hidden"
           cursor="pointer"
-          onClick={handleSeeAll}
-        />
-        <Flex pt={{ base: '20px' }}>
-          <chakra.p fontWeight="bold" fontSize={14}>
-            {title}
-          </chakra.p>
-        </Flex>
+        >
+          <Flex pt={{ base: '20px' }} flexDir="column" align="flex-start">
+            <chakra.p fontWeight="bold" fontSize={14}>
+              {title}
+            </chakra.p>
+
+            <Text>
+Inscritos:
+{subscriptions.length}
+</Text>
+            <Text>
+Vagas:
+{maxSubscriptions - subscriptions.length}
+</Text>
+          </Flex>
+        </Box>
       </Flex>
       <Box pos="absolute" top="0px" right="15px">
         <OptionsButton>
+          <Button
+            w="194px"
+            variant="ghost"
+            rightIcon={<AiOutlineUser />}
+            justifyContent="space-between"
+            fontWeight="normal"
+            colorScheme="blackAlpha.900"
+            fontSize="sm"
+            onClick={onOpen}
+          >
+            Ver cadastrados
+          </Button>
           <Button
             w="194px"
             variant="ghost"
@@ -108,6 +114,7 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({ title, id, refetch }) =
           </Button>
         </OptionsButton>
       </Box>
+      <SubscribersModal isOpen={isOpen} onClose={onClose} subscriptions={subscriptions} />
     </Flex>
   );
 };

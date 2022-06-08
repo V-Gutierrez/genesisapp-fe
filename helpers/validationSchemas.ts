@@ -68,3 +68,16 @@ export const DEVOTIONAL_CREATION_SCHEMA = Yup.object().shape({
     .required('Insira o nome do autor'),
   coverImage: Yup.mixed().required('Insira uma imagem de capa').test('fileSize', 'O arquivo deve ter no máximo 5MB', (value) => value?.size <= FIVE_MB_IN_BYTES),
 });
+
+export const EXTERNAL_EVENT_CREATION_SCHEMA = Yup.object().shape({
+  title: Yup.string().max(70, 'O título deve ter no máximo 70 caracteres').required('Insira um título'),
+  description: Yup.string().max(255, 'A descrição deve ter no máximo 255 caracteres').required('Insira uma descrição'),
+  lng: Yup.number(),
+  lat: Yup.number(),
+  maxSubscriptions: Yup.number().required('Insira o número máximo de inscrições'),
+  addressInfo: Yup.string().max(255, 'A informação de endereço deve ter no máximo 255 caracteres').required('Insira uma informação de endereço'),
+  scheduledTo: Yup.string()
+    .required('Selecione uma data para o evento')
+    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number))),
+  coverImage: Yup.mixed().required('Insira uma imagem de capa').test('fileSize', 'O arquivo deve ter no máximo 5MB', (value) => value?.size <= FIVE_MB_IN_BYTES),
+});

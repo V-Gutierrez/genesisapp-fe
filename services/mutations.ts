@@ -14,7 +14,7 @@ export const LOGIN = async ({ email, password }: LoginFormValues) => {
 };
 
 export const SIGN_UP = async ({
- email, password, name, phone, birthdate,
+  email, password, name, phone, birthdate,
 }: SignUpFormValues) => {
   await Axios.post<{ error: string }>('/users', {
     email,
@@ -80,7 +80,10 @@ export const CREATE_EXTERNAL_EVENT = async (values: ExternalEventFormValues) => 
     formdata.append(key, value);
   });
 
-  await Axios.post('/devotionals', formdata);
+  formdata.append('lat', '0');
+  formdata.append('lng', '0');
+
+  await Axios.post('/externalevents', formdata);
 };
 
 export const DELETE_EXTERNAL_EVENT = async (id: string) => {

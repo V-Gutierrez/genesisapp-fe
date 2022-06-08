@@ -3,7 +3,7 @@ import {
 } from '@chakra-ui/react';
 
 import { AiFillPlusCircle } from 'react-icons/ai';
-import DevotionalCreationModal from 'sections/Admin/Devotionals/components/DevotionalCreationModal';
+import EventCreationModal from 'sections/Admin/Events/components/EventCreationModal';
 import EventsDashCard from 'components/EventsDashCard';
 import { GET_EXTERNAL_EVENTS } from 'services/queries';
 import React from 'react';
@@ -62,7 +62,7 @@ export default function Events() {
           <EventsDashCard {...event} refetch={refetch} />
         ))}
       </Flex>
-      <DevotionalCreationModal isOpen={isOpen} onClose={onClose} />
+      <EventCreationModal isOpen={isOpen} onClose={onClose} />
     </Box>
   );
 }

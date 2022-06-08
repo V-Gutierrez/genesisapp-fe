@@ -14,8 +14,12 @@ const DevotionalsSlider: React.FC = () => {
     cacheTime: inHours(24),
   });
   const slides = useBreakpointValue({
- base: 1, md: 2, lg: 3, xl: 4.5,
-});
+    base: 1,
+    md: 2,
+    lg: 3,
+    xl: 4,
+    '2xl': 6,
+  });
 
   if (!data || !data.data.length) return null;
   return (

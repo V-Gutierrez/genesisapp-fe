@@ -134,12 +134,12 @@ interface OptionsButtonProps {
   children: Element | Element[] | ReactNode | ReactNode[];
 }
 
-interface CreationModalProps {
+interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type EditorProps = Pick<CreationModalProps, 'onClose'>;
+type EditorProps = Pick<ModalProps, 'onClose'>;
 
 interface NewsCardProps {
   goTo: string;

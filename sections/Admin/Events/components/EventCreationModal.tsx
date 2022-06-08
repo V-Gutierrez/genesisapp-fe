@@ -10,7 +10,7 @@ import {
 
 import EventEditor from 'sections/Admin/Events/components/EventEditor';
 
-const EventCreationModal: React.FC<CreationModalProps> = ({ isOpen, onClose }) => (
+const EventCreationModal: React.FC<ModalProps> = ({ isOpen, onClose }) => (
   <Modal isOpen={isOpen} onClose={onClose} isCentered size="2lg" scrollBehavior="inside">
     <ModalOverlay />
     <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
