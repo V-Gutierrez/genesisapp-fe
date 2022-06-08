@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start -p $PORT",
     "lint": "next lint",
-    "prepare": "husky install",
-    "deploy": "git push heroku main"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
