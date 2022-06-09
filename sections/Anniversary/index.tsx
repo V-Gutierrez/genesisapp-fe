@@ -120,7 +120,7 @@ const AnniversarySection: React.FC = () => {
           alignContent="center"
           flexDir={{ base: 'column' }}
           w={{
-            base: '300px',
+            base: '320px',
             sm: '460px',
             md: '660px',
             lg: '700px',
@@ -129,7 +129,7 @@ const AnniversarySection: React.FC = () => {
           <Box
             h={{ base: '300px', sm: '450px' }}
             w={{
-              base: '300px',
+              base: '320px',
               sm: '460px',
               md: '660px',
               lg: '700px',

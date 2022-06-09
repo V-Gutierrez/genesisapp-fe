@@ -90,7 +90,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
       <Stack
         spacing={4}
         w={{
-          base: '300px',
+          base: '320px',
           sm: '460px',
           md: '660px',
           lg: '700px',
