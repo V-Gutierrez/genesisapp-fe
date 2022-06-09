@@ -127,6 +127,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                     type="name"
                     id="name"
                     onChange={handleChange}
+                    autoComplete="name"
                   />
                   <Text fontSize={{ base: '12px' }} color="red">
                     {errors.name && touched.name && errors.name}
@@ -145,6 +146,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                     type="email"
                     id="email"
                     onChange={handleChange}
+                    autoComplete="email"
                   />
                   <Text fontSize={{ base: '12px' }} color="red">
                     {errors.email && touched.email && errors.email}
@@ -193,6 +195,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                           : `${values.region} ** * ****-****`
                       }
                       onChange={handleChange}
+                      autoComplete="off"
                     />
                     <InputRightElement
                       padding="0"
