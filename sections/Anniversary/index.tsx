@@ -134,6 +134,8 @@ const AnniversarySection: React.FC = () => {
               md: '660px',
               lg: '700px',
             }}
+            borderRadius="xl"
+            overflow="hidden"
             css={{
               '.leaflet-tile': {
                 filter: 'hue-rotate(180deg) invert(100%)',
