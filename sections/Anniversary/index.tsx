@@ -8,7 +8,7 @@ import {
   useBreakpointValue,
   useDimensions,
 } from '@chakra-ui/react'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import Belgrano from 'assets/images/belgrano.jpg'
 import { GET_EXTERNAL_EVENT_BY_SLUG } from 'services/queries'
@@ -58,6 +58,7 @@ const AnniversarySection: React.FC = () => {
   const dimensions = useDimensions(elementRef, true) || {
     contentBox: { width: '300px', height: 0 },
   }
+  const [fakeLoading, setFakeLoading] = useState(true)
 
   const sizes = useBreakpointValue({
     base: { h: '300px', w: dimensions?.contentBox.width },
@@ -76,15 +77,28 @@ const AnniversarySection: React.FC = () => {
   useEffect(() => {
     const t = setTimeout(() => {
       document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' })
-      /* @ts-ignore */
-      document.querySelector('div.leaflet-pane.leaflet-marker-pane > img').src = MarkerImg.src
+
       clearTimeout(t)
     }, 350)
 
     const t2 = setTimeout(() => {
       document.getElementById('scrolltop')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      setFakeLoading(false)
+
       clearTimeout(t2)
     }, 1850)
+
+    const t3 = setInterval(() => {
+      /* @ts-ignore */
+      const marker = document.querySelector('div.leaflet-pane.leaflet-marker-pane > img')
+
+      if (marker) {
+        /* @ts-ignore */
+        marker.src = MarkerImg.src
+      }
+      /* @ts-ignore */
+      if (marker.src === MarkerImg.src) clearInterval(t3)
+    }, 1000)
   }, [])
 
   if (!data) {
@@ -154,25 +168,29 @@ const AnniversarySection: React.FC = () => {
               },
             }}
           >
-            <MapContainer
-              /* @ts-ignore */
-              center={[-34.56701381127262, -58.44956295063482]}
-              zoomAnimation
-              zoom={15}
-              fadeAnimation
-            >
-              <TileLayer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png" />
-              <Marker position={[-34.56701381127262, -58.44956295063482]} data-tip="userTip">
-                <Popup
-                  /* @ts-ignore */
-                  className="customPopup"
-                >
-                  <Image src={Belgrano.src} />
-                  <Text>Auditório Belgrano </Text>
-                  <Text> Virrey Loreto 2348, C1426 CABA</Text>
-                </Popup>
-              </Marker>
-            </MapContainer>
+            {!fakeLoading ? (
+              <MapContainer
+                /* @ts-ignore */
+                center={[-34.56701381127262, -58.44956295063482]}
+                zoomAnimation
+                zoom={15}
+                fadeAnimation
+              >
+                <TileLayer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png" />
+                <Marker position={[-34.56701381127262, -58.44956295063482]} data-tip="userTip">
+                  <Popup
+                    /* @ts-ignore */
+                    className="customPopup"
+                  >
+                    <Image src={Belgrano.src} />
+                    <Text>Auditório Belgrano </Text>
+                    <Text> Virrey Loreto 2348, C1426 CABA</Text>
+                  </Popup>
+                </Marker>
+              </MapContainer>
+            ) : (
+              <Skeleton w="100%" h="100%" />
+            )}
           </Box>
         </Flex>
         <Flex
