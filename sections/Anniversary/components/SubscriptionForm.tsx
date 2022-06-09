@@ -68,7 +68,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
 
   if (success) {
     return (
-      <Flex bg="whiteAlpha.600" w="full" justify="center" align="center">
+      <Flex w="full" mt="50px" justify="center" align="center">
         <Success
           title="Parabéns! Sua inscrição foi registrada!"
           subtitle="Você receberá um email de confirmação."
