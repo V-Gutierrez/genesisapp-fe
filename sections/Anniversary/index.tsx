@@ -181,8 +181,6 @@ const AnniversarySection: React.FC = () => {
           color="#FF5835"
           id="scroll"
         >
-          <Heading>Inscreva-se!</Heading>
-          <Text fontStyle="italic">Auditório Belgrano, 19h, 13/06/2022</Text>
           <SubscriptionForm id={id as string} />
         </Flex>
       </Flex>

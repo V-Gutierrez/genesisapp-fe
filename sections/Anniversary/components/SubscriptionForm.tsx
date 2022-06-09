@@ -6,6 +6,7 @@ import {
   Flex,
   FormLabel,
   HStack,
+  Heading,
   Image,
   Input,
   InputGroup,
@@ -82,11 +83,15 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
       flex={1}
       align="center"
       w="100%"
-      my={4}
+      my={2}
       justify="center"
       scrollSnapAlign="center"
       flexDir={{ base: 'column' }}
     >
+      <Box my={4} mb={6}>
+        <Heading>Inscreva-se!</Heading>
+        <Text fontStyle="italic">Auditório Belgrano, 19h, 13/06/2022</Text>
+      </Box>
       <Stack
         spacing={4}
         w={{
