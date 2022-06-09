@@ -57,7 +57,7 @@ const AnniversarySection: React.FC = () => {
   const imageArt = useRef(null)
 
   const sizes = useBreakpointValue({
-    base: { h: '250px', w: '300px' },
+    base: { h: '250px', w: '330px' },
     sm: { h: '250px', w: '460px' },
     md: { h: '350px', w: '660px' },
     lg: { h: '450px', w: '700px' },
@@ -96,7 +96,7 @@ const AnniversarySection: React.FC = () => {
         <Image
           scrollSnapAlign="center"
           w={{
-            base: '300px',
+            base: '320px',
             sm: '460px',
             md: '660px',
             lg: '700px',
