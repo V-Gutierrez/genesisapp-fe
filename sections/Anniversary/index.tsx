@@ -4,17 +4,15 @@ import {
   Heading,
   Image,
   Skeleton,
-  Stack,
   Text,
   useBreakpointValue,
   useDimensions,
 } from '@chakra-ui/react'
 import React, { useEffect, useRef } from 'react'
 
-import AnniversaryNewsMobile from 'assets/images/inscricoes-festa-mobile.png'
-import Background from 'assets/images/WaveLine.svg'
 import Belgrano from 'assets/images/belgrano.jpg'
 import { GET_EXTERNAL_EVENT_BY_SLUG } from 'services/queries'
+import MarkerImg from 'assets/images/marker.png'
 import NotFound from 'pages/404'
 import SubscriptionForm from 'sections/Anniversary/components/SubscriptionForm'
 import YouTube from 'react-youtube'
@@ -57,7 +55,9 @@ const AnniversarySection: React.FC = () => {
   const { data } = useQuery([`event-${eventSlug}`, eventSlug], GET_EXTERNAL_EVENT_BY_SLUG)
   const imageArt = useRef(null)
   const elementRef = useRef(null)
-  const dimensions = useDimensions(elementRef, true)
+  const dimensions = useDimensions(elementRef, true) || {
+    contentBox: { width: '300px', height: 0 },
+  }
 
   const sizes = useBreakpointValue({
     base: { h: '200px', w: dimensions?.contentBox.width },
@@ -65,9 +65,23 @@ const AnniversarySection: React.FC = () => {
     md: { h: '550px', w: dimensions?.contentBox.width },
     lg: {
       h: '650px',
-      w: dimensions?.contentBox?.width! > 1200 ? '1200px' : dimensions?.contentBox.width,
+      w: dimensions
+        ? dimensions?.contentBox?.width! > 1200
+          ? '1200px'
+          : dimensions?.contentBox.width
+        : '300px',
     },
   })
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' })
+      document.getElementById('scrolltop')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      /* @ts-ignore */
+      document.querySelector('div.leaflet-pane.leaflet-marker-pane > img').src = MarkerImg.src
+      clearTimeout(t)
+    }, 350)
+  }, [])
 
   if (!data) {
     return <NotFound />
@@ -102,6 +116,7 @@ const AnniversarySection: React.FC = () => {
           w={{
             base: '100vw',
           }}
+          id="scrolltop"
           maxW="1200px"
           fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
           src={coverImage}
@@ -164,6 +179,7 @@ const AnniversarySection: React.FC = () => {
           textAlign="center"
           mt={{ base: '50px' }}
           color="#FF5835"
+          id="scroll"
         >
           <Heading>Inscreva-se!</Heading>
           <Text fontStyle="italic">Auditório Belgrano, 19h, 13/06/2022</Text>
