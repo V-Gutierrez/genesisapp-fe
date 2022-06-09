@@ -11,6 +11,7 @@ import {
 import React, { useEffect, useRef, useState } from 'react'
 
 import Belgrano from 'assets/images/belgrano.jpg'
+import { ChevronDownIcon } from '@chakra-ui/icons'
 import { GET_EXTERNAL_EVENT_BY_SLUG } from 'services/queries'
 import MarkerImg from 'assets/images/marker.png'
 import NotFound from 'pages/404'
@@ -128,11 +129,32 @@ const AnniversarySection: React.FC = () => {
       bg="black"
       ref={elementRef}
     >
+      <Flex
+        w="45px"
+        h="45px"
+        borderRadius="xl"
+        position="fixed"
+        bottom={2}
+        right={2}
+        align="center"
+        justify="center"
+        bg="#FF5835"
+        zIndex="popover"
+        _active={{
+          background: 'black',
+          color: 'white',
+        }}
+        onClick={() => {
+          document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' })
+        }}
+      >
+        <ChevronDownIcon h="30px" w="30px" />
+      </Flex>
       <Flex w="full" align="center" justify="flex-start" flexDir="column">
         <Image
           scrollSnapAlign="center"
           w={{
-            base: '100vw',
+            base: '100%',
           }}
           id="scrolltop"
           maxW="1200px"
@@ -153,14 +175,17 @@ const AnniversarySection: React.FC = () => {
           alignContent="center"
           flexDir={{ base: 'column' }}
           w={{
-            base: dimensions?.contentBox.width,
+            base: '100%',
           }}
+          maxWidth="1200px"
         >
           <Box
+            alignSelf="center"
             h={{ base: '450px', sm: '450px' }}
             w={{
               base: dimensions?.contentBox.width || '100vw',
             }}
+            maxWidth="1200px"
             borderRadius="xl"
             css={{
               '.leaflet-tile': {
