@@ -52,6 +52,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
         email: values.email,
         phone: values.phone,
       })
+
       setSuccess(true)
       toast({
         title: 'Inscrição realizada com sucesso!',
@@ -107,7 +108,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
             name: '',
             email: '',
             phone: '',
-            region: '',
+            region: '+54',
           }}
           onSubmit={onSubmit}
           validationSchema={SUBSCRIPTION_SCHEMA}
@@ -175,7 +176,6 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                             fontSize={{ base: '12px' }}
                             bg="blackAlpha.600"
                           >
-                            <option value="+54">ARG</option>
                             <option value="+54">ARG</option>
                             <option value="+55">BRA</option>
                           </Select>

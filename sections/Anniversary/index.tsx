@@ -80,10 +80,11 @@ const AnniversarySection: React.FC = () => {
       document.querySelector('div.leaflet-pane.leaflet-marker-pane > img').src = MarkerImg.src
       clearTimeout(t)
     }, 350)
+
     const t2 = setTimeout(() => {
       document.getElementById('scrolltop')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
       clearTimeout(t2)
-    }, 550)
+    }, 1850)
   }, [])
 
   if (!data) {
