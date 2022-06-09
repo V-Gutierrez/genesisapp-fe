@@ -134,6 +134,11 @@ const AnniversarySection: React.FC = () => {
               md: '660px',
               lg: '700px',
             }}
+            css={{
+              '.leaflet-tile': {
+                filter: 'hue-rotate(180deg) invert(100%)',
+              },
+            }}
           >
             <MapContainer
               /* @ts-ignore */
@@ -145,16 +150,11 @@ const AnniversarySection: React.FC = () => {
             >
               <TileLayer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png" />
               <Marker position={[-34.56701381127262, -58.44956295063482]} data-tip="userTip">
-                <Popup>
-                  <Image
-                    src={Belgrano.src}
-                    w={{
-                      base: '100%',
-                      sm: '460px',
-                      md: '660px',
-                      lg: '700px',
-                    }}
-                  />
+                <Popup
+                  /* @ts-ignore */
+                  className="customPopup"
+                >
+                  <Image src={Belgrano.src} />
                   <Text>Auditório Belgrano</Text>
                   <Text> Virrey Loreto 2348, C1426 CABA</Text>
                 </Popup>
