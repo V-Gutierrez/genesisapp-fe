@@ -7,6 +7,7 @@ import {
   Stack,
   Text,
   useBreakpointValue,
+  useDimensions,
 } from '@chakra-ui/react'
 import React, { useEffect, useRef } from 'react'
 
@@ -55,17 +56,18 @@ const AnniversarySection: React.FC = () => {
   const { slug: eventSlug } = query
   const { data } = useQuery([`event-${eventSlug}`, eventSlug], GET_EXTERNAL_EVENT_BY_SLUG)
   const imageArt = useRef(null)
+  const elementRef = useRef(null)
+  const dimensions = useDimensions(elementRef, true)
 
   const sizes = useBreakpointValue({
-    base: { h: '250px', w: '330px' },
-    sm: { h: '250px', w: '460px' },
-    md: { h: '350px', w: '660px' },
-    lg: { h: '450px', w: '700px' },
+    base: { h: '200px', w: dimensions?.contentBox.width },
+    sm: { h: '450px', w: dimensions?.contentBox.width },
+    md: { h: '550px', w: dimensions?.contentBox.width },
+    lg: {
+      h: '650px',
+      w: dimensions?.contentBox?.width! > 1200 ? '1200px' : dimensions?.contentBox.width,
+    },
   })
-
-  useEffect(() => {
-    document.body.style.background = `url(${Background.src})`
-  }, [data])
 
   if (!data) {
     return <NotFound />
@@ -84,25 +86,24 @@ const AnniversarySection: React.FC = () => {
   return (
     <Flex
       minH="99vh"
-      w="100%"
+      w="100vw"
       align="center"
+      justify="center"
       flexDir="column"
       bgSize="cover"
       bgPos="center"
       scrollSnapType="y mandatory"
-      bgImage={Background.src}
+      bg="black"
+      ref={elementRef}
     >
-      <Flex w="full" align="center" flexDir="column" px={2} borderRadius="xl">
+      <Flex w="full" align="center" justify="flex-start" flexDir="column">
         <Image
           scrollSnapAlign="center"
           w={{
-            base: '320px',
-            sm: '460px',
-            md: '660px',
-            lg: '700px',
+            base: '100vw',
           }}
+          maxW="1200px"
           fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
-          mt={{ base: 6 }}
           src={coverImage}
           ref={imageArt}
         />
@@ -115,27 +116,19 @@ const AnniversarySection: React.FC = () => {
           />
         </Box>
         <Flex
-          mb={{ base: 4 }}
           justifyContent="center"
           alignContent="center"
           flexDir={{ base: 'column' }}
           w={{
-            base: '320px',
-            sm: '460px',
-            md: '660px',
-            lg: '700px',
+            base: dimensions?.contentBox.width,
           }}
         >
           <Box
-            h={{ base: '300px', sm: '450px' }}
+            h={{ base: '250px', sm: '450px' }}
             w={{
-              base: '320px',
-              sm: '460px',
-              md: '660px',
-              lg: '700px',
+              base: dimensions?.contentBox.width,
             }}
             borderRadius="xl"
-            overflow="hidden"
             css={{
               '.leaflet-tile': {
                 filter: 'hue-rotate(180deg) invert(100%)',
@@ -170,6 +163,7 @@ const AnniversarySection: React.FC = () => {
           flexDir={{ base: 'column' }}
           textAlign="center"
           mt={{ base: '50px' }}
+          color="#FF5835"
         >
           <Heading>Inscreva-se!</Heading>
           <Text fontStyle="italic">Auditório Belgrano, 19h, 13/06/2022</Text>

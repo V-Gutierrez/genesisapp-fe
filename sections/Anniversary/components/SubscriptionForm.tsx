@@ -111,9 +111,9 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
  errors, touched, handleSubmit, handleChange, values, isSubmitting,
 }) => (
             <form onSubmit={handleSubmit}>
-              <Stack>
+              <Stack px={4}>
                 <Box>
-                  <FormLabel fontWeight="bold" color="blackAlpha.900" fontSize={{ base: '12px' }}>
+                  <FormLabel fontWeight="bold" color="#FF5835" fontSize={{ base: '12px' }}>
                     Nome e Sobrenome
                   </FormLabel>
                   <Input
@@ -129,7 +129,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                 </Box>
 
                 <Box>
-                  <FormLabel fontWeight="bold" color="blackAlpha.900">
+                  <FormLabel fontWeight="bold" color="#FF5835">
                     <HStack cursor="pointer">
                       <Text fontSize={{ base: '12px' }}>Email</Text>
                     </HStack>
@@ -147,7 +147,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                 </Box>
 
                 <Box>
-                  <FormLabel fontWeight="bold" color="blackAlpha.900" d="flex">
+                  <FormLabel fontWeight="bold" color="#FF5835" d="flex">
                     <HStack>
                       <Text fontSize={{ base: '12px' }}>Telefone</Text>
                     </HStack>
@@ -163,7 +163,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                           <Select
                             id="region"
                             w={{ base: '80px' }}
-                            color="gray.500"
+                            color="#FF5835"
                             onChange={handleChange}
                             fontSize={{ base: '12px' }}
                             bg="blackAlpha.600"

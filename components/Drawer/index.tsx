@@ -19,6 +19,8 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
   const { route } = useRouter()
   const isFetching = useIsFetching()
 
+  const anniversary = route === '/eventos/[slug]'
+
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
       <SidebarContent onClose={() => onClose} display={{ base: 'none', md: '' }} />
@@ -34,7 +36,7 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <Header onOpen={onOpen} />
+      {!anniversary && <Header onOpen={onOpen} />}
       <Box ml={{ base: 0, md: 0 }} p={route === '/eventos/[slug]' ? '0' : '4'}>
         {isFetching ? (
           <Flex w="100%" h="80vh" justifyContent="center" alignItems="center">
