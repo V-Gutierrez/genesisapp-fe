@@ -6,16 +6,18 @@ import {
   Spinner,
   useColorModeValue,
   useDisclosure,
-} from '@chakra-ui/react';
-import React, { ReactNode } from 'react';
+} from '@chakra-ui/react'
+import React, { ReactNode } from 'react'
 
-import Header from 'components/Drawer/components/SidebarContent/components/Header';
-import SidebarContent from 'components/Drawer/components/SidebarContent/SidebarContent';
-import { useIsFetching } from 'react-query';
+import Header from 'components/Drawer/components/SidebarContent/components/Header'
+import SidebarContent from 'components/Drawer/components/SidebarContent/SidebarContent'
+import { useIsFetching } from 'react-query'
+import { useRouter } from 'next/router'
 
 export default function SidebarWithHeader({ children }: { children: ReactNode }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const isFetching = useIsFetching();
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { route } = useRouter()
+  const isFetching = useIsFetching()
 
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
@@ -33,7 +35,7 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
         </DrawerContent>
       </Drawer>
       <Header onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 0 }} p="4">
+      <Box ml={{ base: 0, md: 0 }} p={route === '/eventos/[slug]' ? '0' : '4'}>
         {isFetching ? (
           <Flex w="100%" h="80vh" justifyContent="center" alignItems="center">
             <Spinner size="xl" />
@@ -43,5 +45,5 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
         )}
       </Box>
     </Box>
-  );
+  )
 }

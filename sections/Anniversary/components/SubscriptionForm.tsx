@@ -6,6 +6,7 @@ import {
   Flex,
   FormLabel,
   HStack,
+  Image,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -66,7 +67,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
   }
 
   if (success) {
- return (
+    return (
       <Flex bg="whiteAlpha.600" w="full" justify="center" align="center">
         <Success
           title="Parabéns! Sua inscrição foi registrada!"
@@ -74,7 +75,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
         />
       </Flex>
     )
-}
+  }
   return (
     <Flex
       py={6}
@@ -84,12 +85,25 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
       my={4}
       justify="center"
       scrollSnapAlign="center"
+      flexDir={{ base: 'column' }}
     >
-      <Stack spacing={4} w="full" maxW="md">
+      <Stack
+        spacing={4}
+        w={{
+          base: '300px',
+          sm: '460px',
+          md: '660px',
+          lg: '700px',
+        }}
+        maxW="md"
+      >
         <Formik
           initialValues={{
- name: '', email: '', phone: '', region: '',
-}}
+            name: '',
+            email: '',
+            phone: '',
+            region: '',
+          }}
           onSubmit={onSubmit}
           validationSchema={SUBSCRIPTION_SCHEMA}
         >
@@ -103,7 +117,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                     Nome e Sobrenome
                   </FormLabel>
                   <Input
-                    bg="blackAlpha.900"
+                    bg="blackAlpha.600"
                     color="white"
                     type="name"
                     id="name"
@@ -121,7 +135,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                     </HStack>
                   </FormLabel>
                   <Input
-                    bg="blackAlpha.900"
+                    bg="blackAlpha.600"
                     color="white"
                     type="email"
                     id="email"
@@ -142,7 +156,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                   <InputGroup>
                     <InputLeftAddon
                       padding="0"
-                      bg="blackAlpha.900"
+                      bg="blackAlpha.600"
                       border="none"
                       children={(
                         <Box d="flex" alignItems="center" justifyContent="space-evenly">
@@ -152,7 +166,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                             color="gray.500"
                             onChange={handleChange}
                             fontSize={{ base: '12px' }}
-                            bg="blackAlpha.900"
+                            bg="blackAlpha.600"
                           >
                             <option value="+54">ARG</option>
                             <option value="+55">BRA</option>
@@ -162,7 +176,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                     />
 
                     <Input
-                      bg="blackAlpha.900"
+                      bg="blackAlpha.600"
                       color="white"
                       type="tel"
                       id="phone"
