@@ -1,6 +1,6 @@
-import { Box } from '@chakra-ui/react';
-import Link from 'next/link';
-import React from 'react';
+import { Box } from '@chakra-ui/react'
+import Link from 'next/link'
+import React from 'react'
 
 const NewsCard: React.FC<NewsCardProps> = ({ goTo, imageSrc, mobileImageSrc }) => (
   <Link href={goTo}>
@@ -21,6 +21,6 @@ const NewsCard: React.FC<NewsCardProps> = ({ goTo, imageSrc, mobileImageSrc }) =
       borderRadius="xl"
     />
   </Link>
-);
+)
 
-export default NewsCard;
+export default NewsCard

@@ -15,4 +15,13 @@ export const GET_DEVOTIONAL_BY_SLUG = async (
 
 export const GET_STATS = async () => Axios.get<Stats>('/stats');
 export const GET_EXTERNAL_EVENTS = async () => Axios.get<ExternalEvent[]>('/externalevents');
+
 export const REFRESH_TOKEN = async () => Axios.get('/auth');
+
+export const GET_EXTERNAL_EVENT_BY_SLUG = async (
+  ReactQueryParams: UseQueryOptions<unknown, unknown, unknown, (string | string[] | undefined)[]>,
+) => {
+  const { 1: eventSlug } = ReactQueryParams.queryKey as string[];
+
+  return Axios.get<ExternalEvent>(`/externalevents/${eventSlug}`);
+};

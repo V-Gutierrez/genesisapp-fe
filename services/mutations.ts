@@ -89,3 +89,7 @@ export const CREATE_EXTERNAL_EVENT = async (values: ExternalEventFormValues) => 
 export const DELETE_EXTERNAL_EVENT = async (id: string) => {
   await Axios.delete(`/externalevents/${id}`);
 };
+
+export const SUBSCRIBE_TO_EXTERNAL_EVENT = async (id: string, values: Pick<SignUpFormValues, 'name' | 'email' | 'phone'>) => {
+  await Axios.post(`/externalevents/${id}`, values);
+}

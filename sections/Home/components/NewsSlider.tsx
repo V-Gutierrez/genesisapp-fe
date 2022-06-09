@@ -1,16 +1,20 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react'
 
-import AnniversaryNews from 'assets/images/inscricoes-festa.png';
-import AnniversaryNewsMobile from 'assets/images/inscricoes-festa-mobile.png';
-import CustomSlider from 'components/CustomSlider';
-import NewsCard from 'components/NewsCard';
-import React from 'react';
+import AnniversaryNews from 'assets/images/inscricoes-festa.png'
+import AnniversaryNewsMobile from 'assets/images/inscricoes-festa-mobile.png'
+import CustomSlider from 'components/CustomSlider'
+import NewsCard from 'components/NewsCard'
+import React from 'react'
 
 export default function NewsSlider() {
   /* WIP - NEWS CRUD */
   const staticnews: NewsCardProps[] = [
-    { goTo: '/', imageSrc: AnniversaryNews.src, mobileImageSrc: AnniversaryNewsMobile.src },
-  ];
+    {
+      goTo: 'eventos/aniversário-13-anos-gênesis-church',
+      imageSrc: AnniversaryNews.src,
+      mobileImageSrc: AnniversaryNewsMobile.src,
+    },
+  ]
 
   return (
     <Box w="100%" p={{ md: 6 }} mb={{ base: '25px', md: 0 }}>
@@ -33,10 +37,10 @@ export default function NewsSlider() {
           }}
         >
           {staticnews.map((news) => (
-            <NewsCard {...news} />
+            <NewsCard key={111} {...news} />
           ))}
         </CustomSlider>
       </Flex>
     </Box>
-  );
+  )
 }

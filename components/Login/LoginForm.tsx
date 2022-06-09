@@ -1,4 +1,4 @@
-import { BiHide, BiShowAlt } from 'react-icons/bi';
+import { BiHide, BiShowAlt } from 'react-icons/bi'
 import {
   Box,
   Button,
@@ -12,49 +12,49 @@ import {
   Stack,
   Text,
   useToast,
-} from '@chakra-ui/react';
-import { Formik, FormikHelpers } from 'formik';
-import React, { useState } from 'react';
+} from '@chakra-ui/react'
+import { Formik, FormikHelpers } from 'formik'
+import React, { useState } from 'react'
 
-import { LOGIN } from 'services/mutations';
-import { LOGIN_INITIAL_VALUES } from 'helpers/formInitialValues';
-import { LOGIN_SCHEMA } from 'helpers/validationSchemas';
-import { useMutation } from 'react-query';
+import { LOGIN } from 'services/mutations'
+import { LOGIN_INITIAL_VALUES } from 'helpers/formInitialValues'
+import { LOGIN_SCHEMA } from 'helpers/validationSchemas'
+import { useMutation } from 'react-query'
 
 const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refetchUser }) => {
-  const { mutateAsync: login } = useMutation(LOGIN);
-  const [show, setShow] = useState(false);
-  const toast = useToast();
+  const { mutateAsync: login } = useMutation(LOGIN)
+  const [show, setShow] = useState(false)
+  const toast = useToast()
 
   const onSubmit = async (
     values: LoginFormValues,
     { setSubmitting }: FormikHelpers<LoginFormValues>,
   ) => {
-    setSubmitting(true);
+    setSubmitting(true)
     try {
-      await login(values);
+      await login(values)
       toast({
         title: 'Login realizado com sucesso',
         status: 'success',
-      });
-      await refetchUser();
-      onClose();
+      })
+      await refetchUser()
+      onClose()
     } catch (e) {
       toast({
         title: 'Usuário e senha inválidos',
         status: 'error',
-      });
+      })
     }
-    setSubmitting(false);
-  };
-  const handleClick = () => setShow(!show);
+    setSubmitting(false)
+  }
+  const handleClick = () => setShow(!show)
 
   const handleSignUp = () => {
-    visibilityHandler({ login: false, signUp: true });
-  };
+    visibilityHandler({ login: false, signUp: true })
+  }
   const handleSeePasswordRecovery = () => {
-    visibilityHandler({ forgotPassword: true, login: false });
-  };
+    visibilityHandler({ forgotPassword: true, login: false })
+  }
 
   return (
     <Stack minH={{ base: '20vh' }} direction={{ base: 'column', md: 'row' }} flex="1">
@@ -141,7 +141,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
         </Stack>
       </Flex>
     </Stack>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

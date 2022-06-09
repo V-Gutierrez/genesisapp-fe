@@ -1,13 +1,6 @@
 import { AiOutlineDelete, AiOutlineUser } from 'react-icons/ai'
 import {
-  Box,
-  Button,
-  Flex,
-  Text,
-  chakra,
-  useColorModeValue,
-  useDisclosure,
-  useToast,
+ Box, Button, Flex, Text, chakra, useDisclosure, useToast,
 } from '@chakra-ui/react'
 
 import { DELETE_EXTERNAL_EVENT } from 'services/mutations'
