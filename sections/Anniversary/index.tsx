@@ -19,7 +19,7 @@ const AnniversarySection: React.FC = () => {
   const imageArt = useRef(null)
 
   const sizes = useBreakpointValue({
-    base: { h: '150px', w: '280px' },
+    base: { h: '250px', w: '300px' },
     sm: { h: '250px', w: '460px' },
     md: { h: '350px', w: '660px' },
     lg: { h: '450px', w: '700px' },
@@ -52,7 +52,9 @@ const AnniversarySection: React.FC = () => {
     >
       <Image
         scrollSnapAlign="center"
-        w={{ base: '100%', md: '80%', lg: '50%' }}
+        w={{
+ base: '300px', sm: '460px', md: '660px', lg: '700px',
+}}
         fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
         mt={{ base: 6 }}
         src={coverImage}
@@ -63,8 +65,6 @@ const AnniversarySection: React.FC = () => {
           videoId="hEZ0GlBlTWw"
           opts={{
             ...opts,
-            width: (imageArt?.current as any)?.clientWidth! || sizes?.w,
-            height: (imageArt?.current as any)?.clientHeight! || sizes?.h,
           }}
         />
       </Box>

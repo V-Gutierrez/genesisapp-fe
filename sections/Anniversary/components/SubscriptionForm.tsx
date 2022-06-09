@@ -79,7 +79,6 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
     <Flex
       py={6}
       flex={1}
-      bg="whiteAlpha.600"
       align="center"
       w="100%"
       my={4}
