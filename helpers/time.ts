@@ -6,8 +6,8 @@ export function inHours(hours: number) {
 }
 
 export const formatToTimezone = (dateCandidate: string | Date, formatStr: string = "'em' dd 'de' MMMM 'de' yyyy 'às' HH:mm") => formatInTimeZone(
-    new Date(dateCandidate),
-    'America/Sao_Paulo',
-    formatStr,
-    { locale: pt },
-  );
+  new Date(dateCandidate),
+  'America/Sao_Paulo',
+  formatStr,
+  { locale: pt },
+);

@@ -8,10 +8,10 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import React from 'react';
-import UserRow from 'components/UserRow';
+import React from 'react'
+import UserRow from 'components/UserRow'
 
 export default function SubscribersModal({
   isOpen,
@@ -53,6 +53,7 @@ export default function SubscribersModal({
               email="Email"
               createdAt="Data de inscrição"
               index={1}
+              isHead
             />
           ) : null}
 
@@ -65,5 +66,5 @@ export default function SubscribersModal({
         <ModalFooter />
       </ModalContent>
     </Modal>
-  );
+  )
 }

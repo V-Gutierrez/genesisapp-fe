@@ -1,30 +1,30 @@
 import {
  Box, Button, Flex, Text, useDisclosure,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import { AiFillPlusCircle } from 'react-icons/ai';
-import EventCreationModal from 'sections/Admin/Events/components/EventCreationModal';
-import EventsDashCard from 'components/EventsDashCard';
-import { GET_EXTERNAL_EVENTS } from 'services/queries';
-import React from 'react';
-import { inHours } from 'helpers/time';
-import { isFuture } from 'date-fns';
-import { useQuery } from 'react-query';
-import { zonedTimeToUtc } from 'date-fns-tz';
+import { AiFillPlusCircle } from 'react-icons/ai'
+import EventCreationModal from 'sections/Admin/Events/components/EventCreationModal'
+import EventsDashCard from 'components/EventsDashCard'
+import { GET_EXTERNAL_EVENTS } from 'services/queries'
+import React from 'react'
+import { inHours } from 'helpers/time'
+import { isFuture } from 'date-fns'
+import { useQuery } from 'react-query'
+import { zonedTimeToUtc } from 'date-fns-tz'
 
 export default function Events() {
   const { data, refetch } = useQuery('events', GET_EXTERNAL_EVENTS, {
     staleTime: inHours(24),
     cacheTime: inHours(24),
-  });
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  })
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const scheduledEvents = data?.data.filter((d) => isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')));
+  const scheduledEvents = data?.data.filter((d) => isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')))
   const releasedEvents = data?.data.filter(
     (d) => !isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')),
-  );
+  )
 
-  if (!data || !scheduledEvents || !releasedEvents) return null;
+  if (!data || !scheduledEvents || !releasedEvents) return null
   return (
     <Box>
       <Flex w="full" justify="center" my={{ base: 4 }}>
@@ -64,5 +64,5 @@ export default function Events() {
       </Flex>
       <EventCreationModal isOpen={isOpen} onClose={onClose} />
     </Box>
-  );
+  )
 }

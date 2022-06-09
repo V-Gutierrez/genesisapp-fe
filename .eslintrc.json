@@ -44,6 +44,7 @@
         "no-useless-escape": "off",
         "indent": "off",
         "react/jsx-indent": "off",
+        "react/require-default-props": "warn",
         "react/jsx-closing-tag-location": "off",
         "max-len": "off",
         "import/prefer-default-export": "off",
