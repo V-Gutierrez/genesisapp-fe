@@ -60,7 +60,7 @@ const AnniversarySection: React.FC = () => {
   }
 
   const sizes = useBreakpointValue({
-    base: { h: '200px', w: dimensions?.contentBox.width },
+    base: { h: '300px', w: dimensions?.contentBox.width },
     sm: { h: '450px', w: dimensions?.contentBox.width },
     md: { h: '550px', w: dimensions?.contentBox.width },
     lg: {
@@ -76,11 +76,14 @@ const AnniversarySection: React.FC = () => {
   useEffect(() => {
     const t = setTimeout(() => {
       document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' })
-      document.getElementById('scrolltop')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
       /* @ts-ignore */
       document.querySelector('div.leaflet-pane.leaflet-marker-pane > img').src = MarkerImg.src
       clearTimeout(t)
     }, 350)
+    const t2 = setTimeout(() => {
+      document.getElementById('scrolltop')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      clearTimeout(t2)
+    }, 550)
   }, [])
 
   if (!data) {
@@ -139,9 +142,9 @@ const AnniversarySection: React.FC = () => {
           }}
         >
           <Box
-            h={{ base: '250px', sm: '450px' }}
+            h={{ base: '450px', sm: '450px' }}
             w={{
-              base: dimensions?.contentBox.width,
+              base: dimensions?.contentBox.width || '100vw',
             }}
             borderRadius="xl"
             css={{
@@ -156,7 +159,6 @@ const AnniversarySection: React.FC = () => {
               zoomAnimation
               zoom={15}
               fadeAnimation
-              scrollWheelZoom
             >
               <TileLayer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png" />
               <Marker position={[-34.56701381127262, -58.44956295063482]} data-tip="userTip">
@@ -165,7 +167,7 @@ const AnniversarySection: React.FC = () => {
                   className="customPopup"
                 >
                   <Image src={Belgrano.src} />
-                  <Text>Auditório Belgrano</Text>
+                  <Text>Auditório Belgrano </Text>
                   <Text> Virrey Loreto 2348, C1426 CABA</Text>
                 </Popup>
               </Marker>

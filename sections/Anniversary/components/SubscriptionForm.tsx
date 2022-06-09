@@ -90,7 +90,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
     >
       <Box my={4} mb={6}>
         <Heading>Inscreva-se!</Heading>
-        <Text fontStyle="italic">Auditório Belgrano, 19h, 13/06/2022</Text>
+        <Text fontSize={{ base: '14px' }}>AUDITÓRIO DE BELGRANO | 19 HORAS | 13/06/2022</Text>
       </Box>
       <Stack
         spacing={4}
@@ -173,6 +173,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
                             fontSize={{ base: '12px' }}
                             bg="blackAlpha.600"
                           >
+                            <option value="+54">ARG</option>
                             <option value="+54">ARG</option>
                             <option value="+55">BRA</option>
                           </Select>
