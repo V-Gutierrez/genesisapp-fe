@@ -12,6 +12,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import Belgrano from 'assets/images/belgrano.jpg'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import EventPhoto from 'assets/images/inscricoes-festa.png'
 import { GET_EXTERNAL_EVENT_BY_SLUG } from 'services/queries'
 import MarkerImg from 'assets/images/marker.png'
 import NotFound from 'pages/404'
@@ -159,7 +160,7 @@ const AnniversarySection: React.FC = () => {
           id="scrolltop"
           maxW="1200px"
           fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
-          src={coverImage}
+          src={EventPhoto.src}
           ref={imageArt}
         />
         <Box my={5} scrollSnapAlign="center">
