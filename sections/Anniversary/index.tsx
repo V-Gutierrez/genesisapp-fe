@@ -56,7 +56,7 @@ export const Popup = dynamic(
 const AnniversarySection: React.FC = () => {
   const { query } = useRouter()
   const { slug: eventSlug } = query
-  const { data } = useQuery([`event-${eventSlug}`, eventSlug], GET_EXTERNAL_EVENT_BY_SLUG)
+  const { data, refetch } = useQuery([`event-${eventSlug}`, eventSlug], GET_EXTERNAL_EVENT_BY_SLUG)
   const imageArt = useRef(null)
   const elementRef = useRef(null)
   const form = useRef(null)
@@ -114,6 +114,8 @@ const AnniversarySection: React.FC = () => {
   }, [])
 
   if (!data) {
+    refetch()
+
     return <NotFound />
   }
 
