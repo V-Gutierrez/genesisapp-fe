@@ -73,7 +73,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
       <Flex w="full" mt="50px" justify="center" align="center">
         <Success
           title="Parabéns! Sua inscrição foi registrada!"
-          subtitle="Você receberá um email de confirmação."
+          subtitle="Você receberá um email de confirmação. Lembre-se de checar na sua caixa de spam!"
         />
       </Flex>
     )
