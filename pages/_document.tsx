@@ -1,5 +1,8 @@
 import Document, {
- Head, Html, Main, NextScript,
+ Head,
+ Html,
+ Main,
+ NextScript,
 } from 'next/document';
 
 class MyDocument extends Document {
@@ -10,6 +13,7 @@ class MyDocument extends Document {
           <link rel="manifest" href="/manifest.webmanifest" />
           <link rel="apple-touch-icon" href="/icon.png" />
           <link rel="icon" href="/favicon.ico" />
+          <meta name="google-site-verification" content="FhuMouOZ49hb9-ePxmq-rg-94lKGpK8hZI_Mxi77UIw" />
           <link
             rel="stylesheet"
             type="text/css"
