@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <Head>
-        <title>Genesis Church</title>
+        <title>Gênesis Church</title>
       </Head>
 
       <QueryClientProvider client={ReactQueryClient}>
