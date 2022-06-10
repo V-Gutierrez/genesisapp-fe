@@ -103,7 +103,8 @@ const EventsDashCard: React.FC<EventsDashCardProps> = ({
             fontWeight="normal"
             colorScheme="red"
             fontSize="sm"
-            onClick={handleDevotionalDelete}
+            onClick={() => {}}
+            disabled
           >
             Excluir
           </Button>
