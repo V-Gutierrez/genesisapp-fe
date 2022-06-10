@@ -29,7 +29,7 @@ import Success from 'components/Success'
 const SUBSCRIPTION_SCHEMA = Yup.object().shape({
   email: Yup.string().email('Insira um email válido').required('Insira um email'),
   name: Yup.string()
-    .matches(/^[^\s]+( [^\s]+)+$/, 'Insira seu nome e sobrenome')
+    .matches(/^[^\s]+( [^\s]+)+/, 'Insira seu nome e sobrenome')
     .required('Insira seu nome e sobrenome'),
   phone: Yup.string()
     .matches(/^\+[0-9]{2}\s[0-9]{1,2}\s[0-9]{1,2}\s[0-9]{4}\-[0-9]{4}/, 'Insira um formato válido')
