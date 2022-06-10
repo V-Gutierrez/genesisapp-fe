@@ -15,6 +15,7 @@ import { ChevronDownIcon } from '@chakra-ui/icons'
 import Contribua from 'assets/images/contribua-fim-site.png'
 import EventPhoto from 'assets/images/inscricoes-festa.png'
 import { GET_EXTERNAL_EVENT_BY_SLUG } from 'services/queries'
+import Head from 'next/head'
 import MarkerImg from 'assets/images/marker.png'
 import NotFound from 'pages/404'
 import SubscriptionForm from 'sections/Anniversary/components/SubscriptionForm'
@@ -134,133 +135,140 @@ const AnniversarySection: React.FC = () => {
   }
 
   return (
-    <Flex
-      minH="99vh"
-      w="100vw"
-      align="center"
-      justify="center"
-      flexDir="column"
-      bgSize="cover"
-      bgPos="center"
-      scrollSnapType="y mandatory"
-      bg="black"
-      ref={elementRef}
-    >
-      {showArrow && (
-        <Flex
-          w="45px"
-          h="45px"
-          borderRadius="xl"
-          position="fixed"
-          bottom={2}
-          right={2}
-          align="center"
-          justify="center"
-          bg="#FF5835"
-          zIndex="popover"
-          _active={{
-            background: 'black',
-            color: 'white',
-          }}
-          cursor="pointer"
-          onClick={() => {
-            document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' })
-          }}
-        >
-          <ChevronDownIcon h="30px" w="30px" />
-        </Flex>
-      )}
-      <Flex w="full" align="center" justify="flex-start" flexDir="column">
-        <Image
-          scrollSnapAlign="center"
-          w={{
-            base: '100%',
-          }}
-          id="scrolltop"
-          maxW="1200px"
-          fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
-          src={EventPhoto.src}
-          ref={imageArt}
-        />
-        <Box my={5} scrollSnapAlign="center">
-          <YouTube
-            videoId="hEZ0GlBlTWw"
-            opts={{
-              ...opts,
-            }}
-          />
-        </Box>
-        <Flex
-          justifyContent="center"
-          alignContent="center"
-          flexDir={{ base: 'column' }}
-          w={{
-            base: '100%',
-          }}
-          maxWidth="1200px"
-        >
-          <Box
-            alignSelf="center"
-            h={{ base: '450px', sm: '450px' }}
-            w={{
-              base: dimensions?.contentBox.width || '100vw',
-            }}
-            maxWidth="1200px"
+    <>
+      <Head>
+        <title>Gênesis Church - Aniversário 13 anos</title>
+      </Head>
+      <Flex
+        minH="99vh"
+        w="100vw"
+        align="center"
+        justify="center"
+        flexDir="column"
+        bgSize="cover"
+        bgPos="center"
+        scrollSnapType="y mandatory"
+        bg="black"
+        ref={elementRef}
+      >
+        {showArrow && (
+          <Flex
+            w="45px"
+            h="45px"
             borderRadius="xl"
-            css={{
-              '.leaflet-tile': {
-                filter: 'hue-rotate(180deg) invert(100%)',
-              },
+            position="fixed"
+            bottom={2}
+            right={2}
+            align="center"
+            justify="center"
+            bg="#FF5835"
+            zIndex="popover"
+            _active={{
+              background: 'black',
+              color: 'white',
+            }}
+            cursor="pointer"
+            onClick={() => {
+              document
+                .getElementById('scroll')
+                ?.scrollIntoView({ behavior: 'smooth', block: 'end' })
             }}
           >
-            {!fakeLoading ? (
-              <MapContainer
-                /* @ts-ignore */
-                center={[-34.56701381127262, -58.44956295063482]}
-                zoomAnimation
-                zoom={15}
-                fadeAnimation
-              >
-                <TileLayer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png" />
-                <Marker position={[-34.56701381127262, -58.44956295063482]} data-tip="userTip">
-                  <Popup
-                    /* @ts-ignore */
-                    className="customPopup"
-                  >
-                    <Image src={Belgrano.src} />
-                    <Text>Auditório Belgrano </Text>
-                    <Text> Virrey Loreto 2348, C1426 CABA</Text>
-                  </Popup>
-                </Marker>
-              </MapContainer>
-            ) : (
-              <Skeleton w="100%" h="100%" />
-            )}
+            <ChevronDownIcon h="30px" w="30px" />
+          </Flex>
+        )}
+        <Flex w="full" align="center" justify="flex-start" flexDir="column">
+          <Image
+            scrollSnapAlign="center"
+            w={{
+              base: '100%',
+            }}
+            id="scrolltop"
+            maxW="1200px"
+            fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
+            src={EventPhoto.src}
+            ref={imageArt}
+          />
+          <Box my={5} scrollSnapAlign="center">
+            <YouTube
+              videoId="hEZ0GlBlTWw"
+              opts={{
+                ...opts,
+              }}
+            />
           </Box>
+          <Flex
+            justifyContent="center"
+            alignContent="center"
+            flexDir={{ base: 'column' }}
+            w={{
+              base: '100%',
+            }}
+            maxWidth="1200px"
+          >
+            <Box
+              alignSelf="center"
+              h={{ base: '450px', sm: '450px' }}
+              w={{
+                base: dimensions?.contentBox.width || '100vw',
+              }}
+              maxWidth="1200px"
+              borderRadius="xl"
+              css={{
+                '.leaflet-tile': {
+                  filter: 'hue-rotate(180deg) invert(100%)',
+                },
+              }}
+            >
+              {!fakeLoading ? (
+                <MapContainer
+                  /* @ts-ignore */
+                  center={[-34.56701381127262, -58.44956295063482]}
+                  zoomAnimation
+                  zoom={15}
+                  fadeAnimation
+                >
+                  <TileLayer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png" />
+                  <Marker position={[-34.56701381127262, -58.44956295063482]} data-tip="userTip">
+                    <Popup
+                      /* @ts-ignore */
+                      className="customPopup"
+                    >
+                      <Image src={Belgrano.src} />
+                      <Text>Auditório Belgrano </Text>
+                      <Text> Virrey Loreto 2348, C1426 CABA</Text>
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+              ) : (
+                <Skeleton w="100%" h="100%" />
+              )}
+            </Box>
+          </Flex>
+          <Flex
+            justifyContent="center"
+            alignContent="center"
+            flexDir={{ base: 'column' }}
+            textAlign="center"
+            mt={{ base: '50px' }}
+            color="#FF5835"
+            ref={form}
+          >
+            <SubscriptionForm id={id as string} />
+          </Flex>
+          <Image
+            scrollSnapAlign="center"
+            w={{
+              base: '80%',
+            }}
+            maxW="1200px"
+            fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
+            src={Contribua.src}
+            id="scroll"
+          />
         </Flex>
-        <Flex
-          justifyContent="center"
-          alignContent="center"
-          flexDir={{ base: 'column' }}
-          textAlign="center"
-          mt={{ base: '50px' }}
-          color="#FF5835"
-          ref={form}
-        >
-          <SubscriptionForm id={id as string} />
-        </Flex>
-        <Image
-          scrollSnapAlign="center"
-          w={{
-            base: '80%',
-          }}
-          maxW="1200px"
-          fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
-          src={Contribua.src}
-          id="scroll"
-        />
       </Flex>
-    </Flex>
+    </>
   )
 }
 

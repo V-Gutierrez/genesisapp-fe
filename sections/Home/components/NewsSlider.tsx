@@ -34,6 +34,7 @@ export default function NewsSlider() {
             centerMode: true,
             autoplay: true,
             centerPadding: '5px',
+            arrows: false,
           }}
         >
           {staticnews.map((news) => (
