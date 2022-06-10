@@ -6,7 +6,7 @@ import React from 'react';
 const DefaultSettings: Settings = {
   dots: true,
   infinite: true,
-  speed: 2000,
+  speed: 1000,
   slidesToShow: 4,
   slidesToScroll: 1,
   autoplay: true,
