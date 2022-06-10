@@ -99,6 +99,22 @@ const AnniversarySection: React.FC = () => {
 
       clearTimeout(t2)
     }, 2000)
+
+    const t3 = setInterval(() => {
+      /* @ts-ignore */
+      const marker = document.querySelector('div.leaflet-pane.leaflet-marker-pane > img')
+
+      if (marker) {
+        /* @ts-ignore */
+        marker.src = MarkerImg.src
+        /* @ts-ignore */
+        if (marker.src == MarkerImg.src) {
+          clearInterval(t3)
+        } else {
+          clearInterval(t3)
+        }
+      }
+    }, 1000)
   }, [])
 
   if (!data) {
