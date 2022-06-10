@@ -61,7 +61,7 @@ const SubscriptionForm: React.FC<{ id: string }> = ({ id }) => {
     } catch (e) {
       toast({
         title:
-          'Houve um erro na sua inscrição. Verifique se você já se inscreveu, caso não esteja inscrito, entre em contato com o administrador do evento.',
+          'Houve um erro na sua inscrição. Verifique se você já se inscreveu com número de telefone ou email, caso não esteja inscrito, entre em contato com o administrador do evento.',
         status: 'error',
       })
     }
