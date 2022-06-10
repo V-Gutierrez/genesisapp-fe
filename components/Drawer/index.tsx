@@ -31,6 +31,7 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
+        preserveScrollBarGap
       >
         <DrawerContent bg="none" boxShadow="none">
           <SidebarContent onClose={onClose} />

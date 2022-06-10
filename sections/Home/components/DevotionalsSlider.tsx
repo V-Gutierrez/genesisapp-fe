@@ -23,7 +23,7 @@ const DevotionalsSlider: React.FC = () => {
 
   if (!data || !data.data.length) return null
   return (
-    <Box w="100%" p={{ md: 6 }}>
+    <Box w="100%" p={{ md: 6 }} pb={{ base: 8, md: 0 }}>
       <Text
         fontSize={{ base: '20px' }}
         paddingLeft={{ base: 4, sm: 4 }}
