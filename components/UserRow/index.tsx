@@ -29,7 +29,6 @@ const UserRow: React.FC<
     } catch (error) {
       toast({
         title: 'Houve um erro ao excluir a inscrição',
-        description: 'Inscrição excluída com sucesso',
         status: 'error',
       })
       console.log(error)
