@@ -1,6 +1,14 @@
-import Devocionais from 'sections/Devocionais';
-import type { NextPage } from 'next';
+import Devocionais from 'sections/Devocionais'
+import Head from 'next/head'
+import type { NextPage } from 'next'
 
-const Devotionals: NextPage = () => <Devocionais />;
+const Devotionals: NextPage = () => (
+    <>
+      <Head>
+        <title>Gênesis Church - Devocionais</title>
+      </Head>
+      <Devocionais />
+    </>
+  )
 
-export default Devotionals;
+export default Devotionals
