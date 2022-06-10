@@ -53,6 +53,7 @@ export default function SubscribersModal({
               email="Email"
               createdAt="Data de inscrição"
               index={1}
+              action="Ação"
               isHead
             />
           ) : null}

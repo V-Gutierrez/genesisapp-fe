@@ -29,6 +29,7 @@
         "import/extensions": "off",
         "no-undef": "off",
         "no-shadow": "off",
+        "no-restricted-globals": "off",
         "no-param-reassign": "off",
         "import/no-extraneous-dependencies": "off",
         "@next/next/no-sync-scripts": "off",

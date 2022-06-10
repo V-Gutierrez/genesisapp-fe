@@ -4647,6 +4647,11 @@ react-input-mask@^2.0.4:
     invariant "^2.2.4"
     warning "^4.0.2"
 
+react-intersection-revealer@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-intersection-revealer/-/react-intersection-revealer-1.3.0.tgz#65d1ab92fc249c99ac007d14fdb5d7c6b9018afc"
+  integrity sha512-o1ohG3UCANkMX7EFOw6PhD5ripv86221+Dmo/F10AFwnpau6MT1Oc3geJB5PL+3ipuHc6F0mqYAnBgA5piN0xQ==
+
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"

@@ -12,6 +12,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import Belgrano from 'assets/images/belgrano.jpg'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import Contribua from 'assets/images/contribua-fim-site.png'
 import EventPhoto from 'assets/images/inscricoes-festa.png'
 import { GET_EXTERNAL_EVENT_BY_SLUG } from 'services/queries'
 import MarkerImg from 'assets/images/marker.png'
@@ -19,6 +20,7 @@ import NotFound from 'pages/404'
 import SubscriptionForm from 'sections/Anniversary/components/SubscriptionForm'
 import YouTube from 'react-youtube'
 import dynamic from 'next/dynamic'
+import { useIntersectionRevealer } from 'react-intersection-revealer'
 import { useQuery } from 'react-query'
 import { useRouter } from 'next/router'
 
@@ -57,10 +59,14 @@ const AnniversarySection: React.FC = () => {
   const { data } = useQuery([`event-${eventSlug}`, eventSlug], GET_EXTERNAL_EVENT_BY_SLUG)
   const imageArt = useRef(null)
   const elementRef = useRef(null)
+  const form = useRef(null)
   const dimensions = useDimensions(elementRef, true) || {
     contentBox: { width: '300px', height: 0 },
   }
+
+  const { inView } = useIntersectionRevealer(form)
   const [fakeLoading, setFakeLoading] = useState(true)
+  const [showArrow, setShowArrow] = useState(true)
 
   const sizes = useBreakpointValue({
     base: { h: '300px', w: dimensions?.contentBox.width },
@@ -77,6 +83,10 @@ const AnniversarySection: React.FC = () => {
   })
 
   useEffect(() => {
+    setShowArrow(!inView)
+  }, [inView])
+
+  useEffect(() => {
     const t = setTimeout(() => {
       document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' })
 
@@ -88,7 +98,7 @@ const AnniversarySection: React.FC = () => {
       setFakeLoading(false)
 
       clearTimeout(t2)
-    }, 1850)
+    }, 2000)
 
     const t3 = setInterval(() => {
       /* @ts-ignore */
@@ -97,9 +107,9 @@ const AnniversarySection: React.FC = () => {
       if (marker) {
         /* @ts-ignore */
         marker.src = MarkerImg.src
+        /* @ts-ignore */
+        if (marker.src === MarkerImg.src) clearInterval(t3)
       }
-      /* @ts-ignore */
-      if (marker.src === MarkerImg.src) clearInterval(t3)
     }, 1000)
   }, [])
 
@@ -130,27 +140,29 @@ const AnniversarySection: React.FC = () => {
       bg="black"
       ref={elementRef}
     >
-      <Flex
-        w="45px"
-        h="45px"
-        borderRadius="xl"
-        position="fixed"
-        bottom={2}
-        right={2}
-        align="center"
-        justify="center"
-        bg="#FF5835"
-        zIndex="popover"
-        _active={{
-          background: 'black',
-          color: 'white',
-        }}
-        onClick={() => {
-          document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' })
-        }}
-      >
-        <ChevronDownIcon h="30px" w="30px" />
-      </Flex>
+      {showArrow && (
+        <Flex
+          w="45px"
+          h="45px"
+          borderRadius="xl"
+          position="fixed"
+          bottom={2}
+          right={2}
+          align="center"
+          justify="center"
+          bg="#FF5835"
+          zIndex="popover"
+          _active={{
+            background: 'black',
+            color: 'white',
+          }}
+          onClick={() => {
+            document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' })
+          }}
+        >
+          <ChevronDownIcon h="30px" w="30px" />
+        </Flex>
+      )}
       <Flex w="full" align="center" justify="flex-start" flexDir="column">
         <Image
           scrollSnapAlign="center"
@@ -226,10 +238,20 @@ const AnniversarySection: React.FC = () => {
           textAlign="center"
           mt={{ base: '50px' }}
           color="#FF5835"
-          id="scroll"
+          ref={form}
         >
           <SubscriptionForm id={id as string} />
         </Flex>
+        <Image
+          scrollSnapAlign="center"
+          w={{
+            base: '100%',
+          }}
+          maxW="1200px"
+          fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
+          src={Contribua.src}
+          id="scroll"
+        />
       </Flex>
     </Flex>
   )
