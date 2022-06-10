@@ -108,7 +108,9 @@ const AnniversarySection: React.FC = () => {
         /* @ts-ignore */
         marker.src = MarkerImg.src
         /* @ts-ignore */
-        if (marker.src === MarkerImg.src) clearInterval(t3)
+        if (marker.src == MarkerImg.src) {
+          clearInterval(t3)
+        }
       }
     }, 1000)
   }, [])
