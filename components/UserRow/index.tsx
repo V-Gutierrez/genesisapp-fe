@@ -44,19 +44,19 @@ const UserRow: React.FC<
       alignItems="center"
       bg={index % 2 ? 'white' : 'gray.200'}
     >
-      <Text textAlign="center" fontSize={{ base: '12px' }} w="20%">
+      <Text textAlign="center" fontSize={{ base: '12px' }} w="24%">
         {name}
       </Text>
-      <Text textAlign="center" fontSize={{ base: '12px' }} w="20%">
+      <Text textAlign="center" fontSize={{ base: '12px' }} w="24%">
         {email}
       </Text>
-      <Text textAlign="center" fontSize={{ base: '12px' }} w="20%">
+      <Text textAlign="center" fontSize={{ base: '12px' }} w="24%">
         {phone}
       </Text>
-      <Text textAlign="center" fontSize={{ base: '12px' }} w="20%">
+      <Text textAlign="center" fontSize={{ base: '12px' }} w="24%">
         {isHead ? createdAt : new Date(createdAt as string).toLocaleString()}
       </Text>
-      <Text textAlign="center" fontSize={{ base: '12px' }} w="20%" cursor="pointer">
+      <Text textAlign="center" fontSize={{ base: '12px' }} w="4%" cursor="pointer">
         {isHead ? action : <CloseIcon onClick={exclude} />}
       </Text>
     </Flex>
