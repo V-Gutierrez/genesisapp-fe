@@ -245,7 +245,7 @@ const AnniversarySection: React.FC = () => {
         <Image
           scrollSnapAlign="center"
           w={{
-            base: '100%',
+            base: '80%',
           }}
           maxW="1200px"
           fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
