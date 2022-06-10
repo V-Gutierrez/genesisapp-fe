@@ -156,6 +156,7 @@ const AnniversarySection: React.FC = () => {
             background: 'black',
             color: 'white',
           }}
+          cursor="pointer"
           onClick={() => {
             document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' })
           }}
