@@ -1,56 +1,56 @@
-import { Box, Skeleton } from '@chakra-ui/react';
+import { Box, Skeleton } from '@chakra-ui/react'
 import {
   MapContainer,
   Marker,
   Popup,
   TileLayer,
   changeIcons,
-} from 'sections/GrowthGroups/components/Leaflet';
-import React, { useEffect, useState } from 'react';
+} from 'sections/GrowthGroups/components/Leaflet'
+import React, { useEffect, useState } from 'react'
 
-import PopupContent from 'sections/GrowthGroups/components/PopupContent';
+import PopupContent from 'sections/GrowthGroups/components/PopupContent'
 
 function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFrameProps) {
   const [userPosition, setUserPosition] = useState<CoordsState & { accurate: boolean }>({
     lat: null,
     lng: null,
     accurate: false,
-  });
-  const [mapLoading, setMapLoading] = useState(true);
+  })
+  const [mapLoading, setMapLoading] = useState(true)
 
   function getUserLocation() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const { latitude, longitude } = position.coords;
+        const { latitude, longitude } = position.coords
 
-        setUserPosition({ lat: latitude, lng: longitude, accurate: true });
-        selectCoordsHandler(latitude, longitude);
+        setUserPosition({ lat: latitude, lng: longitude, accurate: true })
+        selectCoordsHandler(latitude, longitude)
       },
       () => {
-        setUserPosition({ lat: -34.6037, lng: -58.3816, accurate: false });
-        selectCoordsHandler(-34.6037, -58.3816);
+        setUserPosition({ lat: -34.6037, lng: -58.3816, accurate: false })
+        selectCoordsHandler(-34.6037, -58.3816)
       },
       {
         timeout: 30000,
         enableHighAccuracy: true,
       },
-    );
+    )
   }
 
   useEffect(() => {
-    getUserLocation();
-    changeIcons();
-  }, []);
+    getUserLocation()
+    changeIcons()
+  }, [])
 
   useEffect(() => {
-    setMapLoading(true);
+    setMapLoading(true)
 
     const delay = setTimeout(() => {
-      setMapLoading(false);
-      changeIcons();
-      clearTimeout(delay);
-    }, 250);
-  }, [currentCoords]);
+      setMapLoading(false)
+      changeIcons()
+      clearTimeout(delay)
+    }, 250)
+  }, [currentCoords])
 
   if (mapLoading || !GCDataset || !currentCoords.lat || !currentCoords.lng) {
     return (
@@ -63,7 +63,7 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
           base: '100%',
         }}
       />
-    );
+    )
   }
 
   if (GCDataset && currentCoords.lat && currentCoords.lng) {
@@ -78,6 +78,11 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
         }}
         borderRadius="20px"
         overflow="clip"
+        css={{
+          '.leaflet-tile': {
+            filter: 'hue-rotate(180deg) invert(100%)',
+          },
+        }}
       >
         <MapContainer
           /* @ts-ignore */
@@ -114,9 +119,9 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
           </Marker>
         </MapContainer>
       </Box>
-    );
+    )
   }
-  return null;
+  return null
 }
 
-export default MapFrame;
+export default MapFrame
