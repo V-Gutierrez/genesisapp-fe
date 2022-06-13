@@ -42,7 +42,7 @@ export default function SubscribersModal({
             },
           }}
         >
-          <Flex m={2}>
+          <Flex m={2} position="sticky" top={0}>
             <Input
               placeholder="Pesquisar por nome ou email"
               onChange={(e: any) => setSearch(e.target.value as string)}
@@ -74,7 +74,7 @@ export default function SubscribersModal({
                 ) {
                   return <UserRow key={subscription.id} {...subscription} index={index} />
                 }
-                  return null
+                return null
               })
             : null}
         </ModalBody>
