@@ -44,6 +44,7 @@ const UserRow: React.FC<
       alignItems="center"
       bg={index % 2 ? 'white' : 'gray.200'}
       fontWeight={isHead ? 'bold' : 'normal'}
+      border="1px solid black"
     >
       <Text textAlign="center" fontSize={{ base: '12px' }} w="24%">
         {name}
