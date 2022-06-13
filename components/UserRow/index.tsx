@@ -43,6 +43,7 @@ const UserRow: React.FC<
       justifyContent="space-evenly"
       alignItems="center"
       bg={index % 2 ? 'white' : 'gray.200'}
+      fontWeight={isHead ? 'bold' : 'normal'}
     >
       <Text textAlign="center" fontSize={{ base: '12px' }} w="24%">
         {name}
