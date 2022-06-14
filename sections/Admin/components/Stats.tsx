@@ -39,7 +39,7 @@ export default function Stats() {
       >
         <StatsCard title="Usuários Ativos" stat={data?.data.activeUsers} />
         <StatsCard title="Devocionais Publicados" stat={data?.data.devotionals} />
-        <StatsCard title="Grupos de crescimento" stat={data?.data.groups} />
+        <StatsCard title="Grupos de crescimento" stat={data?.data.growthGroups} />
       </Stack>
     </>
   );

@@ -37,7 +37,7 @@ interface Devotional {
 interface Stats {
   activeUsers: number;
   devotionals: number;
-  groups: number;
+  growthGroups: number;
 }
 
 interface ExternalEventSubscriptions {
