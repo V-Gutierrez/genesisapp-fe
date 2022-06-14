@@ -92,7 +92,7 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
           fadeAnimation
           scrollWheelZoom
         >
-          <TileLayer url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png" />
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {GCDataset.map((gc) => (
             <Marker key={gc.id} position={[gc.lat, gc.lng]}>
               <Popup
