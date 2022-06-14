@@ -40,7 +40,12 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
       {!extraordinaryPage && <Header onOpen={onOpen} />}
       <Box ml={{ base: 0, md: 0 }} p={extraordinaryPage ? '0' : '4'}>
         {isFetching ? (
-          <Flex w="100%" h="80vh" justifyContent="center" alignItems="center">
+          <Flex
+            w="100%"
+            h={extraordinaryPage ? '100vh' : '80vh'}
+            justifyContent="center"
+            alignItems="center"
+          >
             <Spinner size="xl" />
           </Flex>
         ) : (
