@@ -82,8 +82,8 @@ const AnniversarySection: React.FC = () => {
 
   useEffect(() => {
     const t = setTimeout(() => {
-      document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' })
-
+      document.getElementById('scroll')?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+(document.body as any).style = 'overflow-x: hidden'
       clearTimeout(t)
     }, 350)
   }, [])
