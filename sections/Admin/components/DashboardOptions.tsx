@@ -1,12 +1,11 @@
-import { Stack, Text } from '@chakra-ui/react';
+import { Stack, Text } from '@chakra-ui/react'
 
-import { HiOutlineBookOpen } from 'react-icons/hi';
-import OptionCard from 'components/OptionCard';
+import { HiOutlineBookOpen } from 'react-icons/hi'
+import OptionCard from 'components/OptionCard'
 
 const AdminOptions: Array<AdminOptions> = [
   { title: 'Devocionais', icon: HiOutlineBookOpen, goTo: '/admin/devocionais' },
-  { title: 'Eventos', icon: HiOutlineBookOpen, goTo: '/admin/eventos' },
-];
+]
 
 function DashboardOptions() {
   return (
@@ -39,7 +38,7 @@ function DashboardOptions() {
         ))}
       </Stack>
     </>
-  );
+  )
 }
 
-export default DashboardOptions;
+export default DashboardOptions
