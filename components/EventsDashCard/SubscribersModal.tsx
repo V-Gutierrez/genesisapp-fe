@@ -1,5 +1,6 @@
 import {
   Flex,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -9,8 +10,8 @@ import {
   ModalOverlay,
   Text,
 } from '@chakra-ui/react'
+import React, { useState } from 'react'
 
-import React from 'react'
 import UserRow from 'components/UserRow'
 
 export default function SubscribersModal({
@@ -18,6 +19,7 @@ export default function SubscribersModal({
   onClose,
   subscriptions,
 }: ModalProps & { subscriptions: ExternalEventSubscriptions[] }) {
+  const [search, setSearch] = useState('')
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered size="2lg" scrollBehavior="inside">
       <ModalOverlay />
@@ -40,6 +42,12 @@ export default function SubscribersModal({
             },
           }}
         >
+          <Flex m={2} position="sticky" top={0} bg="white">
+            <Input
+              placeholder="Pesquisar por nome ou email"
+              onChange={(e: any) => setSearch(e.target.value as string)}
+            />
+          </Flex>
           {!subscriptions?.length && (
             <Flex w="full" h="300px" align="center" justifyContent="center">
               <Text>Nenhum inscrito</Text>
@@ -59,9 +67,15 @@ export default function SubscribersModal({
           ) : null}
 
           {subscriptions.length
-            ? subscriptions.map((subscription, index) => (
-                <UserRow key={subscription.id} {...subscription} index={index} />
-              ))
+            ? subscriptions.map((subscription, index) => {
+                if (
+                  subscription.name.toLowerCase().includes(search.toLowerCase())
+                  || subscription.email.toLowerCase().includes(search.toLowerCase())
+                ) {
+                  return <UserRow key={subscription.id} {...subscription} index={index} />
+                }
+                return null
+              })
             : null}
         </ModalBody>
         <ModalFooter />
