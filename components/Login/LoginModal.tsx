@@ -7,13 +7,13 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import ForgotPasswordForm from 'components/Login/ForgotPasswordForm';
-import Success from 'components/Success';
-import { useState } from 'react';
-import LoginForm from './LoginForm';
-import SignUpForm from './SignUpForm';
+import ForgotPasswordForm from 'components/Login/ForgotPasswordForm'
+import Success from 'components/Success'
+import { useState } from 'react'
+import LoginForm from './LoginForm'
+import SignUpForm from './SignUpForm'
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser }) => {
   const [visibility, setVisibility] = useState({
@@ -21,10 +21,17 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
     login: true,
     signUpSuccess: false,
     forgotPassword: false,
-  });
+  })
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered size="sm" scrollBehavior="outside">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      isCentered
+      size="sm"
+      scrollBehavior="outside"
+      preserveScrollBarGap
+    >
       <ModalOverlay />
       <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
         <ModalCloseButton />
@@ -71,7 +78,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
         {!visibility.signUp && <ModalFooter />}
       </ModalContent>
     </Modal>
-  );
-};
+  )
+}
 
-export default LoginModal;
+export default LoginModal
