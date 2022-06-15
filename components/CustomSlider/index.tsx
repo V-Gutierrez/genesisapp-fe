@@ -1,7 +1,6 @@
 import Slider, { Settings } from 'react-slick';
 
 import { Box } from '@chakra-ui/react';
-import React from 'react';
 
 const DefaultSettings: Settings = {
   dots: true,
@@ -20,9 +19,9 @@ const CustomSlider: React.FC<CustomSliderProps<Settings>> = ({ children, customS
   return (
     <Box w="100%">
       <Slider {...settings}>
-{' '}
-{children}
-</Slider>
+        {' '}
+        {children}
+      </Slider>
     </Box>
   );
 };

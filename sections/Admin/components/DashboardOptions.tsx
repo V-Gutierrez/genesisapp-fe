@@ -1,17 +1,18 @@
+import { HiOutlineBookOpen, HiUserGroup } from 'react-icons/hi'
 import { Stack, Text } from '@chakra-ui/react'
 
-import { HiOutlineBookOpen } from 'react-icons/hi'
 import OptionCard from 'components/OptionCard'
 
 const AdminOptions: Array<AdminOptions> = [
   { title: 'Devocionais', icon: HiOutlineBookOpen, goTo: '/admin/devocionais' },
+  { title: 'Usuários', icon: HiUserGroup, goTo: '/admin/usuarios' },
 ]
 
 function DashboardOptions() {
   return (
     <>
       <Text fontSize="18px" my="8px" fontWeight="600">
-        Itens de edição
+        Itens de administração
       </Text>
       <Stack
         overflowY="scroll"

@@ -25,3 +25,5 @@ export const GET_EXTERNAL_EVENT_BY_SLUG = async (
 
   return Axios.get<ExternalEvent>(`/externalevents/${eventSlug}`);
 };
+
+export const GET_USERS = async () => Axios.get<User[]>('/users');

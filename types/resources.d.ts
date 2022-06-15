@@ -17,9 +17,11 @@ interface User {
   email: string;
   id: string;
   name: string;
+  phone: string;
   role: 'ADMIN' | 'USER';
-  birthdate: Date;
-  createdAt: Date;
+  birthdate: Date | string;
+  createdAt: Date | string;
+  active: boolean
 }
 
 interface Devotional {
