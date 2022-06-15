@@ -1,14 +1,11 @@
 import { Box, Skeleton } from '@chakra-ui/react'
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  changeIcons,
-} from 'sections/GrowthGroups/components/Leaflet'
+import MapBox, {
+ MapContainer, Marker, Popup, TileLayer,
+} from 'components/Leaflet'
 import React, { useEffect, useState } from 'react'
 
 import PopupContent from 'sections/GrowthGroups/components/PopupContent'
+import { changeIcons } from 'sections/GrowthGroups/components/utils'
 
 function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFrameProps) {
   const [userPosition, setUserPosition] = useState<CoordsState & { accurate: boolean }>({
@@ -68,57 +65,32 @@ function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFramePro
 
   if (GCDataset && currentCoords.lat && currentCoords.lng) {
     return (
-      <Box
-        h="100%"
-        w={{
-          lg: '80%',
-          md: '100%',
-          sm: '100%',
-          base: '100%',
-        }}
-        borderRadius="20px"
-        overflow="clip"
-        css={{
-          '.leaflet-tile': {
-            filter: 'hue-rotate(180deg) invert(100%)',
-          },
-        }}
-      >
-        <MapContainer
-          /* @ts-ignore */
-          center={[currentCoords.lat as number, currentCoords.lng as number]}
-          zoomAnimation
-          zoom={15}
-          fadeAnimation
-          scrollWheelZoom
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          {GCDataset.map((gc) => (
-            <Marker key={gc.id} position={[gc.lat, gc.lng]}>
-              <Popup
-                /* @ts-ignore */
-                className="customPopup"
-              >
-                <PopupContent {...gc} />
-              </Popup>
-            </Marker>
-          ))}
-
-          <Marker
-            position={[userPosition.lat as number, userPosition.lng as number]}
-            data-tip="userTip"
-            /* @ts-ignore */
-            title={userPosition.accurate ? 'Você está aqui' : 'Localização aproximada'}
-          >
+      <MapBox currentCoords={currentCoords}>
+        {GCDataset.map((gc) => (
+          <Marker key={gc.id} position={[gc.lat, gc.lng]}>
             <Popup
               /* @ts-ignore */
               className="customPopup"
             >
-              {userPosition.accurate ? 'Você está aqui' : 'Localização aproximada'}
+              <PopupContent {...gc} />
             </Popup>
           </Marker>
-        </MapContainer>
-      </Box>
+        ))}
+
+        <Marker
+          position={[userPosition.lat as number, userPosition.lng as number]}
+          data-tip="userTip"
+          /* @ts-ignore */
+          title={userPosition.accurate ? 'Você está aqui' : 'Localização aproximada'}
+        >
+          <Popup
+            /* @ts-ignore */
+            className="customPopup"
+          >
+            {userPosition.accurate ? 'Você está aqui' : 'Localização aproximada'}
+          </Popup>
+        </Marker>
+      </MapBox>
     )
   }
   return null
