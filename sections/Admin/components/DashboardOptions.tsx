@@ -4,8 +4,8 @@ import { Stack, Text } from '@chakra-ui/react'
 import OptionCard from 'components/OptionCard'
 
 const AdminOptions: Array<AdminOptions> = [
-  { title: 'Devocionais', icon: HiOutlineBookOpen, goTo: '/admin/devocionais' },
   { title: 'Usuários', icon: HiUserGroup, goTo: '/admin/usuarios' },
+  { title: 'Devocionais', icon: HiOutlineBookOpen, goTo: '/admin/devocionais' },
 ]
 
 function DashboardOptions() {
