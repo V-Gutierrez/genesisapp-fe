@@ -1,1 +1,1 @@
-export const extraordinaryRoutes = ['/13anosgenesis']
+export const extraordinaryRoutes = ['/eventos/13anosgenesis']
