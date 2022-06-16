@@ -1,4 +1,4 @@
-import AnniversarySection from 'pages/13anosgenesis/Anniversary'
+import AnniversarySection from 'pages/eventos/13anosgenesis/Anniversary'
 import type { NextPage } from 'next'
 
 const Anniversary: NextPage = () => <AnniversarySection />

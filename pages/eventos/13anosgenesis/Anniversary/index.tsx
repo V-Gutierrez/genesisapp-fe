@@ -35,7 +35,6 @@ const AnniversarySection: React.FC = () => (
           w={{
             base: '100%',
           }}
-          id="scrolltop"
           maxW="1200px"
           fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
           src={EventPhoto.src}
