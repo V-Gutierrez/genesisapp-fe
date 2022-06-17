@@ -6,6 +6,7 @@ const ReactQueryClient = new QueryClient({
       refetchOnMount: false,
       keepPreviousData: true,
       retryOnMount: false,
+      refetchOnWindowFocus: false,
     },
   },
 })
