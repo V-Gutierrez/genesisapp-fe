@@ -1,4 +1,4 @@
-import GCLogo from 'assets/images/gc-logo.png'
+import GCLogo from 'public/assets/images/gc-logo.png'
 
 export const changeIcons = () => {
   const Observer = new MutationObserver(() => {

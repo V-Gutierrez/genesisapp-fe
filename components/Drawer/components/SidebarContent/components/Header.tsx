@@ -1,9 +1,13 @@
 import {
- Flex, HStack, IconButton, Image, useColorModeValue,
+  Flex,
+  HStack,
+  IconButton,
+  Image,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 import { FiMenu } from 'react-icons/fi';
-import GenesisLogo from 'assets/images/genesislogo.png';
+import GenesisLogo from 'public/assets/images/genesislogo.png';
 import UserInfo from './UserInfo';
 
 const Header = ({ onOpen, ...rest }: HeaderProps) => (

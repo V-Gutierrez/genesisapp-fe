@@ -1,12 +1,17 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai';
 import {
- Box, Button, Flex, chakra, useColorModeValue, useToast,
+  Box,
+  Button,
+  Flex,
+  chakra,
+  useColorModeValue,
+  useToast,
 } from '@chakra-ui/react';
 import React, { useMemo, useState } from 'react';
 
 import { DELETE_DEVOTIONAL } from 'services/mutations';
 import OptionsButton from 'components/OptionsButton';
-import Quotes from 'assets/icons/quotes.svg';
+import Quotes from 'public/assets/icons/quotes.svg';
 import { formatToTimezone } from 'helpers/time';
 import { isFuture } from 'date-fns';
 import { useMutation } from 'react-query';
@@ -111,10 +116,10 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
             <chakra.span fontWeight="medium" color="gray.500">
               {' '}
               -
-{' '}
-{author}
-{' '}
-{formatedScheduledDate}
+              {' '}
+              {author}
+              {' '}
+              {formatedScheduledDate}
             </chakra.span>
           </chakra.p>
         </Flex>

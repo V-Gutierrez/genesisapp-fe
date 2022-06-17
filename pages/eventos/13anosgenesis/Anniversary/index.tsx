@@ -6,8 +6,8 @@ import {
   Text,
 } from '@chakra-ui/react'
 
-import EventPhoto from 'assets/images/13anosgenesis/inscricoes-festa.png'
-import EventPhotoBG from 'assets/images/13anosgenesis/background13anos.png'
+import EventPhoto from 'public/assets/images/13anosgenesis/inscricoes-festa.png'
+import EventPhotoBG from 'public/assets/images/13anosgenesis/background13anos.png'
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
