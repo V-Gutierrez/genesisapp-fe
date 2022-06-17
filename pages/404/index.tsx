@@ -1,4 +1,6 @@
-import CTA from 'components/CTA';
+import dynamic from 'next/dynamic';
+
+const CTA = dynamic(() => import('components/CTA'), {});
 
 export default function NotFound() {
   return (

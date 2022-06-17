@@ -1,6 +1,8 @@
-import type { NextPage } from 'next';
-import ResetPassword from 'sections/ResetPassword';
+import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 
-const ResetPasswordPage: NextPage = () => <ResetPassword />;
+const ResetPassword = dynamic(() => import('sections/ResetPassword'))
 
-export default ResetPasswordPage;
+const ResetPasswordPage: NextPage = () => <ResetPassword />
+
+export default ResetPasswordPage

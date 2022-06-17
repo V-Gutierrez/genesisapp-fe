@@ -1,6 +1,8 @@
-import DevotionalSection from 'sections/Devocionais/DevotionalSection';
-import type { NextPage } from 'next';
+import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 
-const DevotionalPage: NextPage = () => <DevotionalSection />;
+const DevotionalSection = dynamic(() => import('sections/Devocionais/DevotionalSection'))
 
-export default DevotionalPage;
+const DevotionalPage: NextPage = () => <DevotionalSection />
+
+export default DevotionalPage

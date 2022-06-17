@@ -1,6 +1,8 @@
-import GrowthGroups from 'sections/GrowthGroups'
 import Head from 'next/head'
 import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
+
+const GrowthGroups = dynamic(() => import('sections/GrowthGroups'))
 
 const GrowthGroupsPage: NextPage = () => (
   <>

@@ -1,14 +1,16 @@
-import Devocionais from 'sections/Devocionais'
 import Head from 'next/head'
 import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
+
+const Devocionais = dynamic(() => import('sections/Devocionais'))
 
 const Devotionals: NextPage = () => (
-    <>
-      <Head>
-        <title>Gênesis Church - Devocionais</title>
-      </Head>
-      <Devocionais />
-    </>
-  )
+  <>
+    <Head>
+      <title>Gênesis Church - Devocionais</title>
+    </Head>
+    <Devocionais />
+  </>
+)
 
 export default Devotionals

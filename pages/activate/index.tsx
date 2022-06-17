@@ -1,6 +1,8 @@
-import Activate from 'sections/Activate';
-import type { NextPage } from 'next';
+import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 
-const ActivatePage: NextPage = () => <Activate />;
+const Activate = dynamic(() => import('sections/Activate'))
 
-export default ActivatePage;
+const ActivatePage: NextPage = () => <Activate />
+
+export default ActivatePage
