@@ -43,12 +43,14 @@ export default function DevotionalSection() {
     <>
       <Head>
         <title>
-Gênesis Church - Devocionais |
-{title}
-{' '}
-de
-{author}
-</title>
+          Gênesis Church - Devocionais |
+          {' '}
+          {title}
+          {' '}
+          de
+          {' '}
+          {author}
+        </title>
       </Head>
       <Flex flexDir="column" w="100%" overflow="clip" align="center">
         <NextImage
