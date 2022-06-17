@@ -143,5 +143,6 @@ type EditorProps = Pick<ModalProps, 'onClose'>
 
 interface WrapperProps {
   children: React.ReactNode | React.ReactNode[]
-  currentCoords: CoordsState
 }
+
+interface SimpleEmptyStateProps { title: string }

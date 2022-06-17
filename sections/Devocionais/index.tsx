@@ -1,23 +1,19 @@
 import {
- Flex, Grid, GridItem, Text,
+  Flex,
+  Grid,
+  GridItem,
+  Text,
 } from '@chakra-ui/react';
 
 import DevotionalCard from 'components/DevotionalCard';
 import { GET_USER_DEVOTIONALS } from 'services/queries';
+import SimpleEmptyState from 'components/SimpleEmptyState';
 import { useQuery } from 'react-query';
 
 const Devocionais: React.FC = () => {
   const { data } = useQuery('userDevotionals', GET_USER_DEVOTIONALS);
 
-  if (!data || !data.data.length) {
-    return (
-      <Flex h="80vh" w="full" justifyContent="center" alignItems="center">
-        <Text fontSize={{ base: '16px', md: '18px' }}>
-          Não há devocionais disponíveis no momento
-        </Text>
-      </Flex>
-    );
-  }
+  if (!data || !data.data.length) return (<SimpleEmptyState title="Não há devocionais disponíveis no momento" />)
   return (
     <Grid
       templateColumns={{

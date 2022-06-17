@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Flex } from '@chakra-ui/react';
 import { GET_GROWTH_GROUPS } from 'services/queries';
 import GroupList from 'sections/GrowthGroups/components/GroupList';
+import SimpleEmptyState from 'components/SimpleEmptyState';
 import { useQuery } from 'react-query';
 import MapFrame from './components/MapFrame';
 
@@ -18,6 +19,7 @@ const GrowthGroups: React.FC = () => {
     setFocusedCoords({ lat, lng });
   }
 
+  if (!data || !data.data.length) return (<SimpleEmptyState title="Não há Grupos de crescimento disponíveis no momento" />)
   return (
     <Flex
       h="80vh"

@@ -31,35 +31,37 @@ export const Popup = dynamic(
   { ssr: false },
 )
 
-const MapBox: React.FC<WrapperProps> = ({ children, currentCoords }) => (
-    <Box
-      h="100%"
-      w={{
-        lg: '80%',
-        md: '100%',
-        sm: '100%',
-        base: '100%',
-      }}
-      borderRadius="20px"
-      overflow="clip"
-      css={{
-        '.leaflet-tile': {
-          filter: 'hue-rotate(180deg) invert(100%)',
-        },
-      }}
+const MapBox: React.FC<WrapperProps & {
+  currentCoords: CoordsState
+}> = ({ children, currentCoords }) => (
+  <Box
+    h="100%"
+    w={{
+      lg: '80%',
+      md: '100%',
+      sm: '100%',
+      base: '100%',
+    }}
+    borderRadius="20px"
+    overflow="clip"
+    css={{
+      '.leaflet-tile': {
+        filter: 'hue-rotate(180deg) invert(100%)',
+      },
+    }}
+  >
+    <MapContainer
+      /* @ts-ignore */
+      center={[currentCoords.lat as number, currentCoords.lng as number]}
+      zoomAnimation
+      zoom={15}
+      fadeAnimation
+      scrollWheelZoom
     >
-      <MapContainer
-        /* @ts-ignore */
-        center={[currentCoords.lat as number, currentCoords.lng as number]}
-        zoomAnimation
-        zoom={15}
-        fadeAnimation
-        scrollWheelZoom
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {children}
-      </MapContainer>
-    </Box>
-  )
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      {children}
+    </MapContainer>
+  </Box>
+)
 
 export default MapBox
