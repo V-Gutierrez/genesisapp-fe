@@ -38,6 +38,7 @@ const AnniversarySection: React.FC = () => (
           maxW="1200px"
           fallback={<Skeleton w={{ base: '100%', md: '80%', '2lg': '50%' }} />}
           src={EventPhoto.src}
+          alt="Foto do evento"
         />
         <Flex
           justifyContent="center"

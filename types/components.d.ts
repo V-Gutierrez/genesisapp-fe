@@ -146,3 +146,8 @@ interface WrapperProps {
 }
 
 interface SimpleEmptyStateProps { title: string }
+
+interface NextImageProps<Image, Box>{
+  BoxProps?: Box
+  ImageProps: Image
+}

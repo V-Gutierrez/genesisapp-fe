@@ -2,12 +2,12 @@ import {
   Flex,
   HStack,
   IconButton,
-  Image,
   useColorModeValue,
 } from '@chakra-ui/react';
 
 import { FiMenu } from 'react-icons/fi';
 import GenesisLogo from 'public/assets/images/genesislogo.png';
+import NextImage from 'components/NextImage';
 import UserInfo from './UserInfo';
 
 const Header = ({ onOpen, ...rest }: HeaderProps) => (
@@ -31,7 +31,19 @@ const Header = ({ onOpen, ...rest }: HeaderProps) => (
     />
 
     <Flex h="50%" w="100%" justifyContent="center" alignItems="center">
-      <Image src={GenesisLogo.src} h="100%" alt="Genesis Logo" />
+      <NextImage
+        ImageProps={
+          {
+ src: GenesisLogo.src, alt: 'Genesis Logo', priority: true, objectFit: 'contain',
+}
+        }
+        BoxProps={
+          {
+            h: '100%',
+            w: '120px',
+          }
+        }
+      />
     </Flex>
 
     <HStack spacing={{ base: '0', md: '6' }}>
