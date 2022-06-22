@@ -1,6 +1,4 @@
-import {
- Box, Flex, Text, useBreakpointValue,
-} from '@chakra-ui/react'
+import { Box, Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 
 import CustomSlider from 'components/CustomSlider'
 import DevotionalCard from 'components/DevotionalCard'
@@ -43,7 +41,7 @@ const DevotionalsSlider: React.FC = () => {
           }}
         >
           {data?.data.map((devotional) => (
-            <DevotionalCard {...devotional} />
+            <DevotionalCard key={devotional.id} {...devotional} />
           ))}
         </CustomSlider>
       </Flex>
