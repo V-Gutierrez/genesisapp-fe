@@ -11,20 +11,16 @@ const NextImage: React.FC<NextImageProps<ImagePropsType, BoxPropsType>> = ({
   BoxProps,
   ImageProps,
 }) => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   function handleLoadEnd() {
     setLoading(false)
   }
 
-  function handleLoadStart() {
-    setLoading(true)
-  }
-
   return (
     <Box position="relative" {...BoxProps}>
       {loading && <Skeleton w="full" h="full" borderRadius="xl" />}
-      <Image {...ImageProps} layout="fill" onLoadStart={handleLoadStart} onLoad={handleLoadEnd} />
+      <Image {...ImageProps} layout="fill" onLoadingComplete={handleLoadEnd} />
     </Box>
   )
 }
