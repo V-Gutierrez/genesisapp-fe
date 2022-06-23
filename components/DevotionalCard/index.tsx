@@ -1,14 +1,10 @@
-import {
- Box, Center, Heading, Image, Stack, Text, useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Center, Heading, Stack, Text, useColorModeValue } from '@chakra-ui/react'
 
 import Link from 'next/link'
 import { formatToTimezone } from 'helpers/time'
 import { useMemo } from 'react'
 
-export default function DevotionalCard({
- scheduledTo, author, title, slug,
-}: Devotional) {
+export default function DevotionalCard({ scheduledTo, author, title, slug }: Devotional) {
   const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo])
 
   return (
