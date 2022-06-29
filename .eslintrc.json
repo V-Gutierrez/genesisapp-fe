@@ -53,7 +53,8 @@
         "react-hooks/rules-of-hooks": "warn",
         "semi": "off",
         "no-nested-ternary": "warn",
-        "object-curly-newline": "off"
+        "object-curly-newline": "off",
+        "linebreak-style": "off"
     },
     "ignorePatterns": [
         "*.d.ts"
