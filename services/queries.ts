@@ -33,5 +33,5 @@ export const GET_GOOGLE_PHOTOS_ALBUM_PHOTOS = async (
 ) => {
   const { 1: albumUrl } = ReactQueryParams.queryKey as string[]
 
-  return Axios.get<ImageSet[]>('/integrations/googlephotos', { params: { albumUrl } })
+  return Axios.get<GooglePhotosImageSet[]>('/integrations/googlephotos', { params: { albumUrl } })
 }

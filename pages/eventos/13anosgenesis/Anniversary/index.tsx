@@ -1,8 +1,7 @@
-import EventPhotoBG from 'public/assets/images/13anosgenesis/background13anos.png'
 import { Flex } from '@chakra-ui/react'
 import { GET_GOOGLE_PHOTOS_ALBUM_PHOTOS } from 'services/queries'
 import Head from 'next/head'
-import NextImage from 'components/NextImage'
+import { ImageCard } from 'pages/eventos/13anosgenesis/Anniversary/components/ImageCard'
 import React from 'react'
 import { useQuery } from 'react-query'
 
@@ -31,14 +30,10 @@ const AnniversarySection: React.FC = () => {
         bgPos="center"
         scrollSnapType="y mandatory"
         flexWrap="wrap"
-        flexDirection="row"
+        overflow="auto"
       >
         {data?.data?.map((photo) => (
-          <NextImage
-            key={photo.uid}
-            ImageProps={{ src: photo.thumbnail, objectFit: 'cover' }}
-            BoxProps={{ width: '150px', height: '150px', margin: '.5px', borderRadius: 'lg' }}
-          />
+          <ImageCard key={photo.uid} photo={photo} />
         ))}
       </Flex>
     </>

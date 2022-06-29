@@ -11,7 +11,7 @@ const NextImage: React.FC<NextImageProps<ImagePropsType, BoxPropsType>> = ({
   BoxProps,
   ImageProps,
 }) => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState<boolean>(true)
 
   function handleLoadEnd() {
     setLoading(false)

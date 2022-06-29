@@ -65,11 +65,12 @@ interface ExternalEvent {
   subscriptions: ExternalEventSubscriptions[]
 }
 
-interface ImageSet {
+interface GooglePhotosImageSet {
   albumAddDate: number
   height: number
   imageUpdateDate: number
   smartCropped: string
+  highQuality: string
   thumbnail: string
   minimalThumbnail: string
   uid: string

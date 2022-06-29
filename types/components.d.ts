@@ -145,9 +145,15 @@ interface WrapperProps {
   children: React.ReactNode | React.ReactNode[]
 }
 
-interface SimpleEmptyStateProps { title: string }
+interface SimpleEmptyStateProps {
+  title: string
+}
 
-interface NextImageProps<Image, Box>{
+interface NextImageProps<Image, Box> {
   BoxProps?: Box
   ImageProps: Image
+}
+
+interface ImageCardProps {
+  photo: GooglePhotosImageSet
 }
