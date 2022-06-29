@@ -32,7 +32,7 @@ const AnniversarySection: React.FC = () => {
         flexWrap="wrap"
         overflow="auto"
       >
-        {data?.data?.map((photo) => (
+        {data?.data.map((photo) => (
           <ImageCard key={photo.uid} photo={photo} />
         ))}
       </Flex>
