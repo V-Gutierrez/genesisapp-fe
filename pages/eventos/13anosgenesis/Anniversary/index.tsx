@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react'
 import { GET_GOOGLE_PHOTOS_ALBUM_PHOTOS } from 'services/queries'
 import Head from 'next/head'
-import ImageCard from 'pages/eventos/13anosgenesis/Anniversary/components/ImageCard'
+import ImageCard from 'pages/eventos/13anosgenesis/Anniversary/ImageCard'
 import React from 'react'
 import { useQuery } from 'react-query'
 
