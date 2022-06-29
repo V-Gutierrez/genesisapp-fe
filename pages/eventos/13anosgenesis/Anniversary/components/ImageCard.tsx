@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 import NextImage from 'components/NextImage'
 
-export const ImageCard: React.FC<ImageCardProps> = ({ photo }) => {
+const ImageCard: React.FC<ImageCardProps> = ({ photo }) => {
   const [imageToggle, setImageToggle] = useState<boolean | null>(false)
 
   const imageSrc = imageToggle ? photo.highQuality : photo.thumbnail
@@ -45,3 +45,5 @@ export const ImageCard: React.FC<ImageCardProps> = ({ photo }) => {
     </Box>
   )
 }
+
+export default ImageCard
