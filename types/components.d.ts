@@ -154,6 +154,20 @@ interface NextImageProps<Image, Box> {
   ImageProps: Image
 }
 
-interface ImageCardProps {
+interface GoogleImageMosaicBlockProps<LayoutWidthProps, LayoutHeightProps> {
   photo: GooglePhotosImageSet
+  imageBlockWidth: LayoutType
+  imageBlockHeight: LayoutType
+}
+
+interface GoogleImagesGalleryProps<
+  FlexPropsType,
+  MosaicBlockLayoutWidthProps,
+  MosaicBlockLayoutHeightProps,
+> {
+  FlexProps: FlexPropsType
+  queryKey: string
+  albumUrl: string
+  imageBlockWidth: LayoutType
+  imageBlockHeight: LayoutType
 }
