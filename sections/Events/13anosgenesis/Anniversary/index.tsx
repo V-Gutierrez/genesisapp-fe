@@ -22,6 +22,8 @@ const AnniversarySection: React.FC = () => (
       }}
       queryKey="13YearsAnniversaryPhotos"
       albumUrl="https://photos.app.goo.gl/uUmT9uEH6GeJtsoK9"
+      imageBlockWidth={{ base: '75px' }}
+      imageBlockHeight={{ base: '75px' }}
     />
   </>
 )

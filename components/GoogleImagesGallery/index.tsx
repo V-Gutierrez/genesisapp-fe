@@ -11,10 +11,12 @@ import { useQuery } from 'react-query'
  * @property {FlexProps} FlexProps - The flex props to be used for the flex container that holds the photos ~ from ChakraUI
  * @property {string} albumUrl - The URL of the Google Photos album
  * @property {string} queryKey - The query key to be used for React-query caching
+ * @property {number} imageBlockWidth - The width of the image block in pixels or Responsive Values from ChakraUI
+ * @property {number} imageBlockHeight - The height of the image block in pixels or Responsive Values from ChakraUI
  * */
 const GoogleImagesGallery: React.FC<
   GoogleImagesGalleryProps<FlexType, LayoutProps['width'], LayoutProps['height']>
-> = ({ FlexProps, queryKey, albumUrl }) => {
+> = ({ FlexProps, queryKey, albumUrl, imageBlockWidth, imageBlockHeight }) => {
   const { data } = useQuery([queryKey, albumUrl], GET_GOOGLE_PHOTOS_ALBUM_PHOTOS, {
     staleTime: Infinity,
     cacheTime: Infinity,
@@ -25,8 +27,8 @@ const GoogleImagesGallery: React.FC<
         <GoogleImageMosaicBlock
           key={photo.uid}
           photo={photo}
-          imageBlockHeight={{ base: '75' }}
-          imageBlockWidth={{ base: '75' }}
+          imageBlockHeight={imageBlockWidth}
+          imageBlockWidth={imageBlockHeight}
         />
       ))}
     </Flex>
