@@ -75,13 +75,35 @@ const AnniversarySection: React.FC = () => {
           textAlign="center"
           mt={{ base: '25px' }}
         >
-          <Text color="white" fontFamily="Caveat" fontSize={{ base: '16px' }} px={{ base: '18px' }}>
+          <Text color="white" fontSize={{ base: '16px' }} px={{ base: '18px' }}>
             Mudaste o meu pranto em dança, a minha veste de lamento em veste de alegria, para que o
             meu coração cante louvores a ti e não se cale. Senhor, meu Deus, eu te darei graças para
-            sempre. <br /> Salmos 30:11-12
+            sempre. <br />{' '}
+            <Text color="white" fontSize={{ base: '12px' }} mt={{ base: '5px' }}>
+              Salmos 30:11-12
+            </Text>
           </Text>
         </Flex>
       </Flex>
+      {showFullGallery && (
+        <Flex
+          pos="fixed"
+          transition="all 3.5s ease-in-out"
+          bottom="0"
+          w="full"
+          maxW="500px"
+          py="2px"
+          bgColor="blackAlpha.500"
+          textAlign="center"
+          justify="center"
+          align="center"
+        >
+          <Text color="white" fontSize={{ base: '12px' }}>
+            TOQUE NA TELA PARA VOLTAR
+            {/* ADD DESKTOP VERSION */}
+          </Text>
+        </Flex>
+      )}
     </>
   )
 }
