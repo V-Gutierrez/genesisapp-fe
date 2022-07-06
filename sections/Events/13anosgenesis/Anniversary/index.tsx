@@ -45,7 +45,7 @@ const AnniversarySection: React.FC = () => {
           onClick={() => setShowFullGallery((prev) => !prev)}
           wrap="wrap"
           w={{ base: showFullGallery ? 'full' : '300px' }}
-          h={{ base: showFullGallery ? '1000px' : '250px' }}
+          h={{ base: showFullGallery ? '1000px' : '300px' }}
           clipPath={showFullGallery ? 'none' : Brazil}
           transition="all 2.5s ease-in-out"
           flexDirection="column"
