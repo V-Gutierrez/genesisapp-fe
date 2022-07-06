@@ -37,7 +37,7 @@ const AnniversarySection: React.FC = () => {
           }}
           BoxProps={{
             w: { base: '100%', sm: '100%', md: '100%', lg: '100%' },
-            h: showFullGallery ? 0 : { base: '190px' },
+            h: showFullGallery ? 0 : { base: '240px' },
             transition: 'all 1.5s ease-in-out',
           }}
         />
