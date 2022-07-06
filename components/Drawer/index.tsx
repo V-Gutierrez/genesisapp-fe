@@ -20,7 +20,8 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
   const { route } = useRouter()
   const isFetching = useIsFetching()
   const extraordinaryPage = extraordinaryRoutes.includes(route)
-
+  const generalHeight = extraordinaryPage ? '100vh' : '80vh'
+  const generalPadding = extraordinaryPage ? '0' : '4'
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
       <SidebarContent onClose={() => onClose} display={{ base: 'none', md: '' }} />
@@ -38,14 +39,9 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
         </DrawerContent>
       </Drawer>
       {!extraordinaryPage && <Header onOpen={onOpen} />}
-      <Box ml={{ base: 0, md: 0 }} p={extraordinaryPage ? '0' : '4'}>
+      <Box ml={0} p={generalPadding}>
         {isFetching ? (
-          <Flex
-            w="100%"
-            h={extraordinaryPage ? '100vh' : '80vh'}
-            justifyContent="center"
-            alignItems="center"
-          >
+          <Flex w="100%" h={generalHeight} justifyContent="center" alignItems="center">
             <Spinner size="xl" />
           </Flex>
         ) : (

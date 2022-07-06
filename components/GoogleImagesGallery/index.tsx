@@ -1,4 +1,4 @@
-import { Flex, FlexProps as FlexType, LayoutProps } from '@chakra-ui/react'
+import { Box, Flex, FlexProps as FlexType, LayoutProps } from '@chakra-ui/react'
 
 import { GET_GOOGLE_PHOTOS_ALBUM_PHOTOS } from 'services/queries'
 import GoogleImageMosaicBlock from 'components/GoogleImagesGallery/components/GoogleImageMosaicBlock'
@@ -13,7 +13,11 @@ import { useQuery } from 'react-query'
  * @property {string} queryKey - The query key to be used for React-query caching
  * @property {number} imageBlockWidth - The width of the image block in pixels or Responsive Values from ChakraUI
  * @property {number} imageBlockHeight - The height of the image block in pixels or Responsive Values from ChakraUI
+ * @property {number} sliderImageBlockHeight - The height of the image block in pixels or Responsive Values from ChakraUI
+ * @property {number} sliderImageBlockWidth - The width of the slider image block in pixels or Responsive Values from Chumerableheight of the image block in pixels or Responsive Values from ChakraUI
+ * @property {boolean} showSliderGallery - Whether or not to show the slider gallery
  * */
+
 const GoogleImagesGallery: React.FC<
   GoogleImagesGalleryProps<FlexType, LayoutProps['width'], LayoutProps['height']>
 > = ({ FlexProps, queryKey, albumUrl, imageBlockWidth, imageBlockHeight }) => {
@@ -21,15 +25,18 @@ const GoogleImagesGallery: React.FC<
     staleTime: Infinity,
     cacheTime: Infinity,
   })
+
   return (
     <Flex w="full" flexWrap="wrap" overflow="auto" {...FlexProps}>
       {data?.data.map((photo) => (
-        <GoogleImageMosaicBlock
-          key={photo.uid}
-          photo={photo}
-          imageBlockHeight={imageBlockWidth}
-          imageBlockWidth={imageBlockHeight}
-        />
+        <Box>
+          <GoogleImageMosaicBlock
+            key={photo.uid}
+            photo={photo}
+            imageBlockHeight={imageBlockWidth}
+            imageBlockWidth={imageBlockHeight}
+          />
+        </Box>
       ))}
     </Flex>
   )

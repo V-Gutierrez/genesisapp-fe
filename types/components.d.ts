@@ -20,6 +20,7 @@ interface SidebarProps {
 interface CustomSliderProps<T> {
   children: ReactNode | ReactNode[]
   customSettings?: T
+  customRef?: React.Ref<any>
 }
 
 interface CoordsState {
@@ -156,8 +157,8 @@ interface NextImageProps<Image, Box> {
 
 interface GoogleImageMosaicBlockProps<LayoutWidthProps, LayoutHeightProps> {
   photo: GooglePhotosImageSet
-  imageBlockWidth: LayoutType
-  imageBlockHeight: LayoutType
+  imageBlockWidth: LayoutWidthProps
+  imageBlockHeight: LayoutHeightProps
 }
 
 interface GoogleImagesGalleryProps<
@@ -168,6 +169,11 @@ interface GoogleImagesGalleryProps<
   FlexProps: FlexPropsType
   queryKey: string
   albumUrl: string
-  imageBlockWidth: LayoutType
-  imageBlockHeight: LayoutType
+  imageBlockWidth: MosaicBlockLayoutWidthProps
+  imageBlockHeight: MosaicBlockLayoutHeightProps
+}
+interface PageWithHeadingImageProps {
+  pageTitle: string
+  headingImage: string
+  children: React.ReactNode | React.ReactNode[]
 }

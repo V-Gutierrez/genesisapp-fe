@@ -1,8 +1,8 @@
-import * as Yup from 'yup';
+import * as Yup from 'yup'
 
-import { differenceInYears, isFuture } from 'date-fns';
+import { differenceInYears, isFuture } from 'date-fns'
 
-const FIVE_MB_IN_BYTES = 5e+6;
+const TWO_MB_IN_BYTES = 2e6
 
 export const RESET_PASSWORD_SCHEMA = Yup.object().shape({
   password: Yup.string()
@@ -16,16 +16,16 @@ export const RESET_PASSWORD_SCHEMA = Yup.object().shape({
     [Yup.ref('password'), null],
     'As senhas devem coincidir',
   ),
-});
+})
 
 export const PASSWORD_RECOVERY_SCHEMA = Yup.object().shape({
   email: Yup.string().email('Insira um email válido').required('Insira um email'),
-});
+})
 
 export const LOGIN_SCHEMA = Yup.object().shape({
   email: Yup.string().email('Insira um email válido').required('Insira um email válido'),
   password: Yup.string().required('Insira uma senha'),
-});
+})
 
 export const SIGNUP_SCHEMA = Yup.object().shape({
   email: Yup.string().email('Insira um email válido').required('Insira um email'),
@@ -47,13 +47,14 @@ export const SIGNUP_SCHEMA = Yup.object().shape({
     .test(
       'Idade é maior que 18',
       'Você precisa ter mais de 18 anos para criar uma conta',
-      (value) => differenceInYears(new Date(Date.now()), new Date(value as unknown as number)) >= 16,
+      (value) =>
+        differenceInYears(new Date(Date.now()), new Date(value as unknown as number)) >= 16,
     ),
   passwordConfirmation: Yup.string().oneOf(
     [Yup.ref('password'), null],
     'As senhas devem coincidir',
   ),
-});
+})
 
 export const DEVOTIONAL_CREATION_SCHEMA = Yup.object().shape({
   body: Yup.string()
@@ -62,22 +63,17 @@ export const DEVOTIONAL_CREATION_SCHEMA = Yup.object().shape({
   title: Yup.string().required('Insira um título'),
   scheduledTo: Yup.string()
     .required('Selecione uma data para publicar')
-    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number))),
+    .test('Data futura', 'A data deve ser futura', (value) =>
+      isFuture(new Date(value as unknown as number)),
+    ),
   author: Yup.string()
     .matches(/^[^\s]+( [^\s]+)+$/, 'Insira seu nome e sobrenome')
     .required('Insira o nome do autor'),
-  coverImage: Yup.mixed().required('Insira uma imagem de capa').test('fileSize', 'O arquivo deve ter no máximo 5MB', (value) => value?.size <= FIVE_MB_IN_BYTES),
-});
-
-export const EXTERNAL_EVENT_CREATION_SCHEMA = Yup.object().shape({
-  title: Yup.string().max(70, 'O título deve ter no máximo 70 caracteres').required('Insira um título'),
-  description: Yup.string().max(255, 'A descrição deve ter no máximo 255 caracteres').required('Insira uma descrição'),
-  lng: Yup.number(),
-  lat: Yup.number(),
-  maxSubscriptions: Yup.number().required('Insira o número máximo de inscrições'),
-  addressInfo: Yup.string().max(255, 'A informação de endereço deve ter no máximo 255 caracteres').required('Insira uma informação de endereço'),
-  scheduledTo: Yup.string()
-    .required('Selecione uma data para o evento')
-    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number))),
-  coverImage: Yup.mixed().required('Insira uma imagem de capa').test('fileSize', 'O arquivo deve ter no máximo 5MB', (value) => value?.size <= FIVE_MB_IN_BYTES),
-});
+  coverImage: Yup.mixed()
+    .required('Insira uma imagem de capa')
+    .test(
+      'fileSize',
+      'O arquivo deve ter no máximo 2MB',
+      (value) => value?.size <= TWO_MB_IN_BYTES,
+    ),
+})

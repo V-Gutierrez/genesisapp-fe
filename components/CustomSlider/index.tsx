@@ -1,6 +1,6 @@
-import Slider, { Settings } from 'react-slick';
+import Slider, { Settings } from 'react-slick'
 
-import { Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react'
 
 const DefaultSettings: Settings = {
   dots: true,
@@ -11,19 +11,22 @@ const DefaultSettings: Settings = {
   autoplay: true,
   centerMode: false,
   adaptiveHeight: true,
-};
+}
 
-const CustomSlider: React.FC<CustomSliderProps<Settings>> = ({ children, customSettings }) => {
-  const settings = { ...DefaultSettings, ...customSettings };
+const CustomSlider: React.FC<CustomSliderProps<Settings>> = ({
+  children,
+  customSettings,
+  customRef,
+}) => {
+  const settings = { ...DefaultSettings, ...customSettings }
 
   return (
     <Box w="100%">
-      <Slider {...settings}>
-        {' '}
+      <Slider {...settings} ref={customRef}>
         {children}
       </Slider>
     </Box>
-  );
-};
+  )
+}
 
-export default CustomSlider;
+export default CustomSlider

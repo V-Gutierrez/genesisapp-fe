@@ -30,7 +30,6 @@ class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
             rel="stylesheet"
-            integrity="sha256-OBrRmUI5FnG2iHn3HIl375I1H+lt4W4mc+IPbC1uQMs="
             crossOrigin="anonymous"
           />
           <meta name="theme-color" content="#000" />

@@ -10,10 +10,13 @@ const GoogleImageMosaicBlock: React.FC<
     BoxProps={{
       width: imageBlockWidth,
       height: imageBlockHeight,
-      margin: { base: '.15px' },
       transition: 'all 1.5s ease-in-out',
       borderRadius: 'lg',
       id: photo.uid,
+      cursor: 'pointer',
+      _hover: {
+        opacity: 0.5,
+      },
     }}
   />
 )
