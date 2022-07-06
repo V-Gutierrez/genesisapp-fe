@@ -1,4 +1,4 @@
-import { Flex, Text, transition } from '@chakra-ui/react'
+import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 
 import AnniversaryBanner from 'public/assets/images/13anosgenesis.jpg'
@@ -9,13 +9,25 @@ import NextImage from 'components/NextImage'
 
 const AnniversarySection: React.FC = () => {
   const [showFullGallery, setShowFullGallery] = useState(true)
+  const galleryWarning = useBreakpointValue({
+    base: 'TOQUE NA TELA PARA VOLTAR',
+    md: 'CLIQUE PARA VOLTAR',
+  })
 
   useEffect(() => {
-    const delay = setTimeout(() => {
-      clearTimeout(delay)
-      setShowFullGallery(false)
-    }, 1000)
+    if (typeof window !== 'undefined') {
+      const delay = setTimeout(() => {
+        clearTimeout(delay)
+        setShowFullGallery(false)
+      }, 1000)
+    }
   }, [])
+
+  const computeStylesBasedOnShowFullGalleryState = <T, K>(
+    showFullGalleryState: boolean,
+    truthyStyle: T,
+    falsyStyle: K,
+  ) => (showFullGalleryState ? truthyStyle : falsyStyle)
 
   return (
     <>
@@ -37,16 +49,16 @@ const AnniversarySection: React.FC = () => {
           }}
           BoxProps={{
             w: { base: '100%', sm: '100%', md: '100%', lg: '100%' },
-            h: showFullGallery ? 0 : { base: '240px' },
+            h: computeStylesBasedOnShowFullGalleryState(showFullGallery, 0, { base: '240px' }),
             transition: 'all 1.5s ease-in-out',
           }}
         />
         <Flex
           onClick={() => setShowFullGallery((prev) => !prev)}
           wrap="wrap"
-          w={{ base: showFullGallery ? 'full' : '300px' }}
-          h={{ base: showFullGallery ? '1000px' : '300px' }}
-          clipPath={showFullGallery ? 'none' : Brazil}
+          w={{ base: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '300px') }}
+          h={{ base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '1000px', '300px') }}
+          clipPath={computeStylesBasedOnShowFullGalleryState(showFullGallery, 'none', Brazil)}
           transition="all 2.5s ease-in-out"
           flexDirection="column"
           mt={{ base: '20px' }}
@@ -57,18 +69,28 @@ const AnniversarySection: React.FC = () => {
               align: 'center',
               justify: 'center',
               flexWrap: 'wrap',
-              overflow: 'auto',
               transition: 'all 2.5s ease-in-out',
+              overflow: computeStylesBasedOnShowFullGalleryState(
+                showFullGallery,
+                'visible',
+                'hidden',
+              ),
             }}
             queryKey="13YearsAnniversaryPhotos"
             albumUrl="https://photos.app.goo.gl/uUmT9uEH6GeJtsoK9"
-            imageBlockWidth={{ base: showFullGallery ? '75px' : '25px', md: '45px' }}
-            imageBlockHeight={{ base: showFullGallery ? '75px' : '25px', md: '45px' }}
+            imageBlockWidth={{
+              base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '75px', '25px'),
+              md: '45px',
+            }}
+            imageBlockHeight={{
+              base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '75px', '25px'),
+              md: '45px',
+            }}
           />
         </Flex>
         <Flex
-          opacity={showFullGallery ? '0' : '1'}
-          transition="all 3.5s ease-in-out"
+          opacity={computeStylesBasedOnShowFullGalleryState(showFullGallery, '0', '1')}
+          transition="all 1.5s ease-in-out"
           direction="column"
           justifyContent="center"
           w="full"
@@ -91,7 +113,6 @@ const AnniversarySection: React.FC = () => {
           transition="all 3.5s ease-in-out"
           bottom="0"
           w="full"
-          maxW="500px"
           py="2px"
           bgColor="blackAlpha.500"
           textAlign="center"
@@ -99,8 +120,7 @@ const AnniversarySection: React.FC = () => {
           align="center"
         >
           <Text color="white" fontSize={{ base: '12px' }}>
-            TOQUE NA TELA PARA VOLTAR
-            {/* ADD DESKTOP VERSION */}
+            {galleryWarning}
           </Text>
         </Flex>
       )}
