@@ -13,12 +13,12 @@ const AnniversarySection: React.FC = () => {
   })
 
   useEffect(() => {
-    /*  if (typeof window !== 'undefined') {
-       const delay = setTimeout(() => {
-         clearTimeout(delay)
-         setShowFullGallery(false)
-       }, 1000)
-     } */
+    if (typeof window !== 'undefined') {
+      const delay = setTimeout(() => {
+        clearTimeout(delay)
+        setShowFullGallery(false)
+      }, 1000)
+    }
   }, [])
 
   const computeStylesBasedOnShowFullGalleryState = <T, K>(
