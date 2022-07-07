@@ -69,10 +69,10 @@ const GoogleImagesGallery: React.FC<
           color="#FF5834"
           zIndex="popover"
           pos="fixed"
-          w="50px"
-          h="50px"
+          w="30px"
+          h="30px"
           left={{ base: '5px' }}
-          top="calc(50% - 20px)"
+          top="calc(52% - 20px)"
         />
       )}
       {currentImageIndex && showFullImage && (
@@ -103,10 +103,10 @@ const GoogleImagesGallery: React.FC<
           color="#FF5834"
           zIndex="popover"
           pos="fixed"
-          w="50px"
-          h="50px"
+          w="30px"
+          h="30px"
           right={{ base: '5px' }}
-          top="calc(50% - 20px)"
+          top="calc(52% - 20px)"
         />
       )}
     </Flex>
