@@ -77,7 +77,7 @@ const GoogleImagesGallery: React.FC<
       )}
       {currentImageIndex && showFullImage && (
         <NextImage
-          ImageProps={{ src: imageArray[currentImageIndex].url, objectFit: 'scale-down' }}
+          ImageProps={{ src: imageArray[currentImageIndex].url, objectFit: 'contain' }}
           BoxProps={{
             w: { base: '100vw' },
             h: { base: '100vh' },
