@@ -1,26 +1,24 @@
 import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 
-import AnniversaryBanner from 'public/assets/images/13anosgenesis.jpg'
 import { Brazil } from 'styles/clipPaths'
 import GoogleImagesGallery from 'components/GoogleImagesGallery'
 import Head from 'next/head'
-import NextImage from 'components/NextImage'
 
 const AnniversarySection: React.FC = () => {
   const [showFullGallery, setShowFullGallery] = useState(true)
   const galleryWarning = useBreakpointValue({
-    base: 'TOQUE NA TELA PARA VOLTAR',
-    md: 'CLIQUE PARA VOLTAR',
+    base: 'TOQUE AQUI PARA VOLTAR',
+    md: 'CLIQUE AQUI PARA VOLTAR',
   })
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const delay = setTimeout(() => {
-        clearTimeout(delay)
-        setShowFullGallery(false)
-      }, 1000)
-    }
+    /*  if (typeof window !== 'undefined') {
+       const delay = setTimeout(() => {
+         clearTimeout(delay)
+         setShowFullGallery(false)
+       }, 1000)
+     } */
   }, [])
 
   const computeStylesBasedOnShowFullGalleryState = <T, K>(
@@ -42,26 +40,30 @@ const AnniversarySection: React.FC = () => {
         bgRepeat="no-repeat"
         bgPos="center"
         alignItems="center"
+        justify="space-evenly"
+        overflowX="hidden"
       >
-        <NextImage
-          ImageProps={{
-            src: AnniversaryBanner.src,
-          }}
-          BoxProps={{
-            w: { base: '100%', sm: '100%', md: '100%', lg: '100%' },
-            h: computeStylesBasedOnShowFullGalleryState(showFullGallery, 0, { base: '240px' }),
-            transition: 'all 1.5s ease-in-out',
-          }}
-        />
         <Flex
-          onClick={() => setShowFullGallery((prev) => !prev)}
+          onClick={() => setShowFullGallery(true)}
           wrap="wrap"
-          w={{ base: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '300px') }}
-          h={{ base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '1000px', '300px') }}
+          w={{
+            base: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '350px'),
+            sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '500px'),
+            md: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '550px'),
+            lg: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '600px'),
+            xl: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '800px'),
+          }}
+          h={{
+            base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '1300px', '330px'),
+            sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '450px'),
+            md: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '500px'),
+            lg: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '570px'),
+            xl: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '700px'),
+          }}
           clipPath={computeStylesBasedOnShowFullGalleryState(showFullGallery, 'none', Brazil)}
           transition="all 2.5s ease-in-out"
           flexDirection="column"
-          mt={{ base: '20px' }}
+          mt={{ base: '10px' }}
         >
           <GoogleImagesGallery
             FlexProps={{
@@ -69,6 +71,8 @@ const AnniversarySection: React.FC = () => {
               align: 'center',
               justify: 'center',
               flexWrap: 'wrap',
+              bg: 'black',
+              paddingBottom: '20px',
               transition: 'all 2.5s ease-in-out',
               overflow: computeStylesBasedOnShowFullGalleryState(
                 showFullGallery,
@@ -80,14 +84,15 @@ const AnniversarySection: React.FC = () => {
             albumUrl="https://photos.app.goo.gl/uUmT9uEH6GeJtsoK9"
             imageBlockWidth={{
               base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '75px', '25px'),
-              md: '45px',
+              sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, '175px', '45px'),
             }}
             imageBlockHeight={{
               base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '75px', '25px'),
-              md: '45px',
+              sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, '175px', '45px'),
             }}
           />
         </Flex>
+
         <Flex
           opacity={computeStylesBasedOnShowFullGalleryState(showFullGallery, '0', '1')}
           transition="all 1.5s ease-in-out"
@@ -95,35 +100,40 @@ const AnniversarySection: React.FC = () => {
           justifyContent="center"
           w="full"
           textAlign="center"
-          mt={{ base: '25px' }}
         >
-          <Text color="white" fontSize={{ base: '16px' }} fontFamily="Caveat" px={{ base: '18px' }}>
+          <Text
+            color="white"
+            fontSize={{ base: '16px', sm: '18px', md: '20px', lg: '22px' }}
+            fontFamily="Caveat"
+            px={{ base: '18px', sm: '48px', md: '50px', lg: '20%', xl: '25%' }}
+          >
             &ldquo; Mudaste o meu pranto em dança, a minha veste de lamento em veste de alegria,
             para que o meu coração cante louvores a ti e não se cale. Senhor, meu Deus, eu te darei
             graças para sempre. &rdquo; <br />
-            <Text color="white" fontSize={{ base: '14px' }} mt={{ base: '5px' }}>
-              Salmos 30:11-12
-            </Text>
+          </Text>
+          <Text color="white" fontFamily="Caveat" fontSize={{ base: '14px' }} mt={{ base: '5px' }}>
+            Salmos 30:11-12
           </Text>
         </Flex>
       </Flex>
-      {showFullGallery && (
-        <Flex
-          pos="fixed"
-          transition="all 3.5s ease-in-out"
-          bottom="0"
-          w="full"
-          py="2px"
-          bgColor="blackAlpha.500"
-          textAlign="center"
-          justify="center"
-          align="center"
-        >
-          <Text color="white" fontSize={{ base: '12px' }}>
-            {galleryWarning}
-          </Text>
-        </Flex>
-      )}
+
+      <Flex
+        opacity={computeStylesBasedOnShowFullGalleryState(showFullGallery, '1', '0')}
+        pos="fixed"
+        transition="all 1.5s ease-in-out"
+        bottom="0"
+        w="full"
+        py={{ base: '6px' }}
+        bgColor="blackAlpha.500"
+        textAlign="center"
+        justify="center"
+        align="center"
+        onClick={() => setShowFullGallery(false)}
+      >
+        <Text color="white" fontSize={{ base: '12px' }}>
+          {galleryWarning}
+        </Text>
+      </Flex>
     </>
   )
 }

@@ -1,8 +1,10 @@
-import { Box, Flex, FlexProps as FlexType, LayoutProps } from '@chakra-ui/react'
+import { Box, Flex, FlexProps as FlexType, LayoutProps, ScaleFade } from '@chakra-ui/react'
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
+import React, { useEffect, useState } from 'react'
 
 import { GET_GOOGLE_PHOTOS_ALBUM_PHOTOS } from 'services/queries'
 import GoogleImageMosaicBlock from 'components/GoogleImagesGallery/components/GoogleImageMosaicBlock'
-import React from 'react'
+import NextImage from 'components/NextImage'
 import { useQuery } from 'react-query'
 
 /**
@@ -13,9 +15,6 @@ import { useQuery } from 'react-query'
  * @property {string} queryKey - The query key to be used for React-query caching
  * @property {number} imageBlockWidth - The width of the image block in pixels or Responsive Values from ChakraUI
  * @property {number} imageBlockHeight - The height of the image block in pixels or Responsive Values from ChakraUI
- * @property {number} sliderImageBlockHeight - The height of the image block in pixels or Responsive Values from ChakraUI
- * @property {number} sliderImageBlockWidth - The width of the slider image block in pixels or Responsive Values from Chumerableheight of the image block in pixels or Responsive Values from ChakraUI
- * @property {boolean} showSliderGallery - Whether or not to show the slider gallery
  * */
 
 const GoogleImagesGallery: React.FC<
@@ -25,19 +24,91 @@ const GoogleImagesGallery: React.FC<
     staleTime: Infinity,
     cacheTime: Infinity,
   })
+  const imageArray = (data?.data as GooglePhotosImageSet[]) || []
+
+  const [currentImageIndex, setCurrentImageIndex] = useState<undefined | number>(undefined)
+  const [showFullImage, setShowFullImage] = useState(false)
+
+  useEffect(() => {
+    setShowFullImage(false)
+  }, [imageBlockWidth, imageBlockHeight])
+
+  const handlePrev = () => {
+    if ((currentImageIndex as number) - 1 >= 0) {
+      setCurrentImageIndex((prev) => (prev as number) - 1)
+    }
+  }
+
+  const handleNext = () => {
+    if ((currentImageIndex as number) + 1 < imageArray.length) {
+      setCurrentImageIndex((prev) => (prev as number) + 1)
+    }
+  }
 
   return (
     <Flex w="full" flexWrap="wrap" overflow="auto" {...FlexProps}>
-      {data?.data.map((photo) => (
-        <Box>
+      {imageArray.map((photo, index) => (
+        <Box
+          key={photo.uid}
+          onClick={() => {
+            setShowFullImage(true)
+            setCurrentImageIndex(index)
+          }}
+        >
           <GoogleImageMosaicBlock
-            key={photo.uid}
             photo={photo}
             imageBlockHeight={imageBlockWidth}
             imageBlockWidth={imageBlockHeight}
           />
         </Box>
       ))}
+      {currentImageIndex && showFullImage && (
+        <ChevronLeftIcon
+          onClick={handlePrev}
+          cursor="pointer"
+          color="#FF5834"
+          zIndex="popover"
+          pos="fixed"
+          w="50px"
+          h="50px"
+          left={{ base: '5px' }}
+          top="calc(50% - 20px)"
+        />
+      )}
+      {currentImageIndex && showFullImage && (
+        <NextImage
+          ImageProps={{ src: imageArray[currentImageIndex].url, objectFit: 'scale-down' }}
+          BoxProps={{
+            w: { base: '100vw' },
+            h: { base: '100vh' },
+            position: 'fixed',
+            bg: 'blackAlpha.600',
+            bottom: 0,
+            right: 0,
+            left: 0,
+            top: 0,
+            d: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            onClick: () => {
+              setShowFullImage(false)
+            },
+          }}
+        />
+      )}
+      {currentImageIndex && showFullImage && (
+        <ChevronRightIcon
+          onClick={handleNext}
+          cursor="pointer"
+          color="#FF5834"
+          zIndex="popover"
+          pos="fixed"
+          w="50px"
+          h="50px"
+          right={{ base: '5px' }}
+          top="calc(50% - 20px)"
+        />
+      )}
     </Flex>
   )
 }
