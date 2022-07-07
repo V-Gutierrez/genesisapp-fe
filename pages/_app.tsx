@@ -16,14 +16,11 @@ function MyApp({ Component, pageProps, router }: AppProps) {
       <Head>
         <title>Gênesis Church</title>
       </Head>
-
       <QueryClientProvider client={ReactQueryClient}>
         <ChakraProvider>
           <UserContextProvider>
             <SidebarWithHeader>
-              <ScaleFade key={router.route} initialScale={0.2} in>
-                <Component {...pageProps} />
-              </ScaleFade>
+              <Component {...pageProps} />
             </SidebarWithHeader>
             <ReactQueryDevtools initialIsOpen position="bottom-left" />
           </UserContextProvider>
