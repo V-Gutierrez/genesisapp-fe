@@ -5,12 +5,20 @@ import { Brazil } from 'styles/clipPaths'
 import GoogleImagesGallery from 'components/GoogleImagesGallery'
 import Head from 'next/head'
 
+// import { ChevronLeftIcon } from '@chakra-ui/icons'
+
+// import { useRouter } from 'next/router'
+
 const AnniversarySection: React.FC = () => {
   const [showFullGallery, setShowFullGallery] = useState(true)
   const galleryWarning = useBreakpointValue({
     base: 'TOQUE AQUI PARA VOLTAR',
     md: 'CLIQUE AQUI PARA VOLTAR',
   })
+  /* const { push } = useRouter();
+  const handleGoBack = () => {
+    push('/')
+  } */
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -32,6 +40,11 @@ const AnniversarySection: React.FC = () => {
       <Head>
         <title>Gênesis Church - Aniversário 13 anos</title>
       </Head>
+      {/*
+      <Flex h={{ base: '20px' }} bg="black" alignSelf='flex-start' justifySelf="flex-start" p={{ base: '10px' }} onClick={handleGoBack}>
+        <ChevronLeftIcon color='white' h={{ base: '40px' }} w={{ base: '40px' }} alignContent={'flex-start'} cursor='pointer' />
+      </Flex>
+      */}
       <Flex
         minH="100vh"
         flexDirection="column"
@@ -104,14 +117,14 @@ const AnniversarySection: React.FC = () => {
           <Text
             color="white"
             fontSize={{ base: '16px', sm: '18px', md: '20px', lg: '22px' }}
-            fontFamily="Caveat"
             px={{ base: '18px', sm: '48px', md: '50px', lg: '20%', xl: '25%' }}
           >
-            &ldquo; Mudaste o meu pranto em dança, a minha veste de lamento em veste de alegria,
-            para que o meu coração cante louvores a ti e não se cale. Senhor, meu Deus, eu te darei
-            graças para sempre. &rdquo; <br />
+            &ldquo;Mudaste o meu pranto em dança, a minha veste de lamento em veste de alegria, para
+            que o meu coração cante louvores a ti e não se cale. Senhor, meu Deus, eu te darei
+            graças para sempre.&rdquo;
+            <br />
           </Text>
-          <Text color="white" fontFamily="Caveat" fontSize={{ base: '14px' }} mt={{ base: '5px' }}>
+          <Text color="white" fontSize={{ base: '14px' }} mt={{ base: '5px' }}>
             Salmos 30:11-12
           </Text>
         </Flex>

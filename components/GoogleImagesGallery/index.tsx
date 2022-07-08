@@ -69,24 +69,21 @@ const GoogleImagesGallery: React.FC<
           color="#FF5834"
           zIndex="popover"
           pos="fixed"
-          w={{ base: '35px' }}
-          h={{ base: '35px' }}
-          left={{ base: '5px' }}
-          top="calc(50% - 35px)"
+          w={{ base: '35px', md: '50px' }}
+          h={{ base: '35px', md: '50px' }}
+          left={{ base: '5px', md: '20px' }}
+          top={{ base: 'calc(50% - 35px)', md: 'calc(50% - 50px)' }}
         />
       )}
       {currentImageIndex && showFullImage && (
         <NextImage
           ImageProps={{ src: imageArray[currentImageIndex].url, objectFit: 'contain' }}
           BoxProps={{
-            w: { base: '100vw' },
-            h: { base: '100vh' },
+            w: { base: '100%' },
+            h: { base: '100%' },
             position: 'fixed',
             bg: 'blackAlpha.600',
-            bottom: 0,
-            right: 0,
-            left: 0,
-            top: 0,
+            bottom: { base: '25px' },
             d: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -103,10 +100,10 @@ const GoogleImagesGallery: React.FC<
           color="#FF5834"
           zIndex="popover"
           pos="fixed"
-          w={{ base: '35px' }}
-          h={{ base: '35px' }}
-          right={{ base: '5px' }}
-          top="calc(50% - 35px)"
+          w={{ base: '35px', md: '50px' }}
+          h={{ base: '35px', md: '50px' }}
+          right={{ base: '5px', md: '20px' }}
+          top={{ base: 'calc(50% - 35px)', md: 'calc(50% - 50px)' }}
         />
       )}
     </Flex>
