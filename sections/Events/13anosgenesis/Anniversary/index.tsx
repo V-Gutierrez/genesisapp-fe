@@ -45,11 +45,14 @@ const AnniversarySection: React.FC = () => {
         alignItems="center"
         justify="space-evenly"
         overflowX="hidden"
+        position="relative"
       >
         <Flex
-          minH="100vh"
+          h="auto-fit"
+          w="98vw"
           wrap="wrap"
-          justify="space-evenly"
+          wordBreak="break-word"
+          justify="space-between"
           align="center"
           position="absolute"
           zIndex="0"
@@ -61,7 +64,7 @@ const AnniversarySection: React.FC = () => {
               fontFamily="Caveat"
               fontSize={{ base: '5px', md: '8px', lg: '10px' }}
               key={signer.id}
-              mr="2px"
+              mr="1.5px"
             >
               {signer.name}{' '}
             </Text>
