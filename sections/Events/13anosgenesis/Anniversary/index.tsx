@@ -52,7 +52,7 @@ const AnniversarySection: React.FC = () => {
           w="98vw"
           wrap="wrap"
           wordBreak="break-word"
-          justify="space-between"
+          justify="space-around"
           align="center"
           position="absolute"
           zIndex="0"
@@ -62,13 +62,16 @@ const AnniversarySection: React.FC = () => {
           {subscribers.map((signer) => (
             <Text
               fontFamily="Caveat"
-              fontSize={{ base: '5px', md: '8px', lg: '10px' }}
-              h={{ base: '8px', sm: '10px', md: 'auto' }}
+              fontSize={{ base: '6px', sm: '7px', md: '8px', lg: '13px' }}
               w="auto-fit"
               key={signer.id}
-              mr="1.5px"
+              my=".5px"
+              overflow="hidden"
+              textAlign="center"
+              maxW={{ base: '100px' }}
+              maxH={{ base: '7px', sm: '11px', md: '12px', lg: '12px' }}
             >
-              {signer.name}{' '}
+              {signer.name}
             </Text>
           ))}
         </Flex>
@@ -104,10 +107,10 @@ const AnniversarySection: React.FC = () => {
             xl: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '800px'),
           }}
           h={{
-            base: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '330px'),
-            sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '450px'),
-            md: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '500px'),
-            lg: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '570px'),
+            base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '1300px', '330px'),
+            sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '450px'),
+            md: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '500px'),
+            lg: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto', '570px'),
             xl: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '700px'),
           }}
           clipPath={computeStylesBasedOnShowFullGalleryState(showFullGallery, 'none', Brazil)}
