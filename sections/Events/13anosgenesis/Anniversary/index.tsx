@@ -63,6 +63,8 @@ const AnniversarySection: React.FC = () => {
             <Text
               fontFamily="Caveat"
               fontSize={{ base: '5px', md: '8px', lg: '10px' }}
+              h="6px"
+              w="auto-fit"
               key={signer.id}
               mr="1.5px"
             >
