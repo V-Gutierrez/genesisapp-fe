@@ -49,7 +49,7 @@ const AnniversarySection: React.FC = () => {
         <Flex
           minH="100vh"
           wrap="wrap"
-          justify="center"
+          justify="space-evenly"
           align="center"
           p={{ base: '15px' }}
           position="absolute"
@@ -58,21 +58,14 @@ const AnniversarySection: React.FC = () => {
           bg="black"
         >
           {subscribers.map((signer) => (
-            <>
-              <Text
-                fontFamily="Caveat"
-                fontSize={{ base: '5px', md: '8px', lg: '10px' }}
-                key={signer.id}
-              >
-                {signer.name}{' '}
-              </Text>
-              <Text
-                fontSize={{ base: '2.5px', md: '4px', lg: '5px' }}
-                mx={{ base: '5px', md: '8px', lg: '10px' }}
-              >
-                &#9679;
-              </Text>
-            </>
+            <Text
+              fontFamily="Caveat"
+              fontSize={{ base: '5px', md: '8px', lg: '10px' }}
+              key={signer.id}
+              mr="2px"
+            >
+              {signer.name}{' '}
+            </Text>
           ))}
         </Flex>
         <Flex
