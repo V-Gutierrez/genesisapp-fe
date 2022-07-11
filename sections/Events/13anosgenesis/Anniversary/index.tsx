@@ -63,7 +63,7 @@ const AnniversarySection: React.FC = () => {
             <Text
               fontFamily="Caveat"
               fontSize={{ base: '5px', md: '8px', lg: '10px' }}
-              h="6px"
+              h={{ base: '8px', sm: '10px', md: 'auto' }}
               w="auto-fit"
               key={signer.id}
               mr="1.5px"
@@ -73,7 +73,7 @@ const AnniversarySection: React.FC = () => {
           ))}
         </Flex>
         <Flex
-          h={computeStylesBasedOnShowFullGalleryState(showFullGallery, 0, '80px')}
+          h={computeStylesBasedOnShowFullGalleryState(showFullGallery, 0, '60px')}
           w="full"
           align="center"
           justifyContent="center"
@@ -155,7 +155,7 @@ const AnniversarySection: React.FC = () => {
         >
           <Text
             color="white"
-            fontSize={{ base: '16px', sm: '18px', md: '20px', lg: '22px' }}
+            fontSize={{ base: '15px', sm: '15px', md: '18px', lg: '22px' }}
             px={{ base: '18px', sm: '48px', md: '50px', lg: '20%', xl: '25%' }}
           >
             &ldquo;Mudaste o meu pranto em dança, a minha veste de lamento em veste de alegria, para
