@@ -51,7 +51,6 @@ const AnniversarySection: React.FC = () => {
           wrap="wrap"
           justify="space-evenly"
           align="center"
-          p={{ base: '15px' }}
           position="absolute"
           zIndex="0"
           userSelect="none"
