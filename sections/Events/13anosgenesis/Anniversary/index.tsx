@@ -7,6 +7,7 @@ import GoogleImagesGallery from 'components/GoogleImagesGallery'
 import Head from 'next/head'
 import NextImage from 'components/NextImage'
 import { subscribers } from 'sections/Events/13anosgenesis/Anniversary/signers'
+import arrayShuffle from 'array-shuffle'
 
 const AnniversarySection: React.FC = () => {
   const [showFullGallery, setShowFullGallery] = useState(true)
@@ -58,8 +59,9 @@ const AnniversarySection: React.FC = () => {
           zIndex="0"
           userSelect="none"
           bg="black"
+          opacity={computeStylesBasedOnShowFullGalleryState(showFullGallery, '0', '1')}
         >
-          {subscribers.map((signer) => (
+          {arrayShuffle(subscribers).map((signer) => (
             <Text
               fontFamily="Caveat"
               fontSize={{ base: '6px', sm: '7px', md: '8px', lg: '13px' }}
@@ -69,7 +71,7 @@ const AnniversarySection: React.FC = () => {
               overflow="hidden"
               textAlign="center"
               maxW={{ base: '100px' }}
-              maxH={{ base: '7px', sm: '11px', md: '12px', lg: '12px' }}
+              maxH={{ base: '7px', sm: '11px', md: '12px', lg: '12px', xl: '22px' }}
             >
               {signer.name}
             </Text>
