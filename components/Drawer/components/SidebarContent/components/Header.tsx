@@ -1,14 +1,9 @@
-import {
-  Flex,
-  HStack,
-  IconButton,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Flex, HStack, IconButton, useColorModeValue } from '@chakra-ui/react'
 
-import { FiMenu } from 'react-icons/fi';
-import GenesisLogo from 'public/assets/images/genesislogo.png';
-import NextImage from 'components/NextImage';
-import UserInfo from './UserInfo';
+import { FiMenu } from 'react-icons/fi'
+import GenesisLogo from 'public/assets/images/genesislogo.png'
+import NextImage from 'components/NextImage'
+import UserInfo from './UserInfo'
 
 const Header = ({ onOpen, ...rest }: HeaderProps) => (
   <Flex
@@ -32,17 +27,16 @@ const Header = ({ onOpen, ...rest }: HeaderProps) => (
 
     <Flex h="50%" w="100%" justifyContent="center" alignItems="center">
       <NextImage
-        ImageProps={
-          {
- src: GenesisLogo.src, alt: 'Genesis Logo', priority: true, objectFit: 'contain',
-}
-        }
-        BoxProps={
-          {
-            h: '100%',
-            w: '120px',
-          }
-        }
+        ImageProps={{
+          src: GenesisLogo.src,
+          alt: 'Genesis Logo',
+          priority: true,
+          objectFit: 'contain',
+        }}
+        BoxProps={{
+          h: '100%',
+          w: '120px',
+        }}
       />
     </Flex>
 
@@ -50,6 +44,6 @@ const Header = ({ onOpen, ...rest }: HeaderProps) => (
       <UserInfo />
     </HStack>
   </Flex>
-);
+)
 
-export default Header;
+export default Header

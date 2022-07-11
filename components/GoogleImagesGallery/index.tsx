@@ -46,7 +46,7 @@ const GoogleImagesGallery: React.FC<
   }
 
   return (
-    <Flex w="full" flexWrap="wrap" overflow="auto" {...FlexProps}>
+    <Flex w="full" flexWrap="wrap" {...FlexProps}>
       {imageArray.map((photo, index) => (
         <Box
           key={photo.uid}
@@ -62,22 +62,25 @@ const GoogleImagesGallery: React.FC<
           />
         </Box>
       ))}
-      {currentImageIndex && showFullImage && (
+      {!isNaN(currentImageIndex as number) && showFullImage && (
         <ChevronLeftIcon
           onClick={handlePrev}
           cursor="pointer"
           color="#FF5834"
           zIndex="popover"
           pos="fixed"
-          w={{ base: '35px', md: '50px' }}
-          h={{ base: '35px', md: '50px' }}
+          w={{ base: '40px', md: '50px' }}
+          h={{ base: '40px', md: '50px' }}
           left={{ base: '5px', md: '20px' }}
-          top={{ base: 'calc(50% - 35px)', md: 'calc(50% - 50px)' }}
+          top={{ base: 'calc(50% - 40px)', md: 'calc(50% - 50px + 56px)' }}
         />
       )}
-      {currentImageIndex && showFullImage && (
+      {!isNaN(currentImageIndex as number) && showFullImage && (
         <NextImage
-          ImageProps={{ src: imageArray[currentImageIndex].url, objectFit: 'contain' }}
+          ImageProps={{
+            src: imageArray[currentImageIndex as number].highQuality,
+            objectFit: 'contain',
+          }}
           BoxProps={{
             w: { base: '100%' },
             h: { base: '100%' },
@@ -90,20 +93,25 @@ const GoogleImagesGallery: React.FC<
             onClick: () => {
               setShowFullImage(false)
             },
+            __css: {
+              '& > span': {
+                marginTop: { md: '56px !important' },
+              },
+            },
           }}
         />
       )}
-      {currentImageIndex && showFullImage && (
+      {!isNaN(currentImageIndex as number) && showFullImage && (
         <ChevronRightIcon
           onClick={handleNext}
           cursor="pointer"
           color="#FF5834"
           zIndex="popover"
           pos="fixed"
-          w={{ base: '35px', md: '50px' }}
-          h={{ base: '35px', md: '50px' }}
+          w={{ base: '40px', md: '50px' }}
+          h={{ base: '40px', md: '50px' }}
           right={{ base: '5px', md: '20px' }}
-          top={{ base: 'calc(50% - 35px)', md: 'calc(50% - 50px)' }}
+          top={{ base: 'calc(50% - 40px)', md: 'calc(50% - 50px + 56px)' }}
         />
       )}
     </Flex>

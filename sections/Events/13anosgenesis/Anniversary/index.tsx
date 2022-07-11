@@ -2,12 +2,11 @@ import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 
 import { Brazil } from 'styles/clipPaths'
+import GenesisLogo from 'public/assets/images/genesislogowhite.png'
 import GoogleImagesGallery from 'components/GoogleImagesGallery'
 import Head from 'next/head'
-
-// import { ChevronLeftIcon } from '@chakra-ui/icons'
-
-// import { useRouter } from 'next/router'
+import NextImage from 'components/NextImage'
+import { subscribers } from 'sections/Events/13anosgenesis/Anniversary/signers'
 
 const AnniversarySection: React.FC = () => {
   const [showFullGallery, setShowFullGallery] = useState(true)
@@ -15,10 +14,6 @@ const AnniversarySection: React.FC = () => {
     base: 'TOQUE AQUI PARA VOLTAR',
     md: 'CLIQUE AQUI PARA VOLTAR',
   })
-  /* const { push } = useRouter();
-  const handleGoBack = () => {
-    push('/')
-  } */
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -40,11 +35,6 @@ const AnniversarySection: React.FC = () => {
       <Head>
         <title>Gênesis Church - Aniversário 13 anos</title>
       </Head>
-      {/*
-      <Flex h={{ base: '20px' }} bg="black" alignSelf='flex-start' justifySelf="flex-start" p={{ base: '10px' }} onClick={handleGoBack}>
-        <ChevronLeftIcon color='white' h={{ base: '40px' }} w={{ base: '40px' }} alignContent={'flex-start'} cursor='pointer' />
-      </Flex>
-      */}
       <Flex
         minH="100vh"
         flexDirection="column"
@@ -57,6 +47,56 @@ const AnniversarySection: React.FC = () => {
         overflowX="hidden"
       >
         <Flex
+          minH="100vh"
+          wrap="wrap"
+          justify="center"
+          align="center"
+          p={{ base: '15px' }}
+          position="absolute"
+          zIndex="0"
+          userSelect="none"
+          bg="black"
+        >
+          {subscribers.map((signer) => (
+            <>
+              <Text
+                fontFamily="Caveat"
+                fontSize={{ base: '5px', md: '8px', lg: '10px' }}
+                key={signer.id}
+              >
+                {signer.name}{' '}
+              </Text>
+              <Text
+                fontSize={{ base: '2.5px', md: '4px', lg: '5px' }}
+                mx={{ base: '5px', md: '8px', lg: '10px' }}
+              >
+                &#9679;
+              </Text>
+            </>
+          ))}
+        </Flex>
+        <Flex
+          h={computeStylesBasedOnShowFullGalleryState(showFullGallery, 0, '80px')}
+          w="full"
+          align="center"
+          justifyContent="center"
+          p={{ base: '5px' }}
+        >
+          <NextImage
+            ImageProps={{
+              src: GenesisLogo.src,
+              alt: 'Genesis Logo',
+              priority: true,
+              objectFit: 'contain',
+            }}
+            BoxProps={{
+              h: '100%',
+              w: '140px',
+              alignSelf: 'center',
+            }}
+          />
+        </Flex>
+        <Flex
           onClick={() => setShowFullGallery(true)}
           wrap="wrap"
           w={{
@@ -67,11 +107,11 @@ const AnniversarySection: React.FC = () => {
             xl: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '800px'),
           }}
           h={{
-            base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '1300px', '330px'),
-            sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '450px'),
-            md: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '500px'),
-            lg: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '570px'),
-            xl: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '700px'),
+            base: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '330px'),
+            sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '450px'),
+            md: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '500px'),
+            lg: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '570px'),
+            xl: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '700px'),
           }}
           clipPath={computeStylesBasedOnShowFullGalleryState(showFullGallery, 'none', Brazil)}
           transition="all 2.5s ease-in-out"
@@ -113,6 +153,8 @@ const AnniversarySection: React.FC = () => {
           justifyContent="center"
           w="full"
           textAlign="center"
+          zIndex="popover"
+          mt={{ md: '20px' }}
         >
           <Text
             color="white"
