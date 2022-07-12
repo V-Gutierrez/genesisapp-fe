@@ -163,13 +163,12 @@ const AnniversarySection: React.FC = () => {
             fontSize={{ base: '15px', sm: '15px', md: '18px', lg: '22px' }}
             px={{ base: '18px', sm: '48px', md: '50px', lg: '20%', xl: '25%' }}
           >
-            &ldquo;Mudaste o meu pranto em dança, a minha veste de lamento em veste de alegria, para
-            que o meu coração cante louvores a ti e não se cale. Senhor, meu Deus, eu te darei
-            graças para sempre.&rdquo;
+            &ldquo;E não somente isto, mas também nos gloriamos em Deus por nosso Senhor Jesus
+            Cristo, pelo qual agora alcançamos a reconciliação.&rdquo;
             <br />
           </Text>
           <Text color="white" fontSize={{ base: '14px' }} mt={{ base: '5px' }}>
-            Salmos 30:11-12
+            Romanos 5:11
           </Text>
         </Flex>
       </Flex>

@@ -9,7 +9,7 @@ const MenuDropdown: React.FC<MenuDropdownProps<ComponentWithAs<'svg', IconProps>
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <StyledLink style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <>
       <Flex
         align="center"
         p="4"
@@ -45,7 +45,7 @@ const MenuDropdown: React.FC<MenuDropdownProps<ComponentWithAs<'svg', IconProps>
       >
         {children}
       </Box>
-    </StyledLink>
+    </>
   )
 }
 
