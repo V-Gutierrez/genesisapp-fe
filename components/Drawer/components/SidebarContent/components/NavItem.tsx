@@ -1,14 +1,10 @@
-import {
- Flex, FlexProps, Icon, Link as StyledLink,
-} from '@chakra-ui/react';
+import { Flex, FlexProps, Icon, Link as StyledLink } from '@chakra-ui/react'
 
-import Link from 'next/link';
+import Link from 'next/link'
 
-const NavItem = ({
- icon, children, goTo, ...rest
-}: NavItemProps & FlexProps) => (
+const NavItem = ({ icon, children, onClick, goTo, ...rest }: NavItemProps & FlexProps) => (
   <Link href={goTo}>
-    <StyledLink style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
+    <StyledLink style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }} onClick={onClick}>
       <Flex
         align="center"
         p="4"
@@ -36,6 +32,6 @@ const NavItem = ({
       </Flex>
     </StyledLink>
   </Link>
-);
+)
 
-export default NavItem;
+export default NavItem

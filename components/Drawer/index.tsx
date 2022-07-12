@@ -22,9 +22,9 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
   const extraordinaryPage = extraordinaryRoutes.includes(route)
   const generalHeight = extraordinaryPage ? '100vh' : '80vh'
   const generalPadding = extraordinaryPage ? '0' : '4'
+
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
-      <SidebarContent onClose={() => onClose} display={{ base: 'none', md: '' }} />
       <Drawer
         autoFocus={false}
         isOpen={isOpen}

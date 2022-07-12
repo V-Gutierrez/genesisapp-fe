@@ -12,6 +12,7 @@ interface NavItemProps {
   icon: IconType
   goTo: string
   children: string
+  onClick: () => void
 }
 
 interface SidebarProps {
@@ -176,4 +177,10 @@ interface PageWithHeadingImageProps {
   pageTitle: string
   headingImage: string
   children: React.ReactNode | React.ReactNode[]
+}
+
+interface MenuDropdownProps<IconType> {
+  icon: IconType
+  children?: JSX.Element[] | JSX.Element
+  title: string
 }
