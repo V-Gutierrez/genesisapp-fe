@@ -1,4 +1,4 @@
-import { Box, Flex, FlexProps as FlexType, LayoutProps, ScaleFade } from '@chakra-ui/react'
+import { Box, Flex, FlexProps as FlexType, LayoutProps } from '@chakra-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import React, { useEffect, useState } from 'react'
 

@@ -1,4 +1,4 @@
-import { Box, ComponentWithAs, IconProps, Flex, Icon, Link as StyledLink } from '@chakra-ui/react'
+import { Box, ComponentWithAs, Flex, Icon, IconProps } from '@chakra-ui/react'
 import React, { useState } from 'react'
 
 const MenuDropdown: React.FC<MenuDropdownProps<ComponentWithAs<'svg', IconProps>>> = ({
