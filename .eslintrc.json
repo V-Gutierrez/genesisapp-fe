@@ -54,7 +54,8 @@
         "semi": "off",
         "no-nested-ternary": "warn",
         "object-curly-newline": "off",
-        "linebreak-style": "off"
+        "linebreak-style": "off",
+        "operator-linebreak": "off"
     },
     "ignorePatterns": [
         "*.d.ts"
