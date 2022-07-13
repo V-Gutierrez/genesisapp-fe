@@ -6,8 +6,8 @@ import GenesisLogo from 'public/assets/images/genesislogowhite.png'
 import GoogleImagesGallery from 'components/GoogleImagesGallery'
 import Head from 'next/head'
 import NextImage from 'components/NextImage'
-import { subscribers } from 'sections/Events/13anosgenesis/Anniversary/signers'
 import arrayShuffle from 'array-shuffle'
+import { subscribers } from 'sections/Events/13anosgenesis/Anniversary/signers'
 
 const AnniversarySection: React.FC = () => {
   const [showFullGallery, setShowFullGallery] = useState(true)
@@ -163,12 +163,12 @@ const AnniversarySection: React.FC = () => {
             fontSize={{ base: '15px', sm: '15px', md: '18px', lg: '22px' }}
             px={{ base: '18px', sm: '48px', md: '50px', lg: '20%', xl: '25%' }}
           >
-            &ldquo;E não somente isto, mas também nos gloriamos em Deus por nosso Senhor Jesus
-            Cristo, pelo qual agora alcançamos a reconciliação.&rdquo;
+            &ldquo;Assim, pois, também agora, no tempo de hoje, sobrevive um remanescente segundo a
+            eleição da graça.&rdquo;
             <br />
           </Text>
           <Text color="white" fontSize={{ base: '14px' }} mt={{ base: '5px' }}>
-            Romanos 5:11
+            Romanos 11:5
           </Text>
         </Flex>
       </Flex>
