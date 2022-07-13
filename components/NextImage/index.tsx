@@ -23,7 +23,7 @@ const NextImage: React.FC<NextImageProps<ImagePropsType, BoxPropsType>> = ({
 
   useEffect(() => {
     const fallbackLoadingToDefault = setTimeout(() => {
-      handleLoadEnd()
+      loading && handleLoadEnd()
       clearTimeout(fallbackLoadingToDefault)
     }, 7000)
   }, [])
