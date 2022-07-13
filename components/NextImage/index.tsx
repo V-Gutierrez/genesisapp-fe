@@ -1,6 +1,6 @@
 import { Box, BoxProps as BoxPropsType, Skeleton } from '@chakra-ui/react'
 import Image, { ImageProps as ImagePropsType } from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 /**
  * @author: Victor Gutierrez
@@ -13,6 +13,10 @@ const NextImage: React.FC<NextImageProps<ImagePropsType, BoxPropsType>> = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(true)
 
+  useEffect(() => {
+    setLoading(true)
+  }, [ImageProps.src])
+
   function handleLoadEnd() {
     setLoading(false)
   }
@@ -20,7 +24,12 @@ const NextImage: React.FC<NextImageProps<ImagePropsType, BoxPropsType>> = ({
   return (
     <Box position="relative" {...BoxProps}>
       {loading && <Skeleton w="full" h="full" borderRadius="xl" />}
-      <Image {...ImageProps} layout="fill" onLoadingComplete={handleLoadEnd} />
+      <Image
+        {...ImageProps}
+        layout="fill"
+        onLoadingComplete={handleLoadEnd}
+        onLoadedDataCapture={handleLoadEnd}
+      />
     </Box>
   )
 }

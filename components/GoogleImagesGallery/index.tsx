@@ -1,4 +1,4 @@
-import { Box, Flex, FlexProps as FlexType, LayoutProps } from '@chakra-ui/react'
+import { Box, Flex, FlexProps as FlexType, LayoutProps, Spinner } from '@chakra-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import React, { useEffect, useState } from 'react'
 
@@ -98,6 +98,7 @@ const GoogleImagesGallery: React.FC<
                 marginTop: { md: '56px !important' },
               },
             },
+            children: <Spinner size="xl" />,
           }}
         />
       )}
