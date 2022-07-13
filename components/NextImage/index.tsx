@@ -21,6 +21,13 @@ const NextImage: React.FC<NextImageProps<ImagePropsType, BoxPropsType>> = ({
     setLoading(false)
   }
 
+  useEffect(() => {
+    const fallbackLoadingToDefault = setTimeout(() => {
+      handleLoadEnd()
+      clearTimeout(fallbackLoadingToDefault)
+    }, 7000)
+  }, [])
+
   return (
     <Box position="relative" {...BoxProps}>
       {loading && <Skeleton w="full" h="full" borderRadius="xl" />}
