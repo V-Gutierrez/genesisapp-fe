@@ -1,5 +1,5 @@
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
-import { Box, Flex, Text, Tooltip } from '@chakra-ui/react'
+import { Box, Flex, Text, Tooltip, useToast } from '@chakra-ui/react'
 import React, { useRef } from 'react'
 
 import { BsEye } from 'react-icons/bs'
@@ -10,9 +10,18 @@ const Interactions: React.FC<InteractionProps> = ({
   liked,
   onDislikeInteraction,
   onLikeInteraction,
+  likeMessage,
 }) => {
   const viewsIconRef = useRef(null)
   const likesIconRef = useRef(null)
+  const toast = useToast()
+
+  const handleLike = () => {
+    toast({
+      description: likeMessage || 'Você curtiu este item',
+    })
+    onLikeInteraction && onLikeInteraction()
+  }
 
   return (
     <Flex w="full" align="center" justify="flex-end">
@@ -28,7 +37,7 @@ const Interactions: React.FC<InteractionProps> = ({
       </Flex>
       <Flex align="center" ml={{ base: 2 }} cursor="pointer">
         <Tooltip label={likes > 0 ? `${likes} pessoas gostaram` : 'Likes'} hasArrow placement="top">
-          <Box ref={likesIconRef} onClick={liked ? onDislikeInteraction : onLikeInteraction}>
+          <Box ref={likesIconRef} onClick={liked ? onDislikeInteraction : handleLike}>
             {liked ? <AiFillHeart /> : <AiOutlineHeart />}
           </Box>
         </Tooltip>

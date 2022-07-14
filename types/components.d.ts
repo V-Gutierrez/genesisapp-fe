@@ -191,4 +191,5 @@ interface InteractionProps {
   liked?: boolean
   views: number
   likes: number
+  likeMessage?: string
 }

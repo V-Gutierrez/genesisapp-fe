@@ -37,6 +37,7 @@ interface Devotional {
   readingTimeInMinutes: number
   views: number
   likes: number
+  userLiked?: boolean
 }
 
 interface Stats {

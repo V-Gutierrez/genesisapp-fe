@@ -1,27 +1,34 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
+import { useMutation, useQuery } from 'react-query'
 
 import { GET_DEVOTIONAL_BY_SLUG } from 'services/queries'
 import Interactions from 'components/Interactions'
+import { LIKE_DEVOTIONAL } from 'services/mutations'
 import NotFound from 'pages/404'
 import PageWithHeadingImage from 'components/PageWithHeadingImage'
 import { formatToTimezone } from 'helpers/time'
 import { useMemo } from 'react'
-import { useQuery } from 'react-query'
 import { useRouter } from 'next/router'
 
 export default function DevotionalSection() {
   const { query } = useRouter()
   const { slug: devotionalSlug } = query
-  const { data } = useQuery(
+  const { data, refetch } = useQuery(
     [`devotional-${devotionalSlug}`, devotionalSlug],
     GET_DEVOTIONAL_BY_SLUG,
   )
+  const { mutateAsync: likeDevotional } = useMutation(LIKE_DEVOTIONAL)
 
   if (!data) {
     return <NotFound />
   }
 
-  const { title, body, author, scheduledTo, coverImage, views, likes } = data.data
+  const { title, body, author, scheduledTo, coverImage, views, likes, id, userLiked } = data.data
+
+  const handleLike = async () => {
+    await likeDevotional(id)
+    await refetch()
+  }
 
   const formatedScheduledDate = useMemo(
     () => formatToTimezone(scheduledTo, "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
@@ -33,7 +40,14 @@ export default function DevotionalSection() {
       pageTitle={`Gênesis Church - Devocionais | ${title} de ${author}`}
       headingImage={coverImage}
     >
-      <Interactions views={views} likes={likes} />
+      <Interactions
+        views={views}
+        likes={likes}
+        liked={userLiked}
+        onLikeInteraction={handleLike}
+        onDislikeInteraction={handleLike}
+        likeMessage="Você curtiu este devocional"
+      />
       <Heading fontWeight={600} fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }} lineHeight="100%">
         {title}
       </Heading>
