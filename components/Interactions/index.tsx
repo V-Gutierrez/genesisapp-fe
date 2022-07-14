@@ -17,10 +17,12 @@ const Interactions: React.FC<InteractionProps> = ({
   const toast = useToast()
 
   const handleLike = () => {
-    toast({
-      description: likeMessage || 'Você curtiu este item',
-    })
-    onLikeInteraction && onLikeInteraction()
+    if (onLikeInteraction) {
+      toast({
+        description: likeMessage || 'Você curtiu este item',
+      })
+      onLikeInteraction()
+    }
   }
 
   return (
