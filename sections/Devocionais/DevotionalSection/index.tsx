@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
+import { Box, Heading, Text, toast, useToast } from '@chakra-ui/react'
 import { useMutation, useQuery } from 'react-query'
 
 import { GET_DEVOTIONAL_BY_SLUG } from 'services/queries'
@@ -9,15 +9,18 @@ import PageWithHeadingImage from 'components/PageWithHeadingImage'
 import { formatToTimezone } from 'helpers/time'
 import { useMemo } from 'react'
 import { useRouter } from 'next/router'
+import { useUser } from 'context/UserContext'
 
 export default function DevotionalSection() {
   const { query } = useRouter()
+  const { userData } = useUser()
   const { slug: devotionalSlug } = query
   const { data, refetch } = useQuery(
     [`devotional-${devotionalSlug}`, devotionalSlug],
     GET_DEVOTIONAL_BY_SLUG,
   )
   const { mutateAsync: likeDevotional } = useMutation(LIKE_DEVOTIONAL)
+  const toast = useToast()
 
   if (!data) {
     return <NotFound />
@@ -26,8 +29,12 @@ export default function DevotionalSection() {
   const { title, body, author, scheduledTo, coverImage, views, likes, id, userLiked } = data.data
 
   const handleLike = async () => {
-    await likeDevotional(id)
-    await refetch()
+    if (userData) {
+      await likeDevotional(id)
+      await refetch()
+    } else {
+      toast({ description: 'Você precisa estar logado para curtir este devotional' })
+    }
   }
 
   const formatedScheduledDate = useMemo(
