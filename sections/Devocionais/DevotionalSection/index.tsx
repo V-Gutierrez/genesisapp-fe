@@ -1,6 +1,7 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
 
 import { GET_DEVOTIONAL_BY_SLUG } from 'services/queries'
+import Interactions from 'components/Interactions'
 import NotFound from 'pages/404'
 import PageWithHeadingImage from 'components/PageWithHeadingImage'
 import { formatToTimezone } from 'helpers/time'
@@ -20,7 +21,7 @@ export default function DevotionalSection() {
     return <NotFound />
   }
 
-  const { title, body, author, scheduledTo, coverImage } = data.data
+  const { title, body, author, scheduledTo, coverImage, views, likes } = data.data
 
   const formatedScheduledDate = useMemo(
     () => formatToTimezone(scheduledTo, "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
@@ -32,6 +33,7 @@ export default function DevotionalSection() {
       pageTitle={`Gênesis Church - Devocionais | ${title} de ${author}`}
       headingImage={coverImage}
     >
+      <Interactions views={views} likes={likes} />
       <Heading fontWeight={600} fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }} lineHeight="100%">
         {title}
       </Heading>

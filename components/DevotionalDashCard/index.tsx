@@ -1,21 +1,15 @@
-import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai';
-import {
-  Box,
-  Button,
-  Flex,
-  chakra,
-  useColorModeValue,
-  useToast,
-} from '@chakra-ui/react';
-import React, { useMemo, useState } from 'react';
+import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai'
+import { Box, Button, Flex, chakra, useColorModeValue, useToast } from '@chakra-ui/react'
+import React, { useMemo, useState } from 'react'
 
-import { DELETE_DEVOTIONAL } from 'services/mutations';
-import OptionsButton from 'components/OptionsButton';
-import Quotes from 'public/assets/icons/quotes.svg';
-import { formatToTimezone } from 'helpers/time';
-import { isFuture } from 'date-fns';
-import { useMutation } from 'react-query';
-import { useRouter } from 'next/router';
+import { DELETE_DEVOTIONAL } from 'services/mutations'
+import Interactions from 'components/Interactions'
+import OptionsButton from 'components/OptionsButton'
+import Quotes from 'public/assets/icons/quotes.svg'
+import { formatToTimezone } from 'helpers/time'
+import { isFuture } from 'date-fns'
+import { useMutation } from 'react-query'
+import { useRouter } from 'next/router'
 
 const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
   author,
@@ -24,39 +18,41 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
   id,
   scheduledTo,
   slug,
+  likes,
+  views,
   refetch,
 }) => {
-  const [seeAll, setSeeAll] = useState(false);
-  const { mutateAsync: deleteDevotional } = useMutation(DELETE_DEVOTIONAL);
-  const toast = useToast();
-  const { push } = useRouter();
+  const [seeAll, setSeeAll] = useState(false)
+  const { mutateAsync: deleteDevotional } = useMutation(DELETE_DEVOTIONAL)
+  const toast = useToast()
+  const { push } = useRouter()
 
   const handleSeeAll = () => {
-    setSeeAll((prev) => !prev);
-  };
+    setSeeAll((prev) => !prev)
+  }
 
   const handlerSeeDevotional = () => {
-    push(`/devocionais/${slug}`);
-  };
+    push(`/devocionais/${slug}`)
+  }
 
-  const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo]);
+  const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo])
 
   const handleDevotionalDelete = async () => {
     try {
-      await deleteDevotional(id);
-      await refetch();
+      await deleteDevotional(id)
+      await refetch()
 
       toast({
         title: 'Devocional deletado com sucesso',
         status: 'success',
-      });
+      })
     } catch (error) {
       toast({
         title: 'Houve um erro ao deletar o devocional',
         status: 'error',
-      });
+      })
     }
-  };
+  }
 
   return (
     <Flex
@@ -115,15 +111,13 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
             {title}
             <chakra.span fontWeight="medium" color="gray.500">
               {' '}
-              -
-              {' '}
-              {author}
-              {' '}
-              {formatedScheduledDate}
+              - {author} {formatedScheduledDate}
             </chakra.span>
           </chakra.p>
         </Flex>
+        <Interactions likes={likes} views={views} />
       </Flex>
+
       <Box pos="absolute" top="0px" right="15px">
         <OptionsButton>
           {!isFuture(new Date(scheduledTo)) && (
@@ -155,7 +149,7 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
         </OptionsButton>
       </Box>
     </Flex>
-  );
-};
+  )
+}
 
-export default DevotionalDashCard;
+export default DevotionalDashCard

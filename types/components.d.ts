@@ -184,3 +184,11 @@ interface MenuDropdownProps<IconType> {
   children?: JSX.Element[] | JSX.Element
   title: string
 }
+
+interface InteractionProps {
+  onLikeInteraction?: () => void
+  onDislikeInteraction?: () => void
+  liked?: boolean
+  views: number
+  likes: number
+}

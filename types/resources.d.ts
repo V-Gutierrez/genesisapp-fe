@@ -35,6 +35,8 @@ interface Devotional {
   coverImage: string
   coverThumbnail: string
   readingTimeInMinutes: number
+  views: number
+  likes: number
 }
 
 interface Stats {
