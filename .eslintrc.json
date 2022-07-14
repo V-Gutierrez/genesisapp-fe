@@ -55,6 +55,7 @@
         "no-nested-ternary": "warn",
         "object-curly-newline": "off",
         "linebreak-style": "off",
+        "react/jsx-one-expression-per-line": "off",
         "operator-linebreak": "off"
     },
     "ignorePatterns": [
