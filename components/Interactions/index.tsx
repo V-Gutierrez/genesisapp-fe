@@ -38,7 +38,17 @@ const Interactions: React.FC<InteractionProps> = ({
         </Text>
       </Flex>
       <Flex align="center" ml={{ base: 2 }} cursor="pointer">
-        <Tooltip label={likes > 0 ? `${likes} pessoas gostaram` : 'Likes'} hasArrow placement="top">
+        <Tooltip
+          label={
+            likes > 0
+              ? likes > 1
+                ? `${likes} pessoas gostaram`
+                : `${likes} pessoa gostou`
+              : 'Likes'
+          }
+          hasArrow
+          placement="top"
+        >
           <Box ref={likesIconRef} onClick={liked ? onDislikeInteraction : handleLike}>
             {liked ? <AiFillHeart /> : <AiOutlineHeart />}
           </Box>
