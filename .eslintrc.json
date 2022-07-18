@@ -56,7 +56,8 @@
         "object-curly-newline": "off",
         "linebreak-style": "off",
         "react/jsx-one-expression-per-line": "off",
-        "operator-linebreak": "off"
+        "operator-linebreak": "off",
+        "no-unsafe-optional-chaining": "off"
     },
     "ignorePatterns": [
         "*.d.ts"

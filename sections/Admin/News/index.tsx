@@ -2,29 +2,29 @@ import { Box, Button, Flex, Text, useDisclosure } from '@chakra-ui/react'
 
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { BiRefresh } from 'react-icons/bi'
-import DevotionalCreationModal from 'sections/Admin/Devotionals/components/DevotionalCreationModal'
-import DevotionalDashCard from 'components/DevotionalDashCard'
-import { GET_DEVOTIONALS } from 'services/queries'
+import { GET_NEWS } from 'services/queries'
+import NewsCreationModal from 'sections/Admin/News/components/NewsCreationModal'
+import NewsDashCard from 'components/NewsDashCard'
 import { inHours } from 'helpers/time'
 import { isFuture } from 'date-fns'
 import { useQuery } from 'react-query'
 import { zonedTimeToUtc } from 'date-fns-tz'
 
-export default function Devotionals() {
-  const { data, refetch } = useQuery('admin-devotionals', GET_DEVOTIONALS, {
+export default function News() {
+  const { data, refetch } = useQuery('admin-news', GET_NEWS, {
     staleTime: inHours(24),
     cacheTime: inHours(24),
   })
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const scheduledDevotionals = data?.data.filter((d) =>
+  const scheduledNews = data?.data.filter((d) =>
     isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')),
   )
-  const releasedDevotionals = data?.data.filter(
+  const releasedNews = data?.data.filter(
     (d) => !isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')),
   )
 
-  if (!data || !scheduledDevotionals || !releasedDevotionals) return null
+  if (!data || !scheduledNews || !releasedNews) return null
   return (
     <Box>
       <Flex w="full" justify="center" my={{ base: 4 }}>
@@ -36,7 +36,7 @@ export default function Devotionals() {
           d="flex"
           onClick={onOpen}
         >
-          Criar Devocional
+          Criar Notícia
           <Box ml={{ base: 2 }}>
             <AiFillPlusCircle />
           </Box>
@@ -60,22 +60,22 @@ export default function Devotionals() {
         <Text fontSize={{ base: '18px' }} fontWeight="600" my={{ base: 4 }}>
           Agendados
         </Text>
-        {!scheduledDevotionals.length && <Text my="10px">Não há devocionais agendados</Text>}
+        {!scheduledNews.length && <Text my="10px">Não há notícias agendadas</Text>}
 
-        {scheduledDevotionals.map((devotional) => (
-          <DevotionalDashCard key={devotional.id} {...devotional} refetch={refetch} />
+        {scheduledNews.map((news) => (
+          <NewsDashCard {...news} refetch={refetch} />
         ))}
 
         <Text fontSize={{ base: '18px' }} fontWeight="600" my={{ base: 4 }}>
           Lançados
         </Text>
-        {!releasedDevotionals.length && <Text my="10px">Não há devocionais lançados</Text>}
+        {!releasedNews.length && <Text my="10px">Não há notícias lançadas</Text>}
 
-        {releasedDevotionals.map((devotional) => (
-          <DevotionalDashCard {...devotional} refetch={refetch} />
+        {releasedNews.map((news) => (
+          <NewsDashCard {...news} refetch={refetch} />
         ))}
+        <NewsCreationModal isOpen={isOpen} onClose={onClose} />
       </Flex>
-      <DevotionalCreationModal isOpen={isOpen} onClose={onClose} />
     </Box>
   )
 }

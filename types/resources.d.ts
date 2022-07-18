@@ -24,6 +24,10 @@ interface User {
   active: boolean
 }
 
+interface DevotionalInteractions {
+  userId: string
+  devotionalId: string
+}
 interface Devotional {
   id: string
   createdAt: string
@@ -35,38 +39,14 @@ interface Devotional {
   coverImage: string
   coverThumbnail: string
   readingTimeInMinutes: number
-  views: number
-  likes: number
-  userLiked?: boolean
+  DevotionalLikes: DevotionalInteractions[]
+  DevotionalViews: DevotionalInteractions[]
 }
 
 interface Stats {
   activeUsers: number
   devotionals: number
   growthGroups: number
-}
-
-interface ExternalEventSubscriptions {
-  id: string
-  name: string
-  email: string
-  phone: string
-  createdAt: string
-}
-
-interface ExternalEvent {
-  id: string
-  createdAt: string
-  scheduledTo: string
-  title: string
-  description: string
-  lat: number
-  lng: number
-  addressInfo: string
-  maxSubscriptions: number
-  coverImage: string
-  coverThumbnail: string
-  subscriptions: ExternalEventSubscriptions[]
 }
 
 interface GooglePhotosImageSet {
@@ -80,4 +60,15 @@ interface GooglePhotosImageSet {
   uid: string
   url: string
   width: number
+}
+
+interface News {
+  id: string
+  createdAt: string
+  scheduledTo: string
+  title: string
+  body: string
+  slug: string
+  coverImage: string
+  coverThumbnail: string
 }

@@ -2,12 +2,14 @@ import { Flex, Text, useBreakpointValue } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 
 import { Brazil } from 'styles/clipPaths'
+import { ChevronLeftIcon } from '@chakra-ui/icons'
 import GenesisLogo from 'public/assets/images/genesislogowhite.png'
 import GoogleImagesGallery from 'components/GoogleImagesGallery'
 import Head from 'next/head'
 import NextImage from 'components/NextImage'
 import arrayShuffle from 'array-shuffle'
 import { subscribers } from 'sections/Events/13anosgenesis/Anniversary/signers'
+import { useRouter } from 'next/router'
 
 const AnniversarySection: React.FC = () => {
   const [showFullGallery, setShowFullGallery] = useState(true)
@@ -15,6 +17,7 @@ const AnniversarySection: React.FC = () => {
     base: 'TOQUE AQUI PARA VOLTAR',
     md: 'CLIQUE AQUI PARA VOLTAR',
   })
+  const { push } = useRouter()
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -36,6 +39,15 @@ const AnniversarySection: React.FC = () => {
       <Head>
         <title>Gênesis Church - Aniversário 13 anos</title>
       </Head>
+      <Flex w="100%" bg="black" h="60px" align="center" justify="flex-start">
+        <ChevronLeftIcon
+          cursor="pointer"
+          color="white"
+          h="40px"
+          w="40px"
+          onClick={() => push('/')}
+        />
+      </Flex>
       <Flex
         minH="100vh"
         flexDirection="column"

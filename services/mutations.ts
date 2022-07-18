@@ -90,5 +90,19 @@ export const DELETE_EXTERNAL_EVENT = async (id: string) => {
 }
 
 export const LIKE_DEVOTIONAL = async (id: string) => {
-  await Axios.put(`/devotionals/${id}`)
+  await Axios.post(`/devotionals/${id}/like`)
+}
+
+export const CREATE_NEWS = async (values: NewsFormValues) => {
+  const formdata = new FormData()
+
+  Object.entries(values).forEach(([key, value]) => {
+    formdata.append(key, value)
+  })
+
+  await Axios.post('/news', formdata)
+}
+
+export const DELETE_NEWS = async (id: string) => {
+  await Axios.delete(`/news/${id}`)
 }

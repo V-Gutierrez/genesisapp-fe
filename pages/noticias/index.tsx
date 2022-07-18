@@ -2,14 +2,14 @@ import Head from 'next/head'
 import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 
-const Devocionais = dynamic(() => import('sections/Devotionals'))
+const News = dynamic(() => import('sections/News'))
 
 const Devotionals: NextPage = () => (
   <>
     <Head>
-      <title>Gênesis Church - Devocionais</title>
+      <title>Gênesis Church - Notícias</title>
     </Head>
-    <Devocionais />
+    <News />
   </>
 )
 

@@ -125,6 +125,11 @@ interface DevotionalDashCardProps extends Devotional {
     options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
   ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
 }
+interface NewsDashCardProps extends News {
+  refetch: <TPageData>(
+    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
+  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
+}
 
 interface EventsDashCardProps extends ExternalEvent {
   refetch: <TPageData>(
@@ -191,5 +196,4 @@ interface InteractionProps {
   liked?: boolean
   views: number
   likes: number
-  likeMessage?: string
 }

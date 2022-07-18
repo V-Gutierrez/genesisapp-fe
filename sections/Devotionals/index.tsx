@@ -1,19 +1,15 @@
-import {
-  Flex,
-  Grid,
-  GridItem,
-  Text,
-} from '@chakra-ui/react';
+import { Grid, GridItem } from '@chakra-ui/react'
 
-import DevotionalCard from 'components/DevotionalCard';
-import { GET_USER_DEVOTIONALS } from 'services/queries';
-import SimpleEmptyState from 'components/SimpleEmptyState';
-import { useQuery } from 'react-query';
+import DevotionalCard from 'components/DevotionalCard'
+import { GET_USER_DEVOTIONALS } from 'services/queries'
+import SimpleEmptyState from 'components/SimpleEmptyState'
+import { useQuery } from 'react-query'
 
-const Devocionais: React.FC = () => {
-  const { data } = useQuery('userDevotionals', GET_USER_DEVOTIONALS);
+const Devotionals: React.FC = () => {
+  const { data } = useQuery('userDevotionals', GET_USER_DEVOTIONALS)
 
-  if (!data || !data.data.length) return (<SimpleEmptyState title="Não há devocionais disponíveis no momento" />)
+  if (!data || !data.data.length)
+    return <SimpleEmptyState title="Não há devocionais disponíveis no momento" />
   return (
     <Grid
       templateColumns={{
@@ -37,7 +33,7 @@ const Devocionais: React.FC = () => {
         </GridItem>
       ))}
     </Grid>
-  );
-};
+  )
+}
 
-export default Devocionais;
+export default Devotionals

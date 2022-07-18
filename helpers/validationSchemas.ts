@@ -77,3 +77,21 @@ export const DEVOTIONAL_CREATION_SCHEMA = Yup.object().shape({
       (value) => value?.size <= TWO_MB_IN_BYTES,
     ),
 })
+export const NEWS_CREATION_SCHEMA = Yup.object().shape({
+  body: Yup.string()
+    .min(255, 'A notícia deve ter no mínimo 255 caractéres')
+    .required('Insira ou edite a notícia neste campo'),
+  title: Yup.string().required('Insira um título'),
+  scheduledTo: Yup.string()
+    .required('Selecione uma data para publicar')
+    .test('Data futura', 'A data deve ser futura', (value) =>
+      isFuture(new Date(value as unknown as number)),
+    ),
+  coverImage: Yup.mixed()
+    .required('Insira uma imagem de capa')
+    .test(
+      'fileSize',
+      'O arquivo deve ter no máximo 2MB',
+      (value) => value?.size <= TWO_MB_IN_BYTES,
+    ),
+})

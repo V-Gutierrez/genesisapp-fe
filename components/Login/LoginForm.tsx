@@ -65,9 +65,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
             onSubmit={onSubmit}
             validationSchema={LOGIN_SCHEMA}
           >
-            {({
- errors, touched, handleSubmit, handleChange, isValid, isSubmitting,
-}) => (
+            {({ errors, touched, handleSubmit, handleChange, isValid, isSubmitting }) => (
               <form onSubmit={handleSubmit}>
                 <Stack spacing={6}>
                   <Box>
@@ -83,6 +81,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
                     <InputGroup>
                       <Input
                         id="password"
+                        autoComplete="current-password"
                         onChange={handleChange}
                         type={show ? 'text' : 'password'}
                       />

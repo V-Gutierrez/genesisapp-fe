@@ -16,20 +16,20 @@ import { Formik, FormikHelpers } from 'formik'
 import { RQ_FORMAT_OPTIONS, RQ_TOOLBAR_OPTIONS } from 'helpers/reactQuill'
 import { useMutation, useQuery } from 'react-query'
 
-import { CREATE_DEVOTIONAL } from 'services/mutations'
-import { DEVOTIONAL_CREATION_INITIAL_VALUES } from 'helpers/formInitialValues'
-import { DEVOTIONAL_CREATION_SCHEMA } from 'helpers/validationSchemas'
-import { GET_DEVOTIONALS } from 'services/queries'
+import { CREATE_NEWS } from 'services/mutations'
+import { GET_NEWS } from 'services/queries'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
+import { NEWS_CREATION_INITIAL_VALUES } from 'helpers/formInitialValues'
+import { NEWS_CREATION_SCHEMA } from 'helpers/validationSchemas'
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 
-const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
+const NewsEditor: React.FC<EditorProps> = ({ onClose }) => {
   const toast = useToast()
   const [toolbar, setToolbar] = useState<any>(false)
-  const { mutateAsync: createDevotional } = useMutation(CREATE_DEVOTIONAL)
-  const { refetch } = useQuery('admin-devotionals', GET_DEVOTIONALS)
+  const { mutateAsync: createNews } = useMutation(CREATE_NEWS)
+  const { refetch } = useQuery('admin-news', GET_NEWS)
 
   const handleFileChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -42,15 +42,15 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
   }
 
   const onSubmit = async (
-    values: DevotionalFormValues,
-    FormikHelpersObject: FormikHelpers<DevotionalFormValues>,
+    values: NewsFormValues,
+    FormikHelpersObject: FormikHelpers<NewsFormValues>,
   ) => {
     FormikHelpersObject.setSubmitting(true)
     try {
-      await createDevotional(values)
+      await createNews(values)
 
       toast({
-        title: 'Devocional criado com sucesso',
+        title: 'Notícia criada com sucesso',
         status: 'success',
       })
 
@@ -58,7 +58,7 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
       onClose()
     } catch (e) {
       toast({
-        title: 'Houve um erro ao criar o devocional',
+        title: 'Houve um erro ao criar a notícia',
         status: 'error',
       })
     }
@@ -67,15 +67,15 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
 
   return (
     <Formik
-      initialValues={DEVOTIONAL_CREATION_INITIAL_VALUES}
-      validationSchema={DEVOTIONAL_CREATION_SCHEMA}
+      initialValues={NEWS_CREATION_INITIAL_VALUES}
+      validationSchema={NEWS_CREATION_SCHEMA}
       onSubmit={onSubmit}
     >
       {({ errors, touched, handleSubmit, handleChange, isSubmitting, setFieldValue }) => (
         <form onSubmit={handleSubmit}>
           <Stack spacing={6} p={{ base: 2 }} mb={{ base: 10 }}>
             <Box>
-              <FormLabel fontSize={{ base: '16px' }}>Título do Devocional</FormLabel>
+              <FormLabel fontSize={{ base: '16px' }}>Título da notícia</FormLabel>
               <Input type="text" id="title" onChange={handleChange} />
               <Text fontSize={{ base: '12px' }} color="red">
                 {errors.title && touched.title && errors.title}
@@ -91,15 +91,7 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
             </Box>
 
             <Box>
-              <FormLabel fontSize={{ base: '16px' }}>Autor</FormLabel>
-              <Input type="text" id="author" onChange={handleChange} />
-              <Text fontSize={{ base: '12px' }} color="red">
-                {errors.author && touched.author && errors.author}
-              </Text>
-            </Box>
-
-            <Box>
-              <FormLabel fontSize={{ base: '16px' }}>Capa do Devocional</FormLabel>
+              <FormLabel fontSize={{ base: '16px' }}>Capa da Notícia</FormLabel>
               <Input
                 type="file"
                 id="coverImage"
@@ -118,7 +110,7 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
             <Box onClick={() => setToolbar(RQ_TOOLBAR_OPTIONS)}>
               <Stack>
                 <HStack>
-                  <FormLabel fontSize={{ base: '16px' }}>Texto do Devocional</FormLabel>
+                  <FormLabel fontSize={{ base: '16px' }}>Texto da Notícia</FormLabel>
                 </HStack>
                 <Box
                   h={{ base: '250px' }}
@@ -135,7 +127,7 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
                       background: 'rgba(0, 0, 0, 0.4)',
                       borderRadius: '10px',
                     },
-                    '#devotionalBodyEditor .ql-toolbar.ql-snow': {
+                    '#newsEditorBody .ql-toolbar.ql-snow': {
                       position: 'sticky',
                       top: 0,
                       background: 'white',
@@ -144,7 +136,7 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
                   }}
                 >
                   <ReactQuill
-                    id="devotionalBodyEditor"
+                    id="newsEditorBody"
                     theme="snow"
                     onChange={(value: string) => {
                       setFieldValue('body', value)
@@ -180,4 +172,4 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
   )
 }
 
-export default DevotionalEditor
+export default NewsEditor

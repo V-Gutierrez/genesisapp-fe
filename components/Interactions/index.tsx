@@ -1,5 +1,5 @@
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
-import { Box, Flex, Text, Tooltip, useToast } from '@chakra-ui/react'
+import { Box, Flex, Text, Tooltip } from '@chakra-ui/react'
 import React, { useRef } from 'react'
 
 import { BsEye } from 'react-icons/bs'
@@ -10,17 +10,12 @@ const Interactions: React.FC<InteractionProps> = ({
   liked,
   onDislikeInteraction,
   onLikeInteraction,
-  likeMessage,
 }) => {
   const viewsIconRef = useRef(null)
   const likesIconRef = useRef(null)
-  const toast = useToast()
 
   const handleLike = () => {
     if (onLikeInteraction) {
-      toast({
-        description: likeMessage || 'Você curtiu este item',
-      })
       onLikeInteraction()
     }
   }
@@ -28,16 +23,18 @@ const Interactions: React.FC<InteractionProps> = ({
   return (
     <Flex w="full" align="center" justify="flex-end">
       <Flex align="center" cursor="pointer">
+        <BsEye />
         <Tooltip label="Visualizações" hasArrow placement="top">
-          <Box ref={viewsIconRef}>
-            <BsEye />
-          </Box>
+          <Text ml={{ base: 2 }} userSelect="none" ref={viewsIconRef}>
+            {views}
+          </Text>
         </Tooltip>
-        <Text ml={{ base: 2 }} userSelect="none">
-          {views}
-        </Text>
       </Flex>
       <Flex align="center" ml={{ base: 2 }} cursor="pointer">
+        <Box ref={likesIconRef} onClick={liked ? onDislikeInteraction : handleLike}>
+          {liked ? <AiFillHeart /> : <AiOutlineHeart />}
+        </Box>
+
         <Tooltip
           label={
             likes > 0
@@ -49,13 +46,10 @@ const Interactions: React.FC<InteractionProps> = ({
           hasArrow
           placement="top"
         >
-          <Box ref={likesIconRef} onClick={liked ? onDislikeInteraction : handleLike}>
-            {liked ? <AiFillHeart /> : <AiOutlineHeart />}
-          </Box>
+          <Text ml={{ base: 2 }} userSelect="none">
+            {likes}
+          </Text>
         </Tooltip>
-        <Text ml={{ base: 2 }} userSelect="none">
-          {likes}
-        </Text>
       </Flex>
     </Flex>
   )

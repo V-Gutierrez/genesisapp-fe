@@ -14,17 +14,8 @@ export const GET_DEVOTIONAL_BY_SLUG = async (
 }
 
 export const GET_STATS = async () => Axios.get<Stats>('/stats')
-export const GET_EXTERNAL_EVENTS = async () => Axios.get<ExternalEvent[]>('/externalevents')
 
 export const REFRESH_TOKEN = async () => Axios.get('/auth')
-
-export const GET_EXTERNAL_EVENT_BY_SLUG = async (
-  ReactQueryParams: UseQueryOptions<unknown, unknown, unknown, (string | string[] | undefined)[]>,
-) => {
-  const { 1: eventSlug } = ReactQueryParams.queryKey as string[]
-
-  return Axios.get<ExternalEvent>(`/externalevents/${eventSlug}`)
-}
 
 export const GET_USERS = async () => Axios.get<User[]>('/users')
 
@@ -34,4 +25,14 @@ export const GET_GOOGLE_PHOTOS_ALBUM_PHOTOS = async (
   const { 1: albumUrl } = ReactQueryParams.queryKey as string[]
 
   return Axios.get<GooglePhotosImageSet[]>('/integrations/googlephotos', { params: { albumUrl } })
+}
+
+export const GET_NEWS = async () => Axios.get<News[]>('/all-news')
+export const GET_USER_NEWS = async () => Axios.get<News[]>('/news')
+export const GET_NEWS_BY_SLUG = async (
+  ReactQueryParams: UseQueryOptions<unknown, unknown, unknown, (string | string[] | undefined)[]>,
+) => {
+  const { 1: newsSlug } = ReactQueryParams.queryKey as string[]
+
+  return Axios.get<News>(`/news/${newsSlug}`)
 }
