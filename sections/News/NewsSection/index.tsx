@@ -1,9 +1,8 @@
 import { Box, Heading, Text, useToast } from '@chakra-ui/react'
 import { useMutation, useQuery } from 'react-query'
 
-import { GET_DEVOTIONAL_BY_SLUG, GET_NEWS_BY_SLUG } from 'services/queries'
+import { GET_NEWS_BY_SLUG } from 'services/queries'
 import Interactions from 'components/Interactions'
-import { LIKE_DEVOTIONAL } from 'services/mutations'
 import NotFound from 'pages/404'
 import PageWithHeadingImage from 'components/PageWithHeadingImage'
 import { formatToTimezone } from 'helpers/time'

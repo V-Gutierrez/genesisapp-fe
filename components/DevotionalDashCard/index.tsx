@@ -18,8 +18,8 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
   id,
   scheduledTo,
   slug,
-  likes,
-  views,
+  DevotionalLikes,
+  DevotionalViews,
   refetch,
 }) => {
   const [seeAll, setSeeAll] = useState(false)
@@ -115,7 +115,7 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
             </chakra.span>
           </chakra.p>
         </Flex>
-        <Interactions likes={likes} views={views} />
+        <Interactions likes={DevotionalLikes?.length || 0} views={DevotionalViews?.length || 0} />
       </Flex>
 
       <Box pos="absolute" top="0px" right="15px">
