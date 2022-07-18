@@ -57,7 +57,8 @@
         "linebreak-style": "off",
         "react/jsx-one-expression-per-line": "off",
         "operator-linebreak": "off",
-        "no-unsafe-optional-chaining": "off"
+        "no-unsafe-optional-chaining": "off",
+        "consistent-return": "warn"
     },
     "ignorePatterns": [
         "*.d.ts"

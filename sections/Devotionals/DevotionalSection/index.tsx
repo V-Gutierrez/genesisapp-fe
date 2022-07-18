@@ -19,7 +19,6 @@ export default function DevotionalSection() {
     [`devotional-${devotionalSlug}`, devotionalSlug],
     GET_DEVOTIONAL_BY_SLUG,
   )
-
   const { mutateAsync: likeDevotional } = useMutation(LIKE_DEVOTIONAL)
 
   if (isError) {

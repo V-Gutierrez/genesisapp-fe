@@ -10,7 +10,9 @@ export const GET_DEVOTIONAL_BY_SLUG = async (
 ) => {
   const { 1: devotionalSlug } = ReactQueryParams.queryKey as string[]
 
-  return Axios.get<Devotional>(`/devotionals/${devotionalSlug}`)
+  if (devotionalSlug) {
+    return Axios.get<Devotional>(`/devotionals/${devotionalSlug}`)
+  }
 }
 
 export const GET_STATS = async () => Axios.get<Stats>('/stats')
@@ -24,7 +26,9 @@ export const GET_GOOGLE_PHOTOS_ALBUM_PHOTOS = async (
 ) => {
   const { 1: albumUrl } = ReactQueryParams.queryKey as string[]
 
-  return Axios.get<GooglePhotosImageSet[]>('/integrations/googlephotos', { params: { albumUrl } })
+  if (albumUrl) {
+    return Axios.get<GooglePhotosImageSet[]>('/integrations/googlephotos', { params: { albumUrl } })
+  }
 }
 
 export const GET_NEWS = async () => Axios.get<News[]>('/all-news')
@@ -34,5 +38,7 @@ export const GET_NEWS_BY_SLUG = async (
 ) => {
   const { 1: newsSlug } = ReactQueryParams.queryKey as string[]
 
-  return Axios.get<News>(`/news/${newsSlug}`)
+  if (newsSlug) {
+    return Axios.get<News>(`/news/${newsSlug}`)
+  }
 }
