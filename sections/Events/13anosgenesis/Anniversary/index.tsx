@@ -52,7 +52,14 @@ const AnniversarySection: React.FC = () => {
         overflowX="hidden"
         position="relative"
       >
-        <Flex w="100%" bg="none" h="60px" align="center" justify="flex-start">
+        <Flex
+          w="100%"
+          zIndex="popover"
+          d={computeStylesBasedOnShowFullGalleryState(showFullGallery, 'none', 'flex')}
+          h="60px"
+          align="center"
+          justify="flex-start"
+        >
           <ChevronLeftIcon
             cursor="pointer"
             color="white"
