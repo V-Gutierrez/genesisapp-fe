@@ -33,15 +33,20 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <meta name="theme-color" content="#000" />
-          <meta name="description" content="Genesis Church App" />
-
+          <meta
+            name="description"
+            content="Bem-vindos à Gênesis Church - Aplicativo e Site Oficial da Gênesis Church  - Buenos Aires"
+          />
           <meta name="title" content="Genesis Church" />
-          <meta name="description" content="Bem-vindo à Gênesis Church" />
+          <meta property="image" content="/meta-bg.png" />
 
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://www.genesischurch.app/" />
           <meta property="og:title" content="Genesis Church" />
-          <meta property="og:description" content="Bem-vindos à Gênesis Church" />
+          <meta
+            property="og:description"
+            content="Bem-vindos à Gênesis Church - Aplicativo e Site Oficial da Gênesis Church  - Buenos Aires"
+          />
           <meta property="og:image" content="/meta-bg.png" />
 
           <meta property="twitter:card" content="summary_large_image" />
