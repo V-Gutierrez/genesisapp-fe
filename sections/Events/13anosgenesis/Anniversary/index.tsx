@@ -39,15 +39,7 @@ const AnniversarySection: React.FC = () => {
       <Head>
         <title>Gênesis Church - Aniversário 13 anos</title>
       </Head>
-      <Flex w="100%" bg="black" h="60px" align="center" justify="flex-start">
-        <ChevronLeftIcon
-          cursor="pointer"
-          color="white"
-          h="40px"
-          w="40px"
-          onClick={() => push('/')}
-        />
-      </Flex>
+
       <Flex
         minH="100vh"
         flexDirection="column"
@@ -60,6 +52,15 @@ const AnniversarySection: React.FC = () => {
         overflowX="hidden"
         position="relative"
       >
+        <Flex w="100%" bg="none" h="60px" align="center" justify="flex-start">
+          <ChevronLeftIcon
+            cursor="pointer"
+            color="white"
+            h="40px"
+            w="40px"
+            onClick={() => push('/')}
+          />
+        </Flex>
         <Flex
           h="auto-fit"
           w="98vw"
