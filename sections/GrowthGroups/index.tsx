@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import { Flex } from '@chakra-ui/react';
-import { GET_GROWTH_GROUPS } from 'services/queries';
-import GroupList from 'sections/GrowthGroups/components/GroupList';
-import SimpleEmptyState from 'components/SimpleEmptyState';
-import { useQuery } from 'react-query';
-import MapFrame from './components/MapFrame';
+import { Flex } from '@chakra-ui/react'
+import { GET_GROWTH_GROUPS } from 'services/queries'
+import GroupList from 'sections/GrowthGroups/components/GroupList'
+import SimpleEmptyState from 'components/SimpleEmptyState'
+import { useQuery } from 'react-query'
+import MapFrame from './components/MapFrame'
 
 const GrowthGroups: React.FC = () => {
   const { data } = useQuery('growthGroups', GET_GROWTH_GROUPS, {
     staleTime: Infinity,
     cacheTime: Infinity,
-  });
-  const growthGroups = data?.data;
-  const [focusedCoords, setFocusedCoords] = useState<CoordsState>({ lat: null, lng: null });
+  })
+  const growthGroups = data?.data
+  const [focusedCoords, setFocusedCoords] = useState<CoordsState>({ lat: null, lng: null })
 
   function onSelectGroup(lat: number, lng: number) {
-    setFocusedCoords({ lat, lng });
+    setFocusedCoords({ lat, lng })
   }
 
-  if (!data || !data.data.length) return (<SimpleEmptyState title="Não há Grupos de crescimento disponíveis no momento" />)
+  if (!data) return null
+  if (!data.data.length)
+    return <SimpleEmptyState title="Não há Grupos de crescimento disponíveis no momento" />
   return (
     <Flex
       h="80vh"
@@ -45,7 +47,7 @@ const GrowthGroups: React.FC = () => {
         currentCoords={focusedCoords}
       />
     </Flex>
-  );
-};
+  )
+}
 
-export default GrowthGroups;
+export default GrowthGroups

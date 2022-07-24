@@ -1,4 +1,4 @@
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Grid } from '@chakra-ui/react'
 
 import { GET_USER_NEWS } from 'services/queries'
 import SimpleEmptyState from 'components/SimpleEmptyState'
@@ -8,8 +8,8 @@ import NewsHighlightCard from 'components/NewsHighlightCard'
 const News: React.FC = () => {
   const { data } = useQuery('userNews', GET_USER_NEWS)
 
-  if (!data || !data.data.length)
-    return <SimpleEmptyState title="Não há notícias disponíveis no momento" />
+  if (!data) return null
+  if (!data.data.length) return <SimpleEmptyState title="Não há notícias disponíveis no momento" />
   return (
     <Grid
       templateColumns={{

@@ -201,12 +201,13 @@ const AnniversarySection: React.FC = () => {
         w="full"
         py={{ base: '6px' }}
         bgColor="blackAlpha.400"
-        h="20px"
+        h="40px"
         textAlign="center"
         justify="center"
         align="center"
         onClick={() => setShowFullGallery(false)}
         userSelect="none"
+        cursor="pointer"
       >
         <Text color="white" fontSize={{ base: '12px' }}>
           {galleryWarning}
