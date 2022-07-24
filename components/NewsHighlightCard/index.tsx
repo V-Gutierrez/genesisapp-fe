@@ -22,6 +22,7 @@ const NewsHighlightCard: React.FC<News> = ({ coverImage, title, highlightText, s
       h={{ base: '250px', sm: '300px', md: '350px' }}
       onClick={handleSeeNews}
       cursor="pointer"
+      textAlign="left"
     >
       <NextImage
         ImageProps={{
@@ -41,17 +42,17 @@ const NewsHighlightCard: React.FC<News> = ({ coverImage, title, highlightText, s
         h={{ base: 'full' }}
         justifyContent="center"
         align="center"
-        textAlign={{ base: 'center' }}
+        textAlign={{ base: 'left', sm: 'center' }}
         zIndex="overlay"
         bg={{ base: 'blackAlpha.600' }}
         color={{ base: 'white' }}
       >
-        <Heading marginTop="1" fontSize={{ base: '18px' }} m={{ base: 2 }}>
+        <Heading marginTop="1" fontSize={{ base: '18px', md: '32px' }} pl={{ base: 4 }}>
           <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
             {title}
           </Link>
         </Heading>
-        <Text as="p" fontSize="l" color={{ base: 'white' }} p={{ base: 2 }}>
+        <Text as="p" fontSize="l" color={{ base: 'white' }} p={{ base: 2 }} pl={{ base: 4 }}>
           {highlightText}
         </Text>
       </Flex>
