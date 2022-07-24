@@ -27,8 +27,8 @@ export default function DevotionalCard({
     <Center py={6} cursor="pointer" userSelect="none" mx={2}>
       <Link href={`/devocionais/${slug}`}>
         <Box
-          maxW={{ base: '300px' }}
-          minW={{ base: '300px' }}
+          maxW={{ base: 'full' }}
+          minW={{ base: '330px' }}
           minH={{ base: '200px' }}
           w="full"
           bg={useColorModeValue('white', 'gray.900')}
