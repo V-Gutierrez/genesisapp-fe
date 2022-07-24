@@ -35,7 +35,7 @@ const DevotionalsSlider: React.FC = () => {
           customSettings={{
             slidesToShow: slides,
             centerMode: true,
-            centerPadding: '.5px',
+            centerPadding: '0.5px',
             autoplay: false,
             arrows: false,
           }}

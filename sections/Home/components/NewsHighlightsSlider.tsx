@@ -11,9 +11,6 @@ const NewsHighlightsSlider: React.FC = () => {
     staleTime: inHours(24),
     cacheTime: inHours(24),
   })
-  const slides = useBreakpointValue({
-    base: 1,
-  })
 
   if (!data || !data.data.length) return null
   return (
@@ -30,9 +27,9 @@ const NewsHighlightsSlider: React.FC = () => {
       <Flex w="full" scrollBehavior="smooth" minW="100%" align="center">
         <CustomSlider
           customSettings={{
-            slidesToShow: slides,
+            slidesToShow: 1,
             centerMode: true,
-            centerPadding: '.5px',
+            centerPadding: '0.5px',
             autoplay: true,
             arrows: false,
             dots: true,
