@@ -33,7 +33,7 @@ const NewsHighlightsSlider: React.FC = () => {
             autoplay: true,
             arrows: false,
             dots: true,
-            speed: 3000,
+            speed: 5000,
           }}
         >
           {data?.data.map((news) => (

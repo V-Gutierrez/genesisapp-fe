@@ -32,8 +32,6 @@ const NewsHighlightCard: React.FC<News> = ({ coverImage, title, highlightText, s
           width: { base: 'full' },
           height: { base: '250px', sm: '300px', md: '350px' },
           marginRight: { base: 0 },
-          borderRadius: 'lg',
-          overflow: 'hidden',
           position: { base: 'absolute' },
         }}
       />
@@ -45,7 +43,7 @@ const NewsHighlightCard: React.FC<News> = ({ coverImage, title, highlightText, s
         align="center"
         textAlign={{ base: 'center' }}
         zIndex="overlay"
-        bg={{ base: 'blackAlpha.500' }}
+        bg={{ base: 'blackAlpha.600' }}
         color={{ base: 'white' }}
       >
         <Heading marginTop="1" fontSize={{ base: '18px' }} m={{ base: 2 }}>
