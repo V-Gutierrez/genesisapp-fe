@@ -19,7 +19,7 @@ const News: React.FC = () => {
         lg: 'repeat(3, 1fr)',
         xl: 'repeat(4, 1fr)',
       }}
-      gap={{ md: 1 }}
+      gap={{ base: '20px', md: 1 }}
       templateRows={{
         base: 'repeat(auto-fit, 1fr)',
         sm: 'repeat(auto-fit, 1fr)',
