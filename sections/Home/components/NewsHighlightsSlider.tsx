@@ -32,7 +32,7 @@ const NewsHighlightsSlider: React.FC = () => {
           customSettings={{
             slidesToShow: slides,
             centerMode: true,
-            centerPadding: '5px',
+            centerPadding: '.5px',
             autoplay: true,
             arrows: false,
             dots: true,
