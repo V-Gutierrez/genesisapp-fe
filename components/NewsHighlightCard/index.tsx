@@ -44,7 +44,7 @@ const NewsHighlightCard: React.FC<News> = ({ coverImage, title, highlightText, s
         justifyContent="center"
         align="center"
         textAlign={{ base: 'center' }}
-        zIndex="popover"
+        zIndex="overlay"
         bg={{ base: 'blackAlpha.500' }}
         color={{ base: 'white' }}
       >
@@ -53,7 +53,7 @@ const NewsHighlightCard: React.FC<News> = ({ coverImage, title, highlightText, s
             {title}
           </Link>
         </Heading>
-        <Text as="p" fontSize="lg" color={{ base: 'white' }}>
+        <Text as="p" fontSize="l" color={{ base: 'white' }} p={{ base: 2 }}>
           {highlightText}
         </Text>
       </Flex>

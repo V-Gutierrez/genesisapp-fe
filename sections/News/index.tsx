@@ -3,6 +3,7 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import { GET_USER_NEWS } from 'services/queries'
 import SimpleEmptyState from 'components/SimpleEmptyState'
 import { useQuery } from 'react-query'
+import NewsHighlightCard from 'components/NewsHighlightCard'
 
 const News: React.FC = () => {
   const { data } = useQuery('userNews', GET_USER_NEWS)
@@ -27,7 +28,7 @@ const News: React.FC = () => {
       }}
     >
       {data.data.map((news) => (
-        <GridItem>{/* <DevotionalCard key={devotional.id} {...devotional} /> */}</GridItem>
+        <NewsHighlightCard {...news} key={news.id} />
       ))}
     </Grid>
   )

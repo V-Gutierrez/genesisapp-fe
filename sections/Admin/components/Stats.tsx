@@ -1,13 +1,13 @@
-import { Skeleton, Stack, Text } from '@chakra-ui/react';
+import { Skeleton, Stack, Text } from '@chakra-ui/react'
 
-import { GET_STATS } from 'services/queries';
-import StatsCard from 'sections/Admin/components/StatsCard';
-import { useQuery } from 'react-query';
+import { GET_STATS } from 'services/queries'
+import StatsCard from 'sections/Admin/components/StatsCard'
+import { useQuery } from 'react-query'
 
 export default function Stats() {
-  const { data } = useQuery('stats', GET_STATS);
+  const { data } = useQuery('stats', GET_STATS)
 
-  if (!data) return <Skeleton h="200px" />;
+  if (!data) return <Skeleton h="200px" />
   return (
     <>
       <Text fontSize="18px" my="8px" fontWeight="600">
@@ -39,8 +39,9 @@ export default function Stats() {
       >
         <StatsCard title="Usuários Ativos" stat={data?.data.activeUsers} />
         <StatsCard title="Devocionais Publicados" stat={data?.data.devotionals} />
+        <StatsCard title="Notícias publicadas" stat={data?.data.news} />
         <StatsCard title="Grupos de crescimento" stat={data?.data.growthGroups} />
       </Stack>
     </>
-  );
+  )
 }

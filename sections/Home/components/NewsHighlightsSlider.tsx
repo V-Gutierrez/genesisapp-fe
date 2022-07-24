@@ -22,7 +22,7 @@ const NewsHighlightsSlider: React.FC = () => {
         fontSize={{ base: '20px' }}
         paddingLeft={{ base: 4, sm: 4 }}
         m={0}
-        mb={{ base: 2 }}
+        mb={{ base: 5 }}
         textAlign={{ base: 'initial', sm: 'initial' }}
       >
         Notícias

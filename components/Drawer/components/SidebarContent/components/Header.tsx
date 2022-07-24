@@ -3,47 +3,54 @@ import { Flex, HStack, IconButton, useColorModeValue } from '@chakra-ui/react'
 import { FiMenu } from 'react-icons/fi'
 import GenesisLogo from 'public/assets/images/genesislogo.png'
 import NextImage from 'components/NextImage'
+import { useRouter } from 'next/router'
 import UserInfo from './UserInfo'
 
-const Header = ({ onOpen, ...rest }: HeaderProps) => (
-  <Flex
-    ml={{ base: 0, md: 0 }}
-    px={{ base: 4, md: 4 }}
-    height="20"
-    alignItems="center"
-    bg={useColorModeValue('white', 'gray.900')}
-    borderBottomWidth="1px"
-    borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-    justifyContent={{ base: 'space-between', md: 'flex-end' }}
-    {...rest}
-  >
-    <IconButton
-      display={{ base: 'flex', md: 'flex' }}
-      onClick={onOpen}
-      variant="outline"
-      aria-label="open menu"
-      icon={<FiMenu />}
-    />
+const Header = ({ onOpen, ...rest }: HeaderProps) => {
+  const { push } = useRouter()
 
-    <Flex h="50%" w="100%" justifyContent="center" alignItems="center">
-      <NextImage
-        ImageProps={{
-          src: GenesisLogo.src,
-          alt: 'Genesis Logo',
-          priority: true,
-          objectFit: 'contain',
-        }}
-        BoxProps={{
-          h: '100%',
-          w: '120px',
-        }}
+  return (
+    <Flex
+      ml={{ base: 0, md: 0 }}
+      px={{ base: 4, md: 4 }}
+      height="20"
+      cursor="pointer"
+      alignItems="center"
+      bg={useColorModeValue('white', 'gray.900')}
+      borderBottomWidth="1px"
+      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
+      justifyContent={{ base: 'space-between', md: 'flex-end' }}
+      {...rest}
+    >
+      <IconButton
+        display={{ base: 'flex', md: 'flex' }}
+        onClick={onOpen}
+        variant="outline"
+        aria-label="open menu"
+        icon={<FiMenu />}
       />
-    </Flex>
 
-    <HStack spacing={{ base: '0', md: '6' }}>
-      <UserInfo />
-    </HStack>
-  </Flex>
-)
+      <Flex h="50%" w="100%" justifyContent="center" alignItems="center">
+        <NextImage
+          ImageProps={{
+            src: GenesisLogo.src,
+            alt: 'Genesis Logo',
+            priority: true,
+            objectFit: 'contain',
+          }}
+          BoxProps={{
+            h: '100%',
+            w: '120px',
+            onClick: () => push('/'),
+          }}
+        />
+      </Flex>
+
+      <HStack spacing={{ base: '0', md: '6' }}>
+        <UserInfo />
+      </HStack>
+    </Flex>
+  )
+}
 
 export default Header

@@ -1,5 +1,6 @@
 import { Box, Heading, Text, useToast } from '@chakra-ui/react'
 import { useMutation, useQuery } from 'react-query'
+import 'react-quill/dist/quill.snow.css'
 
 import { GET_NEWS_BY_SLUG } from 'services/queries'
 import Interactions from 'components/Interactions'
@@ -58,7 +59,7 @@ export default function NewsSection() {
 
     return (
       <PageWithHeadingImage
-        pageTitle={`Gênesis Church - Devocionais | ${title}`}
+        pageTitle={`Gênesis Church - Notícia | ${title}`}
         headingImage={coverImage}
       >
         <Interactions
@@ -77,7 +78,6 @@ export default function NewsSection() {
           {title}
         </Heading>
         <Box dangerouslySetInnerHTML={{ __html: body }} maxW="100%" />
-
         <Text fontFamily="Caveat" fontSize="lg">
           {formatedScheduledDate}
         </Text>

@@ -58,7 +58,7 @@ export default function DevotionalSection() {
 
     return (
       <PageWithHeadingImage
-        pageTitle={`Gênesis Church - Devocionais | ${title} de ${author}`}
+        pageTitle={`Gênesis Church - Devocional | ${title} de ${author}`}
         headingImage={coverImage}
       >
         <Interactions

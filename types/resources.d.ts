@@ -47,6 +47,7 @@ interface Stats {
   activeUsers: number
   devotionals: number
   growthGroups: number
+  news: number
 }
 
 interface GooglePhotosImageSet {

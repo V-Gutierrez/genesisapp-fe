@@ -6,8 +6,9 @@ import { useUser } from 'context/UserContext'
 const Devotionals = dynamic(() => import('sections/Admin/Devotionals'))
 
 const DevotionalsPage: NextPage = () => {
-  const { isAdmin } = useUser()
+  const { isAdmin, userData } = useUser()
 
+  if (!userData) return null
   if (isAdmin) return <Devotionals />
   return <NotFound />
 }
