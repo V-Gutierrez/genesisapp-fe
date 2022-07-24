@@ -29,6 +29,7 @@ export const NEWS_CREATION_INITIAL_VALUES = {
   body: '',
   title: '',
   scheduledTo: '',
+  highlightText: '',
 }
 
 export const EXTERNAL_EVENT_CREATION_INITIAL_VALUES = {

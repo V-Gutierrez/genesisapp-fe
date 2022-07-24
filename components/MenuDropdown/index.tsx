@@ -37,12 +37,7 @@ const MenuDropdown: React.FC<MenuDropdownProps<ComponentWithAs<'svg', IconProps>
         )}
         {title}
       </Flex>
-      <Box
-        ml="1"
-        fontSize="13px"
-        h={isOpen ? 'auto-fit' : '0'}
-        overflow={isOpen ? 'visible' : 'hidden'}
-      >
+      <Box fontSize="13px" h={isOpen ? 'auto-fit' : '0'} overflow={isOpen ? 'visible' : 'hidden'}>
         {children}
       </Box>
     </>

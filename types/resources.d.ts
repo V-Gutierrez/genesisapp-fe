@@ -24,7 +24,7 @@ interface User {
   active: boolean
 }
 
-interface DevotionalInteractions {
+interface Interactions {
   userId: string
   devotionalId: string
 }
@@ -39,8 +39,8 @@ interface Devotional {
   coverImage: string
   coverThumbnail: string
   readingTimeInMinutes: number
-  DevotionalLikes: DevotionalInteractions[]
-  DevotionalViews: DevotionalInteractions[]
+  DevotionalLikes: Interactions[]
+  DevotionalViews: Interactions[]
 }
 
 interface Stats {
@@ -69,6 +69,9 @@ interface News {
   title: string
   body: string
   slug: string
+  highlightText: string
   coverImage: string
   coverThumbnail: string
+  NewsLikes: Interactions[]
+  NewsViews: Interactions[]
 }

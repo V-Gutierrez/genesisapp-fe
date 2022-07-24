@@ -91,6 +91,14 @@ const NewsEditor: React.FC<EditorProps> = ({ onClose }) => {
             </Box>
 
             <Box>
+              <FormLabel fontSize={{ base: '16px' }}>Texto de destaque</FormLabel>
+              <Input type="text" id="highlightText" onChange={handleChange} />
+              <Text fontSize={{ base: '12px' }} color="red">
+                {errors.highlightText && touched.highlightText && errors.highlightText}
+              </Text>
+            </Box>
+
+            <Box>
               <FormLabel fontSize={{ base: '16px' }}>Capa da Notícia</FormLabel>
               <Input
                 type="file"

@@ -81,6 +81,9 @@ export const NEWS_CREATION_SCHEMA = Yup.object().shape({
   body: Yup.string()
     .min(255, 'A notícia deve ter no mínimo 255 caractéres')
     .required('Insira ou edite a notícia neste campo'),
+  highlightText: Yup.string()
+    .max(255, 'O destaque deve ter no máximo 255 caractéres')
+    .required('Insira ou edite o destaque da notícia neste campo'),
   title: Yup.string().required('Insira um título'),
   scheduledTo: Yup.string()
     .required('Selecione uma data para publicar')

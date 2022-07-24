@@ -33,6 +33,7 @@ interface NewsFormValues {
   body: string
   title: string
   scheduledTo: string
+  highlightText: string
   coverImage?: File
 }
 interface ExternalEventFormValues {

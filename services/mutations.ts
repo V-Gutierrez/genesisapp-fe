@@ -106,3 +106,7 @@ export const CREATE_NEWS = async (values: NewsFormValues) => {
 export const DELETE_NEWS = async (id: string) => {
   await Axios.delete(`/news/${id}`)
 }
+
+export const LIKE_NEWS = async (id: string) => {
+  await Axios.post(`/news/${id}/like`)
+}

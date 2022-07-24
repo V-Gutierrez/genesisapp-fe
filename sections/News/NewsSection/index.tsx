@@ -9,6 +9,7 @@ import { formatToTimezone } from 'helpers/time'
 import { useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from 'context/UserContext'
+import { LIKE_NEWS } from 'services/mutations'
 
 export default function NewsSection() {
   const { query } = useRouter()
@@ -18,6 +19,9 @@ export default function NewsSection() {
     [`news-${newsSlug}`, newsSlug],
     GET_NEWS_BY_SLUG,
   )
+  const toast = useToast()
+
+  const { mutateAsync: likeNews } = useMutation(LIKE_NEWS)
 
   if (isError) {
     return <NotFound />
@@ -28,18 +32,42 @@ export default function NewsSection() {
   }
 
   if (data) {
-    const { title, body, scheduledTo, coverImage } = data?.data
+    const { id, title, body, scheduledTo, coverImage, NewsLikes, NewsViews } = data?.data
+
+    const likes = NewsLikes?.length || 0
+    const views = NewsViews?.length || 0
+    const userLiked =
+      Boolean(NewsLikes.find((interaction) => interaction?.userId === userData?.id)) || false
 
     const formatedScheduledDate = useMemo(
       () => formatToTimezone(scheduledTo, "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
       [scheduledTo],
     )
 
+    const handleLike = async () => {
+      if (userData) {
+        await likeNews(id)
+        await refetch()
+        toast({
+          description: userLiked ? 'Você descurtiu este devocional' : 'Você curtiu este devocional',
+        })
+      } else {
+        toast({ description: 'Você precisa estar logado para curtir este devotional' })
+      }
+    }
+
     return (
       <PageWithHeadingImage
         pageTitle={`Gênesis Church - Devocionais | ${title}`}
         headingImage={coverImage}
       >
+        <Interactions
+          likes={likes}
+          views={views}
+          liked={userLiked}
+          onLikeInteraction={handleLike}
+          onDislikeInteraction={handleLike}
+        />
         <Heading
           fontWeight={600}
           fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
