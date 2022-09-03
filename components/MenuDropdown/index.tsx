@@ -37,7 +37,20 @@ const MenuDropdown: React.FC<MenuDropdownProps<ComponentWithAs<'svg', IconProps>
         )}
         {title}
       </Flex>
-      <Box fontSize="13px" h={isOpen ? 'auto-fit' : '0'} overflow={isOpen ? 'visible' : 'hidden'}>
+      <Box
+        fontSize="12px"
+        h={isOpen ? 'auto-fit' : '0'}
+        overflow={isOpen ? 'visible' : 'hidden'}
+        _hover={{
+          bg: 'blackAlpha.900',
+          color: "white"
+        }}
+        __css={{
+          "&:nth-child(n)": {
+            borderLeft: "5px solid black"
+          }
+        }}
+      >
         {children}
       </Box>
     </>

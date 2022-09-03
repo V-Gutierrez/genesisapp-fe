@@ -1,19 +1,13 @@
 import { Box, BoxProps, CloseButton, Divider, Flex, useColorModeValue } from '@chakra-ui/react'
-import { MdOutlineLeaderboard } from 'react-icons/md'
+
 import { useUser } from 'context/UserContext'
+import { ArrowBackIcon, ArrowDownIcon } from '@chakra-ui/icons'
 import MenuDropdown from 'components/MenuDropdown'
-import { ChevronDownIcon } from '@chakra-ui/icons'
-import { BiCake } from 'react-icons/bi'
-import { LinkItems } from 'components/Drawer/utils'
+
+import { LinkItems, SpecialEventsLinks, AdminItems, SecondChunkOfLinkItems } from 'components/Drawer/utils'
 import NavItem from './components/NavItem'
 
-const SpecialEventsLinks: Array<LinkItemProps> = [
-  { name: 'Aniversário de 13 anos', icon: BiCake, goTo: '/eventos/13anosgenesis' },
-]
 
-const AdminItems: Array<LinkItemProps> = [
-  { name: 'Administração', icon: MdOutlineLeaderboard, goTo: '/admin' },
-]
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
   const { isAdmin } = useUser()
@@ -40,13 +34,19 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
         </NavItem>
       ))}
 
-      <MenuDropdown icon={ChevronDownIcon} title="Eventos Especiais">
+      <MenuDropdown icon={ArrowDownIcon} title="Eventos Especiais">
         {SpecialEventsLinks.map((link) => (
           <NavItem onClick={onClose} key={link.name} icon={link.icon} goTo={link.goTo}>
             {link.name}
           </NavItem>
         ))}
       </MenuDropdown>
+
+      {SecondChunkOfLinkItems.map((link) => (
+        <NavItem onClick={onClose} key={link.name} icon={link.icon} goTo={link.goTo}>
+          {link.name}
+        </NavItem>
+      ))}
       {/* Sidebar Items */}
 
       {isAdmin && <Divider my={{ base: '10px' }} />}
