@@ -41,3 +41,10 @@ export const EXTERNAL_EVENT_CREATION_INITIAL_VALUES = {
   scheduledTo: '',
   maxSubscriptions: 0,
 }
+
+export const SUBSCRIPTION_INITIAL_VALUES = {
+  userName: '',
+  userEmail: '',
+  userPhone: '',
+  region: '+54',
+}

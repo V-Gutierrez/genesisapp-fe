@@ -76,3 +76,27 @@ interface News {
   NewsLikes: Interactions[]
   NewsViews: Interactions[]
 }
+
+interface EventItem {
+  id: string
+  title: string
+  description: string
+  coverImage: string
+  coverThumbnail: string
+  assetId: string
+  maxSlots: number
+  subscriptionsScheduledTo: string
+  subscriptionsDueDate: string
+  eventDate: string
+  createdAt: string
+  _count: {
+    EventsSubscriptions: number
+  }
+}
+
+interface SubscriptionFormProps {
+  eventId: string
+  refetch: <TPageData>(
+    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
+  ) => Promise<QueryObserverResult<AxiosResponse<EventItem, any> | undefined, unknown>>
+}

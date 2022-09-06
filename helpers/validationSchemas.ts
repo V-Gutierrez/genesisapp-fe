@@ -98,3 +98,13 @@ export const NEWS_CREATION_SCHEMA = Yup.object().shape({
       (value) => value?.size <= TWO_MB_IN_BYTES,
     ),
 })
+
+export const EVENT_SUBSCRIPTION_SCHEMA = Yup.object().shape({
+  userEmail: Yup.string().email('Insira um email válido').required('Insira um email'),
+  userName: Yup.string()
+    .matches(/^[^\s]+( [^\s]+)+$/, 'Insira seu nome e sobrenome')
+    .required('Insira seu nome e sobrenome'),
+  userPhone: Yup.string()
+    .matches(/^\+[0-9]{2}\s[0-9]{1,2}\s[0-9]{1,2}\s[0-9]{4}\-[0-9]{4}/, 'Insira um formato válido')
+    .required('Insira seu telefone'),
+})

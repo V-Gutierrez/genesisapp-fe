@@ -1,4 +1,4 @@
-import { BiHide, BiShowAlt } from 'react-icons/bi';
+import { BiHide, BiShowAlt } from 'react-icons/bi'
 import {
   Box,
   Button,
@@ -16,50 +16,49 @@ import {
   Text,
   Tooltip,
   useToast,
-} from '@chakra-ui/react';
-import { Formik, FormikHelpers } from 'formik';
-import React, { useState } from 'react';
+} from '@chakra-ui/react'
+import { Formik, FormikHelpers } from 'formik'
+import React, { useState } from 'react'
 
-import { AiOutlineInfoCircle } from 'react-icons/ai';
-import Flag from 'react-world-flags';
-import InputMask from 'react-input-mask';
-import PasswordValidator from 'components/Login/components/PasswordValidator';
-import { SIGNUP_INITIAL_VALUES } from 'helpers/formInitialValues';
-import { SIGNUP_SCHEMA } from 'helpers/validationSchemas';
-import { SIGN_UP } from 'services/mutations';
-import { useMutation } from 'react-query';
+import { AiOutlineInfoCircle } from 'react-icons/ai'
+import Flag from 'react-world-flags'
+import InputMask from 'react-input-mask'
+import PasswordValidator from 'components/Login/components/PasswordValidator'
+import { SIGNUP_INITIAL_VALUES } from 'helpers/formInitialValues'
+import { SIGNUP_SCHEMA } from 'helpers/validationSchemas'
+import { SIGN_UP } from 'services/mutations'
+import { useMutation } from 'react-query'
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
-  const { mutateAsync: signup } = useMutation(SIGN_UP);
-  const [show, setShow] = useState(false);
-  const toast = useToast();
+  const { mutateAsync: signup } = useMutation(SIGN_UP)
+  const [show, setShow] = useState(false)
+  const toast = useToast()
 
   const onSubmit = async (
     values: SignUpFormValues,
     { setSubmitting }: FormikHelpers<SignUpFormValues>,
   ) => {
-    setSubmitting(true);
+    setSubmitting(true)
     try {
-      await signup(values);
-
+      await signup(values)
       // Show Success result
-      visibilityHandler({ signUpSuccess: true, signUp: false });
+      visibilityHandler({ signUpSuccess: true, signUp: false })
     } catch (e) {
       toast({
         title: 'Erro',
         status: 'error',
         description:
           'Verifique se sua conta de email ou seu número de telefone já estão cadastrados na plataforma',
-      });
+      })
     }
-    setSubmitting(false);
-  };
+    setSubmitting(false)
+  }
 
-  const handleSeePassword = () => setShow(!show);
+  const handleSeePassword = () => setShow(!show)
 
   const handleGoBackToLogin = () => {
-    visibilityHandler({ login: true, signUp: false });
-  };
+    visibilityHandler({ login: true, signUp: false })
+  }
 
   return (
     <Stack minH={{ base: '20vh' }} direction={{ base: 'column', md: 'row' }}>
@@ -70,9 +69,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
             onSubmit={onSubmit}
             validationSchema={SIGNUP_SCHEMA}
           >
-            {({
- errors, touched, handleSubmit, handleChange, isSubmitting, values,
-}) => (
+            {({ errors, touched, handleSubmit, handleChange, isSubmitting, values }) => (
               <form onSubmit={handleSubmit}>
                 <Stack spacing={2}>
                   <Box>
@@ -124,7 +121,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         padding="0"
                         bg="none"
                         border="none"
-                        children={(
+                        children={
                           <Box d="flex" alignItems="center" justifyContent="space-evenly">
                             <Select
                               id="region"
@@ -137,7 +134,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                               <option value="+55">BRA</option>
                             </Select>
                           </Box>
-                        )}
+                        }
                       />
 
                       <Input
@@ -155,11 +152,11 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         padding="0"
                         bg="none"
                         border="none"
-                        children={(
+                        children={
                           <Box w={{ base: '20px' }}>
                             <Flag code={values.region === '+55' ? 'bra' : 'arg'} height="10" />
                           </Box>
-                        )}
+                        }
                       />
                     </InputGroup>
                     <Text fontSize={{ base: '12px' }} color="red">
@@ -221,9 +218,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                       </InputRightElement>
                     </InputGroup>
                     <Text fontSize={{ base: '12px' }} color="red">
-                      {errors.passwordConfirmation
-                        && touched.passwordConfirmation
-                        && errors.passwordConfirmation}
+                      {errors.passwordConfirmation &&
+                        touched.passwordConfirmation &&
+                        errors.passwordConfirmation}
                     </Text>
                   </Box>
 
@@ -259,7 +256,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
         </Stack>
       </Flex>
     </Stack>
-  );
-};
+  )
+}
 
-export default SignUpForm;
+export default SignUpForm

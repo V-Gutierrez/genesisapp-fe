@@ -196,4 +196,6 @@ interface InteractionProps {
   liked?: boolean
   views: number
   likes: number
+  shareContent?: string
+  showOnlyShare?: boolean
 }

@@ -4,6 +4,6 @@ import dynamic from 'next/dynamic'
 /* @ts-ignore */
 const NewsSection = dynamic(() => import('sections/News/NewsSection'))
 
-const DevotionalPage: NextPage = () => <NewsSection />
+const NewsPage: NextPage = () => <NewsSection />
 
-export default DevotionalPage
+export default NewsPage

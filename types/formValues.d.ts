@@ -7,6 +7,12 @@ interface LoginFormValues {
   password: string
 }
 
+interface EventSubscriptionFormValues {
+  userName: string
+  userPhone: string
+  userEmail: string
+  region: string
+}
 interface SignUpFormValues {
   name: string
   password: string

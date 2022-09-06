@@ -72,19 +72,6 @@ export const DELETE_DEVOTIONAL = async (id: string) => {
   await Axios.delete(`/devotionals/${id}`)
 }
 
-export const CREATE_EXTERNAL_EVENT = async (values: ExternalEventFormValues) => {
-  const formdata = new FormData()
-
-  Object.entries(values).forEach(([key, value]) => {
-    formdata.append(key, value)
-  })
-
-  formdata.append('lat', '0')
-  formdata.append('lng', '0')
-
-  await Axios.post('/externalevents', formdata)
-}
-
 export const DELETE_EXTERNAL_EVENT = async (id: string) => {
   await Axios.delete(`/externalevents/${id}`)
 }
@@ -109,4 +96,16 @@ export const DELETE_NEWS = async (id: string) => {
 
 export const LIKE_NEWS = async (id: string) => {
   await Axios.post(`/news/${id}/like`)
+}
+
+export const SUBSCRIBE_TO_EVENT = async ({
+  id,
+  values,
+}: {
+  id: string
+  values: Partial<EventSubscriptionFormValues>
+}) => {
+  delete values.region
+
+  await Axios.post(`/events/subscriptions/${id}`, values)
 }
