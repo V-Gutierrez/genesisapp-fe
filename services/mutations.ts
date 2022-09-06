@@ -71,6 +71,9 @@ export const CREATE_DEVOTIONAL = async (values: DevotionalFormValues) => {
 export const DELETE_DEVOTIONAL = async (id: string) => {
   await Axios.delete(`/devotionals/${id}`)
 }
+export const DELETE_EVENT = async (id: string) => {
+  await Axios.delete(`/events/${id}`)
+}
 
 export const DELETE_EXTERNAL_EVENT = async (id: string) => {
   await Axios.delete(`/externalevents/${id}`)

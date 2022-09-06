@@ -125,6 +125,11 @@ interface DevotionalDashCardProps extends Devotional {
     options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
   ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
 }
+interface EventCardProps extends EventItem {
+  refetch: <TPageData>(
+    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
+  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
+}
 interface NewsDashCardProps extends News {
   refetch: <TPageData>(
     options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
@@ -137,8 +142,16 @@ interface EventsDashCardProps extends ExternalEvent {
   ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
 }
 
+interface SubscriptionFormProps extends EventItem {
+  eventId: string
+  refetch: <TPageData>(
+    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
+  ) => Promise<QueryObserverResult<AxiosResponse<EventItem, any> | undefined, unknown>>
+}
+
 interface OptionsButtonProps {
   children: Element | Element[] | ReactNode | ReactNode[]
+  noBackground?: boolean
 }
 
 interface ModalProps {

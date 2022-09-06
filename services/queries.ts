@@ -36,7 +36,7 @@ export const GET_NEWS_BY_SLUG = async (ReactQueryParams: RQParams) => {
   }
 }
 
-export const GET_EVENTS = async () => Axios.get<EventItem[]>('/events')
+export const GET_USER_EVENTS = async () => Axios.get<EventItem[]>('/events')
 export const GET_EVENTS_BY_ID = async (ReactQueryParams: RQParams) => {
   const { 1: eventId } = ReactQueryParams.queryKey as string[]
 
@@ -44,3 +44,5 @@ export const GET_EVENTS_BY_ID = async (ReactQueryParams: RQParams) => {
     return Axios.get<EventItem>(`/events/${eventId}`)
   }
 }
+
+export const GET_EVENTS = async () => Axios.get<EventItem[]>('/all-events')

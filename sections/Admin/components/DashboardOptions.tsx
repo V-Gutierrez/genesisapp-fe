@@ -3,11 +3,13 @@ import { Stack, Text } from '@chakra-ui/react'
 
 import { BsNewspaper } from 'react-icons/bs'
 import OptionCard from 'components/OptionCard'
+import { IoTrailSignOutline } from 'react-icons/io5'
 
 const AdminOptions: Array<AdminOptions> = [
   { title: 'Usuários', icon: HiUserGroup, goTo: '/admin/usuarios' },
   { title: 'Devocionais', icon: HiOutlineBookOpen, goTo: '/admin/devocionais' },
   { title: 'Notícias', icon: BsNewspaper, goTo: '/admin/noticias' },
+  { title: 'Eventos', icon: IoTrailSignOutline, goTo: '/admin/eventos' },
 ]
 
 function DashboardOptions() {

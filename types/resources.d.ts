@@ -48,6 +48,7 @@ interface Stats {
   devotionals: number
   growthGroups: number
   news: number
+  ongoingEvents: number
 }
 
 interface GooglePhotosImageSet {
@@ -92,11 +93,4 @@ interface EventItem {
   _count: {
     EventsSubscriptions: number
   }
-}
-
-interface SubscriptionFormProps {
-  eventId: string
-  refetch: <TPageData>(
-    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
-  ) => Promise<QueryObserverResult<AxiosResponse<EventItem, any> | undefined, unknown>>
 }

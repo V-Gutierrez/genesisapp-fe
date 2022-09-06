@@ -33,7 +33,7 @@ export function SubscriptionForm({
   eventDate,
   subscriptionsDueDate,
   refetch,
-}: EventItem & SubscriptionFormProps) {
+}: SubscriptionFormProps) {
   const toast = useToast()
   const { userData } = useUser()
   const { mutateAsync: subscribe } = useMutation(SUBSCRIBE_TO_EVENT)

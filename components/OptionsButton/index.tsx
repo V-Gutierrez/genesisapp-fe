@@ -11,9 +11,9 @@ import {
 
 import { BsThreeDotsVertical } from 'react-icons/bs'
 
-export default function OptionsButton({ children }: OptionsButtonProps) {
+export default function OptionsButton({ children, noBackground }: OptionsButtonProps) {
   return (
-    <Flex justifyContent="center" mt={4} bg="white" borderRadius="xl">
+    <Flex justifyContent="center" mt={4} bg={noBackground ? 'none' : 'white'} borderRadius="xl">
       <Popover placement="left" isLazy>
         {/* @ts-ignore */}
         <PopoverTrigger>
