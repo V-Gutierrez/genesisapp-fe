@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { Flex } from '@chakra-ui/react'
 import { GET_GROWTH_GROUPS } from 'services/queries'
-import GroupList from 'sections/GrowthGroups/components/GroupList'
+import GroupList from 'sections/Client/GrowthGroups/components/GroupList'
 import SimpleEmptyState from 'components/SimpleEmptyState'
 import { useQuery } from 'react-query'
 import MapFrame from './components/MapFrame'

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 
-const Events = dynamic(() => import('sections/Events'))
+const Events = dynamic(() => import('sections/Client/Events'))
 
 const GrowthGroupsPage: NextPage = () => (
   <>

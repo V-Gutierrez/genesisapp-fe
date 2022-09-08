@@ -8,7 +8,7 @@ import GoogleImagesGallery from 'components/GoogleImagesGallery'
 import Head from 'next/head'
 import NextImage from 'components/NextImage'
 import arrayShuffle from 'array-shuffle'
-import { subscribers } from 'sections/Events/13anosgenesis/Anniversary/signers'
+import { subscribers } from 'sections/Client/Events/13anosgenesis/Anniversary/signers'
 import { useRouter } from 'next/router'
 
 const AnniversarySection: React.FC = () => {

@@ -1,11 +1,9 @@
-import { Box, Skeleton } from '@chakra-ui/react'
-import MapBox, {
- MapContainer, Marker, Popup, TileLayer,
-} from 'components/Leaflet'
+import { Skeleton } from '@chakra-ui/react'
+import MapBox, { Marker, Popup } from 'components/Leaflet'
 import React, { useEffect, useState } from 'react'
 
-import PopupContent from 'sections/GrowthGroups/components/PopupContent'
-import { changeIcons } from 'sections/GrowthGroups/components/utils'
+import PopupContent from 'sections//Client/GrowthGroups/components/PopupContent'
+import { changeIcons } from 'sections//Client/GrowthGroups/components/utils'
 
 function MapFrame({ GCDataset, currentCoords, selectCoordsHandler }: MapFrameProps) {
   const [userPosition, setUserPosition] = useState<CoordsState & { accurate: boolean }>({

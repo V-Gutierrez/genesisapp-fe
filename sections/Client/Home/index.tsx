@@ -1,6 +1,6 @@
-import DevotionalsSlider from 'sections/Home/components/DevotionalsSlider'
+import DevotionalsSlider from 'sections/Client/Home/components/DevotionalsSlider'
 import { Flex } from '@chakra-ui/react'
-import NewsHighlightsSlider from 'sections/Home/components/NewsHighlightsSlider'
+import NewsHighlightsSlider from 'sections/Client/Home/components/NewsHighlightsSlider'
 
 export default function HomeSection() {
   return (

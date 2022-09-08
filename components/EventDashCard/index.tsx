@@ -1,4 +1,5 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai'
+import { FaSignature } from 'react-icons/fa'
 import { Box, Button, Flex, Text, useToast } from '@chakra-ui/react'
 import React, { useMemo } from 'react'
 
@@ -43,6 +44,10 @@ const EventDashCard: React.FC<EventCardProps> = ({
   }
 
   const handleEventDelete = async () => {
+    const confirmation = confirm('Deseja deletar esse evento?')
+
+    if (!confirmation) return false
+
     try {
       await deleteEvent(id)
       await refetch()
@@ -57,6 +62,10 @@ const EventDashCard: React.FC<EventCardProps> = ({
         status: 'error',
       })
     }
+  }
+
+  const handleSeeSubscribers = () => {
+    alert('See Subscribers')
   }
 
   return (
@@ -96,18 +105,32 @@ const EventDashCard: React.FC<EventCardProps> = ({
       <Box pos="absolute" top="0px" right="15px">
         <OptionsButton noBackground>
           {isPast(new Date(subscriptionsScheduledTo)) && isFuture(new Date(eventDate)) && (
-            <Button
-              w="194px"
-              variant="ghost"
-              rightIcon={<AiOutlineArrowsAlt />}
-              justifyContent="space-between"
-              fontWeight="normal"
-              colorScheme="blackAlpha.700"
-              fontSize="sm"
-              onClick={handleSeeEvent}
-            >
-              Ver na íntegra
-            </Button>
+            <>
+              <Button
+                w="194px"
+                variant="ghost"
+                rightIcon={<AiOutlineArrowsAlt />}
+                justifyContent="space-between"
+                fontWeight="normal"
+                colorScheme="blackAlpha.700"
+                fontSize="sm"
+                onClick={handleSeeEvent}
+              >
+                Ver na íntegra
+              </Button>
+              <Button
+                w="194px"
+                variant="ghost"
+                rightIcon={<FaSignature />}
+                justifyContent="space-between"
+                fontWeight="normal"
+                colorScheme="blackAlpha.700"
+                fontSize="sm"
+                onClick={handleSeeSubscribers}
+              >
+                Ver inscritos
+              </Button>
+            </>
           )}
           <Button
             w="194px"

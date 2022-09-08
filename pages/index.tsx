@@ -1,8 +1,8 @@
-import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
+import type { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 
-const HomeSection = dynamic(() => import('sections/Home'))
+const HomeSection = dynamic(() => import('sections/Client/Home'))
 
-const Home: NextPage = () => <HomeSection />;
+const Home: NextPage = () => <HomeSection />
 
-export default Home;
+export default Home

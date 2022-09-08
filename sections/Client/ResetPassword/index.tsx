@@ -1,4 +1,4 @@
-import { BiHide, BiShowAlt } from 'react-icons/bi';
+import { BiHide, BiShowAlt } from 'react-icons/bi'
 import {
   Box,
   Button,
@@ -11,52 +11,52 @@ import {
   Stack,
   Text,
   useToast,
-} from '@chakra-ui/react';
-import { Formik, FormikHelpers } from 'formik';
-import React, { useState } from 'react';
+} from '@chakra-ui/react'
+import { Formik, FormikHelpers } from 'formik'
+import React, { useState } from 'react'
 
-import Error from 'components/Error';
-import PasswordValidator from 'components/Login/components/PasswordValidator';
-import { RESET_PASSWORD } from 'services/mutations';
-import { RESET_PASSWORD_INITIAL_VALUES } from 'helpers/formInitialValues';
-import { RESET_PASSWORD_SCHEMA } from 'helpers/validationSchemas';
-import Success from 'components/Success';
-import { useMutation } from 'react-query';
-import { useRouter } from 'next/router';
+import Error from 'components/Error'
+import PasswordValidator from 'components/Login/components/PasswordValidator'
+import { RESET_PASSWORD } from 'services/mutations'
+import { RESET_PASSWORD_INITIAL_VALUES } from 'helpers/formInitialValues'
+import { RESET_PASSWORD_SCHEMA } from 'helpers/validationSchemas'
+import Success from 'components/Success'
+import { useMutation } from 'react-query'
+import { useRouter } from 'next/router'
 
 const ResetPassword: React.FC = () => {
-  const { mutateAsync: changePassword, isSuccess, isError } = useMutation(RESET_PASSWORD, {});
-  const [show, setShow] = useState(false);
-  const { query, push } = useRouter();
-  const toast = useToast();
+  const { mutateAsync: changePassword, isSuccess, isError } = useMutation(RESET_PASSWORD, {})
+  const [show, setShow] = useState(false)
+  const { query, push } = useRouter()
+  const toast = useToast()
 
   const onSubmit = async (
     values: ResetPasswordFormValues,
     { setSubmitting }: FormikHelpers<ResetPasswordFormValues>,
   ) => {
-    setSubmitting(true);
+    setSubmitting(true)
 
-    if (!query?.token) push('/');
+    if (!query?.token) push('/')
     else {
-      await changePassword({ token: query?.token as string, newPassword: values.password });
+      await changePassword({ token: query?.token as string, newPassword: values.password })
 
       const toastDelay = setTimeout(() => {
         toast({
           title: 'Você será redirecionado para a página inicial',
           duration: 5000,
           status: 'info',
-        });
-        clearTimeout(toastDelay);
-      }, 2500);
+        })
+        clearTimeout(toastDelay)
+      }, 2500)
 
       const delay = setTimeout(() => {
-        clearTimeout(delay);
-        push('/');
-      }, 5000);
+        clearTimeout(delay)
+        push('/')
+      }, 5000)
     }
-  };
+  }
 
-  const handleSeePassword = () => setShow(!show);
+  const handleSeePassword = () => setShow(!show)
 
   if (isSuccess) {
     return (
@@ -66,7 +66,7 @@ const ResetPassword: React.FC = () => {
           subtitle="Agora você já pode logar com a sua nova senha."
         />
       </Flex>
-    );
+    )
   }
   if (isError) {
     return (
@@ -76,7 +76,7 @@ const ResetPassword: React.FC = () => {
           subtitle="Houve um problema ao redefinir sua senha. Contate o suporte."
         />
       </Flex>
-    );
+    )
   }
 
   return (
@@ -86,9 +86,7 @@ const ResetPassword: React.FC = () => {
         onSubmit={onSubmit}
         validationSchema={RESET_PASSWORD_SCHEMA}
       >
-        {({
- errors, touched, handleSubmit, handleChange, isSubmitting, values,
-}) => (
+        {({ errors, touched, handleSubmit, handleChange, isSubmitting, values }) => (
           <form onSubmit={handleSubmit}>
             <Stack spacing={2}>
               <Box>
@@ -139,9 +137,9 @@ const ResetPassword: React.FC = () => {
                   </InputRightElement>
                 </InputGroup>
                 <Text fontSize={{ base: '12px' }} color="red">
-                  {errors.passwordConfirmation
-                    && touched.passwordConfirmation
-                    && errors.passwordConfirmation}
+                  {errors.passwordConfirmation &&
+                    touched.passwordConfirmation &&
+                    errors.passwordConfirmation}
                 </Text>
               </Box>
 
@@ -167,7 +165,7 @@ const ResetPassword: React.FC = () => {
         )}
       </Formik>
     </Flex>
-  );
-};
+  )
+}
 
-export default ResetPassword;
+export default ResetPassword

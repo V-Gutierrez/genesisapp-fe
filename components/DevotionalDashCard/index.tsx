@@ -38,6 +38,10 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
   const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo])
 
   const handleDevotionalDelete = async () => {
+    const confirmation = confirm('Deseja deletar esse devocional?')
+
+    if (!confirmation) return false
+
     try {
       await deleteDevotional(id)
       await refetch()

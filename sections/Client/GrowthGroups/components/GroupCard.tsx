@@ -1,11 +1,9 @@
-import { Flex, Link, Text } from '@chakra-ui/react';
+import { Flex, Link, Text } from '@chakra-ui/react'
 
-import { IoLogoWhatsapp } from 'react-icons/io';
+import { IoLogoWhatsapp } from 'react-icons/io'
 
 const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, active }) => {
-  const {
- addressInfo, name, leadership, scheduledTime, weekDay, lat, lng, whatsappLink,
-} = Group;
+  const { addressInfo, name, leadership, scheduledTime, weekDay, lat, lng, whatsappLink } = Group
 
   return (
     <Flex
@@ -33,20 +31,14 @@ const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, activ
       <Flex align="center" justify="space-between" w="100%">
         <Text fontSize={{ base: '14px' }} mr="12px">
           {' '}
-          Ás
-{' '}
-{scheduledTime}
-{' '}
--
-{' '}
-{weekDay}
+          Ás {scheduledTime} - {weekDay}
         </Text>
         <Link href={whatsappLink} target="_blank">
           <IoLogoWhatsapp size="20px" color={active ? 'white' : 'green'} />
         </Link>
       </Flex>
     </Flex>
-  );
-};
+  )
+}
 
-export default GroupCard;
+export default GroupCard
