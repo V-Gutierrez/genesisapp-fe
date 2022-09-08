@@ -33,9 +33,9 @@ const NewsDashCard: React.FC<NewsDashCardProps> = ({
   const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo])
 
   const handleNewsDelete = async () => {
-    const confirmation = confirm('Deseja deletar esse evento?')
+    const userConfirmation = confirm('Deseja deletar esse evento?')
 
-    if (!confirmation) return false
+    if (!userConfirmation) return false
     try {
       await deleteNews(id)
       await refetch()

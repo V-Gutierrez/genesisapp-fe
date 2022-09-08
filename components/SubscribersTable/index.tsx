@@ -1,18 +1,36 @@
-import { Table, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
+import { Table, TableContainer, Tbody, Td, Th, Thead, Tr, useToast } from '@chakra-ui/react'
+import SimpleEmptyState from 'components/SimpleEmptyState'
+import { GrClose } from 'react-icons/gr'
+import { useMutation } from 'react-query'
+import { DELETE_EVENT_SUBSCRIPTION } from 'services/mutations'
 
-import { GET_USERS } from 'services/queries'
-import { booleanToString } from 'helpers/formatters'
-import { differenceInYears } from 'date-fns'
-import { inHours } from 'helpers/time'
-import { useQuery } from 'react-query'
+const SubscribersTable: React.FC<SubscribersTableProps> = ({ subscribers }) => {
+  const { mutateAsync: deleteSubscription } = useMutation(DELETE_EVENT_SUBSCRIPTION)
 
-const SubscribersTable: React.FC = () => {
-  const { data } = useQuery('users', GET_USERS, {
-    staleTime: inHours(24),
-    cacheTime: inHours(24),
-  })
+  const toast = useToast()
 
-  const users = data?.data || []
+  const handleDeleteSubscription = async (id: string) => {
+    const userConfirmation = confirm('Deseja deletar essa inscrição?')
+
+    if (!userConfirmation) return
+    try {
+      await deleteSubscription(id)
+
+      toast({
+        description: 'Inscrição deletada com sucesso',
+        status: 'success',
+      })
+    } catch (error) {
+      toast({
+        status: 'error',
+        description: 'Houve um erro ao deletar a inscrição. Contate o suporte.',
+      })
+    }
+  }
+
+  if (!subscribers.length) {
+    return <SimpleEmptyState title="Nenhum inscrito até o momento" />
+  }
 
   return (
     <TableContainer w={{ base: '100%' }} fontSize={{ base: '12px' }}>
@@ -22,20 +40,18 @@ const SubscribersTable: React.FC = () => {
             <Th>Nome</Th>
             <Th>E-mail</Th>
             <Th>Telefone</Th>
-            <Th>Idade</Th>
-            <Th>Data de nascimento</Th>
-            <Th>Ativo</Th>
+            <Th>Ação</Th>
           </Tr>
         </Thead>
         <Tbody>
-          {users.map(({ name, id, email, phone, active, birthdate }) => (
+          {subscribers.map(({ id, userName, userEmail, userPhone }) => (
             <Tr key={id}>
-              <Td>{name}</Td>
-              <Td>{email}</Td>
-              <Td>{phone}</Td>
-              <Td>{differenceInYears(Date.now(), new Date(birthdate))}</Td>
-              <Td>{new Date(birthdate).toLocaleDateString()}</Td>
-              <Td>{booleanToString(active)}</Td>
+              <Td>{userName}</Td>
+              <Td>{userEmail}</Td>
+              <Td>{userPhone}</Td>
+              <Td cursor="pointer" onClick={() => handleDeleteSubscription(id)}>
+                <GrClose />
+              </Td>
             </Tr>
           ))}
         </Tbody>

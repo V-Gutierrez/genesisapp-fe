@@ -1,6 +1,6 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai'
 import { FaSignature } from 'react-icons/fa'
-import { Box, Button, Flex, Text, useToast } from '@chakra-ui/react'
+import { Box, Button, Flex, Text, useDisclosure, useToast } from '@chakra-ui/react'
 import React, { useMemo } from 'react'
 
 import { DELETE_EVENT } from 'services/mutations'
@@ -10,6 +10,7 @@ import { formatToTimezone } from 'helpers/time'
 import { isFuture, isPast } from 'date-fns'
 import { useMutation } from 'react-query'
 import { useRouter } from 'next/router'
+import SubscribersModal from 'sections/Admin/Events/components/SubscribersModal'
 
 const EventDashCard: React.FC<EventCardProps> = ({
   title,
@@ -19,11 +20,13 @@ const EventDashCard: React.FC<EventCardProps> = ({
   subscriptionsDueDate,
   subscriptionsScheduledTo,
   maxSlots,
+  EventsSubscriptions,
   _count,
 }) => {
   const { mutateAsync: deleteEvent } = useMutation(DELETE_EVENT)
   const toast = useToast()
   const { push } = useRouter()
+  const { isOpen, onClose, onOpen } = useDisclosure()
 
   const formattedEventDate = useMemo(
     () => formatToTimezone(eventDate, "dd 'de' MMMM 'de' yyyy 'às' HH:MM"),
@@ -44,9 +47,9 @@ const EventDashCard: React.FC<EventCardProps> = ({
   }
 
   const handleEventDelete = async () => {
-    const confirmation = confirm('Deseja deletar esse evento?')
+    const userConfirmation = confirm('Deseja deletar esse evento?')
 
-    if (!confirmation) return false
+    if (!userConfirmation) return false
 
     try {
       await deleteEvent(id)
@@ -65,7 +68,7 @@ const EventDashCard: React.FC<EventCardProps> = ({
   }
 
   const handleSeeSubscribers = () => {
-    alert('See Subscribers')
+    onOpen()
   }
 
   return (
@@ -145,6 +148,11 @@ const EventDashCard: React.FC<EventCardProps> = ({
             Excluir
           </Button>
         </OptionsButton>
+        <SubscribersModal
+          subscribers={EventsSubscriptions as EventsSubscription[]}
+          isOpen={isOpen}
+          onClose={onClose}
+        />
       </Box>
     </Flex>
   )

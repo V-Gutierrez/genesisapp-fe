@@ -1,4 +1,4 @@
-import { Box, Flex, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Flex, useBreakpointValue } from '@chakra-ui/react'
 
 import CustomSlider from 'components/CustomSlider'
 import DevotionalCard from 'components/DevotionalCard'

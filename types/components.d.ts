@@ -47,12 +47,14 @@ interface MapFrameProps {
   selectCoordsHandler: (lat: number, lng: number) => void
 }
 
+type ReactQueryRefetch<T> = <TPageData>(
+  options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
+) => Promise<QueryObserverResult<AxiosResponse<T, any> | undefined, unknown>>
+
 interface LoginModalProps {
   isOpen: boolean
   onClose: () => void
-  refetchUser: <TPageData>(
-    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
-  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
+  refetchUser: ReactQueryRefetch<Partial<User>>
 }
 
 interface LoginFormProps {
@@ -64,9 +66,7 @@ interface LoginFormProps {
       signUpSuccess: boolean
     }>
   >
-  refetchUser: <TPageData>(
-    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
-  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
+  refetchUser: ReactQueryRefetch<Partial<User>>
 }
 interface SignUpFormProps {
   visibilityHandler: React.Dispatch<
@@ -121,32 +121,22 @@ interface StatsCardProps {
 }
 
 interface DevotionalDashCardProps extends Devotional {
-  refetch: <TPageData>(
-    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
-  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
+  refetch: ReactQueryRefetch<Partial<User>>
 }
 interface EventCardProps extends EventItem {
-  refetch: <TPageData>(
-    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
-  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
+  refetch: ReactQueryRefetch<Partial<User>>
 }
 interface NewsDashCardProps extends News {
-  refetch: <TPageData>(
-    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
-  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
+  refetch: ReactQueryRefetch<Partial<User>>
 }
 
 interface EventsDashCardProps extends ExternalEvent {
-  refetch: <TPageData>(
-    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
-  ) => Promise<QueryObserverResult<AxiosResponse<Partial<User>, any>, unknown>>
+  refetch: ReactQueryRefetch<Partial<User>>
 }
 
 interface SubscriptionFormProps extends EventItem {
   eventId: string
-  refetch: <TPageData>(
-    options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined,
-  ) => Promise<QueryObserverResult<AxiosResponse<EventItem, any> | undefined, unknown>>
+  refetch: ReactQueryRefetch<EventItem>
 }
 
 interface OptionsButtonProps {
@@ -211,4 +201,12 @@ interface InteractionProps {
   likes: number
   shareContent?: string
   showOnlyShare?: boolean
+}
+
+interface SubscribersModalProps extends ModalProps {
+  subscribers: EventsSubscription[]
+}
+
+interface SubscribersTableProps {
+  subscribers: EventsSubscription[]
 }

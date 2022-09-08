@@ -1,4 +1,4 @@
-import { Box, useBreakpointValue, Text, Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { inHours } from 'helpers/time'
 import React from 'react'
 import { GET_USER_NEWS } from 'services/queries'

@@ -96,7 +96,7 @@ export default function Events() {
           <EventDashCard {...event} refetch={refetch} />
         ))}
       </Flex>
-      <DevotionalCreationModal isOpen={isOpen} onClose={onClose} />
+      {/* <DevotionalCreationModal isOpen={isOpen} onClose={onClose} /> */}
     </Box>
   )
 }

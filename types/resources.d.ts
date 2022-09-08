@@ -78,6 +78,12 @@ interface News {
   NewsViews: Interactions[]
 }
 
+interface EventsSubscription {
+  userEmail: string
+  userName: string
+  userPhone: string
+  id: string
+}
 interface EventItem {
   id: string
   title: string
@@ -93,4 +99,5 @@ interface EventItem {
   _count: {
     EventsSubscriptions: number
   }
+  EventsSubscriptions?: EventsSubscriptions[]
 }

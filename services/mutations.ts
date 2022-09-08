@@ -75,8 +75,8 @@ export const DELETE_EVENT = async (id: string) => {
   await Axios.delete(`/events/${id}`)
 }
 
-export const DELETE_EXTERNAL_EVENT = async (id: string) => {
-  await Axios.delete(`/externalevents/${id}`)
+export const DELETE_EVENT_SUBSCRIPTION = async (id: string) => {
+  await Axios.delete(`/events/subscriptions/${id}`)
 }
 
 export const LIKE_DEVOTIONAL = async (id: string) => {
