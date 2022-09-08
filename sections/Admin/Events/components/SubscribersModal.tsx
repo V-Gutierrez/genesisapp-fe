@@ -12,6 +12,13 @@ import SubscribersTable from 'components/SubscribersTable'
 import React, { useState } from 'react'
 
 export default function SubscribersModal({ isOpen, onClose, subscribers }: SubscribersModalProps) {
+  /*
+
+    RECEIVE ID AS PROP
+    AND USE TO QUERY A NEW ROUTE THAT RETURNS ONLY SUBSCRIBERS
+
+  */
+
   const [filteredSubscribers, setSubscribers] = useState(subscribers)
 
   const handleSubscriptionFiltering = (e: React.ChangeEvent<HTMLInputElement>) => {

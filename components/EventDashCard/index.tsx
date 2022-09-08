@@ -108,33 +108,31 @@ const EventDashCard: React.FC<EventCardProps> = ({
       <Box pos="absolute" top="0px" right="15px">
         <OptionsButton noBackground>
           {isPast(new Date(subscriptionsScheduledTo)) && isFuture(new Date(eventDate)) && (
-            <>
-              <Button
-                w="194px"
-                variant="ghost"
-                rightIcon={<AiOutlineArrowsAlt />}
-                justifyContent="space-between"
-                fontWeight="normal"
-                colorScheme="blackAlpha.700"
-                fontSize="sm"
-                onClick={handleSeeEvent}
-              >
-                Ver na íntegra
-              </Button>
-              <Button
-                w="194px"
-                variant="ghost"
-                rightIcon={<FaSignature />}
-                justifyContent="space-between"
-                fontWeight="normal"
-                colorScheme="blackAlpha.700"
-                fontSize="sm"
-                onClick={handleSeeSubscribers}
-              >
-                Ver inscritos
-              </Button>
-            </>
+            <Button
+              w="194px"
+              variant="ghost"
+              rightIcon={<AiOutlineArrowsAlt />}
+              justifyContent="space-between"
+              fontWeight="normal"
+              colorScheme="blackAlpha.700"
+              fontSize="sm"
+              onClick={handleSeeEvent}
+            >
+              Ver na íntegra
+            </Button>
           )}
+          <Button
+            w="194px"
+            variant="ghost"
+            rightIcon={<FaSignature />}
+            justifyContent="space-between"
+            fontWeight="normal"
+            colorScheme="blackAlpha.700"
+            fontSize="sm"
+            onClick={handleSeeSubscribers}
+          >
+            Ver inscritos
+          </Button>
           <Button
             w="194px"
             variant="ghost"
