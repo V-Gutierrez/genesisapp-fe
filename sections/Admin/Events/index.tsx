@@ -2,7 +2,6 @@ import { Box, Button, Flex, Text, useDisclosure } from '@chakra-ui/react'
 
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { BiRefresh } from 'react-icons/bi'
-import DevotionalCreationModal from 'sections/Admin/Devotionals/components/DevotionalCreationModal'
 import { GET_EVENTS } from 'services/queries'
 import { inHours } from 'helpers/time'
 import { isFuture, isPast } from 'date-fns'

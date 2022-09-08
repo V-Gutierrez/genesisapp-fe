@@ -1,13 +1,14 @@
 import { Table, TableContainer, Tbody, Td, Th, Thead, Tr, useToast } from '@chakra-ui/react'
 import SimpleEmptyState from 'components/SimpleEmptyState'
+import { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 import { useMutation } from 'react-query'
 import { DELETE_EVENT_SUBSCRIPTION } from 'services/mutations'
 
 const SubscribersTable: React.FC<SubscribersTableProps> = ({ subscribers }) => {
   const { mutateAsync: deleteSubscription } = useMutation(DELETE_EVENT_SUBSCRIPTION)
-
   const toast = useToast()
+  const [subscriptionsCopy, setSubscriptionCopy] = useState(subscribers)
 
   const handleDeleteSubscription = async (id: string) => {
     const userConfirmation = confirm('Deseja deletar essa inscrição?')
@@ -15,7 +16,7 @@ const SubscribersTable: React.FC<SubscribersTableProps> = ({ subscribers }) => {
     if (!userConfirmation) return
     try {
       await deleteSubscription(id)
-
+      setSubscriptionCopy(subscriptionsCopy.filter((item) => item.id !== id))
       toast({
         description: 'Inscrição deletada com sucesso',
         status: 'success',
@@ -44,7 +45,7 @@ const SubscribersTable: React.FC<SubscribersTableProps> = ({ subscribers }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {subscribers.map(({ id, userName, userEmail, userPhone }) => (
+          {subscriptionsCopy.map(({ id, userName, userEmail, userPhone }) => (
             <Tr key={id}>
               <Td>{userName}</Td>
               <Td>{userEmail}</Td>
