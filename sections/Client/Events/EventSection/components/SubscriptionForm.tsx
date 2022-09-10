@@ -72,11 +72,11 @@ export function SubscriptionForm({
   const subscriptionIsDue =
     isAfter(new Date(), new Date(eventDate)) || isAfter(new Date(), new Date(subscriptionsDueDate))
   const formattedEventDate = useMemo(
-    () => formatToTimezone(eventDate, "dd 'de' MMMM 'de' yyyy 'às' HH:MM"),
+    () => formatToTimezone(eventDate, "dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
     [eventDate],
   )
   const subscriptionsEndDate = useMemo(
-    () => formatToTimezone(subscriptionsDueDate, "dd 'de' MMMM 'de' yyyy 'às' HH:MM"),
+    () => formatToTimezone(subscriptionsDueDate, "dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
     [subscriptionsDueDate],
   )
   const remainingSlots = useMemo(() => maxSlots - _count.EventsSubscriptions, [maxSlots, _count])

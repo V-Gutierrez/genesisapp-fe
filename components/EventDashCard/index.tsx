@@ -29,15 +29,15 @@ const EventDashCard: React.FC<EventCardProps> = ({
   const { isOpen, onClose, onOpen } = useDisclosure()
 
   const formattedEventDate = useMemo(
-    () => formatToTimezone(eventDate, "dd 'de' MMMM 'de' yyyy 'às' HH:MM"),
+    () => formatToTimezone(eventDate, "dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
     [eventDate],
   )
   const subscriptionsEndDate = useMemo(
-    () => formatToTimezone(subscriptionsDueDate, "dd 'de' MMMM 'de' yyyy 'às' HH:MM'"),
+    () => formatToTimezone(subscriptionsDueDate, "dd 'de' MMMM 'de' yyyy 'às' HH:mm'"),
     [subscriptionsDueDate],
   )
   const subscriptionsStartDate = useMemo(
-    () => formatToTimezone(subscriptionsScheduledTo, "dd 'de' MMMM 'de' yyyy 'às' HH:MM'"),
+    () => formatToTimezone(subscriptionsScheduledTo, "dd 'de' MMMM 'de' yyyy 'às' HH:mm'"),
     [subscriptionsScheduledTo],
   )
   const remainingSlots = useMemo(() => maxSlots - _count?.EventsSubscriptions, [maxSlots, _count])

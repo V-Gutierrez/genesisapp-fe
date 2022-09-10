@@ -13,11 +13,11 @@ export default function EventCard({
   _count,
 }: EventItem) {
   const formattedEventDate = useMemo(
-    () => formatToTimezone(eventDate, "dd 'de' MMMM 'de' yyyy 'às' HH:MM"),
+    () => formatToTimezone(eventDate, "dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
     [eventDate],
   )
   const subscriptionsEndDate = useMemo(
-    () => formatToTimezone(subscriptionsDueDate, "dd 'de' MMMM 'de' yyyy 'às' H'h'"),
+    () => formatToTimezone(subscriptionsDueDate, "dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
     [subscriptionsDueDate],
   )
   const remainingSlots = useMemo(() => maxSlots - _count.EventsSubscriptions, [maxSlots, _count])
@@ -48,13 +48,14 @@ export default function EventCard({
             </Text>
             <Heading
               color={useColorModeValue('gray.700', 'white')}
-              fontSize="2xl"
+              fontSize="lg"
               fontFamily="body"
+              minH="50px"
             >
               {title}
             </Heading>
           </Stack>
-          <Stack mt={12} direction="row" spacing={4} align="center">
+          <Stack mt={2} direction="row" spacing={4} align="center">
             <Stack direction="column" spacing={0} fontSize="sm">
               <Text fontWeight={600}> {formattedEventDate}</Text>
               <Text color="gray.500">Inscrições até {subscriptionsEndDate}</Text>
