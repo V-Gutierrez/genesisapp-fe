@@ -62,7 +62,7 @@
         "react/jsx-wrap-multilines": "warn",
         "no-multiple-empty-lines": "warn",
         "quotes": "warn",
-        "comma-dangle": "warn"
+        "comma-dangle": "warn",
     },
     "ignorePatterns": [
         "*.d.ts"
