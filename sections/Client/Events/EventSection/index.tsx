@@ -54,4 +54,6 @@ export default function EventSection() {
   if (isError || !data.data) {
     return <NotFound />
   }
+
+  return <NotFound />
 }
