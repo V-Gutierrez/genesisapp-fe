@@ -11,5 +11,4 @@ export const formatToTimezone = (
 ) =>
   formatInTimeZone(new Date(dateCandidate), 'America/Sao_Paulo', formatStr, {
     locale: pt,
-    timeZone: 'America/Sao_Paulo',
   })
