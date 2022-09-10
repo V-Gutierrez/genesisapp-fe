@@ -8,17 +8,11 @@ import {
   ModalFooter,
   Input,
 } from '@chakra-ui/react'
+import SimpleEmptyState from 'components/SimpleEmptyState'
 import SubscribersTable from 'components/SubscribersTable'
 import React, { useState } from 'react'
 
 export default function SubscribersModal({ isOpen, onClose, subscribers }: SubscribersModalProps) {
-  /*
-
-    RECEIVE ID AS PROP
-    AND USE TO QUERY A NEW ROUTE THAT RETURNS ONLY SUBSCRIBERS
-
-  */
-
   const [filteredSubscribers, setSubscribers] = useState(subscribers)
 
   const handleSubscriptionFiltering = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,12 +49,18 @@ export default function SubscribersModal({ isOpen, onClose, subscribers }: Subsc
             },
           }}
         >
-          <Input
-            onChange={handleSubscriptionFiltering}
-            placeholder="Pesquise uma inscrição por aqui"
-            my={5}
-          />
-          <SubscribersTable subscribers={filteredSubscribers} />
+          {!subscribers.length ? (
+            <SimpleEmptyState title="Nenhum inscrito até o momento" />
+          ) : (
+            <>
+              <Input
+                onChange={handleSubscriptionFiltering}
+                placeholder="Pesquise uma inscrição por aqui"
+                my={5}
+              />
+              <SubscribersTable subscribers={filteredSubscribers} />
+            </>
+          )}
         </ModalBody>
         <ModalFooter />
       </ModalContent>

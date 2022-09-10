@@ -1,5 +1,4 @@
 import { Table, TableContainer, Tbody, Td, Th, Thead, Tr, useToast } from '@chakra-ui/react'
-import SimpleEmptyState from 'components/SimpleEmptyState'
 import { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 import { useMutation } from 'react-query'
@@ -17,6 +16,7 @@ const SubscribersTable: React.FC<SubscribersTableProps> = ({ subscribers }) => {
     try {
       await deleteSubscription(id)
       setSubscriptionCopy(subscriptionsCopy.filter((item) => item.id !== id))
+
       toast({
         description: 'Inscrição deletada com sucesso',
         status: 'success',
@@ -27,10 +27,6 @@ const SubscribersTable: React.FC<SubscribersTableProps> = ({ subscribers }) => {
         description: 'Houve um erro ao deletar a inscrição. Contate o suporte.',
       })
     }
-  }
-
-  if (!subscribers.length) {
-    return <SimpleEmptyState title="Nenhum inscrito até o momento" />
   }
 
   return (
