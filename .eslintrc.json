@@ -58,7 +58,11 @@
         "react/jsx-one-expression-per-line": "off",
         "operator-linebreak": "off",
         "no-unsafe-optional-chaining": "off",
-        "consistent-return": "warn"
+        "consistent-return": "warn",
+        "react/jsx-wrap-multilines": "warn",
+        "no-multiple-empty-lines": "warn",
+        "quotes": "warn",
+        "comma-dangle": "warn"
     },
     "ignorePatterns": [
         "*.d.ts"
