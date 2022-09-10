@@ -17,15 +17,11 @@ export default function EventSection() {
     GET_EVENTS_BY_ID,
   )
 
-  if (isError) {
-    return <NotFound />
-  }
-
   if (isLoading || !data) {
     return null
   }
 
-  if (data) {
+  if (data.data) {
     const { title, description, coverImage } = data?.data
 
     return (
@@ -53,5 +49,9 @@ export default function EventSection() {
         <SubscriptionForm {...data?.data} eventId={eventId as string} refetch={refetch} />
       </PageWithHeadingImage>
     )
+  }
+
+  if (isError || !data.data) {
+    return <NotFound />
   }
 }

@@ -42,13 +42,12 @@ interface NewsFormValues {
   highlightText: string
   coverImage?: File
 }
-interface ExternalEventFormValues {
-  title: string
-  description: string
-  lng: number
-  lat: number
-  addressInfo: string
-  scheduledTo: string
+interface EventItemFormValues {
   coverImage?: File
-  maxSubscriptions: number
+  title: string
+  subscriptionsScheduledTo: string
+  subscriptionsDueDate: string
+  eventDate: string
+  maxSlots: string
+  description: string
 }

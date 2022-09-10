@@ -89,114 +89,120 @@ export function SubscriptionForm({
         <Text align="center">{formattedEventDate}</Text>
         <Text align="center">Inscrições abertas até {subscriptionsEndDate}</Text>
       </Stack>
-      <Formik
-        initialValues={INITIAL_VALUES as EventSubscriptionFormValues}
-        onSubmit={handleSubscription}
-        validationSchema={EVENT_SUBSCRIPTION_SCHEMA}
-      >
-        {({ errors, touched, handleSubmit, handleChange, isSubmitting, values }) => (
-          <form onSubmit={handleSubmit}>
-            <Stack spacing={2}>
-              <Box>
-                <FormLabel fontSize={{ base: '16px' }}>Nome e Sobrenome</FormLabel>
-                <Input type="name" id="userName" onChange={handleChange} />
-                <Text fontSize={{ base: '12px' }} color="red">
-                  {errors.userName && touched.userName && errors.userName}
-                </Text>
-              </Box>
+      {maxSlots - _count.EventsSubscriptions > 0 ? (
+        <Formik
+          initialValues={INITIAL_VALUES as EventSubscriptionFormValues}
+          onSubmit={handleSubscription}
+          validationSchema={EVENT_SUBSCRIPTION_SCHEMA}
+        >
+          {({ errors, touched, handleSubmit, handleChange, isSubmitting, values }) => (
+            <form onSubmit={handleSubmit}>
+              <Stack spacing={2}>
+                <Box>
+                  <FormLabel fontSize={{ base: '16px' }}>Nome e Sobrenome</FormLabel>
+                  <Input type="name" id="userName" onChange={handleChange} />
+                  <Text fontSize={{ base: '12px' }} color="red">
+                    {errors.userName && touched.userName && errors.userName}
+                  </Text>
+                </Box>
 
-              <Box>
-                <FormLabel>
-                  <HStack cursor="pointer">
-                    <Text fontSize={{ base: '16px' }}>Email</Text>
-                  </HStack>
-                </FormLabel>
-                <Input type="email" id="userEmail" onChange={handleChange} />
-                <Text fontSize={{ base: '12px' }} color="red">
-                  {errors.userEmail && touched.userEmail && errors.userEmail}
-                </Text>
-              </Box>
+                <Box>
+                  <FormLabel>
+                    <HStack cursor="pointer">
+                      <Text fontSize={{ base: '16px' }}>Email</Text>
+                    </HStack>
+                  </FormLabel>
+                  <Input type="email" id="userEmail" onChange={handleChange} />
+                  <Text fontSize={{ base: '12px' }} color="red">
+                    {errors.userEmail && touched.userEmail && errors.userEmail}
+                  </Text>
+                </Box>
 
-              <Box>
-                <FormLabel d="flex">
-                  <HStack>
-                    <Text fontSize={{ base: '16px' }}>Telefone</Text>
-                  </HStack>
-                </FormLabel>
+                <Box>
+                  <FormLabel d="flex">
+                    <HStack>
+                      <Text fontSize={{ base: '16px' }}>Telefone</Text>
+                    </HStack>
+                  </FormLabel>
 
-                <InputGroup>
-                  <InputLeftAddon
-                    padding="0"
-                    bg="none"
-                    border="none"
-                    children={
-                      <Box d="flex" alignItems="center" justifyContent="space-evenly">
-                        <Select
-                          id="region"
-                          w={{ base: '80px' }}
-                          bg="white"
-                          onChange={handleChange}
-                          fontSize={{ base: '12px' }}
-                        >
-                          <option value="+54">ARG</option>
-                          <option value="+55">BRA</option>
-                        </Select>
-                      </Box>
-                    }
+                  <InputGroup>
+                    <InputLeftAddon
+                      padding="0"
+                      bg="none"
+                      border="none"
+                      children={
+                        <Box d="flex" alignItems="center" justifyContent="space-evenly">
+                          <Select
+                            id="region"
+                            w={{ base: '80px' }}
+                            bg="white"
+                            onChange={handleChange}
+                            fontSize={{ base: '12px' }}
+                          >
+                            <option value="+54">ARG</option>
+                            <option value="+55">BRA</option>
+                          </Select>
+                        </Box>
+                      }
+                    />
+
+                    <Input
+                      type="tel"
+                      id="userPhone"
+                      as={InputMask}
+                      mask={
+                        values.region === '+54'
+                          ? `${values.region} * ** ****-****`
+                          : `${values.region} ** * ****-****`
+                      }
+                      onChange={handleChange}
+                    />
+                    <InputRightElement
+                      padding="0"
+                      bg="none"
+                      border="none"
+                      children={
+                        <Box w={{ base: '20px' }}>
+                          <Flag code={values.region === '+55' ? 'bra' : 'arg'} height="10" />
+                        </Box>
+                      }
+                    />
+                  </InputGroup>
+                  <Text fontSize={{ base: '12px' }} color="red">
+                    {errors.userPhone && touched.userPhone && errors.userPhone}
+                  </Text>
+                </Box>
+                <Stack spacing={6} mt={6}>
+                  <Stack
+                    direction={{ base: 'column', sm: 'row' }}
+                    align="start"
+                    justify="space-between"
                   />
-
-                  <Input
-                    type="tel"
-                    id="userPhone"
-                    as={InputMask}
-                    mask={
-                      values.region === '+54'
-                        ? `${values.region} * ** ****-****`
-                        : `${values.region} ** * ****-****`
-                    }
-                    onChange={handleChange}
-                  />
-                  <InputRightElement
-                    padding="0"
-                    bg="none"
-                    border="none"
-                    children={
-                      <Box w={{ base: '20px' }}>
-                        <Flag code={values.region === '+55' ? 'bra' : 'arg'} height="10" />
-                      </Box>
-                    }
-                  />
-                </InputGroup>
-                <Text fontSize={{ base: '12px' }} color="red">
-                  {errors.userPhone && touched.userPhone && errors.userPhone}
-                </Text>
-              </Box>
-              <Stack spacing={6} mt={6}>
-                <Stack
-                  direction={{ base: 'column', sm: 'row' }}
-                  align="start"
-                  justify="space-between"
-                />
-                <Button
-                  colorScheme="blackAlpha"
-                  type="submit"
-                  bg="blackAlpha.900"
-                  variant="solid"
-                  disabled={isSubmitting || subscriptionIsDue || !isSubscriptionAvailable}
-                >
-                  {isSubmitting ? (
-                    <Spinner />
-                  ) : subscriptionIsDue ? (
-                    'Inscrições encerradas'
-                  ) : (
-                    'Efetuar inscrição'
-                  )}
-                </Button>
+                  <Button
+                    colorScheme="blackAlpha"
+                    type="submit"
+                    bg="blackAlpha.900"
+                    variant="solid"
+                    disabled={isSubmitting || subscriptionIsDue || !isSubscriptionAvailable}
+                  >
+                    {isSubmitting ? (
+                      <Spinner />
+                    ) : subscriptionIsDue ? (
+                      'Inscrições encerradas'
+                    ) : (
+                      'Efetuar inscrição'
+                    )}
+                  </Button>
+                </Stack>
               </Stack>
-            </Stack>
-          </form>
-        )}
-      </Formik>
+            </form>
+          )}
+        </Formik>
+      ) : (
+        <Text align="center" fontWeight="black" pb={10}>
+          Inscrições encerradas
+        </Text>
+      )}
     </>
   )
 }

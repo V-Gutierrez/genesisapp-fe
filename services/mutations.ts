@@ -67,6 +67,15 @@ export const CREATE_DEVOTIONAL = async (values: DevotionalFormValues) => {
 
   await Axios.post('/devotionals', formdata)
 }
+export const CREATE_EVENT = async (values: EventItemFormValues) => {
+  const formdata = new FormData()
+
+  Object.entries(values).forEach(([key, value]) => {
+    formdata.append(key, value)
+  })
+
+  await Axios.post('/events', formdata)
+}
 
 export const DELETE_DEVOTIONAL = async (id: string) => {
   await Axios.delete(`/devotionals/${id}`)

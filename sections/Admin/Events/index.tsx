@@ -7,6 +7,7 @@ import { inHours } from 'helpers/time'
 import { isFuture, isPast } from 'date-fns'
 import { useQuery } from 'react-query'
 import { zonedTimeToUtc } from 'date-fns-tz'
+import EventCreationModal from 'sections/Admin/Events/components/EventCreationModal'
 import EventDashCard from '../../../components/EventDashCard'
 
 export default function Events() {
@@ -95,7 +96,7 @@ export default function Events() {
           <EventDashCard {...event} refetch={refetch} />
         ))}
       </Flex>
-      {/* <DevotionalCreationModal isOpen={isOpen} onClose={onClose} /> */}
+      <EventCreationModal isOpen={isOpen} onClose={onClose} />
     </Box>
   )
 }

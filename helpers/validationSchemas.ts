@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-import { differenceInYears, isFuture } from 'date-fns'
+import { differenceInYears, isBefore, isFuture } from 'date-fns'
 
 const TWO_MB_IN_BYTES = 2e6
 
@@ -91,7 +91,7 @@ export const NEWS_CREATION_SCHEMA = Yup.object().shape({
       isFuture(new Date(value as unknown as number)),
     ),
   coverImage: Yup.mixed()
-    .required('Insira uma imagem de capa')
+    .required('Insira uma imagem para a notícia')
     .test(
       'fileSize',
       'O arquivo deve ter no máximo 2MB',
@@ -107,4 +107,37 @@ export const EVENT_SUBSCRIPTION_SCHEMA = Yup.object().shape({
   userPhone: Yup.string()
     .matches(/^\+[0-9]{2}\s[0-9]{1,2}\s[0-9]{1,2}\s[0-9]{4}\-[0-9]{4}/, 'Insira um formato válido')
     .required('Insira seu telefone'),
+})
+
+export const EVENT_CREATION_SCHEMA = Yup.object().shape({
+  description: Yup.string()
+    .min(255, 'A descrição do evento deve ter no mínimo 255 caractéres')
+    .required('Insira ou edite a descrição do evento neste campo'),
+  title: Yup.string().required('Insira um título'),
+
+  subscriptionsScheduledTo: Yup.string()
+    .required('Selecione a data de ínicio as inscrições')
+    .test('Data futura', 'A data deve ser futura', (value) =>
+      isFuture(new Date(value as unknown as number)),
+    ),
+  subscriptionsDueDate: Yup.string()
+    .required('Selecione a data de fim das inscrições')
+    .test('Data futura', 'A data deve ser futura', (value) =>
+      isFuture(new Date(value as unknown as number)),
+    ),
+  eventDate: Yup.string()
+    .required('Selecione a data do evento')
+    .test('Data futura', 'A data deve ser futura', (value) =>
+      isFuture(new Date(value as unknown as number)),
+    ),
+  maxSlots: Yup.number()
+    .required('Insira o número de vagas')
+    .min(1, 'O evento deve ter vagas disponíveis.'),
+  coverImage: Yup.mixed()
+    .required('Insira uma imagem para o evento')
+    .test(
+      'fileSize',
+      'O arquivo deve ter no máximo 2MB',
+      (value) => value?.size <= TWO_MB_IN_BYTES,
+    ),
 })

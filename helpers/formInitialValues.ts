@@ -32,14 +32,13 @@ export const NEWS_CREATION_INITIAL_VALUES = {
   highlightText: '',
 }
 
-export const EXTERNAL_EVENT_CREATION_INITIAL_VALUES = {
+export const EVENT_CREATION_INITIAL_VALUES = {
   title: '',
+  subscriptionsScheduledTo: '',
+  subscriptionsDueDate: '',
+  eventDate: '',
+  maxSlots: '',
   description: '',
-  lng: 0,
-  lat: 0,
-  addressInfo: '',
-  scheduledTo: '',
-  maxSubscriptions: 0,
 }
 
 export const SUBSCRIPTION_INITIAL_VALUES = {
