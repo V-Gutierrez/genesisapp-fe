@@ -85,11 +85,13 @@ export function SubscriptionForm({
   return (
     <>
       <Stack spacing={2}>
-        <Text align="center">Vagas disponíveis: {maxSlots - _count.EventsSubscriptions}</Text>
+        {maxSlots - _count.EventsSubscriptions > 0 && !subscriptionIsDue && (
+          <Text align="center">Vagas disponíveis: {maxSlots - _count.EventsSubscriptions}</Text>
+        )}
         <Text align="center">{formattedEventDate}</Text>
         <Text align="center">Inscrições abertas até {subscriptionsEndDate}</Text>
       </Stack>
-      {maxSlots - _count.EventsSubscriptions > 0 ? (
+      {maxSlots - _count.EventsSubscriptions > 0 && !subscriptionIsDue ? (
         <Formik
           initialValues={INITIAL_VALUES as EventSubscriptionFormValues}
           onSubmit={handleSubscription}
