@@ -1,43 +1,11 @@
-import {
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-} from '@chakra-ui/react';
+import { StandardModal } from 'components/StandardModal'
 
-import DevotionalEditor from 'sections/Admin/Devotionals/components/DevotionalEditor';
+import DevotionalEditor from 'sections/Admin/Devotionals/components/DevotionalEditor'
 
 const DevotionalCreationModal: React.FC<ModalProps> = ({ isOpen, onClose }) => (
-  <Modal isOpen={isOpen} onClose={onClose} isCentered size="2lg" scrollBehavior="inside">
-    <ModalOverlay />
-    <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
-      <ModalCloseButton />
+  <StandardModal isOpen={isOpen} onClose={onClose}>
+    <DevotionalEditor onClose={onClose} />
+  </StandardModal>
+)
 
-      <ModalHeader d="flex" alignItems="center" justifyContent="center" flexDirection="column" />
-
-      <ModalBody
-        css={{
-          '&::-webkit-scrollbar': {
-            width: '5px',
-          },
-          '&::-webkit-scrollbar-track': {
-            background: 'transparent',
-            borderRadius: '10px',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            background: 'rgba(0, 0, 0, 0.4)',
-            borderRadius: '10px',
-          },
-        }}
-      >
-        <DevotionalEditor onClose={onClose} />
-      </ModalBody>
-      <ModalFooter />
-    </ModalContent>
-  </Modal>
-);
-
-export default DevotionalCreationModal;
+export default DevotionalCreationModal

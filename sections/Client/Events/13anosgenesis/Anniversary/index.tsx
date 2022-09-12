@@ -8,10 +8,14 @@ import GoogleImagesGallery from 'components/GoogleImagesGallery'
 import Head from 'next/head'
 import NextImage from 'components/NextImage'
 import arrayShuffle from 'array-shuffle'
-import { subscribers } from 'sections/Client/Events/13anosgenesis/Anniversary/signers'
 import { useRouter } from 'next/router'
+import { useQuery } from 'react-query'
+import { GET_13TH_ANNIVERSARY_SUBSCRIBERS } from 'services/internalApiQueries'
 
 const AnniversarySection: React.FC = () => {
+  const { data } = useQuery('anniversaryEventSubscribers', GET_13TH_ANNIVERSARY_SUBSCRIBERS)
+  const subscribers = data?.data || []
+
   const [showFullGallery, setShowFullGallery] = useState(true)
   const galleryWarning = useBreakpointValue({
     base: 'TOQUE AQUI PARA VOLTAR',

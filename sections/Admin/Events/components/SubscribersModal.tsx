@@ -1,14 +1,6 @@
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalCloseButton,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Input,
-} from '@chakra-ui/react'
+import { Input } from '@chakra-ui/react'
 import SimpleEmptyState from 'components/SimpleEmptyState'
+import { StandardModal } from 'components/StandardModal'
 import SubscribersTable from 'components/SubscribersTable'
 import React, { useState } from 'react'
 
@@ -29,41 +21,19 @@ export default function SubscribersModal({ isOpen, onClose, subscribers }: Subsc
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered size="2lg" scrollBehavior="inside">
-      <ModalOverlay />
-      <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
-        <ModalCloseButton />
-        <ModalHeader d="flex" alignItems="center" justifyContent="center" flexDirection="column" />
-        <ModalBody
-          css={{
-            '&::-webkit-scrollbar': {
-              width: '5px',
-            },
-            '&::-webkit-scrollbar-track': {
-              background: 'transparent',
-              borderRadius: '10px',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              background: 'rgba(0, 0, 0, 0.4)',
-              borderRadius: '10px',
-            },
-          }}
-        >
-          {!subscribers.length ? (
-            <SimpleEmptyState title="Nenhum inscrito até o momento" />
-          ) : (
-            <>
-              <Input
-                onChange={handleSubscriptionFiltering}
-                placeholder="Pesquise uma inscrição por aqui"
-                my={5}
-              />
-              <SubscribersTable subscribers={filteredSubscribers} />
-            </>
-          )}
-        </ModalBody>
-        <ModalFooter />
-      </ModalContent>
-    </Modal>
+    <StandardModal isOpen={isOpen} onClose={onClose}>
+      {!subscribers.length ? (
+        <SimpleEmptyState title="Nenhum inscrito até o momento" />
+      ) : (
+        <>
+          <Input
+            onChange={handleSubscriptionFiltering}
+            placeholder="Pesquise uma inscrição por aqui"
+            my={5}
+          />
+          <SubscribersTable subscribers={filteredSubscribers} />
+        </>
+      )}
+    </StandardModal>
   )
 }
