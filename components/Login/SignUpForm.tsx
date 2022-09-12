@@ -41,6 +41,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
     setSubmitting(true)
     try {
       await signup(values)
+
       // Show Success result
       visibilityHandler({ signUpSuccess: true, signUp: false })
     } catch (e) {
@@ -124,7 +125,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         children={
                           <Box d="flex" alignItems="center" justifyContent="space-evenly">
                             <Select
-                              id="region"
+                              id="phoneRegion"
                               w={{ base: '80px' }}
                               bg="white"
                               onChange={handleChange}
@@ -143,8 +144,8 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         as={InputMask}
                         mask={
                           values.region === '+54'
-                            ? `${values.region} * ** ****-****`
-                            : `${values.region} ** * ****-****`
+                            ? `${values.phoneRegion} * ** ****-****`
+                            : `${values.phoneRegion} ** * ****-****`
                         }
                         onChange={handleChange}
                       />
@@ -154,11 +155,12 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         border="none"
                         children={
                           <Box w={{ base: '20px' }}>
-                            <Flag code={values.region === '+55' ? 'bra' : 'arg'} height="10" />
+                            <Flag code={values.phoneRegion === '+55' ? 'bra' : 'arg'} height="10" />
                           </Box>
                         }
                       />
                     </InputGroup>
+
                     <Text fontSize={{ base: '12px' }} color="red">
                       {errors.phone && touched.phone && errors.phone}
                     </Text>
@@ -169,6 +171,18 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                     <Input type="date" id="birthdate" onChange={handleChange} />
                     <Text fontSize={{ base: '12px' }} color="red">
                       {errors.birthdate && touched.birthdate && errors.birthdate}
+                    </Text>
+                  </Box>
+
+                  <Box>
+                    <FormLabel fontSize={{ base: '16px' }}>Sede</FormLabel>
+                    <Select id="region" onChange={handleChange}>
+                      <option value="" />
+                      <option value="AEP">Buenos Aires </option>
+                      <option value="FEC">Feira de Santana</option>
+                    </Select>
+                    <Text fontSize={{ base: '12px' }} color="red">
+                      {errors.region && touched.region && errors.region}
                     </Text>
                   </Box>
 
@@ -192,6 +206,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         </Button>
                       </InputRightElement>
                     </InputGroup>
+
                     <Text fontSize={{ base: '12px' }} color="red">
                       {errors.password && touched.password && errors.password}
                     </Text>

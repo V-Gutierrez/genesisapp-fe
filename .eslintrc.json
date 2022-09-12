@@ -62,7 +62,8 @@
         "react/jsx-wrap-multilines": "warn",
         "no-multiple-empty-lines": "warn",
         "quotes": "warn",
-        "comma-dangle": "warn"
+        "comma-dangle": "warn",
+        "jsx-a11y/control-has-associated-label": "off"
     },
     "ignorePatterns": [
         "*.d.ts"

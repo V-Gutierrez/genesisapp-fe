@@ -20,6 +20,7 @@ interface SignUpFormValues {
   phone: string
   birthdate: string
   passwordConfirmation: string
+  phoneRegion: string
   region: string
 }
 

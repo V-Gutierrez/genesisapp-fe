@@ -13,13 +13,21 @@ export const LOGIN = async ({ email, password }: LoginFormValues) => {
   })
 }
 
-export const SIGN_UP = async ({ email, password, name, phone, birthdate }: SignUpFormValues) => {
+export const SIGN_UP = async ({
+  email,
+  password,
+  name,
+  phone,
+  birthdate,
+  region,
+}: SignUpFormValues) => {
   await Axios.post<{ error: string }>('/users', {
     email,
     password,
     name,
     phone,
     birthdate,
+    region,
   })
 }
 

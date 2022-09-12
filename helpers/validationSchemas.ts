@@ -39,6 +39,7 @@ export const SIGNUP_SCHEMA = Yup.object().shape({
   name: Yup.string()
     .matches(/^[^\s]+( [^\s]+)+$/, 'Insira seu nome e sobrenome')
     .required('Insira seu nome e sobrenome'),
+  region: Yup.string().required('Selecione sua sede'),
   phone: Yup.string()
     .matches(/^\+[0-9]{2}\s[0-9]{1,2}\s[0-9]{1,2}\s[0-9]{4}\-[0-9]{4}/, 'Insira um formato válido')
     .required('Insira seu telefone'),

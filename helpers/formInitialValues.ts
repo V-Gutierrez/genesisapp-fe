@@ -11,7 +11,8 @@ export const SIGNUP_INITIAL_VALUES = {
   phone: '',
   birthdate: '',
   passwordConfirmation: '',
-  region: '+54',
+  phoneRegion: '+54',
+  region: '',
 }
 
 export const RESET_PASSWORD_INITIAL_VALUES = {
