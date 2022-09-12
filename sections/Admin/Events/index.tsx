@@ -32,8 +32,8 @@ export default function Events() {
 
   const pastEvents = data?.data.filter(
     (d) =>
-      isPast(zonedTimeToUtc(new Date(d.subscriptionsScheduledTo), 'America/Sao_Paulo')) &&
-      isPast(zonedTimeToUtc(new Date(d.subscriptionsDueDate), 'America/Sao_Paulo')) &&
+      isPast(zonedTimeToUtc(new Date(d.subscriptionsScheduledTo), 'America/Sao_Paulo')) ||
+      isPast(zonedTimeToUtc(new Date(d.subscriptionsDueDate), 'America/Sao_Paulo')) ||
       isPast(zonedTimeToUtc(new Date(d.eventDate), 'America/Sao_Paulo')),
   )
 
