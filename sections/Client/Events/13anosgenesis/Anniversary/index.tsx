@@ -11,6 +11,7 @@ import arrayShuffle from 'array-shuffle'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 import { GET_13TH_ANNIVERSARY_SUBSCRIBERS } from 'services/internalApiQueries'
+import { computeStylesBasedOnState } from 'helpers/switches'
 
 const AnniversarySection: React.FC = () => {
   const { data } = useQuery('anniversaryEventSubscribers', GET_13TH_ANNIVERSARY_SUBSCRIBERS)
@@ -31,12 +32,6 @@ const AnniversarySection: React.FC = () => {
       }, 1000)
     }
   }, [])
-
-  const computeStylesBasedOnShowFullGalleryState = <T, K>(
-    showFullGalleryState: boolean,
-    truthyStyle: T,
-    falsyStyle: K,
-  ) => (showFullGalleryState ? truthyStyle : falsyStyle)
 
   return (
     <>
@@ -59,7 +54,7 @@ const AnniversarySection: React.FC = () => {
         <Flex
           w="100%"
           zIndex="popover"
-          d={computeStylesBasedOnShowFullGalleryState(showFullGallery, 'none', 'flex')}
+          d={computeStylesBasedOnState(showFullGallery, 'none', 'flex')}
           h="60px"
           align="center"
           justify="flex-start"
@@ -83,7 +78,7 @@ const AnniversarySection: React.FC = () => {
           zIndex="0"
           userSelect="none"
           bg="black"
-          opacity={computeStylesBasedOnShowFullGalleryState(showFullGallery, '0', '1')}
+          opacity={computeStylesBasedOnState(showFullGallery, '0', '1')}
         >
           {arrayShuffle(subscribers).map((signer) => (
             <Text
@@ -102,7 +97,7 @@ const AnniversarySection: React.FC = () => {
           ))}
         </Flex>
         <Flex
-          h={computeStylesBasedOnShowFullGalleryState(showFullGallery, 0, '60px')}
+          h={computeStylesBasedOnState(showFullGallery, 0, '60px')}
           w="full"
           align="center"
           justifyContent="center"
@@ -126,20 +121,20 @@ const AnniversarySection: React.FC = () => {
           onClick={() => setShowFullGallery(true)}
           wrap="wrap"
           w={{
-            base: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '350px'),
-            sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '500px'),
-            md: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '550px'),
-            lg: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '600px'),
-            xl: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'full', '800px'),
+            base: computeStylesBasedOnState(showFullGallery, 'full', '350px'),
+            sm: computeStylesBasedOnState(showFullGallery, 'full', '500px'),
+            md: computeStylesBasedOnState(showFullGallery, 'full', '550px'),
+            lg: computeStylesBasedOnState(showFullGallery, 'full', '600px'),
+            xl: computeStylesBasedOnState(showFullGallery, 'full', '800px'),
           }}
           h={{
-            base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '1300px', '330px'),
-            sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '450px'),
-            md: computeStylesBasedOnShowFullGalleryState(showFullGallery, '2000px', '500px'),
-            lg: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto', '570px'),
-            xl: computeStylesBasedOnShowFullGalleryState(showFullGallery, 'auto-fit', '700px'),
+            base: computeStylesBasedOnState(showFullGallery, '1300px', '330px'),
+            sm: computeStylesBasedOnState(showFullGallery, '2000px', '450px'),
+            md: computeStylesBasedOnState(showFullGallery, '2000px', '500px'),
+            lg: computeStylesBasedOnState(showFullGallery, 'auto', '570px'),
+            xl: computeStylesBasedOnState(showFullGallery, 'auto-fit', '700px'),
           }}
-          clipPath={computeStylesBasedOnShowFullGalleryState(showFullGallery, 'none', Brazil)}
+          clipPath={computeStylesBasedOnState(showFullGallery, 'none', Brazil)}
           transition="all 2.5s ease-in-out"
           flexDirection="column"
           mt={{ base: '10px' }}
@@ -153,27 +148,23 @@ const AnniversarySection: React.FC = () => {
               bg: 'black',
               paddingBottom: '20px',
               transition: 'all 2.5s ease-in-out',
-              overflow: computeStylesBasedOnShowFullGalleryState(
-                showFullGallery,
-                'visible',
-                'hidden',
-              ),
+              overflow: computeStylesBasedOnState(showFullGallery, 'visible', 'hidden'),
             }}
             queryKey="13YearsAnniversaryPhotos"
             albumUrl="https://photos.app.goo.gl/uUmT9uEH6GeJtsoK9"
             imageBlockWidth={{
-              base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '75px', '25px'),
-              sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, '175px', '45px'),
+              base: computeStylesBasedOnState(showFullGallery, '75px', '25px'),
+              sm: computeStylesBasedOnState(showFullGallery, '175px', '45px'),
             }}
             imageBlockHeight={{
-              base: computeStylesBasedOnShowFullGalleryState(showFullGallery, '75px', '25px'),
-              sm: computeStylesBasedOnShowFullGalleryState(showFullGallery, '175px', '45px'),
+              base: computeStylesBasedOnState(showFullGallery, '75px', '25px'),
+              sm: computeStylesBasedOnState(showFullGallery, '175px', '45px'),
             }}
           />
         </Flex>
 
         <Flex
-          opacity={computeStylesBasedOnShowFullGalleryState(showFullGallery, '0', '1')}
+          opacity={computeStylesBasedOnState(showFullGallery, '0', '1')}
           transition="all 1.5s ease-in-out"
           direction="column"
           justifyContent="center"
@@ -198,7 +189,7 @@ const AnniversarySection: React.FC = () => {
       </Flex>
 
       <Flex
-        opacity={computeStylesBasedOnShowFullGalleryState(showFullGallery, '1', '0')}
+        opacity={computeStylesBasedOnState(showFullGallery, '1', '0')}
         pos="fixed"
         transition="all 1.5s ease-in-out"
         bottom="0"
