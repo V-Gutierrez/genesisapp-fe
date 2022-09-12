@@ -82,13 +82,14 @@ const EventDashCard: React.FC<EventCardProps> = ({
       p={12}
       justifyContent="space-between"
       position="relative"
+      bg="whiteAlpha.900"
     >
-      <Flex direction="column" textAlign="left" justifyContent="space-between">
+      <Flex direction="column" textAlign="left" justifyContent="space-between" w="full">
         <Text fontWeight="medium" align="center" mb={{ base: '20px' }}>
           {title}
         </Text>
         <Box
-          fontSize="14px"
+          fontSize={{ base: '10px', md: '12px' }}
           pb={7}
           mr={3}
           maxHeight="110px"

@@ -35,7 +35,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#000" />
           <meta
             name="description"
-            content="Bem-vindos à Gênesis Church - Aplicativo e Site Oficial da Gênesis Church  - Buenos Aires"
+            content="Bem-vindos à Gênesis Church - Aplicativo e Site Oficial da Gênesis Church"
           />
           <meta name="title" content="Genesis Church" />
           <meta property="image" content="/meta-bg.png" />
@@ -45,7 +45,7 @@ class MyDocument extends Document {
           <meta property="og:title" content="Genesis Church" />
           <meta
             property="og:description"
-            content="Bem-vindos à Gênesis Church - Aplicativo e Site Oficial da Gênesis Church  - Buenos Aires"
+            content="Bem-vindos à Gênesis Church - Aplicativo e Site Oficial da Gênesis Church"
           />
           <meta property="og:image" content="/meta-bg.png" />
 
