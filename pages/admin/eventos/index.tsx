@@ -6,9 +6,8 @@ import { useUser } from 'context/UserContext'
 const Events = dynamic(() => import('sections/Admin/Events'))
 
 const EventsPage: NextPage = () => {
-  const { isAdmin, userData } = useUser()
+  const { isAdmin } = useUser()
 
-  if (!userData) return null
   if (isAdmin) return <Events />
   return <NotFound />
 }

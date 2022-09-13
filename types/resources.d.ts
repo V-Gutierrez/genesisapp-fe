@@ -13,15 +13,18 @@ interface GrowthGroup {
   leadership: string[]
 }
 
+type UserRegion = 'AEP' | 'FEC'
+type UserRole = 'ADMIN' | 'USER'
 interface User {
   email: string
   id: string
   name: string
   phone: string
-  role: 'ADMIN' | 'USER'
+  role: UserRole
   birthdate: Date | string
   createdAt: Date | string
   active: boolean
+  region: UserRegion
 }
 
 interface Interactions {

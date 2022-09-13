@@ -70,7 +70,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
           {visibility.signUpSuccess && (
             <Success
               title="Cadastro concluído com sucesso!"
-              subtitle=" Você receberá um email com o link de ativação da sua conta. Após a ativação você conseguirá logar na plataforma!"
+              subtitle="Você receberá um email com o link de ativação da sua conta. Após a ativação você conseguirá logar na plataforma!"
             />
           )}
         </ModalBody>

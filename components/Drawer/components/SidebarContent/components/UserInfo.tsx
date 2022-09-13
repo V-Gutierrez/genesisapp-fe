@@ -9,26 +9,25 @@ import {
   MenuItem,
   MenuList,
   SkeletonCircle,
-} from '@chakra-ui/react';
-import { useIsFetching, useMutation } from 'react-query';
+} from '@chakra-ui/react'
+import { useIsFetching, useMutation } from 'react-query'
 
-import { LOGOUT } from 'services/mutations';
-import { useUser } from 'context/UserContext';
+import { LOGOUT } from 'services/mutations'
+import { useUser } from 'context/UserContext'
+import { regionTranslate } from 'helpers/formatters'
 
 const UserInfo: React.FC = () => {
-  const { mutateAsync: logout } = useMutation(LOGOUT, {});
-  const isFetching = useIsFetching();
-  const {
- userData, removeUserData, refetchUser, openLoginModal,
-} = useUser();
+  const { mutateAsync: logout } = useMutation(LOGOUT, {})
+  const isFetching = useIsFetching()
+  const { userData, removeUserData, refetchUser, openLoginModal } = useUser()
 
   const handleLogout = async () => {
-    await logout();
-    removeUserData();
-    await refetchUser();
-  };
+    await logout()
+    removeUserData()
+    await refetchUser()
+  }
 
-  if (!userData && isFetching) return <SkeletonCircle />;
+  if (!userData && isFetching) return <SkeletonCircle />
   if (!userData) {
     return (
       <Menu>
@@ -43,8 +42,9 @@ const UserInfo: React.FC = () => {
           </Center>
         </MenuList>
       </Menu>
-    );
+    )
   }
+
   return (
     <Menu>
       <MenuButton as={Button} rounded="full" variant="link" cursor="pointer" minW={0}>
@@ -61,12 +61,17 @@ const UserInfo: React.FC = () => {
         <Center>
           <p>{userData.name}</p>
         </Center>
+        <Center>
+          <p>{regionTranslate(userData.region as UserRegion)}</p>
+        </Center>
         <br />
         <MenuDivider />
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <MenuItem bg="none" onClick={handleLogout}>
+          Sair
+        </MenuItem>
       </MenuList>
     </Menu>
-  );
-};
+  )
+}
 
-export default UserInfo;
+export default UserInfo
