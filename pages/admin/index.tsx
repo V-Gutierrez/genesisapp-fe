@@ -6,9 +6,8 @@ import { useUser } from 'context/UserContext'
 const AdminDashboard = dynamic(() => import('sections/Admin'))
 
 const AdminPage: NextPage = () => {
-  const { isAdmin, userData } = useUser()
+  const { isAdmin } = useUser()
 
-  if (!userData) return null
   if (isAdmin) return <AdminDashboard />
   return <NotFound />
 }
