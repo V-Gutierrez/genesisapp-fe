@@ -27,12 +27,16 @@ import PasswordValidator from 'components/Login/components/PasswordValidator'
 import { SIGNUP_INITIAL_VALUES } from 'helpers/formInitialValues'
 import { SIGNUP_SCHEMA } from 'helpers/validationSchemas'
 import { SIGN_UP } from 'services/mutations'
-import { useMutation } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
+import { GET_REGIONS } from 'services/queries'
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
   const { mutateAsync: signup } = useMutation(SIGN_UP)
+  const { data, isLoading } = useQuery('regions', GET_REGIONS)
   const [show, setShow] = useState(false)
   const toast = useToast()
+
+  const regions = data?.data || []
 
   const onSubmit = async (
     values: SignUpFormValues,
@@ -174,16 +178,25 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                     </Text>
                   </Box>
 
-                  <Box>
-                    <FormLabel fontSize={{ base: '16px' }}>Sede</FormLabel>
-                    <Select id="region" onChange={handleChange}>
-                      <option value="" />
-                      <option value="AEP">Buenos Aires </option>
-                      <option value="FEC">Feira de Santana</option>
-                    </Select>
-                    <Text fontSize={{ base: '12px' }} color="red">
-                      {errors.region && touched.region && errors.region}
-                    </Text>
+                  <Box textAlign="center" py={isLoading ? 5 : 0}>
+                    {isLoading && !regions?.length ? (
+                      <Spinner />
+                    ) : (
+                      <>
+                        <FormLabel fontSize={{ base: '16px' }}>Sede</FormLabel>
+                        <Select id="region" onChange={handleChange}>
+                          <option value="" />
+                          {regions.map((item) => (
+                            <option key={item.regionKey} value={item.regionKey}>
+                              {item.regionTitle}
+                            </option>
+                          ))}
+                        </Select>
+                        <Text fontSize={{ base: '12px' }} color="red">
+                          {errors.region && touched.region && errors.region}
+                        </Text>
+                      </>
+                    )}
                   </Box>
 
                   <Box>

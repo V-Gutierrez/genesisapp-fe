@@ -104,3 +104,8 @@ interface EventItem {
   }
   EventsSubscriptions?: EventsSubscriptions[]
 }
+
+interface RegionCollectionItem {
+  regionKey: UserRegion
+  regionTitle: string
+}

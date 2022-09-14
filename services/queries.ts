@@ -46,3 +46,5 @@ export const GET_EVENTS_BY_ID = async (ReactQueryParams: RQParams) => {
 }
 
 export const GET_EVENTS = async () => Axios.get<EventItem[]>('/all-events')
+
+export const GET_REGIONS = async () => Axios.get<RegionCollectionItem[]>('/regions')
