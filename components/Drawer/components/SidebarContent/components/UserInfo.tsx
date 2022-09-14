@@ -14,7 +14,6 @@ import { useIsFetching, useMutation } from 'react-query'
 
 import { LOGOUT } from 'services/mutations'
 import { useUser } from 'context/UserContext'
-import { regionTranslate } from 'helpers/formatters'
 
 const UserInfo: React.FC = () => {
   const { mutateAsync: logout } = useMutation(LOGOUT, {})
