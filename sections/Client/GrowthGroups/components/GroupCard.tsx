@@ -5,6 +5,9 @@ import { IoLogoWhatsapp } from 'react-icons/io'
 const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, active }) => {
   const { addressInfo, name, leadership, scheduledTime, weekDay, lat, lng, whatsappLink } = Group
 
+  const listFormatter = new Intl.ListFormat('pt-BR', { style: 'long', type: 'conjunction' });
+  const leaders = listFormatter.format(leadership);
+
   return (
     <Flex
       scrollSnapAlign="start"
@@ -27,7 +30,7 @@ const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, activ
       </Text>
 
       <Text fontSize={{ base: '14px' }}>{addressInfo}</Text>
-      <Text fontSize={{ base: '14px' }}>{leadership.map((leader) => leader).join(', ')}</Text>
+      <Text fontSize={{ base: '14px' }}>{leaders}</Text>
       <Flex align="center" justify="space-between" w="100%">
         <Text fontSize={{ base: '14px' }} mr="12px">
           {' '}

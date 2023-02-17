@@ -20,8 +20,10 @@ const GrowthGroups: React.FC = () => {
   }
 
   if (!data) return null
-  if (!data.data.length)
+  if (!data.data.length) {
     return <SimpleEmptyState title="Não há grupos de crescimento disponíveis no momento" />
+  }
+
   return (
     <Flex
       h="80vh"
