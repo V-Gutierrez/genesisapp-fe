@@ -61,7 +61,7 @@ const UserInfo: React.FC = () => {
           <p>{userData.name}</p>
         </Center>
         <Center>
-          <p>{regionTranslate(userData.region as UserRegion)}</p>
+          <p>{userData.region}</p>
         </Center>
         <br />
         <MenuDivider />
