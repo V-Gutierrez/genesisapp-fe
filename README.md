@@ -12,3 +12,5 @@ A church CMS system front-end.
 ![image](https://user-images.githubusercontent.com/62355596/219714202-59c9ad86-2d53-4aa9-b50f-a3c644452c8c.png)
 ![image](https://user-images.githubusercontent.com/62355596/219714539-74241805-7c6f-4b6a-b3f4-da9c7e6694f1.png)
 ![image](https://user-images.githubusercontent.com/62355596/219715235-1fa4994a-f9e5-4649-b1f8-2f94daa83329.png)
+![image](https://user-images.githubusercontent.com/62355596/219717307-a134378d-4b50-4d5e-b0e4-698e6e5e6a49.png)
+![image](https://user-images.githubusercontent.com/62355596/219717321-182a533a-260c-42ca-b651-7ddb97660714.png)
