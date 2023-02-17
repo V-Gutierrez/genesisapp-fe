@@ -1,12 +1,13 @@
 import { Flex, Link, Text } from '@chakra-ui/react'
+import { arrayToNaturalLanguage } from 'helpers/formatters'
+import { useMemo } from 'react'
 
 import { IoLogoWhatsapp } from 'react-icons/io'
 
 const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, active }) => {
   const { addressInfo, name, leadership, scheduledTime, weekDay, lat, lng, whatsappLink } = Group
 
-  const listFormatter = new Intl.ListFormat('pt-BR', { style: 'long', type: 'conjunction' });
-  const leaders = listFormatter.format(leadership);
+  const leaders = useMemo(() => arrayToNaturalLanguage(leadership), [leadership])
 
   return (
     <Flex
