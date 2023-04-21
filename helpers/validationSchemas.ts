@@ -2,7 +2,8 @@ import * as Yup from 'yup'
 
 import { differenceInYears, isFuture } from 'date-fns'
 
-const TWO_MB_IN_BYTES = 2e6
+const EIGHT_HUNDRED_KB_IN_BYTES = 800 * 1024;
+
 
 export const RESET_PASSWORD_SCHEMA = Yup.object().shape({
   password: Yup.string()
@@ -74,8 +75,8 @@ export const DEVOTIONAL_CREATION_SCHEMA = Yup.object().shape({
     .required('Insira uma imagem de capa')
     .test(
       'fileSize',
-      'O arquivo deve ter no máximo 2MB',
-      (value) => value?.size <= TWO_MB_IN_BYTES,
+      'O arquivo deve ter no máximo 800KB',
+      (value) => value?.size <= EIGHT_HUNDRED_KB_IN_BYTES,
     ),
 })
 export const NEWS_CREATION_SCHEMA = Yup.object().shape({
@@ -95,8 +96,8 @@ export const NEWS_CREATION_SCHEMA = Yup.object().shape({
     .required('Insira uma imagem para a notícia')
     .test(
       'fileSize',
-      'O arquivo deve ter no máximo 2MB',
-      (value) => value?.size <= TWO_MB_IN_BYTES,
+      'O arquivo deve ter no máximo 800KB',
+      (value) => value?.size <= EIGHT_HUNDRED_KB_IN_BYTES,
     ),
 })
 
@@ -138,7 +139,7 @@ export const EVENT_CREATION_SCHEMA = Yup.object().shape({
     .required('Insira uma imagem para o evento')
     .test(
       'fileSize',
-      'O arquivo deve ter no máximo 2MB',
-      (value) => value?.size <= TWO_MB_IN_BYTES,
+      'O arquivo deve ter no máximo 800KB',
+      (value) => value?.size <= EIGHT_HUNDRED_KB_IN_BYTES,
     ),
 })
