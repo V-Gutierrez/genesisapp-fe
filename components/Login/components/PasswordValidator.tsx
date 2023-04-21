@@ -1,5 +1,5 @@
 import {
- Flex, Icon, Stack, Text,
+  Flex, Icon, Stack, Text,
 } from '@chakra-ui/react';
 import { IoCheckmarkCircle, IoCheckmarkCircleOutline } from 'react-icons/io5';
 

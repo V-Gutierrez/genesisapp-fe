@@ -4,7 +4,6 @@ import { differenceInYears, isFuture } from 'date-fns'
 
 const EIGHT_HUNDRED_KB_IN_BYTES = 800 * 1024;
 
-
 export const RESET_PASSWORD_SCHEMA = Yup.object().shape({
   password: Yup.string()
     .min(8, 'Sua senha deve ter no mínimo 8 caractéres')
@@ -49,8 +48,7 @@ export const SIGNUP_SCHEMA = Yup.object().shape({
     .test(
       'Idade é maior que 18',
       'Você precisa ter mais de 18 anos para criar uma conta',
-      (value) =>
-        differenceInYears(new Date(Date.now()), new Date(value as unknown as number)) >= 16,
+      (value) => differenceInYears(new Date(Date.now()), new Date(value as unknown as number)) >= 16,
     ),
   passwordConfirmation: Yup.string().oneOf(
     [Yup.ref('password'), null],
@@ -65,9 +63,7 @@ export const DEVOTIONAL_CREATION_SCHEMA = Yup.object().shape({
   title: Yup.string().required('Insira um título'),
   scheduledTo: Yup.string()
     .required('Selecione uma data para publicar')
-    .test('Data futura', 'A data deve ser futura', (value) =>
-      isFuture(new Date(value as unknown as number)),
-    ),
+    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number))),
   author: Yup.string()
     .matches(/^[^\s]+( [^\s]+)+$/, 'Insira seu nome e sobrenome')
     .required('Insira o nome do autor'),
@@ -89,9 +85,7 @@ export const NEWS_CREATION_SCHEMA = Yup.object().shape({
   title: Yup.string().required('Insira um título'),
   scheduledTo: Yup.string()
     .required('Selecione uma data para publicar')
-    .test('Data futura', 'A data deve ser futura', (value) =>
-      isFuture(new Date(value as unknown as number)),
-    ),
+    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number))),
   coverImage: Yup.mixed()
     .required('Insira uma imagem para a notícia')
     .test(
@@ -119,19 +113,13 @@ export const EVENT_CREATION_SCHEMA = Yup.object().shape({
 
   subscriptionsScheduledTo: Yup.string()
     .required('Selecione a data de ínicio as inscrições')
-    .test('Data futura', 'A data deve ser futura', (value) =>
-      isFuture(new Date(value as unknown as number)),
-    ),
+    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number))),
   subscriptionsDueDate: Yup.string()
     .required('Selecione a data de fim das inscrições')
-    .test('Data futura', 'A data deve ser futura', (value) =>
-      isFuture(new Date(value as unknown as number)),
-    ),
+    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number))),
   eventDate: Yup.string()
     .required('Selecione a data do evento')
-    .test('Data futura', 'A data deve ser futura', (value) =>
-      isFuture(new Date(value as unknown as number)),
-    ),
+    .test('Data futura', 'A data deve ser futura', (value) => isFuture(new Date(value as unknown as number))),
   maxSlots: Yup.number()
     .required('Insira o número de vagas')
     .min(1, 'O evento deve ter vagas disponíveis.'),

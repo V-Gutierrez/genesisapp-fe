@@ -62,8 +62,8 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ visibilityHandler }) =>
             validationSchema={PASSWORD_RECOVERY_SCHEMA}
           >
             {({
- errors, touched, handleSubmit, handleChange, isSubmitting,
-}) => (
+              errors, touched, handleSubmit, handleChange, isSubmitting,
+            }) => (
               <form onSubmit={handleSubmit}>
                 <Box>
                   <Text fontSize={{ base: '16px' }} textAlign="center" mb={10}>

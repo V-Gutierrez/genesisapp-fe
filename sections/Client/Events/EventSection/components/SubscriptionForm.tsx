@@ -62,11 +62,11 @@ export function SubscriptionForm({
 
   const INITIAL_VALUES = userData
     ? {
-        userName: userData.name,
-        userEmail: userData.email,
-        userPhone: userData.phone,
-        region: '+54',
-      }
+      userName: userData.name,
+      userEmail: userData.email,
+      userPhone: userData.phone,
+      region: '+54',
+    }
     : SUBSCRIPTION_INITIAL_VALUES
 
   const subscriptionIsDue =

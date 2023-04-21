@@ -1,5 +1,5 @@
 import {
- Center, Flex, Heading, Icon, useColorModeValue,
+  Center, Flex, Heading, Icon, useColorModeValue,
 } from '@chakra-ui/react';
 
 import Link from 'next/link';

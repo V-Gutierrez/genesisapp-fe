@@ -1,5 +1,5 @@
 import {
- Stat, StatLabel, StatNumber, useColorModeValue,
+  Stat, StatLabel, StatNumber, useColorModeValue,
 } from '@chakra-ui/react';
 
 export default function StatsCard(props: StatsCardProps) {

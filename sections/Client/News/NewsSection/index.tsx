@@ -50,10 +50,10 @@ export default function NewsSection() {
         await likeNews(id)
         await refetch()
         toast({
-          description: userLiked ? 'Você descurtiu este devocional' : 'Você curtiu este devocional',
+          description: userLiked ? 'Você descurtiu esta notícia' : 'Você curtiu esta notícia',
         })
       } else {
-        toast({ description: 'Você precisa estar logado para curtir este devotional' })
+        toast({ description: 'Você precisa estar logado para curtir esta notícia' })
       }
     }
 
