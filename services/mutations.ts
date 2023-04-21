@@ -62,7 +62,7 @@ export const RESET_PASSWORD = async ({
   )
 
 export const LOGOUT = async () => {
-  await Axios.delete('/auth')
+  await Axios.delete('/auth/logout')
 }
 
 export const CREATE_DEVOTIONAL = async (values: DevotionalFormValues) => {
