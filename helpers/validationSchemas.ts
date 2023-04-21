@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-import { differenceInYears, isBefore, isFuture } from 'date-fns'
+import { differenceInYears, isFuture } from 'date-fns'
 
 const TWO_MB_IN_BYTES = 2e6
 

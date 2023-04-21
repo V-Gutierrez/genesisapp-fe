@@ -151,7 +151,7 @@ const EventEditor: React.FC<EditorProps> = ({ onClose }) => {
               <Input
                 type="file"
                 id="coverImage"
-                accept="image/png, image/jpeg"
+                accept="image/png, image/jpeg, image/webp"
                 textAlign="center"
                 d="flex"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
