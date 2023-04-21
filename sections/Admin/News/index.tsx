@@ -2,7 +2,7 @@ import { Box, Button, Flex, Text, useDisclosure } from '@chakra-ui/react'
 
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { BiRefresh } from 'react-icons/bi'
-import { GET_NEWS } from 'services/queries'
+import { GET_ADMIN_NEWS } from 'services/queries'
 import NewsCreationModal from 'sections/Admin/News/components/NewsCreationModal'
 import NewsDashCard from 'components/NewsDashCard'
 import { inHours } from 'helpers/time'
@@ -11,7 +11,7 @@ import { useQuery } from 'react-query'
 import { zonedTimeToUtc } from 'date-fns-tz'
 
 export default function News() {
-  const { data, refetch } = useQuery('admin-news', GET_NEWS, {
+  const { data, refetch } = useQuery('admin-news', GET_ADMIN_NEWS, {
     staleTime: inHours(24),
     cacheTime: inHours(24),
   })

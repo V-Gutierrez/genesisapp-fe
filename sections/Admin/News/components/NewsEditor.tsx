@@ -17,7 +17,7 @@ import { RQ_FORMAT_OPTIONS, RQ_TOOLBAR_OPTIONS } from 'helpers/reactQuill'
 import { useMutation, useQuery } from 'react-query'
 
 import { CREATE_NEWS } from 'services/mutations'
-import { GET_NEWS } from 'services/queries'
+import { GET_ADMIN_NEWS } from 'services/queries'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import { NEWS_CREATION_INITIAL_VALUES } from 'helpers/formInitialValues'
@@ -29,7 +29,7 @@ const NewsEditor: React.FC<EditorProps> = ({ onClose }) => {
   const toast = useToast()
   const [toolbar, setToolbar] = useState<any>(false)
   const { mutateAsync: createNews } = useMutation(CREATE_NEWS)
-  const { refetch } = useQuery('admin-news', GET_NEWS)
+  const { refetch } = useQuery('admin-news', GET_ADMIN_NEWS)
 
   const handleFileChange = (
     e: React.ChangeEvent<HTMLInputElement>,

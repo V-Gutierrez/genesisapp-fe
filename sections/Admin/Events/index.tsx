@@ -2,7 +2,7 @@ import { Box, Button, Flex, Text, useDisclosure } from '@chakra-ui/react'
 
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { BiRefresh } from 'react-icons/bi'
-import { GET_EVENTS } from 'services/queries'
+import { GET_ADMIN_EVENTS } from 'services/queries'
 import { inHours } from 'helpers/time'
 import { isFuture, isPast } from 'date-fns'
 import { useQuery } from 'react-query'
@@ -11,7 +11,7 @@ import EventCreationModal from 'sections/Admin/Events/components/EventCreationMo
 import EventDashCard from '../../../components/EventDashCard'
 
 export default function Events() {
-  const { data, refetch } = useQuery('admin-events', GET_EVENTS, {
+  const { data, refetch } = useQuery('admin-events', GET_ADMIN_EVENTS, {
     staleTime: inHours(24),
     cacheTime: inHours(24),
   })

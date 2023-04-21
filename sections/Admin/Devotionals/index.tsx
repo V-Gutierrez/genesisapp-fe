@@ -4,14 +4,14 @@ import { AiFillPlusCircle } from 'react-icons/ai'
 import { BiRefresh } from 'react-icons/bi'
 import DevotionalCreationModal from 'sections/Admin/Devotionals/components/DevotionalCreationModal'
 import DevotionalDashCard from 'components/DevotionalDashCard'
-import { GET_DEVOTIONALS } from 'services/queries'
+import { GET_ADMIN_DEVOTIONALS } from 'services/queries'
 import { inHours } from 'helpers/time'
 import { isFuture } from 'date-fns'
 import { useQuery } from 'react-query'
 import { zonedTimeToUtc } from 'date-fns-tz'
 
 export default function Devotionals() {
-  const { data, refetch } = useQuery('admin-devotionals', GET_DEVOTIONALS, {
+  const { data, refetch } = useQuery('admin-devotionals', GET_ADMIN_DEVOTIONALS, {
     staleTime: inHours(24),
     cacheTime: inHours(24),
   })

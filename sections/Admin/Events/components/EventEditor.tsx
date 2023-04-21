@@ -19,7 +19,7 @@ import { useMutation, useQuery } from 'react-query'
 import { CREATE_EVENT } from 'services/mutations'
 import { EVENT_CREATION_INITIAL_VALUES } from 'helpers/formInitialValues'
 import { EVENT_CREATION_SCHEMA } from 'helpers/validationSchemas'
-import { GET_EVENTS } from 'services/queries'
+import { GET_ADMIN_EVENTS } from 'services/queries'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import { isBefore } from 'date-fns'
@@ -30,7 +30,7 @@ const EventEditor: React.FC<EditorProps> = ({ onClose }) => {
   const toast = useToast()
   const [toolbar, setToolbar] = useState<any>(false)
   const { mutateAsync: createEvent } = useMutation(CREATE_EVENT)
-  const { refetch } = useQuery('admin-events', GET_EVENTS)
+  const { refetch } = useQuery('admin-events', GET_ADMIN_EVENTS)
 
   const handleFileChange = (
     e: React.ChangeEvent<HTMLInputElement>,

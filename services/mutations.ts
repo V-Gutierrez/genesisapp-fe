@@ -49,8 +49,7 @@ export const RESET_PASSWORD = async ({
 }: {
   token: string
   newPassword: string
-}) =>
-  Axios.put(
+}) => Axios.put(
     '/auth/reset-password',
     {
       password: newPassword,
@@ -73,7 +72,7 @@ export const CREATE_DEVOTIONAL = async (values: DevotionalFormValues) => {
     formdata.append(key, value)
   })
 
-  await Axios.post('/devotionals', formdata)
+  await Axios.post('/admin/devotionals', formdata)
 }
 export const CREATE_EVENT = async (values: EventItemFormValues) => {
   const formdata = new FormData()
@@ -82,18 +81,18 @@ export const CREATE_EVENT = async (values: EventItemFormValues) => {
     formdata.append(key, value)
   })
 
-  await Axios.post('/events', formdata)
+  await Axios.post('/admin/events', formdata)
 }
 
 export const DELETE_DEVOTIONAL = async (id: string) => {
-  await Axios.delete(`/devotionals/${id}`)
+  await Axios.delete(`/admin/devotionals/${id}`)
 }
 export const DELETE_EVENT = async (id: string) => {
-  await Axios.delete(`/events/${id}`)
+  await Axios.delete(`/admin/events/${id}`)
 }
 
 export const DELETE_EVENT_SUBSCRIPTION = async (id: string) => {
-  await Axios.delete(`/events/subscriptions/${id}`)
+  await Axios.delete(`/admin/subscriptions/${id}`)
 }
 
 export const LIKE_DEVOTIONAL = async (id: string) => {
@@ -107,7 +106,7 @@ export const CREATE_NEWS = async (values: NewsFormValues) => {
     formdata.append(key, value)
   })
 
-  await Axios.post('/news', formdata)
+  await Axios.post('/admin/news', formdata)
 }
 
 export const DELETE_NEWS = async (id: string) => {

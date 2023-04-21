@@ -19,7 +19,7 @@ import { useMutation, useQuery } from 'react-query'
 import { CREATE_DEVOTIONAL } from 'services/mutations'
 import { DEVOTIONAL_CREATION_INITIAL_VALUES } from 'helpers/formInitialValues'
 import { DEVOTIONAL_CREATION_SCHEMA } from 'helpers/validationSchemas'
-import { GET_DEVOTIONALS } from 'services/queries'
+import { GET_ADMIN_DEVOTIONALS } from 'services/queries'
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
 
@@ -29,7 +29,7 @@ const DevotionalEditor: React.FC<EditorProps> = ({ onClose }) => {
   const toast = useToast()
   const [toolbar, setToolbar] = useState<any>(false)
   const { mutateAsync: createDevotional } = useMutation(CREATE_DEVOTIONAL)
-  const { refetch } = useQuery('admin-devotionals', GET_DEVOTIONALS)
+  const { refetch } = useQuery('admin-devotionals', GET_ADMIN_DEVOTIONALS)
 
   const handleFileChange = (
     e: React.ChangeEvent<HTMLInputElement>,
