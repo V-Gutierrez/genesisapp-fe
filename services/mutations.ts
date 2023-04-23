@@ -126,5 +126,5 @@ export const SUBSCRIBE_TO_EVENT = async ({
 }) => {
   delete values.region
 
-  await Axios.post(`/events/subscriptions/${id}`, values)
+  await Axios.post(`/events/${id}/subscriptions`, values)
 }
