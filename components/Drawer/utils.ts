@@ -1,11 +1,11 @@
 import { StarIcon } from '@chakra-ui/icons'
-import { BiBible, BiCake } from 'react-icons/bi'
+import { BiBible } from 'react-icons/bi'
 import { FiStar, FiHome, FiBook } from 'react-icons/fi'
 import { GrGallery } from 'react-icons/gr'
 import { IoNewspaper, IoTrailSignOutline } from 'react-icons/io5'
 import { MdOutlineLeaderboard } from 'react-icons/md'
 
-export const extraordinaryRoutes = ['/eventos/13anosgenesis']
+export const extraordinaryRoutes = ['/13anosgenesis']
 
 export const LinkItems: Array<LinkItemProps> = [
   { name: 'Home', icon: FiStar, goTo: '/' },
@@ -21,7 +21,7 @@ export const SecondChunkOfLinkItems: Array<LinkItemProps> = [
 ]
 
 export const SpecialEventsLinks: Array<LinkItemProps> = [
-  { name: 'Aniversário de 13 anos', icon: StarIcon, goTo: '/eventos/13anosgenesis' },
+  { name: 'Aniversário de 13 anos', icon: StarIcon, goTo: '/13anosgenesis' },
 ]
 
 export const AdminItems: Array<LinkItemProps> = [
