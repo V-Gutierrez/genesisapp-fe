@@ -1,9 +1,9 @@
 import { Flex, Text } from '@chakra-ui/react'
 import React from 'react'
-import { useQuery } from 'react-query'
+import { useIsFetching } from 'react-query'
 
 export default function Welcome() {
-  const { isFetching } = useQuery('news')
+  const isFetching = useIsFetching()
 
   if (isFetching) return null
   return (
