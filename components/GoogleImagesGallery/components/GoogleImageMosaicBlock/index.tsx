@@ -6,7 +6,7 @@ const GoogleImageMosaicBlock: React.FC<
   GoogleImageMosaicBlockProps<LayoutProps['width'], LayoutProps['height']>
 > = ({ photo, imageBlockWidth, imageBlockHeight }) => (
   <NextImage
-    ImageProps={{ objectFit: 'cover', src: photo.thumbnail }}
+    ImageProps={{ objectFit: 'cover', src: photo.thumbnail, alt: photo.url }}
     BoxProps={{
       width: imageBlockWidth,
       height: imageBlockHeight,

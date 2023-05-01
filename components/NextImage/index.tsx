@@ -25,7 +25,7 @@ const NextImage: React.FC<NextImageProps<ImagePropsType, BoxPropsType>> = ({
     const fallbackLoadingToDefault = setTimeout(() => {
       loading && handleLoadEnd()
       clearTimeout(fallbackLoadingToDefault)
-    }, 7000)
+    }, 10000)
   }, [])
 
   return (
@@ -33,7 +33,7 @@ const NextImage: React.FC<NextImageProps<ImagePropsType, BoxPropsType>> = ({
       {loading && <Skeleton w="full" h="full" borderRadius="xl" />}
       <Image
         {...ImageProps}
-        layout="fill"
+        fill
         onLoadingComplete={handleLoadEnd}
         onLoadedDataCapture={handleLoadEnd}
       />
