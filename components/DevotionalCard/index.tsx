@@ -25,7 +25,7 @@ export default function DevotionalCard({
   const iconRef = useRef(null)
   return (
     <Center py={6} cursor="pointer" userSelect="none" mx={2}>
-      <Link href={`/devocionais/${slug}`}>
+      <Link href={`/devocionais/${slug}`} legacyBehavior>
         <Box
           maxW={{ base: '370px' }}
           minH={{ base: '200px' }}
@@ -74,5 +74,5 @@ export default function DevotionalCard({
         </Box>
       </Link>
     </Center>
-  )
+  );
 }

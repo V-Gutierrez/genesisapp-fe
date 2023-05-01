@@ -25,7 +25,9 @@ export default function EventCard({
 
   return (
     <Center py={6} cursor="pointer" userSelect="none" mx={2}>
-      <Link href={isSubscriptionAvailable ? `/eventos/inscricoes/${id}` : '#'}>
+      <Link
+        href={isSubscriptionAvailable ? `/eventos/inscricoes/${id}` : '#'}
+        legacyBehavior>
         <Box
           maxW={{ base: '370px' }}
           minH={{ base: '200px' }}
@@ -71,5 +73,5 @@ export default function EventCard({
         </Box>
       </Link>
     </Center>
-  )
+  );
 }

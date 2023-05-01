@@ -25,7 +25,7 @@ export default function CTA({ title, subtitle, buttonText, buttonHref }: CTAProp
         </Heading>
         <Text color="gray.500">{subtitle}</Text>
         <Stack direction="column" spacing={3} align="center" alignSelf="center" position="relative">
-          <Link href={buttonHref}>
+          <Link href={buttonHref} legacyBehavior>
             <Button
               bg="black"
               rounded="full"
@@ -41,5 +41,5 @@ export default function CTA({ title, subtitle, buttonText, buttonHref }: CTAProp
         </Stack>
       </Stack>
     </Container>
-  )
+  );
 }

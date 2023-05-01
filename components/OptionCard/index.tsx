@@ -7,7 +7,7 @@ import Link from 'next/link';
 export default function OptionCard({ icon, title, goTo }: OptionCard) {
   return (
     <Center cursor="pointer" scrollSnapAlign="center">
-      <Link href={goTo}>
+      <Link href={goTo} legacyBehavior>
         <Flex
           w={{ base: '100%' }}
           h={{ base: '100px' }}
