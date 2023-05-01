@@ -18,7 +18,7 @@ const PageWithHeadingImage: React.FC<PageWithHeadingImageProps> = ({
         ImageProps={{
           src: headingImage,
           priority: true,
-          objectFit: 'cover',
+          style: { objectFit: 'contain' },
           alt: pageTitle,
         }}
         BoxProps={{

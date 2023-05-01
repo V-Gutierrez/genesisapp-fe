@@ -79,7 +79,7 @@ const GoogleImagesGallery: React.FC<
         <NextImage
           ImageProps={{
             src: imageArray[currentImageIndex as number].highQuality,
-            objectFit: 'contain',
+            style: { objectFit: 'contain' },
             alt: imageArray[currentImageIndex as number].url,
           }}
           BoxProps={{

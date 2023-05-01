@@ -27,7 +27,7 @@ const NewsHighlightCard: React.FC<News> = ({ coverImage, title, highlightText, s
       <NextImage
         ImageProps={{
           src: coverImage,
-          objectFit: 'cover',
+          style: { objectFit: 'contain' },
           alt: title,
         }}
         BoxProps={{

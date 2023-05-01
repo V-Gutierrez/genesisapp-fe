@@ -36,7 +36,7 @@ const Header = ({ onOpen, ...rest }: HeaderProps) => {
             src: GenesisLogo.src,
             alt: 'Genesis Logo',
             priority: true,
-            objectFit: 'contain',
+            style: { objectFit: 'contain' },
           }}
           BoxProps={{
             h: '100%',
