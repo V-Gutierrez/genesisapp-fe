@@ -126,7 +126,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         padding="0"
                         bg="none"
                         border="none"
-                        children={
+                        children={(
                           <Box d="flex" alignItems="center" justifyContent="space-evenly">
                             <Select
                               id="phoneRegion"
@@ -139,7 +139,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                               <option value="+55">BRA</option>
                             </Select>
                           </Box>
-                        }
+                        )}
                       />
 
                       <Input
@@ -157,11 +157,11 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         padding="0"
                         bg="none"
                         border="none"
-                        children={
+                        children={(
                           <Box w={{ base: '20px' }}>
                             <Flag code={values.phoneRegion === '+55' ? 'bra' : 'arg'} height="10" />
                           </Box>
-                        }
+                        )}
                       />
                     </InputGroup>
 

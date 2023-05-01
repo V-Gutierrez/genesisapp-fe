@@ -17,9 +17,7 @@ export default function Devotionals() {
   })
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const scheduledDevotionals = data?.data.filter((d) =>
-    isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')),
-  )
+  const scheduledDevotionals = data?.data.filter((d) => isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')))
   const releasedDevotionals = data?.data.filter(
     (d) => !isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')),
   )

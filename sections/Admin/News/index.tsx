@@ -17,9 +17,7 @@ export default function News() {
   })
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const scheduledNews = data?.data.filter((d) =>
-    isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')),
-  )
+  const scheduledNews = data?.data.filter((d) => isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')))
   const releasedNews = data?.data.filter(
     (d) => !isFuture(zonedTimeToUtc(new Date(d.scheduledTo), 'America/Sao_Paulo')),
   )

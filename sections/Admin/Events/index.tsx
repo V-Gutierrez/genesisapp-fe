@@ -18,21 +18,18 @@ export default function Events() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const scheduledEvents = data?.data.filter(
-    (d) =>
-      isFuture(zonedTimeToUtc(new Date(d.subscriptionsScheduledTo), 'America/Sao_Paulo')) &&
+    (d) => isFuture(zonedTimeToUtc(new Date(d.subscriptionsScheduledTo), 'America/Sao_Paulo')) &&
       isFuture(zonedTimeToUtc(new Date(d.subscriptionsDueDate), 'America/Sao_Paulo')) &&
       isFuture(zonedTimeToUtc(new Date(d.eventDate), 'America/Sao_Paulo')),
   )
   const activeEvents = data?.data.filter(
-    (d) =>
-      isPast(zonedTimeToUtc(new Date(d.subscriptionsScheduledTo), 'America/Sao_Paulo')) &&
+    (d) => isPast(zonedTimeToUtc(new Date(d.subscriptionsScheduledTo), 'America/Sao_Paulo')) &&
       !isPast(zonedTimeToUtc(new Date(d.subscriptionsDueDate), 'America/Sao_Paulo')) &&
       !isPast(zonedTimeToUtc(new Date(d.eventDate), 'America/Sao_Paulo')),
   )
 
   const pastEvents = data?.data.filter(
-    (d) =>
-      isPast(zonedTimeToUtc(new Date(d.subscriptionsScheduledTo), 'America/Sao_Paulo')) ||
+    (d) => isPast(zonedTimeToUtc(new Date(d.subscriptionsScheduledTo), 'America/Sao_Paulo')) ||
       isPast(zonedTimeToUtc(new Date(d.subscriptionsDueDate), 'America/Sao_Paulo')) ||
       isPast(zonedTimeToUtc(new Date(d.eventDate), 'America/Sao_Paulo')),
   )

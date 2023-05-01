@@ -132,7 +132,7 @@ export function SubscriptionForm({
                       padding="0"
                       bg="none"
                       border="none"
-                      children={
+                      children={(
                         <Box d="flex" alignItems="center" justifyContent="space-evenly">
                           <Select
                             id="region"
@@ -145,7 +145,7 @@ export function SubscriptionForm({
                             <option value="+55">BRA</option>
                           </Select>
                         </Box>
-                      }
+                      )}
                     />
 
                     <Input
@@ -163,11 +163,11 @@ export function SubscriptionForm({
                       padding="0"
                       bg="none"
                       border="none"
-                      children={
+                      children={(
                         <Box w={{ base: '20px' }}>
                           <Flag code={values.region === '+55' ? 'bra' : 'arg'} height="10" />
                         </Box>
-                      }
+                      )}
                     />
                   </InputGroup>
                   <Text fontSize={{ base: '12px' }} color="red">

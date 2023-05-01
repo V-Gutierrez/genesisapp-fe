@@ -11,8 +11,7 @@ export default function SubscribersModal({ isOpen, onClose, subscribers }: Subsc
     const { value } = e.target
 
     const newFilteredSubscribersValue = subscribers.filter(
-      (item) =>
-        item.userEmail.includes(value) ||
+      (item) => item.userEmail.includes(value) ||
         item.userName.includes(value) ||
         item.userPhone.includes(value),
     )

@@ -27,7 +27,8 @@ export default function EventCard({
     <Center py={6} cursor="pointer" userSelect="none" mx={2}>
       <Link
         href={isSubscriptionAvailable ? `/eventos/inscricoes/${id}` : '#'}
-        legacyBehavior>
+        legacyBehavior
+      >
         <Box
           maxW={{ base: '370px' }}
           minH={{ base: '200px' }}

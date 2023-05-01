@@ -8,8 +8,7 @@ import { useQuery } from 'react-query'
 const Devotionals: React.FC = () => {
   const { data } = useQuery('userDevotionals', GET_USER_DEVOTIONALS)
 
-  if (!data || !data.data.length)
-    return <SimpleEmptyState title="Não há devocionais disponíveis no momento" />
+  if (!data || !data.data.length) return <SimpleEmptyState title="Não há devocionais disponíveis no momento" />
   return (
     <Grid
       templateColumns={{

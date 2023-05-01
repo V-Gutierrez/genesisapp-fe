@@ -43,12 +43,12 @@ const MenuDropdown: React.FC<MenuDropdownProps<ComponentWithAs<'svg', IconProps>
         overflow={isOpen ? 'visible' : 'hidden'}
         _hover={{
           bg: 'blackAlpha.900',
-          color: "white"
+          color: 'white',
         }}
         __css={{
-          "&:nth-child(n)": {
-            borderLeft: "5px solid black"
-          }
+          '&:nth-child(n)': {
+            borderLeft: '5px solid black',
+          },
         }}
       >
         {children}
