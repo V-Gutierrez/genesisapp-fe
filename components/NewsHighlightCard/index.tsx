@@ -28,6 +28,7 @@ const NewsHighlightCard: React.FC<News> = ({ coverImage, title, highlightText, s
         ImageProps={{
           src: coverImage,
           objectFit: 'cover',
+          alt: title,
         }}
         BoxProps={{
           width: { base: 'full' },

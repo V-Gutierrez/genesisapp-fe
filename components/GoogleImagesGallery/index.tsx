@@ -80,6 +80,7 @@ const GoogleImagesGallery: React.FC<
           ImageProps={{
             src: imageArray[currentImageIndex as number].highQuality,
             objectFit: 'contain',
+            alt: imageArray[currentImageIndex as number].url,
           }}
           BoxProps={{
             w: { base: '100%' },
