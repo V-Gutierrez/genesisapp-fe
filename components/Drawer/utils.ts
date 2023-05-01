@@ -1,6 +1,7 @@
 import { StarIcon } from '@chakra-ui/icons'
 import { BiBible, BiCake } from 'react-icons/bi'
 import { FiStar, FiHome, FiBook } from 'react-icons/fi'
+import { GrGallery } from 'react-icons/gr'
 import { IoNewspaper, IoTrailSignOutline } from 'react-icons/io5'
 import { MdOutlineLeaderboard } from 'react-icons/md'
 
@@ -12,7 +13,7 @@ export const LinkItems: Array<LinkItemProps> = [
   { name: 'Devocionais', icon: FiBook, goTo: '/devocionais' },
   { name: 'Notícias', icon: IoNewspaper, goTo: '/noticias' },
   { name: 'Eventos', icon: IoTrailSignOutline, goTo: '/eventos' },
-  { name: 'Galerias', icon: IoTrailSignOutline, goTo: '/galerias' },
+  { name: 'Galerias', icon: GrGallery, goTo: '/galerias' },
 ]
 
 export const SecondChunkOfLinkItems: Array<LinkItemProps> = [
