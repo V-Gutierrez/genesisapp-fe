@@ -4,6 +4,13 @@ import Head from 'next/head'
 import NextImage from 'components/NextImage'
 import React from 'react'
 
+/**
+ * This is a TypeScript React functional component that renders a page with a heading image, a page
+ * title, and children components.
+ * @param  - - `pageTitle`: a string representing the title of the page
+ * @param  - - `headingImage`: a string the desired image source
+ * @param  - - `children`: Wrapped components
+ */
 const PageWithHeadingImage: React.FC<PageWithHeadingImageProps> = ({
   pageTitle,
   headingImage,
@@ -18,7 +25,7 @@ const PageWithHeadingImage: React.FC<PageWithHeadingImageProps> = ({
         ImageProps={{
           src: headingImage,
           priority: true,
-          style: { objectFit: 'contain' },
+          style: { objectFit: 'cover' },
           alt: pageTitle,
         }}
         BoxProps={{
