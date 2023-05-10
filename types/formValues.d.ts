@@ -52,3 +52,20 @@ interface EventItemFormValues {
   maxSlots: string
   description: string
 }
+
+type WeekDay =
+  'Segunda-feira' |
+  'Terça-feira' |
+  'Quarta-feira' |
+  'Quinta-feira' |
+  'Sexta-feira' |
+  'Sábado'
+
+interface GrowthGroupFormValues {
+  name: string
+  whatsappLink: string
+  addressInfo: string
+  weekDay: WeekDay
+  scheduledTime: string
+  leadership: string[]
+}

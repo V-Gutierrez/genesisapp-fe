@@ -131,3 +131,14 @@ export const EVENT_CREATION_SCHEMA = Yup.object().shape({
       (value) => value?.size <= EIGHT_HUNDRED_KB_IN_BYTES,
     ),
 })
+
+export const GROWTH_GROUP_CREATION_SCHEMA = Yup.object().shape({
+  name: Yup.string().required('Insira um nome para o grupo'),
+  whatsappLink: Yup.string().required('Insira um link para o Whatsapp do grupo'),
+  addressInfo: Yup.string().required('Insira o endereço do grupo'),
+  weekDay: Yup.string().required('Selecione um dia da semana'),
+  scheduledTime: Yup.string().required('Selecione um horário'),
+  leadership: Yup.array().of(
+    Yup.string()
+  ).required('Insira o nome dos líderes'),
+})

@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 
 import { IoLogoWhatsapp } from 'react-icons/io'
 
-const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, active }) => {
+const GrowthGroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, active }) => {
   const { addressInfo, name, leadership, scheduledTime, weekDay, lat, lng, whatsappLink } = Group
 
   const leaders = useMemo(() => arrayToNaturalLanguage(leadership), [leadership])
@@ -24,7 +24,7 @@ const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, activ
         bg: 'gray.900',
         color: 'white',
       }}
-      onClick={() => selectCoordsHandler(lat, lng)}
+      onClick={() => selectCoordsHandler && selectCoordsHandler(lat, lng)}
     >
       <Text fontSize={{ base: '14px' }} fontWeight="800">
         {name}
@@ -45,4 +45,4 @@ const GroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, activ
   )
 }
 
-export default GroupCard
+export default GrowthGroupCard

@@ -4,7 +4,7 @@ export const chakraTheme = extendTheme({
   styles: {
     global: {
       body: {
-        fontFamily: "Montserrat, sans-serif",
+        // fontFamily: "Montserrat, sans-serif",
       }
     }
   }

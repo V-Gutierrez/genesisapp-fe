@@ -109,6 +109,10 @@ export const CREATE_NEWS = async (values: NewsFormValues) => {
   await Axios.post('/admin/news', formdata)
 }
 
+export const CREATE_GROWTH_GROUP = async (values: GrowthGroupFormValues) => {
+  Axios.post('/admin/growth-groups', values)
+}
+
 export const DELETE_NEWS = async (id: string) => {
   await Axios.delete(`/news/${id}`)
 }

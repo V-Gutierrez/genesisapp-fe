@@ -37,7 +37,7 @@ interface GroupListProps {
 
 interface GroupCardProps {
   Group: GrowthGroup
-  selectCoordsHandler: (lat: number, lng: number) => void
+  selectCoordsHandler?: (lat: number, lng: number) => void
   active: boolean
 }
 

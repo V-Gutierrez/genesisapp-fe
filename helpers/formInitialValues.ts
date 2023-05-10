@@ -48,3 +48,12 @@ export const SUBSCRIPTION_INITIAL_VALUES = {
   userPhone: '',
   region: '+54',
 }
+
+export const GROWTH_GROUP_INITIAL_VALUES = {
+  name: '',
+  whatsappLink: '',
+  addressInfo: '',
+  weekDay: 'Segunda-feira' as WeekDay,
+  scheduledTime: '',
+  leadership: ['Líder 1', 'Líder 2'],
+}
