@@ -8,6 +8,7 @@ import ReactQueryClient from 'services/react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import SidebarWithHeader from 'components/Drawer'
 import { UserContextProvider } from 'context/UserContext'
+import { chakraTheme } from 'styles/chakraTheme'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Gênesis Church</title>
       </Head>
       <QueryClientProvider client={ReactQueryClient}>
-        <ChakraProvider>
+        <ChakraProvider theme={chakraTheme}>
           <UserContextProvider>
             <SidebarWithHeader>
               <Component {...pageProps} />
