@@ -1,4 +1,16 @@
-import { Box, Button, Flex, FormLabel, Input, Spinner, Stack, useToast, Text, Select, Tooltip } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  FormLabel,
+  Input,
+  Spinner,
+  Stack,
+  useToast,
+  Text,
+  Select,
+  Tooltip,
+} from '@chakra-ui/react'
 import { Formik, FormikHelpers } from 'formik'
 import { WEEKDAYS, WORKING_HOURS } from 'helpers/constants'
 import { GROWTH_GROUP_INITIAL_VALUES } from 'helpers/formInitialValues'
@@ -19,7 +31,9 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
     FormikHelpersObject: FormikHelpers<GrowthGroupFormValues>,
   ) => {
     FormikHelpersObject.setSubmitting(true)
-    const parsedLeadershipNames = (values.leadership as string).split(',').map((name) => name.replace(/\W/, '').trim())
+    const parsedLeadershipNames = (values.leadership as string)
+      .split(',')
+      .map((name) => name)
 
     try {
       await createGrowthGroups({ ...values, leadership: parsedLeadershipNames })
@@ -59,7 +73,9 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
 
             <Box>
               <Flex align="center">
-                <FormLabel fontSize={{ base: '16px' }}>Endereço do GC</FormLabel>
+                <FormLabel fontSize={{ base: '16px' }}>
+                  Endereço do GC
+                </FormLabel>
                 <Tooltip
                   shouldWrapChildren
                   hasArrow
@@ -72,14 +88,23 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
                   </Box>
                 </Tooltip>
               </Flex>
-              <Input type="text" id="addressInfo" onChange={handleChange} placeholder="Exemplo: Av. Cabildo 1452, 6A" />
+              <Input
+                type="text"
+                id="addressInfo"
+                onChange={handleChange}
+                placeholder="Exemplo: Av. Cabildo 1452, 6A"
+              />
               <Text fontSize={{ base: '12px' }} color="red">
-                {errors.addressInfo && touched.addressInfo && errors.addressInfo}
+                {errors.addressInfo &&
+                  touched.addressInfo &&
+                  errors.addressInfo}
               </Text>
             </Box>
             <Box>
               <Flex align="center">
-                <FormLabel fontSize={{ base: '16px' }}>Nome dos líderes do GC</FormLabel>
+                <FormLabel fontSize={{ base: '16px' }}>
+                  Nome dos líderes do GC
+                </FormLabel>
                 <Tooltip
                   shouldWrapChildren
                   hasArrow
@@ -92,17 +117,26 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
                   </Box>
                 </Tooltip>
               </Flex>
-              <Input type="text" id="leadership" onChange={handleChange} placeholder="Exemplo: Fernanda, Gustavo" />
+              <Input
+                type="text"
+                id="leadership"
+                onChange={handleChange}
+                placeholder="Exemplo: Fernanda, Gustavo"
+              />
               <Text fontSize={{ base: '12px' }} color="red">
                 {errors.leadership && touched.leadership && errors.leadership}
               </Text>
             </Box>
 
             <Box>
-              <FormLabel fontSize={{ base: '16px' }}>Link do grupo no WhatsApp</FormLabel>
+              <FormLabel fontSize={{ base: '16px' }}>
+                Link do grupo no WhatsApp
+              </FormLabel>
               <Input type="text" id="whatsappLink" onChange={handleChange} />
               <Text fontSize={{ base: '12px' }} color="red">
-                {errors.whatsappLink && touched.whatsappLink && errors.whatsappLink}
+                {errors.whatsappLink &&
+                  touched.whatsappLink &&
+                  errors.whatsappLink}
               </Text>
             </Box>
 
@@ -110,7 +144,11 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
               <FormLabel fontSize={{ base: '16px' }}>Dia da semana</FormLabel>
 
               <Select id="weekDay" onChange={handleChange}>
-                {WEEKDAYS.map((day) => <option key={day} value={day}>{day}</option>)}
+                {WEEKDAYS.map((day) => (
+                  <option key={day} value={day}>
+                    {day}
+                  </option>
+                ))}
               </Select>
 
               <Text fontSize={{ base: '12px' }} color="red">
@@ -122,11 +160,17 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
               <FormLabel fontSize={{ base: '16px' }}>Horário</FormLabel>
 
               <Select id="scheduledTime" onChange={handleChange}>
-                {WORKING_HOURS.map((hour) => <option key={hour} value={hour}>{hour}</option>)}
+                {WORKING_HOURS.map((hour) => (
+                  <option key={hour} value={hour}>
+                    {hour}
+                  </option>
+                ))}
               </Select>
 
               <Text fontSize={{ base: '12px' }} color="red">
-                {errors.scheduledTime && touched.scheduledTime && errors.scheduledTime}
+                {errors.scheduledTime &&
+                  touched.scheduledTime &&
+                  errors.scheduledTime}
               </Text>
             </Box>
           </Stack>
