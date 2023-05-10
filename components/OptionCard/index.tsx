@@ -1,8 +1,12 @@
 import {
-  Center, Flex, Heading, Icon, useColorModeValue,
-} from '@chakra-ui/react';
+  Center,
+  Flex,
+  Heading,
+  Icon,
+  useColorModeValue,
+} from '@chakra-ui/react'
 
-import Link from 'next/link';
+import Link from 'next/link'
 
 export default function OptionCard({ icon, title, goTo }: OptionCard) {
   return (
@@ -24,11 +28,15 @@ export default function OptionCard({ icon, title, goTo }: OptionCard) {
           }}
         >
           <Icon as={icon} h={{ base: '16px' }} mx={{ base: '32px' }} />
-          <Heading fontSize={{ base: '16px' }} fontFamily="body" fontWeight={500}>
+          <Heading
+            fontSize={{ base: '16px' }}
+            fontFamily="body"
+            fontWeight={500}
+          >
             {title}
           </Heading>
         </Flex>
       </Link>
     </Center>
-  );
+  )
 }

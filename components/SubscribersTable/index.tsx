@@ -1,11 +1,22 @@
-import { Table, TableContainer, Tbody, Td, Th, Thead, Tr, useToast } from '@chakra-ui/react'
+import {
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+  useToast,
+} from '@chakra-ui/react'
 import { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 import { useMutation } from 'react-query'
 import { DELETE_EVENT_SUBSCRIPTION } from 'services/mutations'
 
 const SubscribersTable: React.FC<SubscribersTableProps> = ({ subscribers }) => {
-  const { mutateAsync: deleteSubscription } = useMutation(DELETE_EVENT_SUBSCRIPTION)
+  const { mutateAsync: deleteSubscription } = useMutation(
+    DELETE_EVENT_SUBSCRIPTION,
+  )
   const toast = useToast()
   const [subscriptionsCopy, setSubscriptionCopy] = useState(subscribers)
 

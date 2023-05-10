@@ -57,7 +57,10 @@ const Interactions: React.FC<InteractionProps> = ({
         </Tooltip>
       </Flex>
       <Flex align="center" ml={{ base: 2 }} cursor="pointer">
-        <Box ref={likesIconRef} onClick={liked ? onDislikeInteraction : handleLike}>
+        <Box
+          ref={likesIconRef}
+          onClick={liked ? onDislikeInteraction : handleLike}
+        >
           {liked ? <AiFillHeart /> : <AiOutlineHeart />}
         </Box>
 

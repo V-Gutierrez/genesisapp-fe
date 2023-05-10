@@ -4,10 +4,26 @@ import { useMemo } from 'react'
 
 import { IoLogoWhatsapp } from 'react-icons/io'
 
-const GrowthGroupCard: React.FC<GroupCardProps> = ({ Group, selectCoordsHandler, active }) => {
-  const { addressInfo, name, leadership, scheduledTime, weekDay, lat, lng, whatsappLink } = Group
+const GrowthGroupCard: React.FC<GroupCardProps> = ({
+  Group,
+  selectCoordsHandler,
+  active,
+}) => {
+  const {
+    addressInfo,
+    name,
+    leadership,
+    scheduledTime,
+    weekDay,
+    lat,
+    lng,
+    whatsappLink,
+  } = Group
 
-  const leaders = useMemo(() => arrayToNaturalLanguage(leadership), [leadership])
+  const leaders = useMemo(
+    () => arrayToNaturalLanguage(leadership),
+    [leadership],
+  )
 
   return (
     <Flex

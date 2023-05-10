@@ -14,7 +14,11 @@ import { useState } from 'react'
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
 
-const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser }) => {
+const LoginModal: React.FC<LoginModalProps> = ({
+  isOpen,
+  onClose,
+  refetchUser,
+}) => {
   const [visibility, setVisibility] = useState({
     signUp: false,
     login: true,
@@ -32,7 +36,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
       preserveScrollBarGap
     >
       <ModalOverlay />
-      <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
+      <ModalContent
+        bgSize="cover"
+        bgPosition="center"
+        d="flex"
+        justifyContent="center"
+      >
         <ModalCloseButton />
         {!visibility.signUp && (
           <ModalHeader
@@ -64,8 +73,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, refetchUser })
               refetchUser={refetchUser}
             />
           )}
-          {visibility.signUp && <SignUpForm visibilityHandler={setVisibility} />}
-          {visibility.forgotPassword && <ForgotPasswordForm visibilityHandler={setVisibility} />}
+          {visibility.signUp && (
+            <SignUpForm visibilityHandler={setVisibility} />
+          )}
+          {visibility.forgotPassword && (
+            <ForgotPasswordForm visibilityHandler={setVisibility} />
+          )}
 
           {visibility.signUpSuccess && (
             <Success

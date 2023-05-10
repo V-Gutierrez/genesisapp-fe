@@ -1,4 +1,12 @@
-import { Box, Center, Flex, Heading, Stack, Text, useColorModeValue } from '@chakra-ui/react'
+import {
+  Box,
+  Center,
+  Flex,
+  Heading,
+  Stack,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react'
 import { useMemo } from 'react'
 
 import Link from 'next/link'
@@ -17,10 +25,17 @@ export default function EventCard({
     [eventDate],
   )
   const subscriptionsEndDate = useMemo(
-    () => formatToTimezone(subscriptionsDueDate, "dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
+    () =>
+      formatToTimezone(
+        subscriptionsDueDate,
+        "dd 'de' MMMM 'de' yyyy 'às' HH:mm",
+      ),
     [subscriptionsDueDate],
   )
-  const remainingSlots = useMemo(() => maxSlots - _count.EventsSubscriptions, [maxSlots, _count])
+  const remainingSlots = useMemo(
+    () => maxSlots - _count.EventsSubscriptions,
+    [maxSlots, _count],
+  )
   const isSubscriptionAvailable = remainingSlots > 0
 
   return (
@@ -61,7 +76,9 @@ export default function EventCard({
           <Stack mt={2} direction="row" spacing={4} align="center">
             <Stack direction="column" spacing={0} fontSize="sm">
               <Text fontWeight={600}> {formattedEventDate}</Text>
-              <Text color="gray.500">Inscrições até {subscriptionsEndDate}</Text>
+              <Text color="gray.500">
+                Inscrições até {subscriptionsEndDate}
+              </Text>
               <Flex align="center" pt={{ base: 2 }}>
                 <Text color="gray.500">
                   {isSubscriptionAvailable
@@ -74,5 +91,5 @@ export default function EventCard({
         </Box>
       </Link>
     </Center>
-  );
+  )
 }

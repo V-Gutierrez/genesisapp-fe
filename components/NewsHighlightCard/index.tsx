@@ -3,7 +3,12 @@ import NextImage from 'components/NextImage'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-const NewsHighlightCard: React.FC<News> = ({ coverImage, title, highlightText, slug }) => {
+const NewsHighlightCard: React.FC<News> = ({
+  coverImage,
+  title,
+  highlightText,
+  slug,
+}) => {
   const { push } = useRouter()
 
   const handleSeeNews = () => {
@@ -48,12 +53,22 @@ const NewsHighlightCard: React.FC<News> = ({ coverImage, title, highlightText, s
         bg={{ base: 'blackAlpha.600' }}
         color={{ base: 'white' }}
       >
-        <Heading marginTop="1" fontSize={{ base: '18px', md: '32px' }} pl={{ base: 4 }}>
+        <Heading
+          marginTop="1"
+          fontSize={{ base: '18px', md: '32px' }}
+          pl={{ base: 4 }}
+        >
           <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
             {title}
           </Link>
         </Heading>
-        <Text as="p" fontSize="l" color={{ base: 'white' }} p={{ base: 2 }} pl={{ base: 4 }}>
+        <Text
+          as="p"
+          fontSize="l"
+          color={{ base: 'white' }}
+          p={{ base: 2 }}
+          pl={{ base: 4 }}
+        >
           {highlightText}
         </Text>
       </Flex>

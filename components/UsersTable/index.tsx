@@ -1,4 +1,12 @@
-import { Table, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
+import {
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from '@chakra-ui/react'
 
 import { GET_USERS } from 'services/queries'
 import { booleanToString } from 'helpers/formatters'

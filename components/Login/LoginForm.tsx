@@ -21,7 +21,11 @@ import { LOGIN_INITIAL_VALUES } from 'helpers/formInitialValues'
 import { LOGIN_SCHEMA } from 'helpers/validationSchemas'
 import { useMutation } from 'react-query'
 
-const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refetchUser }) => {
+const LoginForm: React.FC<LoginFormProps> = ({
+  onClose,
+  visibilityHandler,
+  refetchUser,
+}) => {
   const { mutateAsync: login } = useMutation(LOGIN)
   const [show, setShow] = useState(false)
   const toast = useToast()
@@ -57,7 +61,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
   }
 
   return (
-    <Stack minH={{ base: '20vh' }} direction={{ base: 'column', md: 'row' }} flex="1">
+    <Stack
+      minH={{ base: '20vh' }}
+      direction={{ base: 'column', md: 'row' }}
+      flex="1"
+    >
       <Flex p={8} flex={1} align="center" justify="center">
         <Stack spacing={4} w="full" maxW="md">
           <Formik
@@ -65,7 +73,14 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
             onSubmit={onSubmit}
             validationSchema={LOGIN_SCHEMA}
           >
-            {({ errors, touched, handleSubmit, handleChange, isValid, isSubmitting }) => (
+            {({
+              errors,
+              touched,
+              handleSubmit,
+              handleChange,
+              isValid,
+              isSubmitting,
+            }) => (
               <form onSubmit={handleSubmit}>
                 <Stack spacing={6}>
                   <Box>
@@ -93,7 +108,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ onClose, visibilityHandler, refet
                           borderRadius="100%"
                           onClick={handleClick}
                         >
-                          {show ? <BiHide size="24px" /> : <BiShowAlt size="24px" />}
+                          {show ? (
+                            <BiHide size="24px" />
+                          ) : (
+                            <BiShowAlt size="24px" />
+                          )}
                         </Button>
                       </InputRightElement>
                     </InputGroup>

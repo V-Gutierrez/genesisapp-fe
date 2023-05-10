@@ -1,5 +1,12 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai'
-import { Box, Button, Flex, chakra, useColorModeValue, useToast } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  chakra,
+  useColorModeValue,
+  useToast,
+} from '@chakra-ui/react'
 import React, { useMemo, useState } from 'react'
 
 import { DELETE_DEVOTIONAL } from 'services/mutations'
@@ -35,7 +42,10 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
     push(`/devocionais/${slug}`)
   }
 
-  const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo])
+  const formatedScheduledDate = useMemo(
+    () => formatToTimezone(scheduledTo),
+    [scheduledTo],
+  )
 
   const handleDevotionalDelete = async () => {
     const userConfirmation = confirm('Deseja deletar esse devocional?')
@@ -119,7 +129,10 @@ const DevotionalDashCard: React.FC<DevotionalDashCardProps> = ({
             </chakra.span>
           </chakra.p>
         </Flex>
-        <Interactions likes={DevotionalLikes?.length || 0} views={DevotionalViews?.length || 0} />
+        <Interactions
+          likes={DevotionalLikes?.length || 0}
+          views={DevotionalViews?.length || 0}
+        />
       </Flex>
 
       <Box pos="absolute" top="0px" right="15px">

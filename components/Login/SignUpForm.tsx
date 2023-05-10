@@ -74,11 +74,20 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
             onSubmit={onSubmit}
             validationSchema={SIGNUP_SCHEMA}
           >
-            {({ errors, touched, handleSubmit, handleChange, isSubmitting, values }) => (
+            {({
+              errors,
+              touched,
+              handleSubmit,
+              handleChange,
+              isSubmitting,
+              values,
+            }) => (
               <form onSubmit={handleSubmit}>
                 <Stack spacing={2}>
                   <Box>
-                    <FormLabel fontSize={{ base: '16px' }}>Nome e Sobrenome</FormLabel>
+                    <FormLabel fontSize={{ base: '16px' }}>
+                      Nome e Sobrenome
+                    </FormLabel>
                     <Input type="name" id="name" onChange={handleChange} />
                     <Text fontSize={{ base: '12px' }} color="red">
                       {errors.name && touched.name && errors.name}
@@ -126,8 +135,12 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         padding="0"
                         bg="none"
                         border="none"
-                        children={(
-                          <Box d="flex" alignItems="center" justifyContent="space-evenly">
+                        children={
+                          <Box
+                            d="flex"
+                            alignItems="center"
+                            justifyContent="space-evenly"
+                          >
                             <Select
                               id="phoneRegion"
                               w={{ base: '80px' }}
@@ -139,7 +152,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                               <option value="+55">BRA</option>
                             </Select>
                           </Box>
-                        )}
+                        }
                       />
 
                       <Input
@@ -157,11 +170,16 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                         padding="0"
                         bg="none"
                         border="none"
-                        children={(
+                        children={
                           <Box w={{ base: '20px' }}>
-                            <Flag code={values.phoneRegion === '+55' ? 'bra' : 'arg'} height="10" />
+                            <Flag
+                              code={
+                                values.phoneRegion === '+55' ? 'bra' : 'arg'
+                              }
+                              height="10"
+                            />
                           </Box>
-                        )}
+                        }
                       />
                     </InputGroup>
 
@@ -171,10 +189,14 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                   </Box>
 
                   <Box>
-                    <FormLabel fontSize={{ base: '16px' }}>Data de Nascimento</FormLabel>
+                    <FormLabel fontSize={{ base: '16px' }}>
+                      Data de Nascimento
+                    </FormLabel>
                     <Input type="date" id="birthdate" onChange={handleChange} />
                     <Text fontSize={{ base: '12px' }} color="red">
-                      {errors.birthdate && touched.birthdate && errors.birthdate}
+                      {errors.birthdate &&
+                        touched.birthdate &&
+                        errors.birthdate}
                     </Text>
                   </Box>
 
@@ -215,7 +237,11 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                           borderRadius="100%"
                           onClick={handleSeePassword}
                         >
-                          {show ? <BiHide size="24px" /> : <BiShowAlt size="24px" />}
+                          {show ? (
+                            <BiHide size="24px" />
+                          ) : (
+                            <BiShowAlt size="24px" />
+                          )}
                         </Button>
                       </InputRightElement>
                     </InputGroup>
@@ -226,7 +252,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                   </Box>
 
                   <Box>
-                    <FormLabel fontSize={{ base: '16px' }}>Confirme sua senha</FormLabel>
+                    <FormLabel fontSize={{ base: '16px' }}>
+                      Confirme sua senha
+                    </FormLabel>
                     <InputGroup>
                       <Input
                         id="passwordConfirmation"
@@ -241,7 +269,11 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ visibilityHandler }) => {
                           borderRadius="100%"
                           onClick={handleSeePassword}
                         >
-                          {show ? <BiHide size="24px" /> : <BiShowAlt size="24px" />}
+                          {show ? (
+                            <BiHide size="24px" />
+                          ) : (
+                            <BiShowAlt size="24px" />
+                          )}
                         </Button>
                       </InputRightElement>
                     </InputGroup>

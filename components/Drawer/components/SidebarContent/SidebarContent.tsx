@@ -1,10 +1,22 @@
-import { Box, BoxProps, CloseButton, Divider, Flex, useColorModeValue } from '@chakra-ui/react'
+import {
+  Box,
+  BoxProps,
+  CloseButton,
+  Divider,
+  Flex,
+  useColorModeValue,
+} from '@chakra-ui/react'
 
 import { useUser } from 'context/UserContext'
 import { ArrowDownIcon } from '@chakra-ui/icons'
 import MenuDropdown from 'components/MenuDropdown'
 
-import { LinkItems, SpecialEventsLinks, AdminItems, SecondChunkOfLinkItems } from 'components/Drawer/utils'
+import {
+  LinkItems,
+  SpecialEventsLinks,
+  AdminItems,
+  SecondChunkOfLinkItems,
+} from 'components/Drawer/utils'
 import NavItem from './components/NavItem'
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
@@ -27,21 +39,36 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
 
       {/* Sidebar Items */}
       {LinkItems.map((link) => (
-        <NavItem onClick={onClose} key={link.name} icon={link.icon} goTo={link.goTo}>
+        <NavItem
+          onClick={onClose}
+          key={link.name}
+          icon={link.icon}
+          goTo={link.goTo}
+        >
           {link.name}
         </NavItem>
       ))}
 
       <MenuDropdown icon={ArrowDownIcon} title="Galerias Especiais">
         {SpecialEventsLinks.map((link) => (
-          <NavItem onClick={onClose} key={link.name} icon={link.icon} goTo={link.goTo}>
+          <NavItem
+            onClick={onClose}
+            key={link.name}
+            icon={link.icon}
+            goTo={link.goTo}
+          >
             {link.name}
           </NavItem>
         ))}
       </MenuDropdown>
 
       {SecondChunkOfLinkItems.map((link) => (
-        <NavItem onClick={onClose} key={link.name} icon={link.icon} goTo={link.goTo}>
+        <NavItem
+          onClick={onClose}
+          key={link.name}
+          icon={link.icon}
+          goTo={link.goTo}
+        >
           {link.name}
         </NavItem>
       ))}
@@ -50,7 +77,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps & BoxProps) => {
       {isAdmin && <Divider my={{ base: '10px' }} />}
       {isAdmin &&
         AdminItems.map((link) => (
-          <NavItem onClick={onClose} key={link.name} icon={link.icon} goTo={link.goTo}>
+          <NavItem
+            onClick={onClose}
+            key={link.name}
+            icon={link.icon}
+            goTo={link.goTo}
+          >
             {link.name}
           </NavItem>
         ))}

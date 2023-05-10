@@ -9,5 +9,5 @@ export const formatToTimezone = (
   dateCandidate: string | Date,
   formatStr = "'em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
 ) => formatInTimeZone(new Date(dateCandidate), 'America/Sao_Paulo', formatStr, {
-    locale: pt,
-  })
+  locale: pt,
+})

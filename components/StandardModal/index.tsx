@@ -15,12 +15,29 @@ export const StandardModal = ({
   children,
   ...rest
 }: ModalProps & { children: React.ReactNode }) => (
-  <Modal isOpen={isOpen} onClose={onClose} isCentered size="2lg" scrollBehavior="inside" {...rest}>
+  <Modal
+    isOpen={isOpen}
+    onClose={onClose}
+    isCentered
+    size="2lg"
+    scrollBehavior="inside"
+    {...rest}
+  >
     <ModalOverlay />
-    <ModalContent bgSize="cover" bgPosition="center" d="flex" justifyContent="center">
+    <ModalContent
+      bgSize="cover"
+      bgPosition="center"
+      d="flex"
+      justifyContent="center"
+    >
       <ModalCloseButton />
 
-      <ModalHeader d="flex" alignItems="center" justifyContent="center" flexDirection="column" />
+      <ModalHeader
+        d="flex"
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
+      />
 
       <ModalBody
         css={{

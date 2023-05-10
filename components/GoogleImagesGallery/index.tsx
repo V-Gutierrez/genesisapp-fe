@@ -1,4 +1,10 @@
-import { Box, Flex, FlexProps as FlexType, LayoutProps, Spinner } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  FlexProps as FlexType,
+  LayoutProps,
+  Spinner,
+} from '@chakra-ui/react'
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import React, { useEffect, useState } from 'react'
 
@@ -18,15 +24,25 @@ import { useQuery } from 'react-query'
  * */
 
 const GoogleImagesGallery: React.FC<
-  GoogleImagesGalleryProps<FlexType, LayoutProps['width'], LayoutProps['height']>
+  GoogleImagesGalleryProps<
+    FlexType,
+    LayoutProps['width'],
+    LayoutProps['height']
+  >
 > = ({ FlexProps, queryKey, albumUrl, imageBlockWidth, imageBlockHeight }) => {
-  const { data } = useQuery([queryKey, albumUrl], GET_GOOGLE_PHOTOS_ALBUM_PHOTOS, {
-    staleTime: Infinity,
-    cacheTime: Infinity,
-  })
+  const { data } = useQuery(
+    [queryKey, albumUrl],
+    GET_GOOGLE_PHOTOS_ALBUM_PHOTOS,
+    {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+    },
+  )
   const imageArray = (data?.data as GooglePhotosImageSet[]) || []
 
-  const [currentImageIndex, setCurrentImageIndex] = useState<undefined | number>(undefined)
+  const [currentImageIndex, setCurrentImageIndex] = useState<
+    undefined | number
+  >(undefined)
   const [showFullImage, setShowFullImage] = useState(false)
 
   useEffect(() => {

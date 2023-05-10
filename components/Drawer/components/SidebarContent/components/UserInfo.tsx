@@ -30,12 +30,23 @@ const UserInfo: React.FC = () => {
   if (!userData) {
     return (
       <Menu>
-        <MenuButton as={Button} rounded="full" variant="link" cursor="pointer" minW={0}>
+        <MenuButton
+          as={Button}
+          rounded="full"
+          variant="link"
+          cursor="pointer"
+          minW={0}
+        >
           <Avatar size="sm" color="white" bg="blackAlpha.900" name="Genesis">
             <AvatarBadge boxSize="1.25em" bg="gray.600" />
           </Avatar>
         </MenuButton>
-        <MenuList alignItems="center" justifyContent="center" d="flex" zIndex="overlay">
+        <MenuList
+          alignItems="center"
+          justifyContent="center"
+          d="flex"
+          zIndex="overlay"
+        >
           <Center as={Button} w="90%" onClick={openLoginModal}>
             <p>Faça seu login</p>
           </Center>
@@ -46,15 +57,31 @@ const UserInfo: React.FC = () => {
 
   return (
     <Menu>
-      <MenuButton as={Button} rounded="full" variant="link" cursor="pointer" minW={0}>
-        <Avatar size="sm" name={userData.name} bg="blackAlpha.900" color="white">
+      <MenuButton
+        as={Button}
+        rounded="full"
+        variant="link"
+        cursor="pointer"
+        minW={0}
+      >
+        <Avatar
+          size="sm"
+          name={userData.name}
+          bg="blackAlpha.900"
+          color="white"
+        >
           <AvatarBadge boxSize="1.25em" bg="green.500" />
         </Avatar>
       </MenuButton>
       <MenuList alignItems="center" zIndex="overlay">
         <br />
         <Center>
-          <Avatar size="2xl" name={userData.name} bg="blackAlpha.900" color="white" />
+          <Avatar
+            size="2xl"
+            name={userData.name}
+            bg="blackAlpha.900"
+            color="white"
+          />
         </Center>
         <br />
         <Center>

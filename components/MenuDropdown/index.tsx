@@ -1,11 +1,9 @@
 import { Box, ComponentWithAs, Flex, Icon, IconProps } from '@chakra-ui/react'
 import React, { useState } from 'react'
 
-const MenuDropdown: React.FC<MenuDropdownProps<ComponentWithAs<'svg', IconProps>>> = ({
-  icon,
-  children,
-  title,
-}) => {
+const MenuDropdown: React.FC<
+  MenuDropdownProps<ComponentWithAs<'svg', IconProps>>
+> = ({ icon, children, title }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

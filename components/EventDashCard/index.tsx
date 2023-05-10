@@ -1,6 +1,13 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai'
 import { FaSignature } from 'react-icons/fa'
-import { Box, Button, Flex, Text, useDisclosure, useToast } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  Text,
+  useDisclosure,
+  useToast,
+} from '@chakra-ui/react'
 import React, { useMemo } from 'react'
 
 import { DELETE_EVENT } from 'services/mutations'
@@ -33,14 +40,25 @@ const EventDashCard: React.FC<EventCardProps> = ({
     [eventDate],
   )
   const subscriptionsEndDate = useMemo(
-    () => formatToTimezone(subscriptionsDueDate, "dd 'de' MMMM 'de' yyyy 'às' HH:mm'"),
+    () =>
+      formatToTimezone(
+        subscriptionsDueDate,
+        "dd 'de' MMMM 'de' yyyy 'às' HH:mm'",
+      ),
     [subscriptionsDueDate],
   )
   const subscriptionsStartDate = useMemo(
-    () => formatToTimezone(subscriptionsScheduledTo, "dd 'de' MMMM 'de' yyyy 'às' HH:mm'"),
+    () =>
+      formatToTimezone(
+        subscriptionsScheduledTo,
+        "dd 'de' MMMM 'de' yyyy 'às' HH:mm'",
+      ),
     [subscriptionsScheduledTo],
   )
-  const remainingSlots = useMemo(() => maxSlots - _count?.EventsSubscriptions, [maxSlots, _count])
+  const remainingSlots = useMemo(
+    () => maxSlots - _count?.EventsSubscriptions,
+    [maxSlots, _count],
+  )
 
   const handleSeeEvent = () => {
     push(`/eventos/inscricoes/${id}`)
@@ -84,7 +102,12 @@ const EventDashCard: React.FC<EventCardProps> = ({
       position="relative"
       bg="whiteAlpha.900"
     >
-      <Flex direction="column" textAlign="left" justifyContent="space-between" w="full">
+      <Flex
+        direction="column"
+        textAlign="left"
+        justifyContent="space-between"
+        w="full"
+      >
         <Text fontWeight="medium" align="center" mb={{ base: '20px' }}>
           {title}
         </Text>
@@ -108,20 +131,21 @@ const EventDashCard: React.FC<EventCardProps> = ({
 
       <Box pos="absolute" top="0px" right="15px">
         <OptionsButton noBackground>
-          {isPast(new Date(subscriptionsScheduledTo)) && isFuture(new Date(eventDate)) && (
-            <Button
-              w="194px"
-              variant="ghost"
-              rightIcon={<AiOutlineArrowsAlt />}
-              justifyContent="space-between"
-              fontWeight="normal"
-              colorScheme="blackAlpha.700"
-              fontSize="sm"
-              onClick={handleSeeEvent}
-            >
-              Ver na íntegra
-            </Button>
-          )}
+          {isPast(new Date(subscriptionsScheduledTo)) &&
+            isFuture(new Date(eventDate)) && (
+              <Button
+                w="194px"
+                variant="ghost"
+                rightIcon={<AiOutlineArrowsAlt />}
+                justifyContent="space-between"
+                fontWeight="normal"
+                colorScheme="blackAlpha.700"
+                fontSize="sm"
+                onClick={handleSeeEvent}
+              >
+                Ver na íntegra
+              </Button>
+            )}
           <Button
             w="194px"
             variant="ghost"

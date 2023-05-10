@@ -1,4 +1,4 @@
-import { Button, Flex, Text, toast, useToast } from '@chakra-ui/react'
+import { Button, Flex, Text, useToast } from '@chakra-ui/react'
 import OptionsButton from 'components/OptionsButton'
 import { arrayToNaturalLanguage } from 'helpers/formatters'
 import React, { useMemo } from 'react'
@@ -12,10 +12,15 @@ export default function GrowthGroupDashCard({ Group }: GrowthGroupDashCard) {
   const { refetch } = useQuery('admin-growthgroups', GET_GROWTH_GROUPS)
 
   const toast = useToast()
-  const leaders = useMemo(() => arrayToNaturalLanguage(Group.leadership), [Group.leadership])
+  const leaders = useMemo(
+    () => arrayToNaturalLanguage(Group.leadership),
+    [Group.leadership],
+  )
 
   const handleGrowthGroups = async () => {
-    const userConfirmation = confirm('Deseja deletar esse grupo de crescimento?')
+    const userConfirmation = confirm(
+      'Deseja deletar esse grupo de crescimento?',
+    )
 
     if (!userConfirmation) return false
     try {
@@ -38,10 +43,10 @@ export default function GrowthGroupDashCard({ Group }: GrowthGroupDashCard) {
     <Flex
       scrollSnapAlign="start"
       marginBottom="10px"
-      bg='white'
-      color='black'
+      bg="white"
+      color="black"
       w="70%"
-      minW='200px'
+      minW="200px"
       flexDirection="column"
       borderRadius="10px"
       padding={4}

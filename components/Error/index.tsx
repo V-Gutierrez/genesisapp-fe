@@ -1,8 +1,6 @@
-import {
-  Box, Flex, Heading, Text,
-} from '@chakra-ui/react';
+import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 
-import { CloseIcon } from '@chakra-ui/icons';
+import { CloseIcon } from '@chakra-ui/icons'
 
 export default function Error({ title, subtitle }: ErrorProps) {
   return (
@@ -26,5 +24,5 @@ export default function Error({ title, subtitle }: ErrorProps) {
       </Heading>
       <Text color="gray.500">{subtitle}</Text>
     </Box>
-  );
+  )
 }

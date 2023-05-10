@@ -15,7 +15,11 @@ import { extraordinaryRoutes } from 'components/Drawer/utils'
 import { useIsFetching } from 'react-query'
 import { useRouter } from 'next/router'
 
-export default function SidebarWithHeader({ children }: { children: ReactNode }) {
+export default function SidebarWithHeader({
+  children,
+}: {
+  children: ReactNode
+}) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { route } = useRouter()
   const isFetching = useIsFetching()
@@ -41,7 +45,12 @@ export default function SidebarWithHeader({ children }: { children: ReactNode })
       {!extraordinaryPage && <Header onOpen={onOpen} />}
       <Box ml={0} p={generalPadding}>
         {isFetching ? (
-          <Flex w="100%" h={generalHeight} justifyContent="center" alignItems="center">
+          <Flex
+            w="100%"
+            h={generalHeight}
+            justifyContent="center"
+            alignItems="center"
+          >
             <Spinner size="xl" />
           </Flex>
         ) : (

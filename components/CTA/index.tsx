@@ -2,7 +2,12 @@ import { Box, Button, Container, Heading, Stack, Text } from '@chakra-ui/react'
 
 import Link from 'next/link'
 
-export default function CTA({ title, subtitle, buttonText, buttonHref }: CTAProps) {
+export default function CTA({
+  title,
+  subtitle,
+  buttonText,
+  buttonHref,
+}: CTAProps) {
   return (
     <Container w="100%" h="80vh">
       <Stack
@@ -24,7 +29,13 @@ export default function CTA({ title, subtitle, buttonText, buttonHref }: CTAProp
           </Text>
         </Heading>
         <Text color="gray.500">{subtitle}</Text>
-        <Stack direction="column" spacing={3} align="center" alignSelf="center" position="relative">
+        <Stack
+          direction="column"
+          spacing={3}
+          align="center"
+          alignSelf="center"
+          position="relative"
+        >
           <Link href={buttonHref} legacyBehavior>
             <Button
               bg="black"
@@ -41,5 +52,5 @@ export default function CTA({ title, subtitle, buttonText, buttonHref }: CTAProp
         </Stack>
       </Stack>
     </Container>
-  );
+  )
 }

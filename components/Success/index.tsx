@@ -1,6 +1,6 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react'
 
-import { CheckCircleIcon } from '@chakra-ui/icons';
+import { CheckCircleIcon } from '@chakra-ui/icons'
 
 export default function Success({ title, subtitle }: SuccessProps) {
   return (
@@ -11,5 +11,5 @@ export default function Success({ title, subtitle }: SuccessProps) {
       </Heading>
       <Text color="gray.500">{subtitle}</Text>
     </Box>
-  );
+  )
 }

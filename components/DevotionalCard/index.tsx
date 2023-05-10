@@ -21,7 +21,10 @@ export default function DevotionalCard({
   slug,
   readingTimeInMinutes,
 }: Devotional) {
-  const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo])
+  const formatedScheduledDate = useMemo(
+    () => formatToTimezone(scheduledTo),
+    [scheduledTo],
+  )
   const iconRef = useRef(null)
   return (
     <Center py={6} cursor="pointer" userSelect="none" mx={2}>
@@ -74,5 +77,5 @@ export default function DevotionalCard({
         </Box>
       </Link>
     </Center>
-  );
+  )
 }

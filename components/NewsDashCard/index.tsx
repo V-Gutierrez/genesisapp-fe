@@ -1,5 +1,12 @@
 import { AiOutlineArrowsAlt, AiOutlineDelete } from 'react-icons/ai'
-import { Box, Button, Flex, chakra, useColorModeValue, useToast } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  chakra,
+  useColorModeValue,
+  useToast,
+} from '@chakra-ui/react'
 import React, { useMemo, useState } from 'react'
 
 import { DELETE_NEWS } from 'services/mutations'
@@ -30,7 +37,10 @@ const NewsDashCard: React.FC<NewsDashCardProps> = ({
     push(`/noticias/${slug}`)
   }
 
-  const formatedScheduledDate = useMemo(() => formatToTimezone(scheduledTo), [scheduledTo])
+  const formatedScheduledDate = useMemo(
+    () => formatToTimezone(scheduledTo),
+    [scheduledTo],
+  )
 
   const handleNewsDelete = async () => {
     const userConfirmation = confirm('Deseja deletar esse evento?')
