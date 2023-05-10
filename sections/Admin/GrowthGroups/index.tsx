@@ -1,5 +1,6 @@
 import { Flex, Button, Box, useDisclosure } from '@chakra-ui/react';
 import GrowthGroupCard from 'components/GrowthGroupCard';
+import GrowthGroupDashCard from 'components/GrowthGroupDashCard';
 import { inHours } from 'helpers/time';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { BiRefresh } from 'react-icons/bi';
@@ -49,7 +50,7 @@ export default function GrowthGroups() {
 
       <Flex alignItems="center" flexDir="column" minH="200px">
         {data.data.map((group) => (
-          <GrowthGroupCard key={group.id} Group={group} active={true} />))}
+          <GrowthGroupDashCard key={group.id} Group={group} />))}
       </Flex>
       <GrowthGroupsCreationModal isOpen={isOpen} onClose={onClose} />
     </Box>

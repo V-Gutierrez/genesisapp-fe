@@ -67,5 +67,5 @@ interface GrowthGroupFormValues {
   addressInfo: string
   weekDay: WeekDay
   scheduledTime: string
-  leadership: string[]
+  leadership: string[] | string
 }

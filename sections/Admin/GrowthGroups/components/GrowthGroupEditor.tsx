@@ -19,8 +19,10 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
     FormikHelpersObject: FormikHelpers<GrowthGroupFormValues>,
   ) => {
     FormikHelpersObject.setSubmitting(true)
+    const parsedLeadershipNames = (values.leadership as string).split(',').map((name) => name.replace(/\W/, "").trim())
+
     try {
-      await createGrowthGroups(values)
+      await createGrowthGroups({ ...values, leadership: parsedLeadershipNames })
 
       toast({
         title: 'GC criado com sucesso',
@@ -70,9 +72,29 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
                   </Box>
                 </Tooltip>
               </Flex>
-              <Input type="text" id="name" onChange={handleChange} placeholder="Exemplo: Av. Cabildo 1452, 6A" />
+              <Input type="text" id="addressInfo" onChange={handleChange} placeholder="Exemplo: Av. Cabildo 1452, 6A" />
               <Text fontSize={{ base: '12px' }} color="red">
                 {errors.addressInfo && touched.addressInfo && errors.addressInfo}
+              </Text>
+            </Box>
+            <Box>
+              <Flex align={'center'}>
+                <FormLabel fontSize={{ base: '16px' }}>Nome dos líderes do GC</FormLabel>
+                <Tooltip
+                  shouldWrapChildren
+                  hasArrow
+                  cursor="pointer"
+                  label="Insira o nome dos líderes separados por vírgula"
+                  placement="top"
+                >
+                  <Box mb={2}>
+                    <AiOutlineInfoCircle />
+                  </Box>
+                </Tooltip>
+              </Flex>
+              <Input type="text" id="leadership" onChange={handleChange} placeholder="Exemplo: Fernanda, Gustavo" />
+              <Text fontSize={{ base: '12px' }} color="red">
+                {errors.leadership && touched.leadership && errors.leadership}
               </Text>
             </Box>
 

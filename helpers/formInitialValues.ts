@@ -55,5 +55,5 @@ export const GROWTH_GROUP_INITIAL_VALUES = {
   addressInfo: '',
   weekDay: 'Segunda-feira' as WeekDay,
   scheduledTime: '',
-  leadership: ['Líder 1', 'Líder 2'],
+  leadership: "" as string[] | string
 }

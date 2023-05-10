@@ -138,7 +138,5 @@ export const GROWTH_GROUP_CREATION_SCHEMA = Yup.object().shape({
   addressInfo: Yup.string().required('Insira o endereço do grupo'),
   weekDay: Yup.string().required('Selecione um dia da semana'),
   scheduledTime: Yup.string().required('Selecione um horário'),
-  leadership: Yup.array().of(
-    Yup.string()
-  ).required('Insira o nome dos líderes'),
+  leadership: Yup.string().required('Insira o nome dos líderes separados por vírgulas'),
 })

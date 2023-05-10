@@ -50,16 +50,16 @@ export const RESET_PASSWORD = async ({
   token: string
   newPassword: string
 }) => Axios.put(
-    '/auth/reset-password',
-    {
-      password: newPassword,
+  '/auth/reset-password',
+  {
+    password: newPassword,
+  },
+  {
+    headers: {
+      Authorization: token,
     },
-    {
-      headers: {
-        Authorization: token,
-      },
-    },
-  )
+  },
+)
 
 export const LOGOUT = async () => {
   await Axios.delete('/auth/logout')
@@ -110,11 +110,14 @@ export const CREATE_NEWS = async (values: NewsFormValues) => {
 }
 
 export const CREATE_GROWTH_GROUP = async (values: GrowthGroupFormValues) => {
-  Axios.post('/admin/growth-groups', values)
+  await Axios.post('/admin/growthgroups', values)
 }
 
 export const DELETE_NEWS = async (id: string) => {
-  await Axios.delete(`/news/${id}`)
+  await Axios.delete(`/admin/news/${id}`)
+}
+export const DELETE_GROWTH_GROUP = async (id: string) => {
+  await Axios.delete(`/admin/growthgroups/${id}`)
 }
 
 export const LIKE_NEWS = async (id: string) => {

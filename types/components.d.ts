@@ -41,6 +41,10 @@ interface GroupCardProps {
   active: boolean
 }
 
+interface GrowthGroupDashCard {
+  Group: GrowthGroup
+}
+
 interface MapFrameProps {
   GCDataset: GrowthGroup[]
   currentCoords: CoordsState
