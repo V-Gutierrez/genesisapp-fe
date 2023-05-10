@@ -38,10 +38,10 @@ export default function GrowthGroupDashCard({ Group }: GrowthGroupDashCard) {
     <Flex
       scrollSnapAlign="start"
       marginBottom="10px"
-      bg={'white'}
-      color={'black'}
+      bg='white'
+      color='black'
       w="70%"
-      minW={'200px'}
+      minW='200px'
       flexDirection="column"
       borderRadius="10px"
       padding={4}
