@@ -19,7 +19,7 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
     FormikHelpersObject: FormikHelpers<GrowthGroupFormValues>,
   ) => {
     FormikHelpersObject.setSubmitting(true)
-    const parsedLeadershipNames = (values.leadership as string).split(',').map((name) => name.replace(/\W/, "").trim())
+    const parsedLeadershipNames = (values.leadership as string).split(',').map((name) => name.replace(/\W/, '').trim())
 
     try {
       await createGrowthGroups({ ...values, leadership: parsedLeadershipNames })
@@ -58,7 +58,7 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
             </Box>
 
             <Box>
-              <Flex align={'center'}>
+              <Flex align="center">
                 <FormLabel fontSize={{ base: '16px' }}>Endereço do GC</FormLabel>
                 <Tooltip
                   shouldWrapChildren
@@ -78,7 +78,7 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
               </Text>
             </Box>
             <Box>
-              <Flex align={'center'}>
+              <Flex align="center">
                 <FormLabel fontSize={{ base: '16px' }}>Nome dos líderes do GC</FormLabel>
                 <Tooltip
                   shouldWrapChildren
@@ -143,8 +143,7 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
             </Button>
           </Flex>
         </form>
-      )
-      }
-    </Formik >
+      )}
+    </Formik>
   )
 }

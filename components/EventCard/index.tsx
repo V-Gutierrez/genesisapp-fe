@@ -25,8 +25,7 @@ export default function EventCard({
     [eventDate],
   )
   const subscriptionsEndDate = useMemo(
-    () =>
-      formatToTimezone(
+    () => formatToTimezone(
         subscriptionsDueDate,
         "dd 'de' MMMM 'de' yyyy 'às' HH:mm",
       ),

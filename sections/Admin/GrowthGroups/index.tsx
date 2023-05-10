@@ -55,5 +55,4 @@ export default function GrowthGroups() {
       <GrowthGroupsCreationModal isOpen={isOpen} onClose={onClose} />
     </Box>
   )
-
 }

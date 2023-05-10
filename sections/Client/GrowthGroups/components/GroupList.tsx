@@ -1,7 +1,6 @@
 import { Flex, Spinner, Text } from '@chakra-ui/react'
 import GrowthGroupCard from 'components/GrowthGroupCard'
 
-
 const GroupList: React.FC<GroupListProps> = ({ GCDataset, selectCoordsHandler, currentCoords }) => {
   if (!GCDataset) {
     return (

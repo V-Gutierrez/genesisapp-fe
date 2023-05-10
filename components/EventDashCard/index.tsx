@@ -40,16 +40,14 @@ const EventDashCard: React.FC<EventCardProps> = ({
     [eventDate],
   )
   const subscriptionsEndDate = useMemo(
-    () =>
-      formatToTimezone(
+    () => formatToTimezone(
         subscriptionsDueDate,
         "dd 'de' MMMM 'de' yyyy 'às' HH:mm'",
       ),
     [subscriptionsDueDate],
   )
   const subscriptionsStartDate = useMemo(
-    () =>
-      formatToTimezone(
+    () => formatToTimezone(
         subscriptionsScheduledTo,
         "dd 'de' MMMM 'de' yyyy 'às' HH:mm'",
       ),
