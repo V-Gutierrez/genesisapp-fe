@@ -151,6 +151,7 @@ function MapFrame({
             <MarkerF
               key={`${lat}-${lng}`}
               position={{ lat, lng }}
+              onClick={() => selectCoordsHandler(lat, lng)}
               icon={{
                 url: GCLogo.src,
                 scaledSize: new google.maps.Size(50, 60),

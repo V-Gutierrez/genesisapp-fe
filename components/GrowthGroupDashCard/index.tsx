@@ -45,7 +45,7 @@ export default function GrowthGroupDashCard({ Group }: GrowthGroupDashCard) {
       marginBottom="10px"
       bg="white"
       color="black"
-      w="70%"
+      width="full"
       minW="200px"
       flexDirection="column"
       borderRadius="10px"
