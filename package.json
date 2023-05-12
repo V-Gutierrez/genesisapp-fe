@@ -14,6 +14,7 @@
     "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@react-google-maps/api": "^2.18.1",
     "@trendyol-js/react-carousel": "^2.0.1",
     "array-shuffle": "^3.0.0",
     "axios": "^0.27.2",
