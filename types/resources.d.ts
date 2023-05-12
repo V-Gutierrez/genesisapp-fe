@@ -28,8 +28,7 @@ interface User {
 }
 
 interface Interactions {
-  userId: string
-  devotionalId: string
+  name: string
 }
 interface Devotional {
   id: string

@@ -14,6 +14,7 @@ import { useUser } from 'context/UserContext'
 export default function DevotionalSection() {
   const { query } = useRouter()
   const { userData } = useUser()
+  const toast = useToast()
   const { slug: devotionalSlug } = query
   const { data, isLoading, isError, refetch } = useQuery(
     [`devotional-${devotionalSlug}`, devotionalSlug],
@@ -30,29 +31,47 @@ export default function DevotionalSection() {
   }
 
   if (data) {
-    const toast = useToast()
-    const { title, body, author, scheduledTo, coverImage, DevotionalViews, id, DevotionalLikes } =
-      data?.data
+    const {
+      title,
+      body,
+      author,
+      scheduledTo,
+      coverImage,
+      DevotionalViews,
+      id,
+      DevotionalLikes,
+    } = data?.data
 
     const likes = DevotionalLikes?.length || 0
     const views = DevotionalViews?.length || 0
     const userLiked =
-      Boolean(DevotionalLikes.find((interaction) => interaction?.userId === userData?.id)) || false
+      Boolean(
+        DevotionalLikes.find(
+          (interaction) => interaction?.name === userData?.name,
+        ),
+      ) || false
 
     const handleLike = async () => {
       if (userData) {
         await likeDevotional(id)
         await refetch()
         toast({
-          description: userLiked ? 'Você descurtiu este devocional' : 'Você curtiu este devocional',
+          description: userLiked
+            ? 'Você descurtiu este devocional'
+            : 'Você curtiu este devocional',
         })
       } else {
-        toast({ description: 'Você precisa estar logado para curtir este devotional' })
+        toast({
+          description: 'Você precisa estar logado para curtir este devotional',
+        })
       }
     }
 
     const formatedScheduledDate = useMemo(
-      () => formatToTimezone(scheduledTo, "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
+      () => formatToTimezone(
+          scheduledTo,
+          "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
+        ),
       [scheduledTo],
     )
 

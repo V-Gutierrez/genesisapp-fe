@@ -33,15 +33,21 @@ export default function NewsSection() {
   }
 
   if (data) {
-    const { id, title, body, scheduledTo, coverImage, NewsLikes, NewsViews } = data?.data
+    const { id, title, body, scheduledTo, coverImage, NewsLikes, NewsViews } =
+      data?.data
 
     const likes = NewsLikes?.length || 0
     const views = NewsViews?.length || 0
     const userLiked =
-      Boolean(NewsLikes.find((interaction) => interaction?.userId === userData?.id)) || false
+      Boolean(
+        NewsLikes.find((interaction) => interaction?.name === userData?.name),
+      ) || false
 
     const formatedScheduledDate = useMemo(
-      () => formatToTimezone(scheduledTo, "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm"),
+      () => formatToTimezone(
+          scheduledTo,
+          "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
+        ),
       [scheduledTo],
     )
 
@@ -50,10 +56,14 @@ export default function NewsSection() {
         await likeNews(id)
         await refetch()
         toast({
-          description: userLiked ? 'Você descurtiu esta notícia' : 'Você curtiu esta notícia',
+          description: userLiked
+            ? 'Você descurtiu esta notícia'
+            : 'Você curtiu esta notícia',
         })
       } else {
-        toast({ description: 'Você precisa estar logado para curtir esta notícia' })
+        toast({
+          description: 'Você precisa estar logado para curtir esta notícia',
+        })
       }
     }
 

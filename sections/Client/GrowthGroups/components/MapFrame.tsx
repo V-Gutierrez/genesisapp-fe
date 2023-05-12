@@ -95,6 +95,7 @@ function MapFrame({
       mapTypeControl: false,
       keyboardShortcuts: false,
       gestureHandling: 'greedy',
+      fullscreenControl: true,
     }),
     [],
   )
