@@ -41,3 +41,8 @@ body {
 .customPopup .leaflet-container a {
   color: white !important;
 }
+
+/* Google Maps Autocomplete Container */
+.pac-container {
+  z-index: 2000000000000000000 !important;
+}

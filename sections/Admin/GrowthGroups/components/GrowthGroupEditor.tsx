@@ -11,6 +11,7 @@ import {
   Select,
   Tooltip,
 } from '@chakra-ui/react'
+import { Autocomplete, GoogleMap, useLoadScript } from '@react-google-maps/api'
 import { Formik, FormikHelpers } from 'formik'
 import { WEEKDAYS, WORKING_HOURS } from 'helpers/constants'
 import { GROWTH_GROUP_INITIAL_VALUES } from 'helpers/formInitialValues'
@@ -21,10 +22,17 @@ import { useMutation, useQuery } from 'react-query'
 import { CREATE_GROWTH_GROUP } from 'services/mutations'
 import { GET_GROWTH_GROUPS } from 'services/queries'
 
+const GMAPS_LIBRARIES = ['places']
 export default function GrowthGroupEditor({ onClose }: EditorProps) {
   const toast = useToast()
   const { mutateAsync: createGrowthGroups } = useMutation(CREATE_GROWTH_GROUP)
   const { refetch } = useQuery('admin-growthgroups', GET_GROWTH_GROUPS)
+
+  const { isLoaded: mapIsLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY as string,
+    language: 'pt-BR',
+    libraries: GMAPS_LIBRARIES as any,
+  })
 
   const onSubmit = async (
     values: GrowthGroupFormValues,
@@ -88,18 +96,40 @@ export default function GrowthGroupEditor({ onClose }: EditorProps) {
                   </Box>
                 </Tooltip>
               </Flex>
-              <Input
-                type="text"
-                id="addressInfo"
-                onChange={handleChange}
-                placeholder="Exemplo: Av. Cabildo 1452, 6A"
-              />
-              <Text fontSize={{ base: '12px' }} color="red">
-                {errors.addressInfo &&
-                  touched.addressInfo &&
-                  errors.addressInfo}
-              </Text>
             </Box>
+
+            {mapIsLoaded && (
+              <Box
+                zIndex="popover"
+                __css={{
+                  '.autocomplete-input': {
+                    background: '#fff',
+                  },
+                }}
+              >
+                <GoogleMap zoom={2.5}>
+                  <Autocomplete
+                    options={{
+                      types: ['address'],
+                      componentRestrictions: { country: ['br', 'ar'] },
+                    }}
+                    className="autocomplete-input"
+                  >
+                    <Input
+                      type="text"
+                      id="addressInfo"
+                      onChange={handleChange}
+                      placeholder="Exemplo: Av. Cabildo 1452, 6A"
+                    />
+                  </Autocomplete>
+                </GoogleMap>
+              </Box>
+            )}
+
+            <Text fontSize={{ base: '12px' }} color="red">
+              {errors.addressInfo && touched.addressInfo && errors.addressInfo}
+            </Text>
+
             <Box>
               <Flex align="center">
                 <FormLabel fontSize={{ base: '16px' }}>

@@ -82,7 +82,7 @@ function MapFrame({
 
   useEffect(() => {
     if (mapIsLoaded && currentCoords.lat && currentCoords.lng) fetchRoutes()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCoords.lat, currentCoords.lng])
 
   const mapOptions = useMemo<google.maps.MapOptions>(
@@ -134,7 +134,7 @@ function MapFrame({
       >
         <GoogleMap
           options={mapOptions}
-          zoom={10}
+          zoom={12}
           mapTypeId={google.maps.MapTypeId.HYBRID}
           center={{
             lat: currentCoords.lat as number,
@@ -165,7 +165,13 @@ function MapFrame({
             }
           />
           {directions && (
-            <DirectionsRenderer options={{}} directions={directions} />
+            <DirectionsRenderer
+              options={{
+                suppressMarkers: true,
+                suppressInfoWindows: false,
+              }}
+              directions={directions}
+            />
           )}
         </GoogleMap>
       </Box>

@@ -54,6 +54,6 @@ export const GROWTH_GROUP_INITIAL_VALUES = {
   whatsappLink: '',
   addressInfo: '',
   weekDay: 'Segunda-feira' as WeekDay,
-  scheduledTime: '',
+  scheduledTime: '08:00',
   leadership: '' as string[] | string,
 }
