@@ -91,6 +91,9 @@ function MapFrame({
       clickableIcons: false,
       scrollwheel: true,
       backgroundColor: '#edf2f7',
+      zoomControl: false,
+      mapTypeControl: false,
+      keyboardShortcuts: false,
     }),
     [],
   )
