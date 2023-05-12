@@ -15,3 +15,6 @@ A church CMS system front-end.
 ![image](https://user-images.githubusercontent.com/62355596/219717307-a134378d-4b50-4d5e-b0e4-698e6e5e6a49.png)
 ![image](https://user-images.githubusercontent.com/62355596/219717321-182a533a-260c-42ca-b651-7ddb97660714.png)
 ![msedge_TxfpiCYMex](https://user-images.githubusercontent.com/62355596/219717534-725b34cd-120d-40ec-a50c-986c4ddf86a0.gif)
+![msedge_4K7I6DPyYC](https://github.com/V-Gutierrez/genesisapp-fe/assets/62355596/ec6101f4-08a4-4a35-b414-b1fe3744358f)
+![msedge_4m6il9jHXX](https://github.com/V-Gutierrez/genesisapp-fe/assets/62355596/d5fb7470-1744-47ae-abd9-6658b5790c16)
+![msedge_MsOu1Nfv2i](https://github.com/V-Gutierrez/genesisapp-fe/assets/62355596/be61ab2d-4970-43e9-89ad-3b0162a2c43a)
