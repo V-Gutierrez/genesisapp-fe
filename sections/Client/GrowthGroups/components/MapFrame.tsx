@@ -49,10 +49,6 @@ function MapFrame({
   )
 
   useEffect(() => {
-    console.log('directionsService', directionsService)
-  }, [directionsService, mapIsLoaded])
-
-  useEffect(() => {
     // get current position from navigator
     navigator.geolocation.getCurrentPosition(
       // if position is found, set current position and select coordinates
