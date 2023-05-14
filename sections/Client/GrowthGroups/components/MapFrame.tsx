@@ -1,6 +1,6 @@
 import { Box, Skeleton } from '@chakra-ui/react'
 import {
-  // DirectionsRenderer,
+  DirectionsRenderer,
   GoogleMap,
   MarkerF,
   useLoadScript,
@@ -26,8 +26,31 @@ function MapFrame({
     language: 'pt-BR',
   })
 
-  /* const [directions, setDirections] = useState<google.maps.DirectionsResult>()
-  const [routeLoading, setRouteLoading] = useState<boolean>(false) */
+  const [directions, setDirections] = useState<google.maps.DirectionsResult | undefined>()
+  const [routeLoading, setRouteLoading] = useState<boolean>(false)
+
+  const directionsService: google.maps.DirectionsService | undefined = useMemo(() => (mapIsLoaded ? new google.maps.DirectionsService() : undefined), [
+    mapIsLoaded,
+  ])
+
+  const mapOptions = useMemo<google.maps.MapOptions>(
+    () => ({
+      disableDefaultUI: false,
+      clickableIcons: false,
+      scrollwheel: true,
+      backgroundColor: '#edf2f7',
+      zoomControl: false,
+      mapTypeControl: false,
+      keyboardShortcuts: false,
+      gestureHandling: 'greedy',
+      fullscreenControl: true,
+    }),
+    [],
+  )
+
+  useEffect(() => {
+    console.log('directionsService', directionsService)
+  }, [directionsService, mapIsLoaded])
 
   useEffect(() => {
     // get current position from navigator
@@ -53,11 +76,9 @@ function MapFrame({
   }, [])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  /*   const fetchRoutes = async () => {
+  const fetchRoutes = async () => {
     setRouteLoading(true)
     try {
-      const results = new google.maps.DirectionsService()
-
       const config = {
         destination: {
           lat: currentCoords.lat as number,
@@ -70,39 +91,22 @@ function MapFrame({
         travelMode: google.maps.TravelMode.TRANSIT,
       }
 
-      const route = await results.route(config)
-
-      setDirections(route)
+      const route = await directionsService?.route(config)
+      route && setDirections(route)
     } catch (error) {
       // console.warn(error)
     }
 
     setRouteLoading(false)
-  } */
+  }
 
-  /*   useEffect(() => {
-    if (mapIsLoaded && currentCoords.lat && currentCoords.lng) fetchRoutes()
+  useEffect(() => {
+    if (currentCoords.lat && currentCoords.lng) fetchRoutes()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCoords.lat, currentCoords.lng]) */
-
-  const mapOptions = useMemo<google.maps.MapOptions>(
-    () => ({
-      disableDefaultUI: false,
-      clickableIcons: false,
-      scrollwheel: true,
-      backgroundColor: '#edf2f7',
-      zoomControl: false,
-      mapTypeControl: false,
-      keyboardShortcuts: false,
-      gestureHandling: 'greedy',
-      fullscreenControl: true,
-    }),
-    [],
-  )
+  }, [currentCoords.lat, currentCoords.lng])
 
   const shouldRenderLoading =
-    !mapIsLoaded || !GCDataset || !currentCoords.lat || !currentCoords.lng // ||
-  // routeLoading
+    !mapIsLoaded || !GCDataset || !currentCoords.lat || !currentCoords.lng || routeLoading
 
   const shouldRenderMap =
     mapIsLoaded && GCDataset && currentCoords.lat && currentCoords.lng
@@ -167,7 +171,7 @@ function MapFrame({
                 : 'Localização aproximada'
             }
           />
-          {/*  {directions && (
+          {directions && (
             <DirectionsRenderer
               options={{
                 suppressMarkers: true,
@@ -175,7 +179,7 @@ function MapFrame({
               }}
               directions={directions}
             />
-          )} */}
+          )}
         </GoogleMap>
       </Box>
     )
