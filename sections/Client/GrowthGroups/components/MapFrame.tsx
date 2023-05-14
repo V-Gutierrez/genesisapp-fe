@@ -26,12 +26,15 @@ function MapFrame({
     language: 'pt-BR',
   })
 
+  const isCurrentCoordSettedAsUserPosition = useMemo(
+    () => userPosition?.lat === currentCoords.lat &&
+      userPosition?.lng === currentCoords.lng,
+    [currentCoords.lat, currentCoords.lng, userPosition.lat, userPosition.lng],
+  )
   const [directions, setDirections] = useState<google.maps.DirectionsResult | undefined>()
   const [routeLoading, setRouteLoading] = useState<boolean>(false)
 
-  const directionsService: google.maps.DirectionsService | undefined = useMemo(() => (mapIsLoaded ? new google.maps.DirectionsService() : undefined), [
-    mapIsLoaded,
-  ])
+  const directionsService: google.maps.DirectionsService | undefined = useMemo(() => (mapIsLoaded && !isCurrentCoordSettedAsUserPosition ? new google.maps.DirectionsService() : undefined), [isCurrentCoordSettedAsUserPosition, mapIsLoaded])
 
   const mapOptions = useMemo<google.maps.MapOptions>(
     () => ({
@@ -69,6 +72,7 @@ function MapFrame({
         enableHighAccuracy: true,
       },
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -100,9 +104,9 @@ function MapFrame({
   }
 
   useEffect(() => {
-    if (mapIsLoaded) fetchRoutes()
+    if (mapIsLoaded && !isCurrentCoordSettedAsUserPosition) fetchRoutes()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCoords.lat, currentCoords.lng])
+  }, [currentCoords.lat, currentCoords.lng, isCurrentCoordSettedAsUserPosition])
 
   const shouldRenderLoading =
     !mapIsLoaded || !GCDataset || !currentCoords.lat || !currentCoords.lng || routeLoading
