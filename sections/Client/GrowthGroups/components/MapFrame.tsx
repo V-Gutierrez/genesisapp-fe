@@ -88,16 +88,19 @@ function MapFrame({
       }
 
       const route = await directionsService?.route(config)
-      route && setDirections(route)
-    } catch (error) {
-      // console.warn(error)
-    }
+      if (route) setDirections(route)
 
+      // eslint-disable-next-line no-console
+      console.info('Directions Found')
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.info('No Directions Found')
+    }
     setRouteLoading(false)
   }
 
   useEffect(() => {
-    if (currentCoords.lat && currentCoords.lng) fetchRoutes()
+    if (mapIsLoaded) fetchRoutes()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCoords.lat, currentCoords.lng])
 
