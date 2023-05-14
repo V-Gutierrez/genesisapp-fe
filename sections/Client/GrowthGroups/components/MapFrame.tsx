@@ -1,6 +1,6 @@
 import { Box, Skeleton } from '@chakra-ui/react'
 import {
-  DirectionsRenderer,
+  // DirectionsRenderer,
   GoogleMap,
   MarkerF,
   useLoadScript,
@@ -26,8 +26,8 @@ function MapFrame({
     language: 'pt-BR',
   })
 
-  const [directions, setDirections] = useState<google.maps.DirectionsResult>()
-  const [routeLoading, setRouteLoading] = useState<boolean>(false)
+  /* const [directions, setDirections] = useState<google.maps.DirectionsResult>()
+  const [routeLoading, setRouteLoading] = useState<boolean>(false) */
 
   useEffect(() => {
     // get current position from navigator
@@ -53,7 +53,7 @@ function MapFrame({
   }, [])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const fetchRoutes = async () => {
+  /*   const fetchRoutes = async () => {
     setRouteLoading(true)
     try {
       const results = new google.maps.DirectionsService()
@@ -78,12 +78,12 @@ function MapFrame({
     }
 
     setRouteLoading(false)
-  }
+  } */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (mapIsLoaded && currentCoords.lat && currentCoords.lng) fetchRoutes()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCoords.lat, currentCoords.lng])
+  }, [currentCoords.lat, currentCoords.lng]) */
 
   const mapOptions = useMemo<google.maps.MapOptions>(
     () => ({
@@ -101,11 +101,8 @@ function MapFrame({
   )
 
   const shouldRenderLoading =
-    !mapIsLoaded ||
-    !GCDataset ||
-    !currentCoords.lat ||
-    !currentCoords.lng ||
-    routeLoading
+    !mapIsLoaded || !GCDataset || !currentCoords.lat || !currentCoords.lng // ||
+  // routeLoading
 
   const shouldRenderMap =
     mapIsLoaded && GCDataset && currentCoords.lat && currentCoords.lng
@@ -170,7 +167,7 @@ function MapFrame({
                 : 'Localização aproximada'
             }
           />
-          {directions && (
+          {/*  {directions && (
             <DirectionsRenderer
               options={{
                 suppressMarkers: true,
@@ -178,7 +175,7 @@ function MapFrame({
               }}
               directions={directions}
             />
-          )}
+          )} */}
         </GoogleMap>
       </Box>
     )
