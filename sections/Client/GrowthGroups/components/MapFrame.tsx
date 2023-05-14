@@ -8,6 +8,16 @@ import {
 import React, { useEffect, useMemo, useState } from 'react'
 import GCLogo from 'public/assets/images/gc-logo.png'
 
+
+/**
+ * Renders a Google Map using the @react-google-maps/api library.
+ * @param {Object} props - The component props.
+ * @param {Array} props.GCDataset - The dataset of coordinates.
+ * @param {Object} props.currentCoords - The current coordinates.
+ * @param {Function} props.selectCoordsHandler - The handler function for selecting coordinates.
+ * @returns {JSX.Element} - The rendered component.
+ * @note Be aware of the number of API calls being made, as this can affect pricing.
+ */
 function MapFrame({
   GCDataset,
   currentCoords,
