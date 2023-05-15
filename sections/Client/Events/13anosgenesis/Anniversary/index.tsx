@@ -103,14 +103,11 @@ const AnniversarySection: React.FC = () => {
           ))}
         </Flex>
         <Flex
-          h="auto-fit"
+          h={computeStylesBasedOnState(showFullGallery, 0, '60px')}
           w="full"
           align="center"
           justifyContent="center"
           p={{ base: '5px' }}
-          willChange="transform"
-          transform={computeStylesBasedOnState(showFullGallery, 'translateY(-60px)', 'none')}
-          transition="transform 0.5s ease-in-out"
         >
           <NextImage
             ImageProps={{
@@ -120,7 +117,7 @@ const AnniversarySection: React.FC = () => {
               style: { objectFit: 'contain' },
             }}
             BoxProps={{
-              h: { base: '140px' },
+              h: '100%',
               w: '140px',
               alignSelf: 'center',
             }}
