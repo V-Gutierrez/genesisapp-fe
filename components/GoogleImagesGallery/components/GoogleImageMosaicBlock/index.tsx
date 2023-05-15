@@ -18,6 +18,7 @@ const GoogleImageMosaicBlock: React.FC<
         opacity: 0.5,
       },
     }}
+    customLoadingTimeout={20000}
   />
 )
 

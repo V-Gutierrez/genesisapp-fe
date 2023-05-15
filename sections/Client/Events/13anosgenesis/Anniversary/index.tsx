@@ -27,8 +27,8 @@ const AnniversarySection: React.FC = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const delay = setTimeout(() => {
-        clearTimeout(delay)
         setShowFullGallery(false)
+        clearTimeout(delay)
       }, 1000)
     }
   }, [])
@@ -58,6 +58,9 @@ const AnniversarySection: React.FC = () => {
           h="60px"
           align="center"
           justify="flex-start"
+          willChange="transform"
+          transform={computeStylesBasedOnState(showFullGallery, 'translateY(-60px)', 'none')}
+          transition="transform 0.5s ease-in-out"
         >
           <ChevronLeftIcon
             cursor="pointer"
@@ -79,6 +82,9 @@ const AnniversarySection: React.FC = () => {
           userSelect="none"
           bg="black"
           opacity={computeStylesBasedOnState(showFullGallery, '0', '1')}
+          willChange="transform"
+          transform={computeStylesBasedOnState(showFullGallery, 'translateY(-60px)', 'none')}
+          transition="opacity 0.5s ease-in-out, transform 0.5s ease-in-out"
         >
           {arrayShuffle(subscribers).map((signer) => (
             <Text
@@ -97,11 +103,14 @@ const AnniversarySection: React.FC = () => {
           ))}
         </Flex>
         <Flex
-          h={computeStylesBasedOnState(showFullGallery, 0, '60px')}
+          h="auto-fit"
           w="full"
           align="center"
           justifyContent="center"
           p={{ base: '5px' }}
+          willChange="transform"
+          transform={computeStylesBasedOnState(showFullGallery, 'translateY(-60px)', 'none')}
+          transition="transform 0.5s ease-in-out"
         >
           <NextImage
             ImageProps={{
@@ -111,7 +120,7 @@ const AnniversarySection: React.FC = () => {
               style: { objectFit: 'contain' },
             }}
             BoxProps={{
-              h: '100%',
+              h: { base: '140px' },
               w: '140px',
               alignSelf: 'center',
             }}
@@ -135,9 +144,11 @@ const AnniversarySection: React.FC = () => {
             xl: computeStylesBasedOnState(showFullGallery, 'auto-fit', '700px'),
           }}
           clipPath={computeStylesBasedOnState(showFullGallery, 'none', Brazil)}
-          transition="all 2.5s ease-in-out"
           flexDirection="column"
           mt={{ base: '10px' }}
+          willChange="transform"
+          transform={computeStylesBasedOnState(showFullGallery, 'translateY(-60px)', 'none')}
+          transition="transform 0.5s ease-in-out"
         >
           <GoogleImagesGallery
             FlexProps={{
@@ -165,13 +176,15 @@ const AnniversarySection: React.FC = () => {
 
         <Flex
           opacity={computeStylesBasedOnState(showFullGallery, '0', '1')}
-          transition="all 1.5s ease-in-out"
           direction="column"
           justifyContent="center"
           w="full"
           textAlign="center"
           zIndex="popover"
           mt={{ md: '20px' }}
+          willChange="transform"
+          transform={computeStylesBasedOnState(showFullGallery, 'translateY(-60px)', 'none')}
+          transition="transform 0.5s ease-in-out"
         >
           <Text
             color="white"

@@ -166,6 +166,7 @@ interface SimpleEmptyStateProps {
 interface NextImageProps<Image, Box> {
   BoxProps?: Box
   ImageProps: Image
+  customLoadingTimeout?: number
 }
 
 interface GoogleImageMosaicBlockProps<LayoutWidthProps, LayoutHeightProps> {
