@@ -108,3 +108,14 @@ interface RegionCollectionItem {
   regionKey: UserRegion
   regionTitle: string
 }
+
+
+interface Gallery {
+  id: string
+  title: string
+  coverImage: string
+  coverThumbnail: string
+  googlePhotosAlbumUrl: string
+  assetId: string
+  createdAt: string
+}

@@ -139,3 +139,5 @@ export const GET_ADMIN_EVENTS = async () => Axios.get<EventItem[]>('/admin/event
  * @returns {Promise<RegionCollectionItem[]>} - Promise that resolves to an array of regions
  */
 export const GET_REGIONS = async () => Axios.get<RegionCollectionItem[]>('/regions')
+
+export const GET_GALLERIES = async () => Axios.get<Gallery[]>('/galleries')
