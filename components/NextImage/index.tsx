@@ -10,7 +10,7 @@ import React, { useEffect, useState } from 'react'
 const NextImage: React.FC<NextImageProps<ImagePropsType, BoxPropsType>> = ({
   BoxProps,
   ImageProps,
-  customLoadingTimeout = 10000
+  customLoadingTimeout = 10000,
 }) => {
   const [loading, setLoading] = useState<boolean>(true)
 

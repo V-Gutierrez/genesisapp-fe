@@ -8,7 +8,6 @@ import {
 import React, { useEffect, useMemo, useState } from 'react'
 import GCLogo from 'public/assets/images/gc-logo.png'
 
-
 /**
  * Renders a Google Map using the @react-google-maps/api library.
  * @param {Object} props - The component props.
