@@ -3,7 +3,7 @@ import NextImage from 'components/NextImage'
 import SimpleEmptyState from 'components/SimpleEmptyState'
 import { useQuery } from 'react-query'
 import { GET_GALLERIES } from 'services/queries'
-import GalleryCard from './components/GalleryCard'
+import GalleryCard from '../../../components/GalleryCard'
 
 
 const Galleries: React.FC = () => {
@@ -12,93 +12,19 @@ const Galleries: React.FC = () => {
     cacheTime: Infinity,
   })
 
-  const galleries = /* data?.data || */[
-    {
-      assetId: '1',
-      createdAt: '2021-08-01T00:00:00.000Z',
-      coverImage: 'https://picsum.photos/200/300',
-      coverThumbnail: 'https://picsum.photos/200/300',
-      googlePhotosAlbumUrl: 'https://picsum.photos/200/300',
-      id: '1',
-      title: 'Galeria 1',
-    },
-    {
-      assetId: '1',
-      createdAt: '2021-08-01T00:00:00.000Z',
-      coverImage: 'https://picsum.photos/200/300',
-      coverThumbnail: 'https://picsum.photos/200/300',
-      googlePhotosAlbumUrl: 'https://picsum.photos/200/300',
-      id: '1',
-      title: 'Galeria 1',
-    },
-    {
-      assetId: '1',
-      createdAt: '2021-08-01T00:00:00.000Z',
-      coverImage: 'https://picsum.photos/200/300',
-      coverThumbnail: 'https://picsum.photos/200/300',
-      googlePhotosAlbumUrl: 'https://picsum.photos/200/300',
-      id: '1',
-      title: 'Galeria 1',
-    },
-    {
-      assetId: '1',
-      createdAt: '2021-08-01T00:00:00.000Z',
-      coverImage: 'https://picsum.photos/200/300',
-      coverThumbnail: 'https://picsum.photos/200/300',
-      googlePhotosAlbumUrl: 'https://picsum.photos/200/300',
-      id: '1',
-      title: 'Galeria 1',
-    },
-    {
-      assetId: '1',
-      createdAt: '2021-08-01T00:00:00.000Z',
-      coverImage: 'https://picsum.photos/200/300',
-      coverThumbnail: 'https://picsum.photos/200/300',
-      googlePhotosAlbumUrl: 'https://picsum.photos/200/300',
-      id: '1',
-      title: 'Galeria 1',
-    },
-    {
-      assetId: '1',
-      createdAt: '2021-08-01T00:00:00.000Z',
-      coverImage: 'https://picsum.photos/200/300',
-      coverThumbnail: 'https://picsum.photos/200/300',
-      googlePhotosAlbumUrl: 'https://picsum.photos/200/300',
-      id: '1',
-      title: 'Galeria 1',
-    },
-    {
-      assetId: '1',
-      createdAt: '2021-08-01T00:00:00.000Z',
-      coverImage: 'https://picsum.photos/200/300',
-      coverThumbnail: 'https://picsum.photos/200/300',
-      googlePhotosAlbumUrl: 'https://picsum.photos/200/300',
-      id: '1',
-      title: 'Galeria 1',
-    },
-    {
-      assetId: '1',
-      createdAt: '2021-08-01T00:00:00.000Z',
-      coverImage: 'https://picsum.photos/200/300',
-      coverThumbnail: 'https://picsum.photos/200/300',
-      googlePhotosAlbumUrl: 'https://picsum.photos/200/300',
-      id: '1',
-      title: 'Galeria 1',
-    },
-  ]
+  if (data) {
+    const galleries = data?.data
 
-  /* if (!data) return null
-  if (!data.data.length) {
-    return <SimpleEmptyState title="Não há galerias  disponíveis no momento" />
-  } */
-
-  return (
-    <>
-      {galleries.map((gallery) => {
-        return <GalleryCard {...gallery} />
-      })}
-    </>
-  )
+    return (
+      <>
+        {galleries.map((gallery) => {
+          return <GalleryCard key={gallery.id} {...gallery} />
+        })}
+      </>
+    )
+  } else {
+    return <SimpleEmptyState title="Não há galerias disponíveis no momento" />
+  }
 }
 
 export default Galleries

@@ -141,3 +141,11 @@ export const GET_ADMIN_EVENTS = async () => Axios.get<EventItem[]>('/admin/event
 export const GET_REGIONS = async () => Axios.get<RegionCollectionItem[]>('/regions')
 
 export const GET_GALLERIES = async () => Axios.get<Gallery[]>('/galleries')
+
+export const GET_GALLERY_BY_ID = async (ReactQueryParams: RQParams) => {
+  const { 1: galleryId } = ReactQueryParams.queryKey as string[]
+
+  if (galleryId) {
+    return Axios.get<Gallery>(`/galleries/${galleryId}`)
+  }
+}

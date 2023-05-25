@@ -217,3 +217,7 @@ export const SUBSCRIBE_TO_EVENT = async ({
 
   await Axios.post(`/events/${id}/subscriptions`, values)
 }
+
+export const LIKE_GALLERY = async (id: string) => {
+  await Axios.post(`/gallery/${id}/like`)
+}

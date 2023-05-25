@@ -24,7 +24,7 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
       <NextImage
         ImageProps={
           {
-            src: 'https://lh3.googleusercontent.com/4ACO3kML9DgjElNx-Un17kx2gm4DxqB2J7NBDaU_FgD1deOd-kJhJRe1_HX5yGaHk80cp1rFopjuNjITFKIYNWmgw7a7YaFBIhRP8rzaQkhjYLNYZRElV5xiUnCzoFTvGBTF-7JqAw=s3920',
+            src: gallery.coverThumbnail,
             alt: gallery.title,
             style: { objectFit: 'cover' }
           }
