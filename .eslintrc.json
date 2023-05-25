@@ -35,6 +35,7 @@
         "@next/next/no-sync-scripts": "off",
         "react/jsx-no-bind": "off",
         "react/no-invalid-html-attribute": "off",
+        "react/destructuring-assignment": "off",
         "no-use-before-define": "off",
         "react/prop-types": "off",
         "react/no-children-prop": "off",

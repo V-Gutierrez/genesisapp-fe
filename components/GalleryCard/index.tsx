@@ -2,7 +2,7 @@ import { Box, Text } from '@chakra-ui/react'
 import NextImage from 'components/NextImage'
 import { useRouter } from 'next/router'
 
-const GalleryCard: React.FC<Gallery> = ({ gallery }) => {
+const GalleryCard: React.FC<Gallery> = (gallery) => {
   const { push } = useRouter()
 
   const handleSeeGallery = (id: string) => {
