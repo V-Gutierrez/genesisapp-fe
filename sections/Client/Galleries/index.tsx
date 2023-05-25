@@ -3,6 +3,7 @@ import NextImage from 'components/NextImage'
 import SimpleEmptyState from 'components/SimpleEmptyState'
 import { useQuery } from 'react-query'
 import { GET_GALLERIES } from 'services/queries'
+import GalleryCard from './components/GalleryCard'
 
 
 const Galleries: React.FC = () => {
@@ -94,7 +95,7 @@ const Galleries: React.FC = () => {
   return (
     <>
       {galleries.map((gallery) => {
-        return JSON.stringify(gallery)
+        return <GalleryCard {...gallery} />
       })}
     </>
   )
