@@ -1,10 +1,7 @@
-import { Text, Box, Flex } from '@chakra-ui/react'
-import NextImage from 'components/NextImage'
 import SimpleEmptyState from 'components/SimpleEmptyState'
 import { useQuery } from 'react-query'
 import { GET_GALLERIES } from 'services/queries'
 import GalleryCard from '../../../components/GalleryCard'
-
 
 const Galleries: React.FC = () => {
   const { data } = useQuery('galleries', GET_GALLERIES, {
@@ -17,14 +14,11 @@ const Galleries: React.FC = () => {
 
     return (
       <>
-        {galleries.map((gallery) => {
-          return <GalleryCard key={gallery.id} {...gallery} />
-        })}
+        {galleries.map((gallery) => <GalleryCard key={gallery.id} {...gallery} />)}
       </>
     )
-  } else {
-    return <SimpleEmptyState title="Não há galerias disponíveis no momento" />
   }
+    return <SimpleEmptyState title="Não há galerias disponíveis no momento" />
 }
 
 export default Galleries
