@@ -1,8 +1,8 @@
-import { Box, Text } from "@chakra-ui/react"
-import NextImage from "components/NextImage"
-import { useRouter } from "next/router"
+import { Box, Text } from '@chakra-ui/react'
+import NextImage from 'components/NextImage'
+import { useRouter } from 'next/router'
 
-const GalleryCard: React.FC<Gallery> = (gallery) => {
+const GalleryCard: React.FC<Gallery> = ({ gallery }) => {
   const { push } = useRouter()
 
   const handleSeeGallery = (id: string) => {
@@ -13,11 +13,11 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
     <Box
       w={{ base: '100%' }}
       h={{ base: '200px' }}
-      d='flex'
-      justifyContent='center'
-      alignItems='center'
+      d="flex"
+      justifyContent="center"
+      alignItems="center"
       pos="relative"
-      cursor={'pointer'}
+      cursor="pointer"
       mb={2}
       onClick={() => handleSeeGallery(gallery.id)}
     >
@@ -26,7 +26,7 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
           {
             src: gallery.coverThumbnail,
             alt: gallery.title,
-            style: { objectFit: 'cover' }
+            style: { objectFit: 'cover' },
           }
         }
         BoxProps={{
@@ -36,9 +36,13 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
           zIndex: 1,
         }}
       />
-      <Box bg="blackAlpha.600" w="100%" h="100%" d='flex'
-        justifyContent='center'
-        alignItems='center'
+      <Box
+        bg="blackAlpha.600"
+        w="100%"
+        h="100%"
+        d="flex"
+        justifyContent="center"
+        alignItems="center"
         zIndex={2}
       >
         <Text
