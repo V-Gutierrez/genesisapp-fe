@@ -82,19 +82,22 @@ const GoogleImagesGallery: React.FC<
         <ChevronLeftIcon
           onClick={handlePrev}
           cursor="pointer"
-          color="#FF5834"
+          color="white"
           zIndex="popover"
           pos="fixed"
           w={{ base: '40px', md: '50px' }}
           h={{ base: '40px', md: '50px' }}
           left={{ base: '5px', md: '20px' }}
+          p="2px"
+          bg="whiteAlpha.300"
+          borderRadius={50}
           top={{ base: 'calc(50% - 40px)', md: 'calc(50% - 50px + 56px)' }}
         />
       )}
       {!isNaN(currentImageIndex as number) && showFullImage && (
         <NextImage
           ImageProps={{
-            src: imageArray[currentImageIndex as number].highQuality,
+            src: imageArray[currentImageIndex as number].url,
             style: { objectFit: 'contain' },
             alt: imageArray[currentImageIndex as number].url,
           }}
@@ -102,8 +105,8 @@ const GoogleImagesGallery: React.FC<
             w: { base: '100%' },
             h: { base: '100%' },
             position: 'fixed',
-            bg: 'blackAlpha.600',
-            bottom: { base: '25px' },
+            bg: 'blackAlpha.700',
+            bottom: { base: '0' },
             d: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -119,13 +122,17 @@ const GoogleImagesGallery: React.FC<
           }}
         />
       )}
+
       {!isNaN(currentImageIndex as number) && showFullImage && (
         <ChevronRightIcon
           onClick={handleNext}
           cursor="pointer"
-          color="#FF5834"
+          color="white"
           zIndex="popover"
           pos="fixed"
+          p="2px"
+          bg="whiteAlpha.300"
+          borderRadius={50}
           w={{ base: '40px', md: '50px' }}
           h={{ base: '40px', md: '50px' }}
           right={{ base: '5px', md: '20px' }}
