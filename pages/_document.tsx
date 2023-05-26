@@ -59,18 +59,7 @@ class MyDocument extends Document {
             src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
             async
           />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.OneSignal = window.OneSignal || [];
-              OneSignal.push(function() {
-                OneSignal.init({
-                  appId: "e7d95f30-19e0-4c48-a201-6861e3eaf9a8",
-                });
-              });`,
-            }}
-          />
-
-        </Head>
+          </Head>
         <body>
           <Main />
           <NextScript />
