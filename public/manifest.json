@@ -1,0 +1,15 @@
+{
+  "name": "Gênesis Church",
+  "short_name": "Gênesis Church",
+  "start_url": "https://genesischurch.app/",
+  "id": "https://genesischurch.app/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "https://cdn.pushalert.co/icons/app-icon-56745-1.png?1685070293",
+      "sizes": "512x167"
+    }
+  ]
+}
