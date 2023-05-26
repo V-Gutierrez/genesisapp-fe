@@ -55,16 +55,6 @@ class MyDocument extends Document {
           <meta property="twitter:title" content="Genesis Church" />
           <meta property="twitter:description" content="Bem-vindos à Gênesis Church" />
           <meta property="twitter:image" content="/meta-bg.png" />
-          <script
-            type="text/javascript"
-            dangerouslySetInnerHTML={{ __html: `
-        (function(d, t) {
-                var g = d.createElement(t),
-                s = d.getElementsByTagName(t)[0];
-                g.src = "https://cdn.pushalert.co/integrate_2e9d030ebdded810f154a0118b106b1f.js";
-                s.parentNode.insertBefore(g, s);
-        }(document, "script"));` }}
-          />
         </Head>
         <body>
           <Main />
