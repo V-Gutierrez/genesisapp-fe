@@ -2,8 +2,8 @@ import React from 'react'
 
 class ReactOneSignal extends React.Component {
   oneSignal = () => ({
-      __html: `window.OneSignal = window.OneSignal || []; OneSignal.push(function() { OneSignal.init({ appId: "${process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID}" }); });`,
-    })
+    __html: `window.OneSignal = window.OneSignal || []; OneSignal.push(function() { OneSignal.init({ appId: "${process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID}", notifyButton:{enable: true}});});`
+  })
 
   render() {
     return (
