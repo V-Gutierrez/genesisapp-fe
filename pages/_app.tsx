@@ -21,12 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     if (typeof window === 'undefined') return;
 
       window.OneSignal = window.OneSignal || [];
-
       window.OneSignal.push(() => {
-        window.OneSignal.SERVICE_WORKER_PARAM = { scope: '/public/OneSignalSDKWorker.js' };
-        window.OneSignal.SERVICE_WORKER_PATH = '/public/OneSignalSDKWorker.js'
-        window.OneSignal.SERVICE_WORKER_UPDATER_PATH = '/public/OneSignalSDKWorker.js'
-
         window.OneSignal.init({
           appId: 'e7d95f30-19e0-4c48-a201-6861e3eaf9a8',
           notifyButton: {
