@@ -19,6 +19,8 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
       pos="relative"
       cursor="pointer"
       mb={2}
+      borderRadius="20px"
+      boxShadow="20px 8px 53px -13px"
       onClick={() => handleSeeGallery(gallery.id)}
     >
       <NextImage
