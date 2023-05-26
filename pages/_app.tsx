@@ -9,7 +9,6 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import SidebarWithHeader from 'components/Drawer'
 import { UserContextProvider } from 'context/UserContext'
 import { chakraTheme } from 'styles/chakraTheme'
-import ReactOneSignal from 'components/ReactOneSignal'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -21,7 +20,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ChakraProvider theme={chakraTheme}>
           <UserContextProvider>
             <SidebarWithHeader>
-              <ReactOneSignal />
               <Component {...pageProps} />
             </SidebarWithHeader>
             <ReactQueryDevtools initialIsOpen position="bottom-left" />
