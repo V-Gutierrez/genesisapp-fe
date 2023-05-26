@@ -55,11 +55,7 @@ class MyDocument extends Document {
           <meta property="twitter:title" content="Genesis Church" />
           <meta property="twitter:description" content="Bem-vindos à Gênesis Church" />
           <meta property="twitter:image" content="/meta-bg.png" />
-          <script
-            src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
-            async
-          />
-          </Head>
+        </Head>
         <body>
           <Main />
           <NextScript />

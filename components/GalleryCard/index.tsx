@@ -27,8 +27,8 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
           {
             src: gallery.coverThumbnail,
             alt: gallery.title,
-            style: { objectFit: 'cover',
-
+            style: { objectFit: 'cover', 
+          
           },
           }
         }
