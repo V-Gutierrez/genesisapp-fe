@@ -32,7 +32,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
       onClose={onClose}
       isCentered
       size="sm"
-      scrollBehavior="outside"
+      scrollBehavior="inside"
       preserveScrollBarGap
     >
       <ModalOverlay />

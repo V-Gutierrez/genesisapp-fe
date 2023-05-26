@@ -92,6 +92,7 @@ const UserInfo: React.FC = () => {
         </Center>
         <br />
         <MenuDivider />
+        <MenuItem><div className="onesignal-customlink-container" /></MenuItem>
         <MenuItem bg="none" onClick={handleLogout}>
           Sair
         </MenuItem>
