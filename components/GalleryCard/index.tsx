@@ -18,9 +18,8 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
       alignItems="center"
       pos="relative"
       cursor="pointer"
-      mb={2}
-      borderRadius="20px"
-      boxShadow="20px 8px 53px -13px"
+      mb={5}
+      boxShadow="20px 8px 53px -13px rgba(0,0,0,0.55)"
       onClick={() => handleSeeGallery(gallery.id)}
     >
       <NextImage
@@ -28,7 +27,9 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
           {
             src: gallery.coverThumbnail,
             alt: gallery.title,
-            style: { objectFit: 'cover' },
+            style: { objectFit: 'cover', 
+          
+          },
           }
         }
         BoxProps={{
