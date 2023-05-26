@@ -44,6 +44,7 @@
         "no-unused-vars": "warn",
         "no-unused-expressions": "warn",
         "no-useless-escape": "off",
+        "class-methods-use-this": "off",
         "indent": "off",
         "eqeqeq": "warn",
         "react/jsx-indent": "off",
