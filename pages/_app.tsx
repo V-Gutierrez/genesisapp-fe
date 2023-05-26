@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ChakraProvider theme={chakraTheme}>
           <UserContextProvider>
             <SidebarWithHeader>
-              <ReactOneSignal/>
+              <ReactOneSignal />
               <Component {...pageProps} />
             </SidebarWithHeader>
             <ReactQueryDevtools initialIsOpen position="bottom-left" />

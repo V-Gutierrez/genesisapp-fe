@@ -6,7 +6,7 @@ const withPWA = require('next-pwa')({
   skipWaiting: true,
   importScripts: [
     `https://runtime.imagekit.io/0gr1w07bzr6iu/v1/js/network-based-adaption.js?v=${new Date().getTime()}`,
-    'https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js'
+    'https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js',
   ],
 
    // disable: process.env.NODE_ENV === 'development',
