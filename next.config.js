@@ -8,7 +8,7 @@ const withPWA = require('next-pwa')({
     'https://cdn.onesignal.com/sdks/OneSignalSDKWorker.js',
   ],
 
-   disable: process.env.NODE_ENV === 'development',
+    disable: process.env.NODE_ENV === 'development',
 })
 
 module.exports = withPWA({

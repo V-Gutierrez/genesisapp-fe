@@ -23,11 +23,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       window.OneSignal = window.OneSignal || [];
       window.OneSignal.push(() => {
         window.OneSignal.init({
-          appId: 'b40b7cc7-13dc-4662-8b48-efa668f9b72a',
+          appId: 'e7d95f30-19e0-4c48-a201-6861e3eaf9a8',
           notifyButton: {
             enable: true,
           },
-          allowLocalhostAsSecureOrigin: true,
+          // allowLocalhostAsSecureOrigin: true,
         });
       });
 
