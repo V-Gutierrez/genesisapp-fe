@@ -5,6 +5,7 @@ import { GET_USER_NEWS } from 'services/queries'
 import { useQuery } from 'react-query'
 import CustomSlider from 'components/CustomSlider'
 import NewsHighlightCard from 'components/NewsHighlightCard'
+import Welcome from './Welcome'
 
 const NewsHighlightsSlider: React.FC = () => {
   const { data } = useQuery('news', GET_USER_NEWS, {
@@ -15,6 +16,7 @@ const NewsHighlightsSlider: React.FC = () => {
   if (!data || !data.data.length) return null
   return (
     <Box w="100%" p={{ md: 6 }} pb={{ base: 8, md: 0 }}>
+      <Welcome />
       <Flex w="full" scrollBehavior="smooth" minW="100%" align="center">
         <CustomSlider
           customSettings={{
