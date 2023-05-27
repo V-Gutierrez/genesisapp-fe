@@ -31,6 +31,8 @@ const GallerySection = () => {
     const { id, title, googlePhotosAlbumUrl, coverImage, GalleryLikes, GalleryViews } =
       data?.data
 
+    console.log(data.data)
+
     const likes = GalleryLikes?.length || 0
     const views = GalleryViews?.length || 0
 
@@ -42,7 +44,10 @@ const GallerySection = () => {
     const handleLike = async () => {
       if (userData) {
         await likeGallery(id)
-        await refetch()
+        await refetch({
+          stale: true,
+          active: true,
+        })
 
         toast({
           description: userLiked

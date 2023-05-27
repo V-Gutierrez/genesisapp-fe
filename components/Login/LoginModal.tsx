@@ -10,7 +10,7 @@ import {
 
 import ForgotPasswordForm from 'components/Login/ForgotPasswordForm'
 import Success from 'components/Success'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
 
@@ -25,6 +25,24 @@ const LoginModal: React.FC<LoginModalProps> = ({
     signUpSuccess: false,
     forgotPassword: false,
   })
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
+    if (visibility.signUpSuccess) {
+      timeoutId = setTimeout(() => {
+        setVisibility((prevState) => ({
+          ...prevState,
+          login: true,
+          signUpSuccess: false,
+        }));
+      }, 3000);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [visibility.signUpSuccess]);
 
   return (
     <Modal

@@ -219,5 +219,5 @@ export const SUBSCRIBE_TO_EVENT = async ({
 }
 
 export const LIKE_GALLERY = async (id: string) => {
-  await Axios.post(`/gallery/${id}/like`)
+  await Axios.post(`/galleries/${id}/like`)
 }
