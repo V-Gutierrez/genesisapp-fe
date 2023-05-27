@@ -25,7 +25,7 @@ export default function SidebarWithHeader({
   const isFetching = useIsFetching()
   const extraordinaryPage = extraordinaryRoutes.includes(route)
   const generalHeight = extraordinaryPage ? '100vh' : '80vh'
-  const generalPadding = extraordinaryPage ? '0' : '2'
+  const generalPadding = extraordinaryPage ? '0' : '1'
 
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>

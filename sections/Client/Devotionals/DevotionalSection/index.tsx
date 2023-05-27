@@ -47,7 +47,7 @@ export default function DevotionalSection() {
     const userLiked =
       Boolean(
         DevotionalLikes.find(
-          (interaction) => interaction?.name === userData?.name,
+          (interaction) => interaction?.User.name === userData?.name,
         ),
       ) || false
 
@@ -69,9 +69,9 @@ export default function DevotionalSection() {
 
     const formatedScheduledDate = useMemo(
       () => formatToTimezone(
-          scheduledTo,
-          "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
-        ),
+        scheduledTo,
+        "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
+      ),
       [scheduledTo],
     )
 

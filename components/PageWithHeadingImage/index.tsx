@@ -20,7 +20,7 @@ const PageWithHeadingImage: React.FC<PageWithHeadingImageProps> = ({
     <Head>
       <title>{pageTitle}</title>
     </Head>
-    <Flex flexDir="column" w="100%" overflow="clip" align="center">
+    <Flex flexDir="column" w="100%" overflow="hidden" align="center">
       <NextImage
         ImageProps={{
           src: headingImage,

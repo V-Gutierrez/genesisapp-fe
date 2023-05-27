@@ -9,7 +9,7 @@ import { GET_GALLERY_BY_ID } from 'services/queries'
 const GallerySection = () => {
   const { query } = useRouter()
   const { id: galleryId } = query
-  const imageSize = useBreakpointValue({ base: 40, md: 32 })
+  const imageSize = useBreakpointValue({ base: 65, md: 32 })
 
   const { data, isError } = useQuery(
     [`galleries-${galleryId}`, galleryId],
@@ -31,6 +31,7 @@ const GallerySection = () => {
         >
           <Heading textAlign="center">{title}</Heading>
         </PageWithHeadingImage>
+
         <GoogleImagesGallery
           albumUrl={googlePhotosAlbumUrl}
           queryKey={`galleries-${galleryId}`}

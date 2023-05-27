@@ -6,6 +6,14 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <title>Genesis Church - Aplicativo e Site Oficial da Gênesis Church</title>
+          <meta name="keywords" content="Genesis Church, Igreja, Aplicativo, Site Oficial, Buenos Aires, Feira de Santana, Gênesis Church" />
+          <meta name="robots" content="index, follow" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta
+            name="description"
+            content="Bem-vindos à Gênesis Church - Aplicativo e Site Oficial da Gênesis Church"
+          />
           <link rel="manifest" href="/manifest.webmanifest" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon.png" />

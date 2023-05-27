@@ -148,7 +148,7 @@ function MapFrame({
           base: '100%',
         }}
         borderRadius="20px"
-        overflow="clip"
+        overflow="hidden"
       >
         <GoogleMap
           options={mapOptions}

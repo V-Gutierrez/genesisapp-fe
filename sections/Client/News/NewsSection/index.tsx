@@ -40,14 +40,14 @@ export default function NewsSection() {
     const views = NewsViews?.length || 0
     const userLiked =
       Boolean(
-        NewsLikes.find((interaction) => interaction?.name === userData?.name),
+        NewsLikes.find((interaction) => interaction?.User.name === userData?.name),
       ) || false
 
     const formatedScheduledDate = useMemo(
       () => formatToTimezone(
-          scheduledTo,
-          "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
-        ),
+        scheduledTo,
+        "' Em' dd 'de' MMMM 'de' yyyy 'às' HH:mm",
+      ),
       [scheduledTo],
     )
 

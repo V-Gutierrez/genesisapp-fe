@@ -18,6 +18,7 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
       alignItems="center"
       pos="relative"
       cursor="pointer"
+      overflow={{ base: 'hidden' }}
       mb={5}
       boxShadow="20px 8px 53px -13px rgba(0,0,0,0.55)"
       onClick={() => handleSeeGallery(gallery.id)}
@@ -27,9 +28,10 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
           {
             src: gallery.coverThumbnail,
             alt: gallery.title,
-            style: { objectFit: 'cover',
+            style: {
+              objectFit: 'cover',
 
-          },
+            },
           }
         }
         BoxProps={{
@@ -51,7 +53,8 @@ const GalleryCard: React.FC<Gallery> = (gallery) => {
         <Text
           color="white"
           fontWeight="bold"
-          fontSize="lg"
+          fontSize={{ sm: 'sm', md: 'lg' }}
+          textAlign="center"
         >
           {gallery.title}
         </Text>

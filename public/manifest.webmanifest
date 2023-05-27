@@ -1,26 +1,15 @@
 {
-    "theme_color": "#fff",
-    "background_color": "#fff",
-    "display": "standalone",
-    "scope": "/",
-    "start_url": "/",
     "name": "Genesis Church",
-    "short_name": "Genesis",
+    "short_name": "Gênesis Church",
     "description": "The Genesis Church App",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#007bff",
     "icons": [
         {
             "src": "/icon-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-256x256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-384x384.png",
-            "sizes": "384x384",
             "type": "image/png"
         },
         {
@@ -46,9 +35,15 @@
     "shortcuts": [
         {
             "name": "Encontre seu GC",
-            "url": "/gc",
             "description": "Encontre um Grupo de Crescimento próximo à você",
-            "icon": "/icon-128x128.png"
+            "url": "/gc",
+            "icons": [
+                {
+                    "src": "/icon-128x128.png",
+                    "sizes": "128x128",
+                    "type": "image/png"
+                }
+            ]
         }
     ]
 }
