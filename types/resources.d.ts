@@ -118,4 +118,6 @@ interface Gallery {
   googlePhotosAlbumUrl: string
   assetId: string
   createdAt: string
+  GalleryLikes: Interactions[]
+  GalleryViews: Interactions[]
 }

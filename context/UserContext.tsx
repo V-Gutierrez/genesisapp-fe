@@ -42,16 +42,13 @@ export const UserContextProvider: React.FC<ProviderProps> = ({ children }) => {
 
   const userData = useMemo(() => data?.data as Partial<User>, [data])
   const isAdmin = useMemo(() => data?.data.role === 'ADMIN', [data?.data.role])
-
   const providerValue = useMemo(
-    () => ({ userData, isAdmin, openLoginModal: onOpen }),
-    [userData, isAdmin, onOpen],
+    () => ({ userData, isAdmin, openLoginModal: onOpen, refetchUser, removeUserData }),
+    [userData, isAdmin, onOpen, refetchUser, removeUserData],
   )
 
   return (
-    <UserContext.Provider
-      value={{ ...providerValue, refetchUser, removeUserData }}
-    >
+    <UserContext.Provider value={providerValue}>
       {children}
       <LoginModal isOpen={isOpen} onClose={onClose} refetchUser={refetchUser} />
     </UserContext.Provider>
