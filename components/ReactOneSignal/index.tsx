@@ -26,7 +26,14 @@ class ReactOneSignal extends React.Component {
     `,
   })
 
+
   render() {
+    const isDevelopment = process.env.NODE_ENV === "development";
+
+    if (isDevelopment) {
+      return null
+    }
+
     return (
       <>
         <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async />

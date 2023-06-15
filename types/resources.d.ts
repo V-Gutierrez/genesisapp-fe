@@ -78,6 +78,7 @@ interface News {
   coverThumbnail: string
   NewsLikes: Interactions[]
   NewsViews: Interactions[]
+  isHighlight: boolean
 }
 
 interface EventsSubscription {

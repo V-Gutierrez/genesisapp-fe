@@ -13,7 +13,11 @@ const NewsHighlightsSlider: React.FC = () => {
     cacheTime: inHours(24),
   })
 
+
   if (!data || !data.data.length) return null
+
+  const highlights = data?.data.filter((news) => news.isHighlight)
+
   return (
     <Box w="100%" p={{ md: 6 }} pb={{ base: 8, md: 0 }}>
       <Welcome />
@@ -29,7 +33,7 @@ const NewsHighlightsSlider: React.FC = () => {
             speed: 5000,
           }}
         >
-          {data?.data.map((news) => (
+          {highlights.map((news) => (
             <NewsHighlightCard {...news} key={news.id} />
           ))}
         </CustomSlider>
