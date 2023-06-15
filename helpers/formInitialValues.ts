@@ -31,6 +31,7 @@ export const NEWS_CREATION_INITIAL_VALUES = {
   title: '',
   scheduledTo: '',
   highlightText: '',
+  isHighlight: false,
 }
 
 export const EVENT_CREATION_INITIAL_VALUES = {

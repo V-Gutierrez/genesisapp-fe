@@ -42,6 +42,7 @@ interface NewsFormValues {
   scheduledTo: string
   highlightText: string
   coverImage?: File
+  isHighlight: boolean
 }
 interface EventItemFormValues {
   coverImage?: File

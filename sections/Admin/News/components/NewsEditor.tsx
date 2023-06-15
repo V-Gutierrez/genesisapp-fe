@@ -115,6 +115,18 @@ const NewsEditor: React.FC<EditorProps> = ({ onClose }) => {
               </Text>
             </Box>
 
+            <Box>
+              <FormLabel fontSize={{ base: '16px' }}>É uma notícia destacada?</FormLabel>
+              <Input
+                type="checkbox"
+                id="isHighlight"
+                textAlign="center"
+                d="flex"
+                onChange={handleChange}
+              />
+            </Box>
+
+
             <Box onClick={() => setToolbar(RQ_TOOLBAR_OPTIONS)}>
               <Stack>
                 <HStack>
