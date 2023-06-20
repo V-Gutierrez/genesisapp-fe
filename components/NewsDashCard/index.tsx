@@ -15,6 +15,7 @@ import { formatToTimezone } from 'helpers/time'
 import { isFuture } from 'date-fns'
 import { useMutation } from 'react-query'
 import { useRouter } from 'next/router'
+import { StarIcon } from '@chakra-ui/icons'
 
 const NewsDashCard: React.FC<NewsDashCardProps> = ({
   body,
@@ -22,6 +23,7 @@ const NewsDashCard: React.FC<NewsDashCardProps> = ({
   id,
   scheduledTo,
   slug,
+  isHighlight,
   refetch,
 }) => {
   const [seeAll, setSeeAll] = useState(false)
@@ -114,6 +116,9 @@ const NewsDashCard: React.FC<NewsDashCardProps> = ({
         </Flex>
       </Flex>
 
+      <Box pos="absolute" top={2} left={5}>
+        {isHighlight ? <StarIcon color="yellow.400" /> : null}
+      </Box>
       <Box pos="absolute" top="0px" right="15px">
         <OptionsButton>
           {!isFuture(new Date(scheduledTo)) && (

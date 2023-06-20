@@ -3,6 +3,7 @@ import 'react-quill/dist/quill.snow.css'
 import {
   Box,
   Button,
+  Checkbox,
   Flex,
   FormLabel,
   HStack,
@@ -62,6 +63,7 @@ const NewsEditor: React.FC<EditorProps> = ({ onClose }) => {
         status: 'error',
       })
     }
+      console.log("🚀 ~ file: NewsEditor.tsx:66 ~ values:", values)
     FormikHelpersObject.setSubmitting(false)
   }
 
@@ -117,15 +119,11 @@ const NewsEditor: React.FC<EditorProps> = ({ onClose }) => {
 
             <Box>
               <FormLabel fontSize={{ base: '16px' }}>É uma notícia destacada?</FormLabel>
-              <Input
-                type="checkbox"
+              <Checkbox
                 id="isHighlight"
-                textAlign="center"
-                d="flex"
                 onChange={handleChange}
               />
             </Box>
-
 
             <Box onClick={() => setToolbar(RQ_TOOLBAR_OPTIONS)}>
               <Stack>
