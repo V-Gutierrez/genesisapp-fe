@@ -14,7 +14,7 @@ const withPWA = require('next-pwa')({
 module.exports = withPWA({
   reactStrictMode: true,
   images: {
-    domains: ['ik.imagekit.io', 'lh3.googleusercontent.com'],
+    domains: ['ik.imagekit.io', 'lh3.googleusercontent.com', 'placehold.co'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   },
 })
