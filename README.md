@@ -1,10 +1,10 @@
-# Genesis Church App Frontend (PWA) com Notificações Push
+# Genesis Church App Frontend (PWA) com Notificações Push e Integração com o Google Maps
 
-O Frontend do Genesis Church App é a face visível deste projeto, criando uma experiência envolvente para os usuários da igreja na Argentina. Este é o ponto de contato onde a fé e a tecnologia se unem, e é uma Progressive Web App (PWA) com o benefício adicional de notificações push.
+O Frontend do Genesis Church App é a face visível deste projeto, criando uma experiência envolvente para os usuários da igreja na Argentina. Este é o ponto de contato onde a fé e a tecnologia se unem, e é uma Progressive Web App (PWA) com o benefício adicional de notificações push e integração com o Google Maps.
 
 ## Descrição do Projeto
 
-O Frontend do Genesis Church App oferece uma interface amigável e rica em recursos para a comunidade da igreja. Como uma Progressive Web App com notificações push, apresenta benefícios adicionais, incluindo:
+O Frontend do Genesis Church App oferece uma interface amigável e rica em recursos para a comunidade da igreja, abrangendo uma variedade de funcionalidades essenciais, incluindo:
 
 - **Acessibilidade Móvel Melhorada**: Funciona perfeitamente em dispositivos móveis, permitindo que os usuários acessem facilmente a igreja a qualquer momento.
 
@@ -14,11 +14,22 @@ O Frontend do Genesis Church App oferece uma interface amigável e rica em recur
 
 - **Notificações Push**: Capacidade de enviar mensagens e atualizações importantes diretamente para os dispositivos dos usuários, mantendo-os informados e conectados.
 
+- **Agendamento de Eventos**: Possibilita a criação, divulgação e gerenciamento de eventos da igreja, permitindo que os membros participem e se envolvam.
+
+- **Gestão de Usuários**: Oferece um sistema de gerenciamento de usuários para administradores e líderes da igreja, permitindo um acompanhamento eficaz da comunidade.
+
+- **Inscrições em Eventos**: Permite que os membros da igreja se inscrevam em eventos e atividades de forma conveniente e fácil.
+
+- **Rotinas de Lançamento de Notícias**: Disponibiliza uma plataforma para publicar notícias, atualizações e informações relevantes da igreja de forma regular, mantendo a congregação informada.
+
+- **Integração com o Google Maps**: Facilita a localização e navegação para eventos e atividades da igreja, permitindo que os membros encontrem facilmente os locais.
+
 - **Atualizações Automáticas**: Garante que os usuários tenham sempre a versão mais recente do aplicativo.
 
-Este Frontend PWA é a interface que conecta a igreja com sua comunidade, tornando a fé acessível e inspiradora de maneira conveniente, com notificações push para manter todos informados. Junte-se a nós enquanto continuamos a construir uma ponte entre o divino e o digital.
+Este Frontend PWA é a interface que conecta a igreja com sua comunidade, tornando a fé acessível e inspiradora de maneira conveniente, com notificações push e integração com o Google Maps para uma experiência completa. Junte-se a nós enquanto continuamos a construir uma ponte entre o divino e o digital.
 
 Para mais informações sobre o projeto, visite [Genesis Church App](https://www.genesischurch.app/).
+
 
 
 ![image](https://user-images.githubusercontent.com/62355596/219712855-181c0bc7-0475-40f4-83e4-f1c4b65ac3d7.png)
