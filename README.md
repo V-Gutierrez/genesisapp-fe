@@ -29,6 +29,8 @@ O Frontend do Genesis Church App oferece uma interface amigável e rica em recur
 Este Frontend PWA é a interface que conecta a igreja com sua comunidade, tornando a fé acessível e inspiradora de maneira conveniente, com notificações push e integração com o Google Maps para uma experiência completa. Junte-se a nós enquanto continuamos a construir uma ponte entre o divino e o digital.
 
 Para mais informações sobre o projeto, visite [Genesis Church App](https://www.genesischurch.app/).
+Para informacoes sobre a API: https://github.com/V-Gutierrez/genesisapp-be
+
 
 
 
