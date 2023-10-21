@@ -1,6 +1,25 @@
-GENESIS APP FRONT END
+# Genesis Church App Frontend (PWA) com Notificações Push
 
-A church CMS system front-end. 
+O Frontend do Genesis Church App é a face visível deste projeto, criando uma experiência envolvente para os usuários da igreja na Argentina. Este é o ponto de contato onde a fé e a tecnologia se unem, e é uma Progressive Web App (PWA) com o benefício adicional de notificações push.
+
+## Descrição do Projeto
+
+O Frontend do Genesis Church App oferece uma interface amigável e rica em recursos para a comunidade da igreja. Como uma Progressive Web App com notificações push, apresenta benefícios adicionais, incluindo:
+
+- **Acessibilidade Móvel Melhorada**: Funciona perfeitamente em dispositivos móveis, permitindo que os usuários acessem facilmente a igreja a qualquer momento.
+
+- **Instalação Simples**: Os usuários podem adicionar o aplicativo à tela inicial de seus dispositivos com apenas um toque, sem necessidade de download na loja de aplicativos.
+
+- **Funcionamento Offline**: Permite o acesso a conteúdo e recursos mesmo em condições de conectividade limitada.
+
+- **Notificações Push**: Capacidade de enviar mensagens e atualizações importantes diretamente para os dispositivos dos usuários, mantendo-os informados e conectados.
+
+- **Atualizações Automáticas**: Garante que os usuários tenham sempre a versão mais recente do aplicativo.
+
+Este Frontend PWA é a interface que conecta a igreja com sua comunidade, tornando a fé acessível e inspiradora de maneira conveniente, com notificações push para manter todos informados. Junte-se a nós enquanto continuamos a construir uma ponte entre o divino e o digital.
+
+Para mais informações sobre o projeto, visite [Genesis Church App](https://www.genesischurch.app/).
+
 
 ![image](https://user-images.githubusercontent.com/62355596/219712855-181c0bc7-0475-40f4-83e4-f1c4b65ac3d7.png)
 ![image](https://user-images.githubusercontent.com/62355596/219712922-2c62b311-899c-4e78-8fb1-3d973b52aa61.png)
@@ -14,7 +33,3 @@ A church CMS system front-end.
 ![image](https://user-images.githubusercontent.com/62355596/219715235-1fa4994a-f9e5-4649-b1f8-2f94daa83329.png)
 ![image](https://user-images.githubusercontent.com/62355596/219717307-a134378d-4b50-4d5e-b0e4-698e6e5e6a49.png)
 ![image](https://user-images.githubusercontent.com/62355596/219717321-182a533a-260c-42ca-b651-7ddb97660714.png)
-![msedge_TxfpiCYMex](https://user-images.githubusercontent.com/62355596/219717534-725b34cd-120d-40ec-a50c-986c4ddf86a0.gif)
-![msedge_4K7I6DPyYC](https://github.com/V-Gutierrez/genesisapp-fe/assets/62355596/ec6101f4-08a4-4a35-b414-b1fe3744358f)
-![msedge_4m6il9jHXX](https://github.com/V-Gutierrez/genesisapp-fe/assets/62355596/d5fb7470-1744-47ae-abd9-6658b5790c16)
-![msedge_MsOu1Nfv2i](https://github.com/V-Gutierrez/genesisapp-fe/assets/62355596/be61ab2d-4970-43e9-89ad-3b0162a2c43a)
